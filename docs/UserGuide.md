@@ -78,7 +78,7 @@ Format: `find [KEYWORDS...]`
 Examples:
 * `find quiz` returns `set Canvas quiz` and `Quiz TAs`
 * `find grade midterm` returns `transfer grade to Canvas`, `set midterm`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  ![result for 'find quiz grades'](images/findQuizGradesResult.png)
 
 ### Set task as parent: `set`
 
@@ -92,6 +92,7 @@ Format: `set [parentTaskIndex] [childTaskIndex]`
 
 Examples:
 * `set 1 4` sets the first task in the list as the parent of the fourth task in the list.
+  ![result for `set 1 2`](images/setOneTwoResult.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
