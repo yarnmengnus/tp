@@ -148,6 +148,8 @@ The "Mark Task as Done/Undone" feature allows you to easily track the completion
 - `mark 1`
 - `unmark 2`
 
+![result for 'mark command'](images/MarkCommand.png)
+
 
 
 
@@ -174,6 +176,9 @@ You can also delete all the tasks in the list if needed.
 
 #### Examples
 - `delete 1`
+- `delete all`: It will just delete all the tasks.
+
+![result for 'delete command'](images/DeleteCommand.png)
 
 ### Exiting the program : `exit`
 
