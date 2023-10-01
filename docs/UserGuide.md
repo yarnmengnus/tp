@@ -127,31 +127,61 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+### Mark Task as Done/Undone
 
-Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+The "Mark Task as Done/Undone" feature allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task.
 
-### Clearing all entries : `clear`
+#### Command Format
 
-Clears all entries from the address book.
+- To mark a task as done: `mark [taskNumber]`
+- To mark a task as undone: `unmark [taskNumber]`
 
-Format: `clear`
+
+#### Acceptable Values for Parameters
+
+- `[taskNumber]`: An integer representing the task number in your task list (e.g. 1, 2, 3, ...)
+
+#### Examples
+- `mark 1`
+- `unmark 2`
+
+
+
+
+### Delete Task/Delete all Tasks
+
+
+The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant. 
+You can also delete all the tasks in the list if needed.
+
+#### Command Format
+
+- To delete a specific task: `delete [taskNumber]`
+- To delete all tasks: `delete all`
+
+#### Example Commands
+
+1. `delete 2` (To delete the task at index number 2)
+2. `delete all` (To delete all tasks in the list)
+
+#### Acceptable Values for Parameters
+
+- `[taskNumber]`: An integer representing a valid task number in the list.
+- `"all"`: A keyword (type string) to delete all tasks in the list.
+
+#### Examples
+- `delete 1`
 
 ### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
+
+###
 
 ### Saving the data
 
