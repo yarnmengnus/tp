@@ -64,14 +64,6 @@ ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Comm
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
 ### Adding a Task : `task` [Coming Soon]
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.
@@ -101,6 +93,38 @@ Examples:
 * `priority 1 /p 5` assigns priority level 5 to the 1st task.
 
 ![result for 'priority command'](images/PriorityCommand.png)
+
+### Locating a task: `find`
+
+Finds tasks which have titles or descriptions that contain any of the given keywords.
+
+Format: `find [KEYWORDS...]`
+
+* The search is case-insensitive. e.g `Quiz` will match `quiz`
+* The order of the keywords does not matter. e.g. `Canvas quiz` will match `quiz canvas`
+* Only the titles and descriptions are searched.
+* Only full words will be matched e.g. `Canva` will not match `Canvas`
+* Persons matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `midterm paper` will return `mock midterm`, `final paper`
+
+Examples:
+* `find quiz` returns `set Canvas quiz` and `Quiz TAs`
+* `find grade midterm` returns `transfer grade to Canvas`, `set midterm`<br>
+  ![result for 'find quiz grades'](images/findQuizGradesResult.png)
+
+### Set task as parent: `set`
+
+Sets a given task as the parent task of another given task.
+
+Format: `set [parentTaskIndex] [childTaskIndex]`
+
+* Both `parentTaskIndex` and `childTaskIndex` begin from 1, indexing from the current list.
+* Will fail if the indices are the same, if the indices are out of bounds, or if the task at `childTaskIndex` is the 
+  parent of the task at `parentTaskIndex`.
+
+Examples:
+* `set 1 4` sets the first task in the list as the parent of the fourth task in the list.
+  ![result for `set 1 2`](images/setOneTwoResult.png)
 
 ### Editing a person : `edit`
 
@@ -217,15 +241,16 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
+contains the data in the previous ProfPlan home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-=======
+
 Edit the aspects of selected existing task, as specified by the user.
 
 Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
@@ -260,9 +285,9 @@ Examples:
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
 
-**Edit** | `edit [index] /[aspect] [newValue] /[aspect] [newValue]…​`<br> e.g.,`edit 2 /name Updated task /priority 3`
-**Filter** | `filter /[type] [date]`<br> e.g., `filter /month 09`
+| Action         | Format, Examples                                         |
+|----------------|----------------------------------------------------------|
+| **Find**       | `find [keywords...]`, e.g. `find canvas quiz`            |
+| **Set parent** | `set [parentTaskIndex] [childTaskIndex]`, e.g. `set 1 3` |
 
