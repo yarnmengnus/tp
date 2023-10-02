@@ -9,16 +9,6 @@ You can reach us at the email `seer[at]u.nus.edu`
 
 ## Project team
 
-### John Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
 ### Tejas Gandhi
 
 <img src="images/newway1814.png" width="200px">
@@ -26,7 +16,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[github](http://github.com/newway1814)]
 [[portfolio](team/newway1814.md)]
 
-* Role: Team Lead
+* Role: Developer
 * Responsibilities:
 
 ### Guo Jiaqi Jackie
@@ -36,7 +26,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[github](http://github.com/guojiaqijackie)] [[portfolio](team/guojiaqijackie.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: 
 
 ### Kiat Win
 
@@ -56,7 +46,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[portfolio](team/yarnmeng.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: 
 
 ### Raman Gupta
 
@@ -65,6 +55,6 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[github](http://github.com/eyelessrhyme7)]
 [[portfolio](team/newway1814.md)]
 
-* Role:
+* Role: Developer
 * Responsibilities:
 
