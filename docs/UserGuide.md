@@ -126,6 +126,66 @@ Examples:
 * `categorise 2 /cat quiz` Categorises the 2nd task into the `category` quiz.
   ![result for 'categorise 2 /cat quiz'](images/catergoriseTwoCatQuizResult.png)
 
+
+
+### Mark Task as Done/Undone
+
+
+
+The "Mark Task as Done/Undone" feature allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task.
+
+#### Command Format
+
+- To mark a task as done: `mark [taskNumber]`
+- To mark a task as undone: `unmark [taskNumber]`
+
+
+#### Acceptable Values for Parameters
+
+- `[taskNumber]`: An integer representing the task number in your task list (e.g. 1, 2, 3, ...)
+
+#### Examples
+- `mark 1`
+- `unmark 2`
+
+![result for 'mark command'](images/MarkCommand.png)
+
+
+
+
+### Delete Task/Delete all Tasks
+
+
+The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant. 
+You can also delete all the tasks in the list if needed.
+
+#### Command Format
+
+- To delete a specific task: `delete [taskNumber]`
+- To delete all tasks: `delete all`
+
+#### Example Commands
+
+1. `delete 2` (To delete the task at index number 2)
+2. `delete all` (To delete all tasks in the list)
+
+#### Acceptable Values for Parameters
+
+- `[taskNumber]`: An integer representing a valid task number in the list.
+- `"all"`: A keyword (type string) to delete all tasks in the list.
+
+#### Examples
+- `delete 1`
+- `delete all`: It will just delete all the tasks.
+
+![result for 'delete command'](images/DeleteCommand.png)
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
 ### Attach links or references to a task: `link`
 
 Attach a URL or external link to the task.
@@ -139,6 +199,7 @@ Format: ` link [taskNumber] /link [URL]​`
 Examples:
 * `link 1 /link www.example.com` Attaches the link `www.example.com` to the 1st task.
   ![result for 'link 1 /link www.example.com'](images/linkOneLinkWwwDotExampleDotComResult.png)
+
 
 ### Saving the data
 
