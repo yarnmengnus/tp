@@ -29,11 +29,11 @@ You can reach us at the email `seer[at]u.nus.edu`
 * Role: Team Lead
 * Responsibilities:
 
-### Johnny Doe
+### Guo Jiaqi Jackie
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/guojiaqijackie.jpeg" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/guojiaqijackie)] [[portfolio](team/guojiaqijackie.md)]
 
 * Role: Developer
 * Responsibilities: Data
