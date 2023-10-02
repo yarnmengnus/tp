@@ -56,4 +56,15 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[portfolio](team/yarnmeng.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities: UI
+
+### Raman Gupta
+
+<img src="images/eyelessrhyme7.png" width="200px">
+
+[[github](http://github.com/eyelessrhyme7)]
+[[portfolio](team/newway1814.md)]
+
+* Role:
+* Responsibilities:
+
