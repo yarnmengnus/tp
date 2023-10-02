@@ -126,14 +126,38 @@ Examples:
 * `set 1 4` sets the first task in the list as the parent of the fourth task in the list.
   ![result for `set 1 2`](images/setOneTwoResult.png)
 
-### Editing a person : `edit`
+### Editing a task : `edit`
 
-Edits an existing person in the address book.
+Edit the aspects of selected existing task, as specified by the user.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
+* Edits the task at the specified `[index]`. The index refers to the index number shown in the displayed tasks list. The index **must be a positive integer** 1, 2, 3, …​
+* [aspect] **must be a string**, and be one of the following:  `name`, `priority`, `category`, `parent`, or `link`.
+* [newValue] **must be a string**.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit 2 /name Updated task /priority 3` Edits the task name and priority of the 2nd task, to be `Updated task` and `3` respectively.
+*  `edit 4 /parent 3 /link www.google.com` Edits the parent and link of the 4th task to be `3` and `www.google.com` respectively.
+    ![result for 'edit 3 /name Attend lecture /priority 3 /category lecture'](images/edit.png)
+
+### Filtering tasks by date: `filter`
+
+Filters the relevant tasks by their due dates. User can input a date, after which tasks that fall before the date is displayed.
+
+Format: `filter /[type] [date]`
+
+* The filter will return all tasks that fall before, and in the specified month or year.
+* [type] **must be a string**, and be one of the following: `month`, or `year`.
+* [date] **must be a positive integer**, of the form `mm`, if [type] is `month`.
+* [date] **must be a positive integer**, of the form `yyyy`, if [type] is `year`.
+
+Examples:
+* `filter /month 09`
+* `filter /year 2023`<br>
+  ![result for 'filter /month 09'](images/filter.png)
+
 
 ### Categorising a task: `categorise`
 
@@ -250,36 +274,6 @@ contains the data in the previous ProfPlan home folder.
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-
-Edit the aspects of selected existing task, as specified by the user.
-
-Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
-
-* Edits the task at the specified `[index]`. The index refers to the index number shown in the displayed tasks list. The index **must be a positive integer** 1, 2, 3, …​
-* [aspect] **must be a string**, and be one of the following:  `name`, `priority`, `category`, `parent`, or `link`.
-* [newValue] **must be a string**.
-* Existing values will be updated to the input values.
-
-Examples:
-*  `edit 2 /name Updated task /priority 3` Edits the task name and priority of the 2nd task, to be `Updated task` and `3` respectively.
-*  `edit 4 /parent 3 /link www.google.com` Edits the parent and link of the 4th task to be `3` and `www.google.com` respectively.
-    ![result for 'edit 3 /name Attend lecture /priority 3 /category lecture'](images/edit.png)
-
-### Filtering tasks by date: `filter`
-
-Filters the relevant tasks by their due dates. User can input a date, after which tasks that fall before the date is displayed.
-
-Format: `filter /[type] [date]`
-
-* The filter will return all tasks that fall before, and in the specified month or year.
-* [type] **must be a string**, and be one of the following: `month`, or `year`.
-* [date] **must be a positive integer**, of the form `mm`, if [type] is `month`.
-* [date] **must be a positive integer**, of the form `yyyy`, if [type] is `year`.
-
-Examples:
-* `filter /month 09`
-* `filter /year 2023`<br>
-  ![result for 'filter /month 09'](images/filter.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
