@@ -114,6 +114,36 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+=======
+Edit the aspects of selected existing task, as specified by the user.
+
+Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
+
+* Edits the task at the specified `[index]`. The index refers to the index number shown in the displayed tasks list. The index **must be a positive integer** 1, 2, 3, …​
+* [aspect] **must be a string**, and be one of the following:  `name`, `priority`, `category`, `parent`, or `link`.
+* [newValue] **must be a string**.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit 2 /name Updated task /priority 3` Edits the task name and priority of the 2nd task, to be `Updated task` and `3` respectively.
+*  `edit 4 /parent 3 /link www.google.com` Edits the parent and link of the 4th task to be `3` and `www.google.com` respectively.
+    ![result for 'edit 3 /name Attend lecture /priority 3 /category lecture'](images/edit.png)
+
+### Filtering tasks by date: `filter`
+
+Filters the relevant tasks by their due dates. User can input a date, after which tasks that fall before the date is displayed.
+
+Format: `filter /[type] [date]`
+
+* The filter will return all tasks that fall before, and in the specified month or year.
+* [type] **must be a string**, and be one of the following: `month`, or `year`.
+* [date] **must be a positive integer**, of the form `mm`, if [type] is `month`.
+* [date] **must be a positive integer**, of the form `yyyy`, if [type] is `year`.
+
+Examples:
+* `filter /month 09`
+* `filter /year 2023`<br>
+  ![result for 'filter /month 09'](images/filter.png)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -121,10 +151,7 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+
+**Edit** | `edit [index] /[aspect] [newValue] /[aspect] [newValue]…​`<br> e.g.,`edit 2 /name Updated task /priority 3`
+**Filter** | `filter /[type] [date]`<br> e.g., `filter /month 09`
+
