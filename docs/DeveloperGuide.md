@@ -285,6 +285,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
+
+**Use Case: Mark Task as Done/Undone**
+
+**Preconditions:** There are tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User selects a task to mark as done or undone by specifying its number in the list.
+4. ProfPlan updates the task's completion status accordingly.
+
+   Use case ends.
+
+**Extensions**
+
+* 4a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 4a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 4b. User attempts to mark a task as done/undone when there are no tasks in the list.
+
+    * 4b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+
 **Use Case: Delete Task/Delete All Tasks**
 
 **Preconditions:** There are one or more tasks in the task list.
@@ -300,15 +329,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+* 7a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 3a1. ProfPlan displays an error message.
+    * 7a1. ProfPlan displays an error message.
 
       Use case ends.
 
-* 3b. User requests to delete a task when there are no tasks in the list.
+* 7b. User requests to delete a task when there are no tasks in the list.
 
-    * 3b1. ProfPlan displays an error message.
+    * 7b1. ProfPlan displays an error message.
 
       Use case ends.
 
