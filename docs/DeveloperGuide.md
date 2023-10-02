@@ -285,28 +285,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use Case: Delete Task/Delete All Tasks**
+
+**Preconditions:** There are one or more tasks in the task list.
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User chooses to delete a specific task by specifying its number in the list or requests to delete all tasks.
+4. ProfPlan performs the deletion as per the user's request.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-  Use case ends.
+    * 3a1. ProfPlan displays an error message.
 
-* 3a. The given index is invalid.
+      Use case ends.
 
-    * 3a1. AddressBook shows an error message.
+* 3b. User requests to delete a task when there are no tasks in the list.
 
-      Use case resumes at step 2.
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
 
 *{More to be added}*
 
