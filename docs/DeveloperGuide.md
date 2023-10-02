@@ -9,7 +9,7 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* This project is built on top of the codebase of [AddressBook Level-3 (AB3)](https://github.com/se-edu/addressbook-level3).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -18,6 +18,7 @@ title: Developer Guide
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
 
 ## **Design**
 
@@ -263,28 +264,138 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Professors often need to plan and organise their course modules, including lecture materials, and research. ProfPlan can help them create and manage their academic tasks seamlessly through the CLI, which is optimised and helps in faster task management. It is tailored to professors’ requirements and task categories, helping them prioritise.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …    | I want to …                                                 | So that I can…                          |
+|----------|-----------|-------------------------------------------------------------|-----------------------------------------|
+| `* * *`  | professor | be able to create a new task                                | keep track of them in a list            |
+| `* * *`  | professor | assign priorities to tasks in my list                       | gauge task urgency                      |
+| `* * *`  | professor | categorise/tag my tasks                                     | segregate and classify tasks            |
+| `* * *`  | professor | mark tasks as done/undone                                   | keep track of what has been completed   |
+| `* * *`  | professor | delete tasks                                                | clear up clutter                        |
+| `* *`    | professor | filter tasks by due date                                    | manage deadlines effectively            |
+| `* *`    | professor | search for tasks                                            | find the task I want to work on quickly |
+| `*`      | professor | attach reference materials (filepath) or links to each task | access reference material easily        |
+| `*`      | professor | create subtasks within the task list                        | have better organisation                |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `user`, unless specified otherwise.
 
+
+**Use Case: Create a New Task**
+
+**MSS**
+
+1. User requests to create a new task with specified details.
+2. ProfPlan validates the input format for the task name and deadline.
+3. ProfPlan creates the new task and adds it to the task list.
+4. ProfPlan displays a confirmation message with the updated task list.
+
+   Use case ends.
+   
+**Extensions**
+
+* **2a.** User enters an invalid task name or deadline format.
+
+    * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
+
+      *Use case ends.*
+
+* **3a.** ProfPlan encounters an internal error while creating the task.
+
+    * **3a1.** ProfPlan displays an error message indicating the task creation failed.
+
+      *Use case ends.*
+
+
+**Use case: Setting a task as parent of another task**
+
+Preconditions: There are at least 2 tasks in the task list.
+
+**MSS**
+
+1. User [requests to list tasks]().
+2. ProfPlan shows a list of tasks.
+3. User requests to set a certain task as the parent of another task in the list.
+4. ProfPlan sets the specified relationship.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User specifies the same task twice, i.e. tries to set a task as the parent of itself.
+
+  * 3a1. ProfPlan displays an error message.
+         
+    Use case ends.
+
+* 3b. User specifies one or more tasks outside the list indices.
+
+  * 3b1. ProfPlan displays an error message.
+
+   Use case ends.
+
+* 3c. User specifies the setting of a task `a` as the parent of another task `b`, when `b` is already the parent of `a`.
+
+  * 3c1. ProfPlan displays an error message.
+
+    Use case ends.
+
+
+**Use Case: Assign Priority to a Task**
+
+*Preconditions: There is at least one task in the task list.*
+
+**MSS**
+
+1. User requests to assign a priority level to a specific task.
+2. ProfPlan validates the input format for the task number and priority level.
+3. ProfPlan assigns the specified priority level to the task.
+4. ProfPlan displays a confirmation message with the updated task list, including the assigned priority.
+
+   *Use case ends.*
+
+**Extensions**
+
+* **2a.** User enters an invalid task number or priority level format.
+
+    * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
+
+      *Use case ends.*
+
+* **2b.** User specifies a task number that does not exist in the task list.
+
+    * **2b1.** ProfPlan displays an error message, indicating that the task number is invalid.
+
+      *Use case ends.*
+
+* **3a.** ProfPlan encounters an internal error while assigning the priority.
+
+    * **3a1.** ProfPlan displays an error message indicating the priority assignment failed.
+
+      *Use case ends.*      
+
+**Use case: Find a task**
+
+**MSS**
+
+1. User requests to find tasks matching certain search term(s).
+2. ProfPlan displays a list of tasks that contain the search term(s).
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. There are no tasks that match the search term(s).
+
+  * 2a1. ProfPlan displays an empty list, and informs the user that the search failed to find matches.
+  *Use case ends.*
 
 **Use Case: Mark Task as Done/Undone**
 
@@ -301,15 +412,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 4a. User specifies a task number that is outside the list indices or provides an invalid input.
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 4a1. ProfPlan displays an error message.
+    * 3a1. ProfPlan displays an error message.
 
       Use case ends.
 
-* 4b. User attempts to mark a task as done/undone when there are no tasks in the list.
+* 3b. User attempts to mark a task as done/undone when there are no tasks in the list.
 
-    * 4b1. ProfPlan displays an error message.
+    * 3b1. ProfPlan displays an error message.
 
       Use case ends.
 
@@ -329,20 +440,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 7a. User specifies a task number that is outside the list indices or provides an invalid input.
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 7a1. ProfPlan displays an error message.
-
-      Use case ends.
-
-* 7b. User requests to delete a task when there are no tasks in the list.
-
-    * 7b1. ProfPlan displays an error message.
+    * 3a1. ProfPlan displays an error message.
 
       Use case ends.
 
+* 3b. User requests to delete a task when there are no tasks in the list.
 
-*{More to be added}*
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
 
 ### Non-Functional Requirements
 #### Performance
