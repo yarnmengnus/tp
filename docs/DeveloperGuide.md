@@ -19,6 +19,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
+
 ## **Design**
 
 <div markdown="span" class="alert alert-primary">
@@ -263,7 +264,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Professors often need to plan and organise their course modules, including lecture materials, and research. ProfPlan can help them create and manage their academic tasks seamlessly through the CLI, which is optimised and helps in faster task management. It is tailored to professors’ requirements and task categories, helping them prioritise.
 
 
 ### User stories
@@ -285,30 +286,66 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use Case: Create a New Task**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to create a new task with specified details.
+2. ProfPlan validates the input format for the task name and deadline.
+3. ProfPlan creates the new task and adds it to the task list.
+4. ProfPlan displays a confirmation message with the updated task list.
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* **2a.** User enters an invalid task name or deadline format.
 
-  Use case ends.
+    * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
 
-* 3a. The given index is invalid.
+      *Use case ends.*
 
-    * 3a1. AddressBook shows an error message.
+* **3a.** ProfPlan encounters an internal error while creating the task.
 
-      Use case resumes at step 2.
+    * **3a1.** ProfPlan displays an error message indicating the task creation failed.
 
-*{More to be added}*
+      *Use case ends.*
+
+---
+
+**Use Case: Assign Priority to a Task**
+
+*Preconditions: There is at least one task in the task list.*
+
+**MSS**
+
+1. User requests to assign a priority level to a specific task.
+2. ProfPlan validates the input format for the task number and priority level.
+3. ProfPlan assigns the specified priority level to the task.
+4. ProfPlan displays a confirmation message with the updated task list, including the assigned priority.
+
+   *Use case ends.*
+
+**Extensions**
+
+* **2a.** User enters an invalid task number or priority level format.
+
+    * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
+
+      *Use case ends.*
+
+* **2b.** User specifies a task number that does not exist in the task list.
+
+    * **2b1.** ProfPlan displays an error message, indicating that the task number is invalid.
+
+      *Use case ends.*
+
+* **3a.** ProfPlan encounters an internal error while assigning the priority.
+
+    * **3a1.** ProfPlan displays an error message indicating the priority assignment failed.
+
+      *Use case ends.*
+
 
 ### Non-Functional Requirements
 
