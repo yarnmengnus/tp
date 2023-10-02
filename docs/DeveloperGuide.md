@@ -339,7 +339,7 @@ Preconditions: There are at least 2 tasks in the task list.
 
   * 3b1. ProfPlan displays an error message.
 
-    Use case ends.
+   Use case ends.
 
 * 3c. User specifies the setting of a task `a` as the parent of another task `b`, when `b` is already the parent of `a`.
 
@@ -397,12 +397,90 @@ Preconditions: There are at least 2 tasks in the task list.
   * 2a1. ProfPlan displays an empty list, and informs the user that the search failed to find matches.
   *Use case ends.*
 
+**Use Case: Mark Task as Done/Undone**
+
+**Preconditions:** There are tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User selects a task to mark as done or undone by specifying its number in the list.
+4. ProfPlan updates the task's completion status accordingly.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User attempts to mark a task as done/undone when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+
+**Use Case: Delete Task/Delete All Tasks**
+
+**Preconditions:** There are one or more tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User chooses to delete a specific task by specifying its number in the list or requests to delete all tasks.
+4. ProfPlan performs the deletion as per the user's request.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User requests to delete a task when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
 
 ### Non-Functional Requirements
+#### Performance
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+- **Response Time:** ProfPlan shall respond to user commands within 2 seconds under normal system load conditions. This response time includes task creation, task modification, and task retrieval operations.
+
+- **Scalability:** The application should be able to handle a growing number of tasks and users efficiently. It should scale gracefully without significant performance degradation.
+
+#### Reliability
+
+- **Availability:** ProfPlan should be available for use 24/7, with planned maintenance windows communicated to users in advance. The application should have an uptime of at least 99.5%.
+
+- **Error Handling:** The application should provide informative error messages to users when they input incorrect or invalid commands. It should gracefully handle errors and exceptions without crashing.
+
+#### Security
+
+- **Data Protection:** ProfPlan should ensure the security and confidentiality of user data. User passwords and sensitive information should be stored securely using industry-standard encryption techniques.
+
+- **Authentication:** Users should be required to log in with a valid username and password to access their task lists. Unauthorized access to user data should be prevented.
+
+#### Compatibility
+
+- **Java Version:** ProfPlan should be compatible with Java JDK 11 or higher to ensure optimal performance and support for the latest features and security updates.
+
+#### Usability
+
+- **User-Friendly Interface:** The CLI interface should be intuitive and easy to use, with clear and concise prompts, error messages, and help documentation.
+
+- **Accessibility:** The application should be designed to be accessible to users with disabilities, following best practices for accessibility standards.
 
 *{More to be added}*
 
