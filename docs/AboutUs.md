@@ -48,12 +48,12 @@ You can reach us at the email `seer[at]u.nus.edu`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Yarn Meng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/yarnmeng.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/yarnmengnus)]
+[[portfolio](team/yarnmeng.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: 
