@@ -50,7 +50,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yarn Meng
 
-<img src="images/yarnmeng.jpg" width="200px">
+<img src="images/yarnmeng.png" width="200px">
 
 [[github](http://github.com/yarnmengnus)]
 [[portfolio](team/yarnmeng.md)]
