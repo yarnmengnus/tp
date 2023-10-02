@@ -21,7 +21,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 
 ### Guo Jiaqi Jackie
 
-<img src="images/guojiaqijackie.jpeg" width="200px">
+<img src="images/guojiaqijackie.png" width="200px">
 
 [[github](http://github.com/guojiaqijackie)] [[portfolio](team/guojiaqijackie.md)]
 
