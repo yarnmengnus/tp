@@ -57,3 +57,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Raman Gupta
+
+<img src="images/eyelessrhyme7.png" width="200px">
+
+[[github](http://github.com/eyelessrhyme7)]
+[[portfolio](team/newway1814.md)]
+
+* Role:
+* Responsibilities:
