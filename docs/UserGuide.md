@@ -1,9 +1,9 @@
 ---
 layout: page
-title: User Guide
+title: ProfPlan User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your task management done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -14,26 +14,16 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `profplan.jar` from [here - TO BE UPDATED](https://github.com/se-edu/addressbook-level3/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your ProfPlan Task List.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
-
-   * `list` : Lists all contacts.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-   * `clear` : Deletes all contacts.
-
-   * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -71,26 +61,35 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
+### Adding a Task : `task` [Coming Soon]
 
-### Adding a person: `add`
+Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.
 
-Adds a person to the address book.
+Format: `task [taskToDo] /by [deadline]`
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
+* `[taskToDo]` - String of length greater than 0, representing the task description.
+* `[deadline]` - String of length greater than 0, specifying the deadline for the task.
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `task submit quiz /by 02 Sep 2023`
+* `task do homework /by 15 Oct 2023`
 
-### Listing all persons : `list`
+![result for 'add command'](images/AddCommand.png)
 
-Shows a list of all persons in the address book.
+### Assigning Priority to a Task : `priority` [Coming Soon]
 
-Format: `list`
+Assigns a priority level to a task ranging from 1 to 10. You may specify any integer number between 1 to 10, with 1 signifying low priority and 10 signifying higher priority.
+
+Format: `priority [taskNumber] /p [priority]`
+
+* `[taskNumber]` - Integer, a valid task number in the list.
+* `[priority]` - Integer, ranging from 1 to 10, representing the priority level.
+
+Examples:
+* `priority 3 /p 8` assigns priority level 8 to the 3rd task.
+* `priority 1 /p 5` assigns priority level 5 to the 1st task.
+
+![result for 'priority command'](images/PriorityCommand.png)
 
 ### Editing a person : `edit`
 
