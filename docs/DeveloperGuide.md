@@ -453,6 +453,7 @@ Preconditions: There are at least 2 tasks in the task list.
 
       Use case ends.
 
+
 **Use Case: Filter task**
 
 **MSS**
@@ -461,9 +462,11 @@ Preconditions: There are at least 2 tasks in the task list.
 2. ProfPlan validates the input format for the date.
 3. ProfPlan performs the filter and display tasks that fall before the specified date.
 
+
    Use case ends.
 
 **Extensions**
+
 
 * 2a. User provides an invalid date input.
 
@@ -492,6 +495,7 @@ Preconditions: There are at least 2 tasks in the task list.
 3. ProfPlan assigns new values to the specified aspects of the task.
 4. ProfPlan displays a confirmation message with the original and updated task.
 
+
    Use case ends.
 
 **Extensions**
@@ -511,6 +515,65 @@ Preconditions: There are at least 2 tasks in the task list.
 * 3a. ProfPlan encounters an internal error while updating new values.
 
     * 3a1. ProfPlan displays an error message to indicate edit task failed.
+
+      Use case ends.
+       
+**Use Case: Categorising a Task**
+
+**Preconditions:** There are one or more tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User requests to assign a task to a category.
+4. ProfPlan performs the categorisation as per the user's request.
+3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User requests to categorise a task when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3c. User requests to assign a task to a category that does not exist.
+
+    * 3c1. ProfPlan creates the requested category.
+
+    * 3c2. ProfPlan performs the categorisation as per the user's request.
+
+      Use case ends.
+
+**Use Case: Attaching a link to a Task**
+
+**Preconditions:** There are one or more tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User requests to attach a link to a task.
+4. ProfPlan attaches the link as per the user's request.
+
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User requests to attach a link to a task when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3c. User requests to attach an invalid URL to a task.
+
+    * 3c1. ProfPlan displays an error message.
 
       Use case ends.
 
@@ -549,7 +612,8 @@ Preconditions: There are at least 2 tasks in the task list.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Parent**: A `parent` task is the main overarching task
+* **Child**: A `child` task a subtask of its `parent` task
 
 --------------------------------------------------------------------------------------------------------------------
 
