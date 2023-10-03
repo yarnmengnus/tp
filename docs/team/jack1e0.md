@@ -5,22 +5,22 @@ title: Guo Jiaqi Jackie's Project Portfolio Page
 
 ### Project: ProfPlan
 
-ProfPlan is a desktop productivity application written in Java, used for task management and organization. The user 
+ProfPlan is a desktop productivity application written in Java, used for task management and organization. The user
 interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 Given below are my contributions to the project.
 
 * **New Feature 1**: `Coming soon`
-  * What it does: 
+  * What it does:
   * Justification:
   * Highlights:
-  * Credits: 
+  * Credits:
 
 * **New Feature 2**: `Coming soon`
-  * What it does: 
+  * What it does:
   * Justification:
   * Highlights:
-  * Credits: 
+  * Credits:
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=jack1e0&breakdown=false)
 

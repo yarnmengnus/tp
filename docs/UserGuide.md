@@ -21,7 +21,7 @@ ProfPlan is a **desktop app for managing tasks, optimized for use via a Command 
 
 1. Copy the file to the folder you want to use as the _home folder_ for ProfPlan.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` 
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar`
    command to run the application.<br>
 
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
@@ -49,12 +49,12 @@ ProfPlan is a **desktop app for managing tasks, optimized for use via a Command 
 **:information_source: Notes about the command format:**<br>
 
 * Words in square brackets are the parameters to be supplied by the user.<br>
-  e.g. in `task [taskToDo] /by [deadline]`, `taskToDo` and `deadline` are parameters which can be used as `add n/John 
+  e.g. in `task [taskToDo] /by [deadline]`, `taskToDo` and `deadline` are parameters which can be used as `add n/John
   Doe`.
 
 * Items in braces are optional.<br>
 
-* Items with `…` after them can accept multiple parameters. If these items are in braces, they can be used 0 times 
+* Items with `…` after them can accept multiple parameters. If these items are in braces, they can be used 0 times
   as well.<br>
   e.g. `[keywords…]` can be used as `quiz`, `mock midterm` etc.
 
@@ -119,7 +119,7 @@ Sets a given task as the parent task of another given task.
 Format: `set [parentTaskIndex] [childTaskIndex]`
 
 * Both `parentTaskIndex` and `childTaskIndex` begin from 1, indexing from the current list.
-* Will fail if the indices are the same, if the indices are out of bounds, or if the task at `childTaskIndex` is the 
+* Will fail if the indices are the same, if the indices are out of bounds, or if the task at `childTaskIndex` is the
   parent of the task at `parentTaskIndex`.
 
 Examples:
@@ -128,11 +128,11 @@ Examples:
 
 ### Categorising a task: `categorise`
 
-Puts the task in a category of the task list. If the category specified does not yet exist, it will be created. 
+Puts the task in a category of the task list. If the category specified does not yet exist, it will be created.
 
 Format: `categorise [taskNumber] /cat [category]​`
 
-* Categorises the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, … 
+* Categorises the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, …
 * [category] must be a string.
 
 * Existing values will be updated to the input values.
@@ -162,7 +162,7 @@ The "Mark Task as Done/Undone" feature allows you to easily track the completion
 
 ### Delete Task/Delete all Tasks
 
-The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant. 
+The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant.
 You can also delete all the tasks in the list if needed.
 
 #### Command Format
@@ -198,7 +198,7 @@ Attach a URL or external link to the task.
 
 Format: ` link [taskNumber] /link [URL]​`
 
-* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, … 
+* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, …
 * [link] must be a string.
 * Existing values will be updated to the input values.
 
@@ -255,7 +255,7 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data in the previous ProfPlan home folder.
 
 --------------------------------------------------------------------------------------------------------------------
