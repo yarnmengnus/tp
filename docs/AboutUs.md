@@ -40,10 +40,10 @@ You can reach us at the email `seer[at]u.nus.edu`
 
 ### Yarn Meng
 
-<img src="images/yarnmeng.png" width="200px">
+<img src="images/yarnmengnus.png" width="200px">
 
 [[github](http://github.com/yarnmengnus)]
-[[portfolio](team/yarnmeng.md)]
+[[portfolio](team/yarnmengnus.md)]
 
 * Role: Developer
 * Responsibilities: 
