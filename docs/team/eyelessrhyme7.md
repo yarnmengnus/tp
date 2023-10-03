@@ -22,7 +22,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Collated and submitted the User Guide. Designed UI mockups for the UG.
 - Created the Team Organization
 - Forked the tp repo to the Team Organization
-- 
+
 
 ### Review/mentoring contributions
 - [Provide links to Pull Requests (PRs) you reviewed or instances of helping team members.]

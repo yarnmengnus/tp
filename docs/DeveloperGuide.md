@@ -300,7 +300,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 4. ProfPlan displays a confirmation message with the updated task list.
 
    Use case ends.
-   
+
 **Extensions**
 
 * **2a.** User enters an invalid task name or deadline format.
@@ -334,7 +334,7 @@ Preconditions: There are at least 2 tasks in the task list.
 * 3a. User specifies the same task twice, i.e. tries to set a task as the parent of itself.
 
   * 3a1. ProfPlan displays an error message.
-         
+
     Use case ends.
 
 * 3b. User specifies one or more tasks outside the list indices.
@@ -380,7 +380,7 @@ Preconditions: There are at least 2 tasks in the task list.
 
     * **3a1.** ProfPlan displays an error message indicating the priority assignment failed.
 
-      *Use case ends.*      
+      *Use case ends.*
 
 **Use case: Find a task**
 
@@ -517,7 +517,7 @@ Preconditions: There are at least 2 tasks in the task list.
     * 3a1. ProfPlan displays an error message to indicate edit task failed.
 
       Use case ends.
-       
+
 **Use Case: Categorising a Task**
 
 **Preconditions:** There are one or more tasks in the task list.
