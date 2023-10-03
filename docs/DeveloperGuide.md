@@ -452,6 +452,73 @@ Preconditions: There are at least 2 tasks in the task list.
 
       Use case ends.
 
+**Use Case: Categorising a Task**
+
+**Preconditions:** There are one or more tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User requests to assign a task to a category.
+4. ProfPlan performs the categorisation as per the user's request.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User requests to categorise a task when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3c. User requests to assign a task to a category that does not exist.
+
+    * 3c1. ProfPlan creates the requested category.
+
+    * 3c2. ProfPlan performs the categorisation as per the user's request.
+
+      Use case ends.
+
+**Use Case: Attaching a link to a Task**
+
+**Preconditions:** There are one or more tasks in the task list.
+
+**MSS**
+
+1. User requests to list tasks.
+2. ProfPlan shows a list of tasks.
+3. User requests to attach a link to a task.
+4. ProfPlan attaches the link as per the user's request.
+
+   Use case ends.
+
+**Extensions**
+
+* 3a. User specifies a task number that is outside the list indices or provides an invalid input.
+
+    * 3a1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3b. User requests to attach a link to a task when there are no tasks in the list.
+
+    * 3b1. ProfPlan displays an error message.
+
+      Use case ends.
+
+* 3c. User requests to attach an invalid URL to a task.
+
+    * 3c1. ProfPlan displays an error message.
+
+      Use case ends.
 
 ### Non-Functional Requirements
 #### Performance
@@ -487,7 +554,8 @@ Preconditions: There are at least 2 tasks in the task list.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Parent**: A `parent` task is the main overarching task
+* **Child**: A `child` task a subtask of its `parent` task
 
 --------------------------------------------------------------------------------------------------------------------
 
