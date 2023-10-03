@@ -38,7 +38,7 @@ ProfPlan is a desktop productivity application written in Java, primarily used f
 ### User Guide
 
 - Added documentation for the following features:
-    - `delete/delete all` and `mark/unmark` [#20](https://github.com/AY2324S1-CS2103T-W15-1/tp/issues/20)
+    - `delete Task/delete all Tasks` and `mark/unmark` [#20](https://github.com/AY2324S1-CS2103T-W15-1/tp/issues/20)
 
 ### Developer Guide
 
