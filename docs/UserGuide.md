@@ -240,7 +240,7 @@ Attach a URL or external link to the task.
 
 Format: ` link [taskNumber] /link [URL]​`
 
-* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, … 
+* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, …
 * [link] must be a string.
 * Existing values will be updated to the input values.
 
@@ -266,7 +266,7 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data in the previous ProfPlan home folder.
 
 --------------------------------------------------------------------------------------------------------------------
