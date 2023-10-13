@@ -64,7 +64,7 @@ ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Comm
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Adding a Task : `task` [Coming Soon]
+### Adding a Task : `task` [Coming Soon! Now Under Development!!]
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.
 
