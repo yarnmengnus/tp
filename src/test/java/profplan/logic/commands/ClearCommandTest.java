@@ -4,11 +4,11 @@ import static profplan.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.TypicalPersons;
-import profplan.model.ProfPlan;
 import profplan.model.Model;
 import profplan.model.ModelManager;
+import profplan.model.ProfPlan;
 import profplan.model.UserPrefs;
+import profplan.testutil.TypicalPersons;
 
 public class ClearCommandTest {
 

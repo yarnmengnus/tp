@@ -1,7 +1,6 @@
 package profplan.model.person;
 
 import static java.util.Objects.requireNonNull;
-import static profplan.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;

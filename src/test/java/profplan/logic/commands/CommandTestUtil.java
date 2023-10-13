@@ -7,20 +7,19 @@ import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import profplan.model.ProfPlan;
-import profplan.testutil.Assert;
-import profplan.testutil.EditPersonDescriptorBuilder;
 import profplan.commons.core.index.Index;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
+import profplan.model.ProfPlan;
 import profplan.model.person.NameContainsKeywordsPredicate;
 import profplan.model.person.Person;
+import profplan.testutil.Assert;
+import profplan.testutil.EditPersonDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.

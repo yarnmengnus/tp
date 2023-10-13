@@ -3,7 +3,6 @@ package profplan.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,14 +11,14 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.Assert;
-import profplan.testutil.TypicalIndexes;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.person.Address;
 import profplan.model.person.Email;
 import profplan.model.person.Name;
 import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
+import profplan.testutil.Assert;
+import profplan.testutil.TypicalIndexes;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";

@@ -6,10 +6,10 @@ import java.util.List;
 
 import profplan.commons.core.index.Index;
 import profplan.commons.util.ToStringBuilder;
+import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.person.Person;
-import profplan.logic.Messages;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.

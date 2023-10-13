@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,11 +11,11 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.ProfPlanBuilder;
-import profplan.testutil.Assert;
-import profplan.testutil.TypicalPersons;
 import profplan.commons.core.GuiSettings;
 import profplan.model.person.NameContainsKeywordsPredicate;
+import profplan.testutil.Assert;
+import profplan.testutil.ProfPlanBuilder;
+import profplan.testutil.TypicalPersons;
 
 public class ModelManagerTest {
 

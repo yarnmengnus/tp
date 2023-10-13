@@ -7,10 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import profplan.MainApp;
 import profplan.commons.core.LogsCenter;
 import profplan.commons.util.StringUtil;
 import profplan.logic.Logic;
-import profplan.MainApp;
 
 /**
  * The manager of the UI component.

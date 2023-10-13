@@ -2,7 +2,6 @@ package profplan.commons.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,9 +12,9 @@ import java.util.logging.Level;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import profplan.testutil.Assert;
 import profplan.commons.core.Config;
 import profplan.commons.exceptions.DataLoadingException;
+import profplan.testutil.Assert;
 
 public class ConfigUtilTest {
 

@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,17 +13,17 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
-import profplan.testutil.Assert;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
 import profplan.commons.core.GuiSettings;
 import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
-import profplan.model.ProfPlan;
 import profplan.model.Model;
+import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.model.ReadOnlyUserPrefs;
 import profplan.model.person.Person;
+import profplan.testutil.Assert;
+import profplan.testutil.PersonBuilder;
+import profplan.testutil.TypicalPersons;
 
 public class AddCommandTest {
 
@@ -51,7 +50,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validPerson);
         ModelStub modelStub = new ModelStubWithPerson(validPerson);
 
-        Assert.assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        Assert.assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(
+                modelStub));
     }
 
     @Test

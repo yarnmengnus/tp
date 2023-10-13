@@ -2,7 +2,6 @@ package profplan.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static profplan.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +9,13 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.Assert;
-import profplan.testutil.TypicalPersons;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.person.Address;
 import profplan.model.person.Email;
 import profplan.model.person.Name;
 import profplan.model.person.Phone;
+import profplan.testutil.Assert;
+import profplan.testutil.TypicalPersons;
 
 public class JsonAdaptedPersonTest {
     private static final String INVALID_NAME = "R@chel";

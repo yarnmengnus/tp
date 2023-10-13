@@ -6,11 +6,11 @@ import static profplan.logic.commands.CommandTestUtil.showPersonAtIndex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.TypicalIndexes;
-import profplan.testutil.TypicalPersons;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.UserPrefs;
+import profplan.testutil.TypicalIndexes;
+import profplan.testutil.TypicalPersons;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

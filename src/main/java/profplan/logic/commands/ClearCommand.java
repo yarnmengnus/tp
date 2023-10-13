@@ -2,8 +2,8 @@ package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import profplan.model.ProfPlan;
 import profplan.model.Model;
+import profplan.model.ProfPlan;
 
 /**
  * Clears the address book.

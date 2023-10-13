@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
-import profplan.commons.exceptions.DataLoadingException;
 import profplan.commons.core.Config;
+import profplan.commons.exceptions.DataLoadingException;
 
 /**
  * A class for accessing the Config File.

@@ -1,7 +1,6 @@
 package profplan.model;
 
 import static java.util.Objects.requireNonNull;
-import static profplan.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.function.Predicate;

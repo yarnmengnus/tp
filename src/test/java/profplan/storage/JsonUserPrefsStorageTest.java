@@ -2,7 +2,6 @@ package profplan.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,10 +11,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import profplan.testutil.Assert;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.exceptions.DataLoadingException;
 import profplan.model.UserPrefs;
+import profplan.testutil.Assert;
 
 public class JsonUserPrefsStorageTest {
 

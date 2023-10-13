@@ -8,10 +8,10 @@ import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import profplan.commons.util.ToStringBuilder;
+import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.person.Person;
-import profplan.logic.Messages;
 
 /**
  * Adds a person to the address book.

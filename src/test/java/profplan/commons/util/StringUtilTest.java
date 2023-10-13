@@ -2,11 +2,11 @@ package profplan.commons.util;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.io.FileNotFoundException;
 
 import org.junit.jupiter.api.Test;
+
 import profplan.testutil.Assert;
 
 public class StringUtilTest {
@@ -57,7 +57,8 @@ public class StringUtilTest {
 
     @Test
     public void containsWordIgnoreCase_nullWord_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> StringUtil.containsWordIgnoreCase("typical sentence", null));
+        Assert.assertThrows(NullPointerException.class, () -> StringUtil.containsWordIgnoreCase(
+                "typical sentence", null));
     }
 
     @Test

@@ -3,9 +3,9 @@ package profplan.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import profplan.commons.util.ToStringBuilder;
+import profplan.logic.Messages;
 import profplan.model.Model;
 import profplan.model.person.NameContainsKeywordsPredicate;
-import profplan.logic.Messages;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.

@@ -2,7 +2,6 @@ package profplan.ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -11,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import javafx.fxml.FXML;
-import profplan.testutil.Assert;
 import profplan.MainApp;
+import profplan.testutil.Assert;
 
 public class UiPartTest {
 

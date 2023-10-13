@@ -3,7 +3,6 @@ package profplan.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static profplan.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static profplan.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -13,13 +12,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import profplan.logic.commands.CommandTestUtil;
-import profplan.storage.JsonProfPlanStorage;
-import profplan.testutil.Assert;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
 import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.CommandResult;
+import profplan.logic.commands.CommandTestUtil;
 import profplan.logic.commands.ListCommand;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.logic.parser.exceptions.ParseException;
@@ -28,8 +23,12 @@ import profplan.model.ModelManager;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.model.UserPrefs;
 import profplan.model.person.Person;
+import profplan.storage.JsonProfPlanStorage;
 import profplan.storage.JsonUserPrefsStorage;
 import profplan.storage.StorageManager;
+import profplan.testutil.Assert;
+import profplan.testutil.PersonBuilder;
+import profplan.testutil.TypicalPersons;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");

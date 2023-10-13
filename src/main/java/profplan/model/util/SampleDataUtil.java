@@ -5,12 +5,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import profplan.model.ProfPlan;
+import profplan.model.ReadOnlyProfPlan;
 import profplan.model.person.Address;
 import profplan.model.person.Email;
 import profplan.model.person.Name;
 import profplan.model.person.Person;
 import profplan.model.person.Phone;
-import profplan.model.ReadOnlyProfPlan;
 import profplan.model.tag.Tag;
 
 /**

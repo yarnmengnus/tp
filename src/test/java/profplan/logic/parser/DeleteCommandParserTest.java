@@ -4,8 +4,8 @@ import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.TypicalIndexes;
 import profplan.logic.commands.DeleteCommand;
+import profplan.testutil.TypicalIndexes;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations
@@ -25,6 +25,7 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        CommandParserTestUtil.assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        CommandParserTestUtil.assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteCommand.MESSAGE_USAGE));
     }
 }

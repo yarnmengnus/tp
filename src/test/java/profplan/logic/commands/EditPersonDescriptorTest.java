@@ -13,8 +13,8 @@ import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.testutil.EditPersonDescriptorBuilder;
 import profplan.logic.commands.EditCommand.EditPersonDescriptor;
+import profplan.testutil.EditPersonDescriptorBuilder;
 
 public class EditPersonDescriptorTest {
 

@@ -8,12 +8,12 @@ import java.util.Set;
 
 import profplan.commons.core.index.Index;
 import profplan.commons.util.StringUtil;
+import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.person.Address;
 import profplan.model.person.Email;
 import profplan.model.person.Name;
 import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
-import profplan.logic.parser.exceptions.ParseException;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

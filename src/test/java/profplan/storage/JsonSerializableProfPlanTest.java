@@ -1,18 +1,17 @@
 package profplan.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
 
+import profplan.commons.exceptions.IllegalValueException;
+import profplan.commons.util.JsonUtil;
 import profplan.model.ProfPlan;
 import profplan.testutil.Assert;
 import profplan.testutil.TypicalPersons;
-import profplan.commons.exceptions.IllegalValueException;
-import profplan.commons.util.JsonUtil;
 
 public class JsonSerializableProfPlanTest {
 

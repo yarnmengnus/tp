@@ -1,8 +1,7 @@
 package profplan.model.tag;
 
-import static profplan.testutil.Assert.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
 import profplan.testutil.Assert;
 
 public class TagTest {

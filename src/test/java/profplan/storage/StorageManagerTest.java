@@ -9,11 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import profplan.model.ProfPlan;
-import profplan.testutil.TypicalPersons;
 import profplan.commons.core.GuiSettings;
+import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.model.UserPrefs;
+import profplan.testutil.TypicalPersons;
 
 public class StorageManagerTest {
 

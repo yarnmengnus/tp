@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static profplan.testutil.Assert.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,11 +15,11 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import profplan.model.person.Person;
+import profplan.model.person.exceptions.DuplicatePersonException;
 import profplan.testutil.Assert;
 import profplan.testutil.PersonBuilder;
 import profplan.testutil.TypicalPersons;
-import profplan.model.person.Person;
-import profplan.model.person.exceptions.DuplicatePersonException;
 
 public class ProfPlanTest {
 
@@ -46,7 +45,8 @@ public class ProfPlanTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
         ProfPlanStub newData = new ProfPlanStub(newPersons);
@@ -73,7 +73,8 @@ public class ProfPlanTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInProfPlan_returnsTrue() {
         profPlan.addPerson(TypicalPersons.ALICE);
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(profPlan.hasPerson(editedAlice));
     }

@@ -17,6 +17,7 @@ import java.util.Set;
 import profplan.commons.core.index.Index;
 import profplan.commons.util.CollectionUtil;
 import profplan.commons.util.ToStringBuilder;
+import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.person.Address;
@@ -25,7 +26,6 @@ import profplan.model.person.Name;
 import profplan.model.person.Person;
 import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
-import profplan.logic.Messages;
 
 /**
  * Edits the details of an existing person in the address book.

@@ -1,9 +1,8 @@
 package profplan.model.person;
 
-import profplan.commons.util.AppUtil;
-
 import static java.util.Objects.requireNonNull;
-import static profplan.commons.util.AppUtil.checkArgument;
+
+import profplan.commons.util.AppUtil;
 
 /**
  * Represents a Person's email in the address book.
