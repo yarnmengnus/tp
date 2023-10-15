@@ -5,7 +5,7 @@ title: Yarn Meng's Project Portfolio Page
 
 ### Project: ProfPlan
 
-ProfPlan is a desktop productivity application written in Java, used for task management and organization. The user 
+ProfPlan is a desktop productivity application written in Java, used for task management and organization. The user
 interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 Given below are my contributions to the project.

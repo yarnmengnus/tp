@@ -21,12 +21,12 @@ You can reach us at the email `seer[at]u.nus.edu`
 
 ### Guo Jiaqi Jackie
 
-<img src="images/guojiaqijackie.png" width="200px">
+<img src="images/jack1e0.png" width="200px">
 
-[[github](http://github.com/guojiaqijackie)] [[portfolio](team/guojiaqijackie.md)]
+[[github](http://github.com/jack1e0)] [[portfolio](team/jack1e0.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities:
 
 ### Kiat Win
 
@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[portfolio](team/kiatkat.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities:
 
 ### Yarn Meng
 
@@ -46,7 +46,7 @@ You can reach us at the email `seer[at]u.nus.edu`
 [[portfolio](team/yarnmengnus.md)]
 
 * Role: Developer
-* Responsibilities: 
+* Responsibilities:
 
 ### Raman Gupta
 

@@ -4,7 +4,7 @@ title: ProfPlan User Guide
 ---
 
 
-ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your task management done faster than traditional GUI apps.
+ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your task management done faster than traditional GUI apps.
 
 
 * Table of Contents
@@ -21,7 +21,7 @@ ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Comm
 
 1. Copy the file to the folder you want to use as the _home folder_ for ProfPlan.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` 
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar`
    command to run the application.<br>
 
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
@@ -49,12 +49,12 @@ ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Comm
 **:information_source: Notes about the command format:**<br>
 
 * Words in square brackets are the parameters to be supplied by the user.<br>
-  e.g. in `task [taskToDo] /by [deadline]`, `taskToDo` and `deadline` are parameters which can be used as `add n/John 
+  e.g. in `task [taskToDo] /by [deadline]`, `taskToDo` and `deadline` are parameters which can be used as `add n/John
   Doe`.
 
 * Items in braces are optional.<br>
 
-* Items with `…` after them can accept multiple parameters. If these items are in braces, they can be used 0 times 
+* Items with `…` after them can accept multiple parameters. If these items are in braces, they can be used 0 times
   as well.<br>
   e.g. `[keywords…]` can be used as `quiz`, `mock midterm` etc.
 
@@ -64,7 +64,7 @@ ProfPlan is a **desktop CLI app for managing tasks, optimized for use via a Comm
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Adding a Task : `task` [Coming Soon]
+### Adding a Task : `task` [Coming Soon! Now Under Development!!]
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.
 
@@ -119,53 +119,20 @@ Sets a given task as the parent task of another given task.
 Format: `set [parentTaskIndex] [childTaskIndex]`
 
 * Both `parentTaskIndex` and `childTaskIndex` begin from 1, indexing from the current list.
-* Will fail if the indices are the same, if the indices are out of bounds, or if the task at `childTaskIndex` is the 
+* Will fail if the indices are the same, if the indices are out of bounds, or if the task at `childTaskIndex` is the
   parent of the task at `parentTaskIndex`.
 
 Examples:
 * `set 1 4` sets the first task in the list as the parent of the fourth task in the list.
   ![result for `set 1 2`](images/setOneTwoResult.png)
 
-### Editing a task : `edit`
-
-Edit the aspects of selected existing task, as specified by the user.
-
-Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
-
-* Edits the task at the specified `[index]`. The index refers to the index number shown in the displayed tasks list. The index **must be a positive integer** 1, 2, 3, …​
-* [aspect] **must be a string**, and be one of the following:  `name`, `priority`, `category`, `parent`, or `link`.
-* [newValue] **must be a string**.
-* Existing values will be updated to the input values.
-
-Examples:
-*  `edit 2 /name Updated task /priority 3` Edits the task name and priority of the 2nd task, to be `Updated task` and `3` respectively.
-*  `edit 4 /parent 3 /link www.google.com` Edits the parent and link of the 4th task to be `3` and `www.google.com` respectively.
-    ![result for 'edit 3 /name Attend lecture /priority 3 /category lecture'](images/edit.png)
-
-### Filtering tasks by date: `filter`
-
-Filters the relevant tasks by their due dates. User can input a date, after which tasks that fall before the date is displayed.
-
-Format: `filter /[type] [date]`
-
-* The filter will return all tasks that fall before, and in the specified month or year.
-* [type] **must be a string**, and be one of the following: `month`, or `year`.
-* [date] **must be a positive integer**, of the form `mm`, if [type] is `month`.
-* [date] **must be a positive integer**, of the form `yyyy`, if [type] is `year`.
-
-Examples:
-* `filter /month 09`
-* `filter /year 2023`<br>
-  ![result for 'filter /month 09'](images/filter.png)
-
-
 ### Categorising a task: `categorise`
 
-Puts the task in a category of the task list. If the category specified does not yet exist, it will be created. 
+Puts the task in a category of the task list. If the category specified does not yet exist, it will be created.
 
 Format: `categorise [taskNumber] /cat [category]​`
 
-* Categorises the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, … 
+* Categorises the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, …
 * [category] must be a string.
 
 * Existing values will be updated to the input values.
@@ -174,11 +141,7 @@ Examples:
 * `categorise 2 /cat quiz` Categorises the 2nd task into the `category` quiz.
   ![result for 'categorise 2 /cat quiz'](images/catergoriseTwoCatQuizResult.png)
 
-
-
 ### Mark Task as Done/Undone
-
-
 
 The "Mark Task as Done/Undone" feature allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task.
 
@@ -186,7 +149,6 @@ The "Mark Task as Done/Undone" feature allows you to easily track the completion
 
 - To mark a task as done: `mark [taskNumber]`
 - To mark a task as undone: `unmark [taskNumber]`
-
 
 #### Acceptable Values for Parameters
 
@@ -198,13 +160,9 @@ The "Mark Task as Done/Undone" feature allows you to easily track the completion
 
 ![result for 'mark command'](images/MarkCommand.png)
 
-
-
-
 ### Delete Task/Delete all Tasks
 
-
-The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant. 
+The "Delete Tasks" feature allows you to remove specific tasks from your task list when they are no longer relevant.
 You can also delete all the tasks in the list if needed.
 
 #### Command Format
@@ -240,7 +198,7 @@ Attach a URL or external link to the task.
 
 Format: ` link [taskNumber] /link [URL]​`
 
-* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, … 
+* Attaches the specified [link] to the task at the specified [taskNumber]. The [taskNumber] refers to the [taskNumber] number shown in the displayed tasks list. The [taskNumber] must be a positive integer 1, 2, 3, …
 * [link] must be a string.
 * Existing values will be updated to the input values.
 
@@ -248,6 +206,37 @@ Examples:
 * `link 1 /link www.example.com` Attaches the link `www.example.com` to the 1st task.
   ![result for 'link 1 /link www.example.com'](images/linkOneLinkWwwDotExampleDotComResult.png)
 
+### Filtering tasks by date: `filter`
+
+Filters the relevant tasks by their due dates. User can input a date, after which tasks that fall before the date is displayed.
+
+Format: `filter /[type] [date]`
+
+* The filter will return all tasks that fall before, and in the specified month or year.
+* [type] **must be a string**, and be one of the following: `month`, or `year`.
+* [date] **must be a positive integer**, of the form `mm`, if [type] is `month`.
+* [date] **must be a positive integer**, of the form `yyyy`, if [type] is `year`.
+
+Examples:
+* `filter /month 09`
+* `filter /year 2023`<br>
+  ![result for 'filter /month 09'](images/FilterCommand.png)
+
+### Editing a task : `edit`
+
+Edit the aspects of selected existing task, as specified by the user.
+
+Format: `edit [index] /[aspect] [newValue] /[aspect] [newValue]…`
+
+* Edits the task at the specified `[index]`. The index refers to the index number shown in the displayed tasks list. The index **must be a positive integer** 1, 2, 3, …​
+* [aspect] **must be a string**, and be one of the following:  `name`, `deadline`, `priority`, `category`, `parent`, or `link`.
+* [newValue] **must be a string**.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit 2 /name Updated task /priority 3` Edits the task name and priority of the 2nd task, to be `Updated task` and `3` respectively.
+*  `edit 4 /parent 3 /link www.google.com` Edits the parent and link of the 4th task to be `3` and `www.google.com` respectively.
+    ![result for 'edit 3 /name Attend lecture /priority 3 /category lecture'](images/EditCommand.png)
 
 ### Saving the data
 
@@ -266,7 +255,7 @@ If your changes to the data file makes its format invalid, ProfPlan will discard
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that 
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data in the previous ProfPlan home folder.
 
 --------------------------------------------------------------------------------------------------------------------
