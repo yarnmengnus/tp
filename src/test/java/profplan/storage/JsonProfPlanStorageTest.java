@@ -17,7 +17,7 @@ import profplan.testutil.Assert;
 import profplan.testutil.TypicalPersons;
 
 public class JsonProfPlanStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonProfPlanStorageTest");
 
     @TempDir
     public Path testFolder;
