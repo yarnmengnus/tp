@@ -18,8 +18,12 @@ public class Status {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "\\bdone\\b|\\bundone\\b";
+    public static final Status DONE_STATUS = new Status("done");
+    public static final Status UNDONE_STATUS = new Status("undone");
 
     public final String status;
+
+
 
     /**
      * Constructs a {@code Name}.

@@ -15,6 +15,7 @@ import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
+import profplan.model.task.Status;
 import profplan.model.task.Task;
 
 /**
@@ -28,6 +29,7 @@ class JsonAdaptedTask {
     private final String phone;
     private final String email;
     private final String address;
+    private final String status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -36,11 +38,13 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+            @JsonProperty("status") String status,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.status = status;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -54,6 +58,7 @@ class JsonAdaptedTask {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        status = source.getStatus().status;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -102,8 +107,14 @@ class JsonAdaptedTask {
         }
         final Address modelAddress = new Address(address);
 
+        Status modelStatus = Status.UNDONE_STATUS;
+        if (status != null) {
+            modelStatus = new Status(status);
+        }
+
+
         final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelStatus, modelTags);
     }
 
 }

@@ -76,6 +76,14 @@ public class ProfPlan implements ReadOnlyProfPlan {
     }
 
     /**
+     * Marks the task at given index as done
+     * The index must be in range.
+     */
+    public void markTask(int index) {
+        tasks.mark(index);
+    }
+
+    /**
      * Replaces the given task {@code target} in the list with {@code editedTask}.
      * {@code target} must exist in the address book.
      * The task identity of {@code editedTask} must not be the same as another existing task in the address book.

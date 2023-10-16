@@ -22,7 +22,7 @@ public class Task {
 
     // Data fields
     private final Address address;
-    private final Status status;
+    private Status status;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -34,7 +34,7 @@ public class Task {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.status = new Status("undone");
+        this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
     }
 
@@ -69,6 +69,10 @@ public class Task {
 
     public Status getStatus() {
         return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     /**

@@ -70,6 +70,12 @@ public interface Model {
     void addTask(Task task);
 
     /**
+     * Marks the task at given index as done.
+     * {@code index} must be in range.
+     */
+    void markTask(int index);
+
+    /**
      * Replaces the given task {@code target} with {@code editedTask}.
      * {@code target} must exist in the address book.
      * The task identity of {@code editedTask} must not be the same as another existing task in the address book.

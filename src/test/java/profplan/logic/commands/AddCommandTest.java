@@ -125,6 +125,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void markTask(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setProfPlan(ReadOnlyProfPlan newData) {
             throw new AssertionError("This method should not be called.");
         }
