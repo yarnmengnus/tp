@@ -75,6 +75,14 @@ public interface Model {
      */
     void markTask(int index);
 
+
+    /**
+     * Marks the task at given index as undone.
+     * {@code index} must be in range.
+     */
+    void unmarkTask(int index);
+
+
     /**
      * Replaces the given task {@code target} with {@code editedTask}.
      * {@code target} must exist in the address book.

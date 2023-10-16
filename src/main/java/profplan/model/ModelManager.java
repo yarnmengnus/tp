@@ -111,6 +111,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void unmarkTask(int index) {
+        profPlan.unmarkTask(index);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
 

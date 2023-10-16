@@ -83,6 +83,15 @@ public class ProfPlan implements ReadOnlyProfPlan {
         tasks.mark(index);
     }
 
+
+    /**
+     * Marks the task at given index as undone
+     * The index must be in range.
+     */
+    public void unmarkTask(int index) {
+        tasks.unmark(index);
+    }
+
     /**
      * Replaces the given task {@code target} in the list with {@code editedTask}.
      * {@code target} must exist in the address book.

@@ -60,6 +60,17 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
+     * Marks the task at given index as undone
+     * The index must be in range.
+     */
+    public void unmark(int index) {
+        if (index > internalList.size()) {
+            throw new TaskNotFoundException();
+        }
+        internalList.get(index).setStatus(Status.UNDONE_STATUS);
+    }
+
+    /**
      * Replaces the task {@code target} in the list with {@code editedTask}.
      * {@code target} must exist in the list.
      * The task identity of {@code editedTask} must not be the same as another existing task in the list.
