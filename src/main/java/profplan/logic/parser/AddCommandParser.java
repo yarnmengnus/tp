@@ -41,9 +41,12 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = (argMultimap.getValue(PREFIX_PHONE) == Optional.<String>empty()) ? new Phone("000") : ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = (argMultimap.getValue(PREFIX_EMAIL) == Optional.<String>empty()) ? new Email("null@null") : ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000") : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Phone phone = (argMultimap.getValue(PREFIX_PHONE) == Optional.<String>empty()) ? new Phone("000") :
+                ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+        Email email = (argMultimap.getValue(PREFIX_EMAIL) == Optional.<String>empty()) ? new Email("null@null") :
+                ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000") :
+                ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Task task = new Task(name, phone, email, address, tagList);
 

@@ -28,7 +28,7 @@ public class Task {
      * Every field must be present and not null.
      */
     public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-//        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+        // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
         this.phone = phone;
