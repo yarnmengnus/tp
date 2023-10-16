@@ -15,7 +15,7 @@ import profplan.logic.parser.ProfPlanParser;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.Model;
 import profplan.model.ReadOnlyProfPlan;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 import profplan.storage.Storage;
 
 /**
@@ -67,8 +67,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Task> getFilteredTaskList() {
+        return model.getFilteredTaskList();
     }
 
     @Override

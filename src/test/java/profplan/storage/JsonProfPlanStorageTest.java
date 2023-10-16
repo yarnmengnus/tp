@@ -14,7 +14,7 @@ import profplan.commons.exceptions.DataLoadingException;
 import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.testutil.Assert;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TypicalTasks;
 
 public class JsonProfPlanStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonProfPlanStorageTest");
@@ -48,19 +48,19 @@ public class JsonProfPlanStorageTest {
     }
 
     @Test
-    public void readProfPlan_invalidPersonProfPlan_throwDataLoadingException() {
-        Assert.assertThrows(DataLoadingException.class, () -> readProfPlan("invalidPersonProfPlan.json"));
+    public void readProfPlan_invalidTaskProfPlan_throwDataLoadingException() {
+        Assert.assertThrows(DataLoadingException.class, () -> readProfPlan("invalidTaskProfPlan.json"));
     }
 
     @Test
-    public void readProfPlan_invalidAndValidPersonProfPlan_throwDataLoadingException() {
-        Assert.assertThrows(DataLoadingException.class, () -> readProfPlan("invalidAndValidPersonProfPlan.json"));
+    public void readProfPlan_invalidAndValidTaskProfPlan_throwDataLoadingException() {
+        Assert.assertThrows(DataLoadingException.class, () -> readProfPlan("invalidAndValidTaskProfPlan.json"));
     }
 
     @Test
     public void readAndSaveProfPlan_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
-        ProfPlan original = TypicalPersons.getTypicalProfPlan();
+        ProfPlan original = TypicalTasks.getTypicalProfPlan();
         JsonProfPlanStorage jsonProfPlanStorage = new JsonProfPlanStorage(filePath);
 
         // Save in new file and read back
@@ -69,14 +69,14 @@ public class JsonProfPlanStorageTest {
         assertEquals(original, new ProfPlan(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(TypicalPersons.HOON);
-        original.removePerson(TypicalPersons.ALICE);
+        original.addTask(TypicalTasks.HOON);
+        original.removeTask(TypicalTasks.ALICE);
         jsonProfPlanStorage.saveProfPlan(original, filePath);
         readBack = jsonProfPlanStorage.readProfPlan(filePath).get();
         assertEquals(original, new ProfPlan(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(TypicalPersons.IDA);
+        original.addTask(TypicalTasks.IDA);
         jsonProfPlanStorage.saveProfPlan(original); // file path not specified
         readBack = jsonProfPlanStorage.readProfPlan().get(); // file path not specified
         assertEquals(original, new ProfPlan(readBack));

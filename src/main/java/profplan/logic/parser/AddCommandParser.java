@@ -12,12 +12,12 @@ import java.util.stream.Stream;
 
 import profplan.logic.commands.AddCommand;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.person.Address;
-import profplan.model.person.Email;
-import profplan.model.person.Name;
-import profplan.model.person.Person;
-import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
+import profplan.model.task.Address;
+import profplan.model.task.Email;
+import profplan.model.task.Name;
+import profplan.model.task.Phone;
+import profplan.model.task.Task;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -45,9 +45,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, phone, email, address, tagList);
+        Task task = new Task(name, phone, email, address, tagList);
 
-        return new AddCommand(person);
+        return new AddCommand(task);
     }
 
     /**

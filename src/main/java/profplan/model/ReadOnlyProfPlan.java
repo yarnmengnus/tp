@@ -1,7 +1,7 @@
 package profplan.model;
 
 import javafx.collections.ObservableList;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 
 /**
  * Unmodifiable view of an address book
@@ -9,9 +9,9 @@ import profplan.model.person.Person;
 public interface ReadOnlyProfPlan {
 
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the tasks list.
+     * This list will not contain any duplicate tasks.
      */
-    ObservableList<Person> getPersonList();
+    ObservableList<Task> getTaskList();
 
 }

@@ -1,7 +1,7 @@
 package profplan.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static profplan.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static profplan.logic.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 import static profplan.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.io.IOException;
@@ -22,13 +22,13 @@ import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.model.UserPrefs;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 import profplan.storage.JsonProfPlanStorage;
 import profplan.storage.JsonUserPrefsStorage;
 import profplan.storage.StorageManager;
 import profplan.testutil.Assert;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TaskBuilder;
+import profplan.testutil.TypicalTasks;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy IO exception");
@@ -58,7 +58,7 @@ public class LogicManagerTest {
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandException(deleteCommand, MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
     @Test
@@ -80,8 +80,8 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredTaskList().remove(0));
     }
 
     /**
@@ -164,9 +164,9 @@ public class LogicManagerTest {
         // Triggers the saveAddressBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PHONE_DESC_AMY
                 + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
+        Task expectedTask = new TaskBuilder(TypicalTasks.AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addPerson(expectedPerson);
+        expectedModel.addTask(expectedTask);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
 }
