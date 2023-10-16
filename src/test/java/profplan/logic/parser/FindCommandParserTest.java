@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import profplan.logic.commands.FindCommand;
-import profplan.model.person.NameContainsKeywordsPredicate;
+import profplan.model.task.NameContainsKeywordsPredicate;
 
 public class FindCommandParserTest {
 

@@ -11,36 +11,36 @@ import profplan.commons.exceptions.IllegalValueException;
 import profplan.commons.util.JsonUtil;
 import profplan.model.ProfPlan;
 import profplan.testutil.Assert;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TypicalTasks;
 
 public class JsonSerializableProfPlanTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableProfPlanTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsProfPlan.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonProfPlan.json");
-    private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonProfPlan.json");
+    private static final Path TYPICAL_TASKS_FILE = TEST_DATA_FOLDER.resolve("typicalTasksProfPlan.json");
+    private static final Path INVALID_TASK_FILE = TEST_DATA_FOLDER.resolve("invalidTaskProfPlan.json");
+    private static final Path DUPLICATE_TASK_FILE = TEST_DATA_FOLDER.resolve("duplicateTaskProfPlan.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+    public void toModelType_typicalTasksFile_success() throws Exception {
+        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(TYPICAL_TASKS_FILE,
                 JsonSerializableProfPlan.class).get();
         ProfPlan profPlanFromFile = dataFromFile.toModelType();
-        ProfPlan typicalPersonsProfPlan = TypicalPersons.getTypicalProfPlan();
-        assertEquals(profPlanFromFile, typicalPersonsProfPlan);
+        ProfPlan typicalTasksProfPlan = TypicalTasks.getTypicalProfPlan();
+        assertEquals(profPlanFromFile, typicalTasksProfPlan);
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+    public void toModelType_invalidTaskFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(INVALID_TASK_FILE,
                 JsonSerializableProfPlan.class).get();
         Assert.assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
-    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
+    public void toModelType_duplicateTasks_throwsIllegalValueException() throws Exception {
+        JsonSerializableProfPlan dataFromFile = JsonUtil.readJsonFile(DUPLICATE_TASK_FILE,
                 JsonSerializableProfPlan.class).get();
-        Assert.assertThrows(IllegalValueException.class, JsonSerializableProfPlan.MESSAGE_DUPLICATE_PERSON,
+        Assert.assertThrows(IllegalValueException.class, JsonSerializableProfPlan.MESSAGE_DUPLICATE_TASK,
                 dataFromFile::toModelType);
     }
 

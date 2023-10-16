@@ -11,7 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
 import profplan.commons.util.CollectionUtil;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -21,7 +21,7 @@ public class ModelManager implements Model {
 
     private final ProfPlan profPlan;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Task> filteredTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -33,7 +33,7 @@ public class ModelManager implements Model {
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.profPlan.getPersonList());
+        filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
     }
 
     public ModelManager() {
@@ -88,44 +88,44 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return profPlan.hasPerson(person);
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return profPlan.hasTask(task);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        profPlan.removePerson(target);
+    public void deleteTask(Task target) {
+        profPlan.removeTask(target);
     }
 
     @Override
-    public void addPerson(Person person) {
-        profPlan.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addTask(Task task) {
+        profPlan.addTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        CollectionUtil.requireAllNonNull(target, editedPerson);
+    public void setTask(Task target, Task editedTask) {
+        CollectionUtil.requireAllNonNull(target, editedTask);
 
-        profPlan.setPerson(target, editedPerson);
+        profPlan.setTask(target, editedTask);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Task List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Task} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Task> getFilteredTaskList() {
+        return filteredTasks;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredTaskList(Predicate<Task> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredTasks.setPredicate(predicate);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return profPlan.equals(otherModelManager.profPlan)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredTasks.equals(otherModelManager.filteredTasks);
     }
 
 }

@@ -15,18 +15,18 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.ClearCommand;
 import profplan.logic.commands.DeleteCommand;
 import profplan.logic.commands.EditCommand;
-import profplan.logic.commands.EditCommand.EditPersonDescriptor;
+import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FindCommand;
 import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.person.NameContainsKeywordsPredicate;
-import profplan.model.person.Person;
+import profplan.model.task.NameContainsKeywordsPredicate;
+import profplan.model.task.Task;
 import profplan.testutil.Assert;
-import profplan.testutil.EditPersonDescriptorBuilder;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.PersonUtil;
+import profplan.testutil.EditTaskDescriptorBuilder;
+import profplan.testutil.TaskBuilder;
+import profplan.testutil.TaskUtil;
 import profplan.testutil.TypicalIndexes;
 
 public class ProfPlanParserTest {
@@ -35,9 +35,9 @@ public class ProfPlanParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
-        assertEquals(new AddCommand(person), command);
+        Task task = new TaskBuilder().build();
+        AddCommand command = (AddCommand) parser.parseCommand(TaskUtil.getAddCommand(task));
+        assertEquals(new AddCommand(task), command);
     }
 
     @Test
@@ -49,18 +49,18 @@ public class ProfPlanParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(TypicalIndexes.INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_TASK.getOneBased());
+        assertEquals(new DeleteCommand(TypicalIndexes.INDEX_FIRST_TASK), command);
     }
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
+        Task task = new TaskBuilder().build();
+        EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder(task).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + TypicalIndexes.INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil
-                .getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(TypicalIndexes.INDEX_FIRST_PERSON, descriptor), command);
+                + TypicalIndexes.INDEX_FIRST_TASK.getOneBased() + " " + TaskUtil
+                .getEditTaskDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(TypicalIndexes.INDEX_FIRST_TASK, descriptor), command);
     }
 
     @Test

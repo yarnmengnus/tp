@@ -9,9 +9,9 @@ import profplan.logic.Messages;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.UserPrefs;
-import profplan.model.person.Person;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
+import profplan.model.task.Task;
+import profplan.testutil.TaskBuilder;
+import profplan.testutil.TypicalTasks;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.
@@ -22,26 +22,26 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalPersons.getTypicalProfPlan(), new UserPrefs());
+        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
     }
 
     @Test
-    public void execute_newPerson_success() {
-        Person validPerson = new PersonBuilder().build();
+    public void execute_newTask_success() {
+        Task validTask = new TaskBuilder().build();
 
         Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
-        expectedModel.addPerson(validPerson);
+        expectedModel.addTask(validTask);
 
-        assertCommandSuccess(new AddCommand(validPerson), model,
-                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validPerson)),
+        assertCommandSuccess(new AddCommand(validTask), model,
+                String.format(AddCommand.MESSAGE_SUCCESS, Messages.format(validTask)),
                 expectedModel);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person personInList = model.getProfPlan().getPersonList().get(0);
-        CommandTestUtil.assertCommandFailure(new AddCommand(personInList), model,
-                AddCommand.MESSAGE_DUPLICATE_PERSON);
+    public void execute_duplicateTask_throwsCommandException() {
+        Task taskInList = model.getProfPlan().getTaskList().get(0);
+        CommandTestUtil.assertCommandFailure(new AddCommand(taskInList), model,
+                AddCommand.MESSAGE_DUPLICATE_TASK);
     }
 
 }

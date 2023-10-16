@@ -12,11 +12,11 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.person.Address;
-import profplan.model.person.Email;
-import profplan.model.person.Name;
-import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
+import profplan.model.task.Address;
+import profplan.model.task.Email;
+import profplan.model.task.Name;
+import profplan.model.task.Phone;
 import profplan.testutil.Assert;
 import profplan.testutil.TypicalIndexes;
 
@@ -50,10 +50,10 @@ public class ParserUtilTest {
     @Test
     public void parseIndex_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(TypicalIndexes.INDEX_FIRST_PERSON, ParserUtil.parseIndex("1"));
+        assertEquals(TypicalIndexes.INDEX_FIRST_TASK, ParserUtil.parseIndex("1"));
 
         // Leading and trailing whitespaces
-        assertEquals(TypicalIndexes.INDEX_FIRST_PERSON, ParserUtil.parseIndex("  1  "));
+        assertEquals(TypicalIndexes.INDEX_FIRST_TASK, ParserUtil.parseIndex("  1  "));
     }
 
     @Test

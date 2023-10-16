@@ -13,7 +13,7 @@ import profplan.commons.core.GuiSettings;
 import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
 import profplan.model.UserPrefs;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TypicalTasks;
 
 public class StorageManagerTest {
 
@@ -54,7 +54,7 @@ public class StorageManagerTest {
          * {@link JsonProfPlanStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonProfPlanStorageTest} class.
          */
-        ProfPlan original = TypicalPersons.getTypicalProfPlan();
+        ProfPlan original = TypicalTasks.getTypicalProfPlan();
         storageManager.saveProfPlan(original);
         ReadOnlyProfPlan retrieved = storageManager.readProfPlan().get();
         assertEquals(original, new ProfPlan(retrieved));

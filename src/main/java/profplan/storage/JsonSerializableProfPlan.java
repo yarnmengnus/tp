@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 
 /**
  * An Immutable ProfPlan that is serializable to JSON format.
@@ -19,16 +19,16 @@ import profplan.model.person.Person;
 @JsonRootName(value = "addressbook")
 class JsonSerializableProfPlan {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableProfPlan} with the given persons.
+     * Constructs a {@code JsonSerializableProfPlan} with the given tasks.
      */
     @JsonCreator
-    public JsonSerializableProfPlan(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableProfPlan(@JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
+        this.tasks.addAll(tasks);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableProfPlan {
      * @param source future changes to this will not affect the created {@code JsonSerializableProfPlan}.
      */
     public JsonSerializableProfPlan(ReadOnlyProfPlan source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,12 +47,12 @@ class JsonSerializableProfPlan {
      */
     public ProfPlan toModelType() throws IllegalValueException {
         ProfPlan profPlan = new ProfPlan();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (profPlan.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+        for (JsonAdaptedTask jsonAdaptedTask : tasks) {
+            Task task = jsonAdaptedTask.toModelType();
+            if (profPlan.hasTask(task)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
             }
-            profPlan.addPerson(person);
+            profPlan.addTask(task);
         }
         return profPlan;
     }
