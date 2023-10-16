@@ -6,7 +6,7 @@ skinparam classBackgroundColor LOGIC_COLOR
 
 package Logic as LogicPackage {
 
-Class AddressBookParser
+Class ProfPlanParser
 Class XYZCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
