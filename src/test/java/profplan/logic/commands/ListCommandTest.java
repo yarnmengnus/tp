@@ -1,7 +1,7 @@
 package profplan.logic.commands;
 
 import static profplan.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static profplan.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static profplan.logic.commands.CommandTestUtil.showTaskAtIndex;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.UserPrefs;
 import profplan.testutil.TypicalIndexes;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TypicalTasks;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
@@ -22,7 +22,7 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalPersons.getTypicalProfPlan(), new UserPrefs());
+        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
         expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
     }
 
@@ -33,7 +33,7 @@ public class ListCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
+        showTaskAtIndex(model, TypicalIndexes.INDEX_FIRST_TASK);
         assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

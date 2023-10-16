@@ -1,12 +1,12 @@
 package profplan.testutil;
 
 import profplan.model.ProfPlan;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 
 /**
  * A utility class to help with building ProfPlan objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new ProfPlanBuilder().withPerson("John", "Doe").build();}
+ *     {@code AddressBook ab = new ProfPlanBuilder().withTask("John", "Doe").build();}
  */
 public class ProfPlanBuilder {
 
@@ -21,10 +21,10 @@ public class ProfPlanBuilder {
     }
 
     /**
-     * Adds a new {@code Person} to the {@code ProfPlan} that we are building.
+     * Adds a new {@code Task} to the {@code ProfPlan} that we are building.
      */
-    public ProfPlanBuilder withPerson(Person person) {
-        profPlan.addPerson(person);
+    public ProfPlanBuilder withTask(Task task) {
+        profPlan.addTask(task);
         return this;
     }
 

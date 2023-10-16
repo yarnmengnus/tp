@@ -9,7 +9,7 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.Model;
 import profplan.model.ReadOnlyProfPlan;
-import profplan.model.person.Person;
+import profplan.model.task.Task;
 
 /**
  * API of the Logic component
@@ -31,8 +31,8 @@ public interface Logic {
      */
     ReadOnlyProfPlan getProfPlan();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of tasks */
+    ObservableList<Task> getFilteredTaskList();
 
     /**
      * Returns the user prefs' address book file path.

@@ -15,11 +15,11 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import profplan.model.person.Person;
-import profplan.model.person.exceptions.DuplicatePersonException;
+import profplan.model.task.Task;
+import profplan.model.task.exceptions.DuplicateTaskException;
 import profplan.testutil.Assert;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TaskBuilder;
+import profplan.testutil.TypicalTasks;
 
 public class ProfPlanTest {
 
@@ -27,7 +27,7 @@ public class ProfPlanTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), profPlan.getPersonList());
+        assertEquals(Collections.emptyList(), profPlan.getTaskList());
     }
 
     @Test
@@ -37,72 +37,72 @@ public class ProfPlanTest {
 
     @Test
     public void resetData_withValidReadOnlyProfPlan_replacesData() {
-        ProfPlan newData = TypicalPersons.getTypicalProfPlan();
+        ProfPlan newData = TypicalTasks.getTypicalProfPlan();
         profPlan.resetData(newData);
         assertEquals(newData, profPlan);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB)
+    public void resetData_withDuplicateTasks_throwsDuplicateTaskException() {
+        // Two tasks with the same identity fields
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
-        List<Person> newPersons = Arrays.asList(TypicalPersons.ALICE, editedAlice);
-        ProfPlanStub newData = new ProfPlanStub(newPersons);
+        List<Task> newTasks = Arrays.asList(TypicalTasks.ALICE, editedAlice);
+        ProfPlanStub newData = new ProfPlanStub(newTasks);
 
-        Assert.assertThrows(DuplicatePersonException.class, () -> profPlan.resetData(newData));
+        Assert.assertThrows(DuplicateTaskException.class, () -> profPlan.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> profPlan.hasPerson(null));
+    public void hasTask_nullTask_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> profPlan.hasTask(null));
     }
 
     @Test
-    public void hasPerson_personNotInProfPlan_returnsFalse() {
-        assertFalse(profPlan.hasPerson(TypicalPersons.ALICE));
+    public void hasTask_taskNotInProfPlan_returnsFalse() {
+        assertFalse(profPlan.hasTask(TypicalTasks.ALICE));
     }
 
     @Test
-    public void hasPerson_personInProfPlan_returnsTrue() {
-        profPlan.addPerson(TypicalPersons.ALICE);
-        assertTrue(profPlan.hasPerson(TypicalPersons.ALICE));
+    public void hasTask_taskInProfPlan_returnsTrue() {
+        profPlan.addTask(TypicalTasks.ALICE);
+        assertTrue(profPlan.hasTask(TypicalTasks.ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInProfPlan_returnsTrue() {
-        profPlan.addPerson(TypicalPersons.ALICE);
-        Person editedAlice = new PersonBuilder(TypicalPersons.ALICE).withAddress(VALID_ADDRESS_BOB)
+    public void hasTask_taskWithSameIdentityFieldsInProfPlan_returnsTrue() {
+        profPlan.addTask(TypicalTasks.ALICE);
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
-        assertTrue(profPlan.hasPerson(editedAlice));
+        assertTrue(profPlan.hasTask(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> profPlan.getPersonList().remove(0));
+    public void getTaskList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> profPlan.getTaskList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = ProfPlan.class.getCanonicalName() + "{persons=" + profPlan.getPersonList() + "}";
+        String expected = ProfPlan.class.getCanonicalName() + "{tasks=" + profPlan.getTaskList() + "}";
         assertEquals(expected, profPlan.toString());
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyAddressBook whose tasks list can violate interface constraints.
      */
     private static class ProfPlanStub implements ReadOnlyProfPlan {
-        private final ObservableList<Person> persons = FXCollections.observableArrayList();
+        private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
-        ProfPlanStub(Collection<Person> persons) {
-            this.persons.setAll(persons);
+        ProfPlanStub(Collection<Task> tasks) {
+            this.tasks.setAll(tasks);
         }
 
         @Override
-        public ObservableList<Person> getPersonList() {
-            return persons;
+        public ObservableList<Task> getTaskList() {
+            return tasks;
         }
     }
 

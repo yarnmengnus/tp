@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import profplan.logic.commands.FindCommand;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.person.NameContainsKeywordsPredicate;
+import profplan.model.task.NameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object

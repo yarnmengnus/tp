@@ -3,7 +3,7 @@ package profplan.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static profplan.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,10 +12,10 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import profplan.commons.core.GuiSettings;
-import profplan.model.person.NameContainsKeywordsPredicate;
+import profplan.model.task.NameContainsKeywordsPredicate;
 import profplan.testutil.Assert;
 import profplan.testutil.ProfPlanBuilder;
-import profplan.testutil.TypicalPersons;
+import profplan.testutil.TypicalTasks;
 
 public class ModelManagerTest {
 
@@ -72,30 +72,30 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
+    public void hasTask_nullTask_throwsNullPointerException() {
+        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
     }
 
     @Test
-    public void hasPerson_personNotInProfPlan_returnsFalse() {
-        assertFalse(modelManager.hasPerson(TypicalPersons.ALICE));
+    public void hasTask_taskNotInProfPlan_returnsFalse() {
+        assertFalse(modelManager.hasTask(TypicalTasks.ALICE));
     }
 
     @Test
-    public void hasPerson_personInProfPlan_returnsTrue() {
-        modelManager.addPerson(TypicalPersons.ALICE);
-        assertTrue(modelManager.hasPerson(TypicalPersons.ALICE));
+    public void hasTask_taskInProfPlan_returnsTrue() {
+        modelManager.addTask(TypicalTasks.ALICE);
+        assertTrue(modelManager.hasTask(TypicalTasks.ALICE));
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
 
     @Test
     public void equals() {
-        ProfPlan profPlan = new ProfPlanBuilder().withPerson(
-                TypicalPersons.ALICE).withPerson(TypicalPersons.BENSON).build();
+        ProfPlan profPlan = new ProfPlanBuilder().withTask(
+                TypicalTasks.ALICE).withTask(TypicalTasks.BENSON).build();
         ProfPlan differentProfPlan = new ProfPlan();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -117,12 +117,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentProfPlan, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = TypicalPersons.ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        String[] keywords = TypicalTasks.ALICE.getName().fullName.split("\\s+");
+        modelManager.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(profPlan, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

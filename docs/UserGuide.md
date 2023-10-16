@@ -104,7 +104,7 @@ Format: `find [KEYWORDS...]`
 * The order of the keywords does not matter. e.g. `Canvas quiz` will match `quiz canvas`
 * Only the titles and descriptions are searched.
 * Only full words will be matched e.g. `Canva` will not match `Canvas`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Tasks matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `midterm paper` will return `mock midterm`, `final paper`
 
 Examples:

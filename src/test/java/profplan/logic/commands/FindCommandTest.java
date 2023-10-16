@@ -3,7 +3,7 @@ package profplan.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static profplan.logic.Messages.MESSAGE_TASKS_LISTED_OVERVIEW;
 import static profplan.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import java.util.Arrays;
@@ -14,15 +14,15 @@ import org.junit.jupiter.api.Test;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.UserPrefs;
-import profplan.model.person.NameContainsKeywordsPredicate;
-import profplan.testutil.TypicalPersons;
+import profplan.model.task.NameContainsKeywordsPredicate;
+import profplan.testutil.TypicalTasks;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(TypicalPersons.getTypicalProfPlan(), new UserPrefs());
-    private Model expectedModel = new ModelManager(TypicalPersons.getTypicalProfPlan(), new UserPrefs());
+    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
+    private Model expectedModel = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
 
     @Test
     public void equals() {
@@ -47,29 +47,29 @@ public class FindCommandTest {
         // null -> returns false
         assertFalse(findFirstCommand.equals(null));
 
-        // different person -> returns false
+        // different task -> returns false
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+    public void execute_zeroKeywords_noTaskFound() {
+        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
+        expectedModel.updateFilteredTaskList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+        assertEquals(Collections.emptyList(), model.getFilteredTaskList());
     }
 
     @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
+    public void execute_multipleKeywords_multipleTasksFound() {
+        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 3);
         NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
+        expectedModel.updateFilteredTaskList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(TypicalPersons.CARL, TypicalPersons.ELLE, TypicalPersons.FIONA),
-                model.getFilteredPersonList());
+        assertEquals(Arrays.asList(TypicalTasks.CARL, TypicalTasks.ELLE, TypicalTasks.FIONA),
+                model.getFilteredTaskList());
     }
 
     @Test

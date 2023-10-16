@@ -11,114 +11,114 @@ import org.junit.jupiter.api.Test;
 import profplan.logic.Messages;
 import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.CommandTestUtil;
-import profplan.model.person.Address;
-import profplan.model.person.Email;
-import profplan.model.person.Name;
-import profplan.model.person.Person;
-import profplan.model.person.Phone;
 import profplan.model.tag.Tag;
-import profplan.testutil.PersonBuilder;
-import profplan.testutil.TypicalPersons;
+import profplan.model.task.Address;
+import profplan.model.task.Email;
+import profplan.model.task.Name;
+import profplan.model.task.Phone;
+import profplan.model.task.Task;
+import profplan.testutil.TaskBuilder;
+import profplan.testutil.TypicalTasks;
 
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(TypicalPersons.BOB).withTags(CommandTestUtil.VALID_TAG_FRIEND)
+        Task expectedTask = new TaskBuilder(TypicalTasks.BOB).withTags(CommandTestUtil.VALID_TAG_FRIEND)
                 .build();
 
         // whitespace only preamble
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.PREAMBLE_WHITESPACE
                 + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND, new AddCommand(expectedPerson));
+                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND, new AddCommand(expectedTask));
 
 
         // multiple tags - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder(TypicalPersons.BOB)
+        Task expectedTaskMultipleTags = new TaskBuilder(TypicalTasks.BOB)
                 .withTags(CommandTestUtil.VALID_TAG_FRIEND, CommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         CommandParserTestUtil.assertParseSuccess(parser,
                 CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
                         + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
                         + CommandTestUtil.TAG_DESC_FRIEND,
-                new AddCommand(expectedPersonMultipleTags));
+                new AddCommand(expectedTaskMultipleTags));
     }
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
-        String validExpectedPersonString = CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
+        String validExpectedTaskString = CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PHONE_DESC_BOB
                 + CommandTestUtil.EMAIL_DESC_BOB
                 + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_FRIEND;
 
         // multiple names
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_AMY
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
         // multiple phones
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.PHONE_DESC_AMY
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
 
         // multiple emails
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.EMAIL_DESC_AMY
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EMAIL));
 
         // multiple addresses
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.ADDRESS_DESC_AMY
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ADDRESS));
 
         // multiple fields repeated
         CommandParserTestUtil.assertParseFailure(parser,
-                validExpectedPersonString + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
+                validExpectedTaskString + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
                         + CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE));
 
         // invalid value followed by valid value
 
         // invalid name
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
         // invalid email
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_EMAIL_DESC
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EMAIL));
 
         // invalid phone
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_PHONE_DESC
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
 
         // invalid address
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_ADDRESS_DESC
-                        + validExpectedPersonString,
+                        + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ADDRESS));
 
         // valid value followed by invalid value
 
         // invalid name
-        CommandParserTestUtil.assertParseFailure(parser, validExpectedPersonString
+        CommandParserTestUtil.assertParseFailure(parser, validExpectedTaskString
                         + CommandTestUtil.INVALID_NAME_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
         // invalid email
-        CommandParserTestUtil.assertParseFailure(parser, validExpectedPersonString
+        CommandParserTestUtil.assertParseFailure(parser, validExpectedTaskString
                         + CommandTestUtil.INVALID_EMAIL_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_EMAIL));
 
         // invalid phone
-        CommandParserTestUtil.assertParseFailure(parser, validExpectedPersonString
+        CommandParserTestUtil.assertParseFailure(parser, validExpectedTaskString
                         + CommandTestUtil.INVALID_PHONE_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
 
         // invalid address
-        CommandParserTestUtil.assertParseFailure(parser, validExpectedPersonString
+        CommandParserTestUtil.assertParseFailure(parser, validExpectedTaskString
                         + CommandTestUtil.INVALID_ADDRESS_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_ADDRESS));
     }
@@ -126,11 +126,11 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Person expectedPerson = new PersonBuilder(TypicalPersons.AMY).withTags().build();
+        Task expectedTask = new TaskBuilder(TypicalTasks.AMY).withTags().build();
         CommandParserTestUtil.assertParseSuccess(parser,
                 CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY
                         + CommandTestUtil.ADDRESS_DESC_AMY,
-                new AddCommand(expectedPerson));
+                new AddCommand(expectedTask));
     }
 
     @Test
