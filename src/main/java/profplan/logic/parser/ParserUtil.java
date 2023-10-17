@@ -14,6 +14,7 @@ import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
+import profplan.model.task.Link;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -120,5 +121,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String link} into an {@code Link}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code link} is invalid.
+     */
+    public static Link parseLink(String link) throws ParseException {
+        requireNonNull(link);
+        String trimmedLink = link.trim();
+        if (!Link.isValidLink(trimmedLink)) {
+            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
+        return new Link(trimmedLink);
     }
 }

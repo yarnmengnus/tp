@@ -75,7 +75,7 @@ public class ModelManager implements Model {
         userPrefs.setProfPlanFilePath(profPlanFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ProfPlan ================================================================================
 
     @Override
     public void setProfPlan(ReadOnlyProfPlan profPlan) {

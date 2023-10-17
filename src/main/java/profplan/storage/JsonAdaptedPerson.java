@@ -16,6 +16,7 @@ import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
+import profplan.model.task.Link;
 
 /**
  * Jackson-friendly version of {@link Task}.
@@ -29,6 +30,7 @@ class JsonAdaptedTask {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String link;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -36,7 +38,7 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("link") String link) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -44,6 +46,7 @@ class JsonAdaptedTask {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.link = link;
     }
 
     /**
@@ -57,6 +60,7 @@ class JsonAdaptedTask {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        link = source.getLink().value;
     }
 
     /**
@@ -103,7 +107,14 @@ class JsonAdaptedTask {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+
+        String linkToLoad = link;
+        if (link == null) {
+            linkToLoad = "-";
+        }
+        
+        final Link modelLink = new Link(linkToLoad);
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelLink);
     }
 
 }
