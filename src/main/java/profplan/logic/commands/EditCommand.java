@@ -6,6 +6,7 @@ import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,6 +27,7 @@ import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
+import profplan.model.task.Link;
 
 
 /**
@@ -43,6 +45,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -99,9 +102,10 @@ public class EditCommand extends Command {
         Phone updatedPhone = editTaskDescriptor.getPhone().orElse(taskToEdit.getPhone());
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
+        Link updatedLink= editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
 
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedLink);
     }
 
     @Override
@@ -138,6 +142,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Link link;
 
         public EditTaskDescriptor() {}
 
@@ -150,6 +155,7 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setLink(toCopy.link);
             setTags(toCopy.tags);
         }
 
@@ -157,7 +163,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, link);
         }
 
         public void setName(Name name) {
@@ -209,6 +215,14 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setLink(Link link) {
+            this.link = link;
+        }
+
+        public Optional<Link> getLink() {
+            return Optional.ofNullable(link);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -225,7 +239,8 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditTaskDescriptor.phone)
                     && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(address, otherEditTaskDescriptor.address)
-                    && Objects.equals(tags, otherEditTaskDescriptor.tags);
+                    && Objects.equals(tags, otherEditTaskDescriptor.tags)
+                    && Objects.equals(link, otherEditTaskDescriptor.link);
         }
 
         @Override
@@ -236,6 +251,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("link", link)
                     .toString();
         }
     }

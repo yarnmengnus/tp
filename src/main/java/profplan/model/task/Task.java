@@ -22,10 +22,24 @@ public class Task {
 
     // Data fields
     private final Address address;
+    private final Link link;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
+     */
+    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Link link) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.link = link;
+    }
+
+    /**
+     * Alternative constructor if link not specified
      */
     public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
@@ -34,6 +48,7 @@ public class Task {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.link = new Link("-");
     }
 
     public Name getName() {
@@ -50,6 +65,10 @@ public class Task {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Link getLink() {
+        return link;
     }
 
     /**
@@ -93,13 +112,14 @@ public class Task {
                 && phone.equals(otherTask.phone)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
-                && tags.equals(otherTask.tags);
+                && tags.equals(otherTask.tags)
+                && link.equals(otherTask.link);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, link);
     }
 
     @Override
@@ -110,6 +130,7 @@ public class Task {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
+                .add("link", link)
                 .toString();
     }
 
