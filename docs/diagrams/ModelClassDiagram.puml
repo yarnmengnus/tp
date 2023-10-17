@@ -17,7 +17,7 @@ Class Task
 Class Address
 Class Email
 Class Name
-Class Phone
+Class
 Class Tag
 
 Class I #FFFFFF
@@ -38,7 +38,7 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 ProfPlan *--> "1" UniqueTaskList
 UniqueTaskList --> "~* all" Task
 Task *--> Name
-Task *--> Phone
+Task *-->
 Task *--> Email
 Task *--> Address
 Task *--> "*" Tag
@@ -46,8 +46,8 @@ Task *--> "*" Tag
 Task -[hidden]up--> I
 UniqueTaskList -[hidden]right-> I
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
+Name -[hidden]right->
+ -[hidden]right-> Address
 Address -[hidden]right-> Email
 
 ModelManager --> "~* filtered" Task

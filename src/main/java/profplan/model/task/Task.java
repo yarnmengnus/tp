@@ -17,7 +17,7 @@ public class Task {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
+    private final Priority priority;
     private final Email email;
 
     // Data fields
@@ -29,11 +29,11 @@ public class Task {
     /**
      * Every field except status must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
+    public Task(Name name, Priority priority, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
-        this.phone = phone;
+        this.priority = priority;
         this.email = email;
         this.address = address;
         this.status = Status.UNDONE_STATUS;
@@ -58,8 +58,8 @@ public class Task {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Priority getPriority() {
+        return priority;
     }
 
     public Email getEmail() {
@@ -120,7 +120,7 @@ public class Task {
 
         Task otherTask = (Task) other;
         return name.equals(otherTask.name)
-                && phone.equals(otherTask.phone)
+                && priority.equals(otherTask.priority)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
                 && tags.equals(otherTask.tags)
@@ -132,15 +132,14 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, status, tags, dueDate);
-
+        return Objects.hash(name, priority, email, address, status, tags, dueDate);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
+                .add("priority", priority)
                 .add("email", email)
                 .add("address", address)
                 .add("status", status)

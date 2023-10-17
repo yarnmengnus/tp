@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static profplan.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static profplan.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ public class TaskTest {
         assertFalse(TypicalTasks.ALICE.isSameTask(null));
 
         // same name, all other attributes different -> returns true
-        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPhone(VALID_PHONE_BOB)
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPriority(VALID_PRIORITY_BOB)
                 .withEmail(VALID_EMAIL_BOB)
                 .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(TypicalTasks.ALICE.isSameTask(editedAlice));
@@ -73,8 +73,8 @@ public class TaskTest {
         Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(TypicalTasks.ALICE.equals(editedAlice));
 
-        // different phone -> returns false
-        editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPhone(VALID_PHONE_BOB).build();
+        // different priority -> returns false
+        editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPriority(VALID_PRIORITY_BOB).build();
         assertFalse(TypicalTasks.ALICE.equals(editedAlice));
 
         // different email -> returns false
@@ -92,8 +92,8 @@ public class TaskTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Task.class.getCanonicalName() + "{name=" + TypicalTasks.ALICE.getName() + ", phone="
-                + TypicalTasks.ALICE.getPhone()
+        String expected = Task.class.getCanonicalName() + "{name=" + TypicalTasks.ALICE.getName() + ", priority="
+                + TypicalTasks.ALICE.getPriority()
                 + ", email=" + TypicalTasks.ALICE.getEmail() + ", address=" + TypicalTasks.ALICE.getAddress()
                 + ", status=" + TypicalTasks.ALICE.getStatus()
                 + ", tags=" + TypicalTasks.ALICE.getTags()
