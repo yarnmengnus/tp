@@ -141,7 +141,8 @@ class JsonAdaptedTask {
         if (status != null) {
             modelStatus = new Status(status);
         }
-        return new Task(modelName, modelPriority, modelEmail, modelAddress, modelStatus, modelTags, modelDueDate, modelChildren);
+        return new Task(modelName, modelPriority, modelEmail,
+                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren);
     }
 
 }

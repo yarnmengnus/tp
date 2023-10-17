@@ -40,7 +40,7 @@ public class TaskCard extends UiPart<Region> {
     private Label email;
     @FXML
     private Label dueDate;
-    //May have to add @FXML
+    @FXML
     private Label status;
 
     @FXML
