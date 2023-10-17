@@ -222,6 +222,7 @@ public class EditCommand extends Command {
 
         public Optional<Set<Task>> getChildren() {
             return (children != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
+        }
         public void setDueDate(DueDate date) {
             this.dueDate = date;
         }

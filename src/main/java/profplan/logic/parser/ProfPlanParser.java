@@ -17,8 +17,8 @@ import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FindCommand;
 import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
-import profplan.logic.commands.SetCommand;
 import profplan.logic.commands.MarkCommand;
+import profplan.logic.commands.SetCommand;
 import profplan.logic.commands.UnmarkCommand;
 import profplan.logic.parser.exceptions.ParseException;
 
