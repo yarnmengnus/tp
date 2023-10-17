@@ -172,8 +172,8 @@ public class EditCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
 
         // invalid followed by valid
-        userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB +
-                CommandTestUtil.INVALID_PRIORITY_DESC;
+        userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB
+                + CommandTestUtil.INVALID_PRIORITY_DESC;
 
         CommandParserTestUtil.assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
