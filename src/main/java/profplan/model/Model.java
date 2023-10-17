@@ -64,6 +64,12 @@ public interface Model {
     void deleteTask(Task target);
 
     /**
+     * Deletes all the tasks present in the list.
+     */
+    void deleteTask();
+
+
+    /**
      * Adds the given task.
      * {@code task} must not already exist in the address book.
      */
