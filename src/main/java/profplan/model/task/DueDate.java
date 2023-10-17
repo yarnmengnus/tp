@@ -12,7 +12,7 @@ import profplan.commons.util.AppUtil;
  */
 public class DueDate {
     public static final String MESSAGE_CONSTRAINTS 
-            = "Due date should be of dd-MM-yyyy format, and should not be before today.";
+        = "Due date should be of dd-MM-yyyy format, and should not be before today.";
 
     public final String value;
 
