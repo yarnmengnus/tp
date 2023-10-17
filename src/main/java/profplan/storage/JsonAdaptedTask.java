@@ -29,8 +29,8 @@ class JsonAdaptedTask {
     private final String phone;
     private final String email;
     private final String address;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String dueDate;
+    private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -38,7 +38,7 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags, String dueDate) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("dueDate") String dueDate) {
         this.name = name;
         this.phone = phone;
         this.email = email;

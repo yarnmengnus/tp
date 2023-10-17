@@ -117,7 +117,7 @@ public class Task {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("due date", dueDate)
+                .add("dueDate", dueDate)
                 .toString();
     }
 

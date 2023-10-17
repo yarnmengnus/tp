@@ -85,6 +85,7 @@ public class MainApp extends Application {
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleProfPlan);
         } catch (DataLoadingException e) {
+            System.out.println("MESSAGE: " + e.getMessage());
             logger.warning("Data file at " + storage.getProfPlanFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialData = new ProfPlan();

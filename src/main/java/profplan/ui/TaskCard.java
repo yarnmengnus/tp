@@ -39,9 +39,9 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
-    private FlowPane tags;
-    @FXML
     private Label dueDate;
+    @FXML
+    private FlowPane tags;
 
     /**
      * Creates a {@code TaskCode} with the given {@code Task} and index to display.
@@ -54,9 +54,9 @@ public class TaskCard extends UiPart<Region> {
         phone.setText(task.getPhone().value);
         address.setText(task.getAddress().value);
         email.setText(task.getEmail().value);
+        dueDate.setText(task.getDueDate().value);
         task.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        dueDate.setText(task.getDueDate().value);
     }
 }
