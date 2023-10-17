@@ -69,7 +69,13 @@ public class DeleteCommand extends Command {
         }
 
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
-        return targetIndex.equals(otherDeleteCommand.targetIndex);
+        if (targetIndex == null && otherDeleteCommand.targetIndex == null) {
+            return true;
+        } else if (targetIndex != null && otherDeleteCommand.targetIndex != null) {
+            return targetIndex.equals(otherDeleteCommand.targetIndex);
+        } else {
+            return false;
+        }
     }
 
     @Override
