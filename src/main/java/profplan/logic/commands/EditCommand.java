@@ -217,7 +217,7 @@ public class EditCommand extends Command {
         }
 
         public Optional<Set<Task>> getChildren() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
+            return (children != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
         }
 
         @Override
