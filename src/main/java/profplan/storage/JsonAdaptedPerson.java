@@ -29,6 +29,7 @@ class JsonAdaptedTask {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedTask> children = new ArrayList<JsonAdaptedTask>();
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -36,13 +37,17 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("children") List<JsonAdaptedTask> children) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         if (tags != null) {
             this.tags.addAll(tags);
+        }
+        if (children != null) {
+            this.children.addAll(children);
         }
     }
 
@@ -57,6 +62,9 @@ class JsonAdaptedTask {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        children.addAll(source.getChildren().stream()
+                .map(JsonAdaptedTask::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -68,6 +76,11 @@ class JsonAdaptedTask {
         final List<Tag> taskTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tags) {
             taskTags.add(tag.toModelType());
+        }
+
+        final List<Task> taskChildren = new ArrayList<>();
+        for (JsonAdaptedTask child : children) {
+            taskChildren.add(child.toModelType());
         }
 
         if (name == null) {
@@ -103,7 +116,8 @@ class JsonAdaptedTask {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        final Set<Task> modelChildren = new HashSet<>(taskChildren);
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelChildren);
     }
 
 }

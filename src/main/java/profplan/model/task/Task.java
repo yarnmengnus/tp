@@ -23,17 +23,32 @@ public class Task {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<Task> children = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Task> children) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, tags, children);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.children.addAll(children);
+    }
+
+    /**
+     * Overloaded constructor to create a Task given another Task
+     * @param task The task to copy from.
+     */
+    public Task(Task task) {
+        this.name = task.name;
+        this.phone = task.phone;
+        this.email = task.email;
+        this.address = task.address;
+        this.tags.addAll(task.getTags());
+        this.children.addAll(task.getChildren());
     }
 
     public Name getName() {
@@ -58,6 +73,10 @@ public class Task {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Set<Task> getChildren() {
+        return Collections.unmodifiableSet(children);
     }
 
     /**
@@ -93,7 +112,8 @@ public class Task {
                 && phone.equals(otherTask.phone)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
-                && tags.equals(otherTask.tags);
+                && tags.equals(otherTask.tags)
+                && children.equals(otherTask.children);
     }
 
     @Override

@@ -100,8 +100,10 @@ public class EditCommand extends Command {
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
+        Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
 
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedChildren);
     }
 
     @Override
@@ -138,6 +140,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Set<Task> children;
 
         public EditTaskDescriptor() {}
 
@@ -207,6 +210,14 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        public void setChildren(Set<Task> children) {
+            this.children = (children != null) ? new HashSet<>(children) : null;
+        }
+
+        public Optional<Set<Task>> getChildren() {
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
         }
 
         @Override

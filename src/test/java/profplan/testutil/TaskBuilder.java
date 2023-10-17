@@ -26,6 +26,7 @@ public class TaskBuilder {
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Set<Task> children;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -36,6 +37,7 @@ public class TaskBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        children = new HashSet<>();
     }
 
     /**
@@ -47,6 +49,7 @@ public class TaskBuilder {
         email = taskToCopy.getEmail();
         address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
+        children = new HashSet<>(taskToCopy.getChildren());
     }
 
     /**
@@ -62,6 +65,14 @@ public class TaskBuilder {
      */
     public TaskBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code Tasks} into a {@code Set<Task>} and set it to the {@code Task} that we are building.
+     */
+    public TaskBuilder withChildren(Task ... children) {
+        this.children = SampleDataUtil.getTaskSet(children);
         return this;
     }
 
@@ -90,7 +101,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, phone, email, address, tags);
+        return new Task(name, phone, email, address, tags, children);
     }
 
 }
