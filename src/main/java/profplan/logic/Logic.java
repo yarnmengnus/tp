@@ -35,7 +35,7 @@ public interface Logic {
     ObservableList<Task> getFilteredTaskList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' task list file path.
      */
     Path getProfPlanFilePath();
 

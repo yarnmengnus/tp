@@ -60,7 +60,7 @@ public class ProfPlan implements ReadOnlyProfPlan {
     //// task-level operations
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the address book.
+     * Returns true if a task with the same identity as {@code task} exists in the task list.
      */
     public boolean hasTask(Task task) {
         requireNonNull(task);
@@ -68,17 +68,34 @@ public class ProfPlan implements ReadOnlyProfPlan {
     }
 
     /**
-     * Adds a task to the address book.
-     * The task must not already exist in the address book.
+     * Adds a task to the task list.
+     * The task must not already exist in the task list.
      */
     public void addTask(Task p) {
         tasks.add(p);
     }
 
     /**
+     * Marks the task at given index as done
+     * The index must be in range.
+     */
+    public void markTask(int index) {
+        tasks.mark(index);
+    }
+
+
+    /**
+     * Marks the task at given index as undone
+     * The index must be in range.
+     */
+    public void unmarkTask(int index) {
+        tasks.unmark(index);
+    }
+
+    /**
      * Replaces the given task {@code target} in the list with {@code editedTask}.
-     * {@code target} must exist in the address book.
-     * The task identity of {@code editedTask} must not be the same as another existing task in the address book.
+     * {@code target} must exist in the task list.
+     * The task identity of {@code editedTask} must not be the same as another existing task in the task list.
      */
     public void setTask(Task target, Task editedTask) {
         requireNonNull(editedTask);
@@ -88,10 +105,18 @@ public class ProfPlan implements ReadOnlyProfPlan {
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the task list.
      */
     public void removeTask(Task key) {
         tasks.remove(key);
+    }
+
+    /**
+     * Removes all the tasks from the Task List
+     */
+
+    public void removeTask() {
+        tasks.remove();
     }
 
     //// util methods

@@ -14,7 +14,7 @@ import profplan.commons.util.CollectionUtil;
 import profplan.model.task.Task;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the task list data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -29,7 +29,7 @@ public class ModelManager implements Model {
     public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs) {
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with task list: " + addressBook + " and user prefs " + userPrefs);
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -99,8 +99,25 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteTask() {
+        profPlan.removeTask();
+    }
+
+    @Override
     public void addTask(Task task) {
         profPlan.addTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void markTask(int index) {
+        profPlan.markTask(index);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void unmarkTask(int index) {
+        profPlan.unmarkTask(index);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 

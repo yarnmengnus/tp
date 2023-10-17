@@ -1,8 +1,9 @@
 {
   "tasks": [ {
     "name": "Hans Muster",
-    "phone": "9482424",
+    "priority": "9482424",
     "email": "invalid@email!3e",
-    "address": "4th street"
+    "address": "4th street",
+    "dueDate" : "01-01-2000"
   } ]
 }

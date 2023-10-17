@@ -16,7 +16,7 @@ import profplan.model.task.Task;
 /**
  * An Immutable ProfPlan that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "profplan")
 class JsonSerializableProfPlan {
 
     public static final String MESSAGE_DUPLICATE_TASK = "Tasks list contains duplicate task(s).";
@@ -41,7 +41,7 @@ class JsonSerializableProfPlan {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this task list into the model's {@code AddressBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
