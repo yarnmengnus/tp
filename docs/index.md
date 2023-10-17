@@ -8,7 +8,7 @@ title: AddressBook Level-3
 
 ![Ui](images/Ui.png)
 
-**ProfPlan is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions 
+**ProfPlan is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions
 happen using a CLI (Command Line Interface).
 
 * If you are interested in using ProfPlan, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
