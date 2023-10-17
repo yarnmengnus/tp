@@ -9,7 +9,7 @@ import profplan.model.task.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all tasks in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is case-insensitive.
  */
 public class FindCommand extends Command {
 
@@ -17,8 +17,8 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all tasks whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+            + "Parameters: [KEYWORDS...]\n"
+            + "Example: " + COMMAND_WORD + " canvas quiz";
 
     private final NameContainsKeywordsPredicate predicate;
 
