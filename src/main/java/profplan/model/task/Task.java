@@ -22,19 +22,36 @@ public class Task {
 
     // Data fields
     private final Address address;
+    private Status status;
     private final Set<Tag> tags = new HashSet<>();
+    private final DueDate dueDate;
 
     /**
-     * Every field must be present and not null.
+     * Every field except status must be present and not null.
      */
-    public Task(Name name, Priority priority, Email email, Address address, Set<Tag> tags) {
-        // CollectionUtil.requireAllNonNull(name, priority, email, address, tags);
+    public Task(Name name, Priority priority, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
+        // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
         this.priority = priority;
         this.email = email;
         this.address = address;
+        this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Task(Name name, Phone phone, Email email, Address address, Status status, Set<Tag> tags) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+        this.tags.addAll(tags);
+        this.dueDate = dueDate;
     }
 
     public Name getName() {
@@ -51,6 +68,18 @@ public class Task {
 
     public Address getAddress() {
         return address;
+    }
+
+    public DueDate getDueDate() {
+        return dueDate;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+
     }
 
     /**
@@ -94,13 +123,16 @@ public class Task {
                 && priority.equals(otherTask.priority)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
-                && tags.equals(otherTask.tags);
+                && tags.equals(otherTask.tags)
+                && dueDate.equals(otherTask.dueDate)
+                && status.equals(otherTask.status);
+
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, priority, email, address, tags);
+        return Objects.hash(name, priority, email, address, status, tags, dueDate);
     }
 
     @Override
@@ -110,7 +142,9 @@ public class Task {
                 .add("priority", priority)
                 .add("email", email)
                 .add("address", address)
+                .add("status", status)
                 .add("tags", tags)
+                .add("dueDate", dueDate)
                 .toString();
     }
 

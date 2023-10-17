@@ -26,34 +26,42 @@ public class TypicalTasks {
     public static final Task ALICE = new TaskBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPriority("1")
-            .withTags("friends").build();
+            .withTags("friends").withDueDate("01-01-2000").build();
     public static final Task BENSON = new TaskBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPriority("2")
-            .withTags("owesMoney", "friends").build();
+            .withTags("owesMoney", "friends").withDueDate("01-01-2000").build();
     public static final Task CARL = new TaskBuilder().withName("Carl Kurz").withPriority("3")
-            .withEmail("heinz@example.com").withAddress("wall street").build();
+            .withEmail("heinz@example.com").withAddress("wall street")
+            .withDueDate("01-01-2000").build();
     public static final Task DANIEL = new TaskBuilder().withName("Daniel Meier").withPriority("4")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends").build();
+            .withEmail("cornelia@example.com").withAddress("10th street")
+            .withTags("friends").withDueDate("01-01-2000").build();
     public static final Task ELLE = new TaskBuilder().withName("Elle Meyer").withPriority("5")
-            .withEmail("werner@example.com").withAddress("michegan ave").build();
+            .withEmail("werner@example.com").withAddress("michegan ave")
+            .withDueDate("01-01-2000").build();
     public static final Task FIONA = new TaskBuilder().withName("Fiona Kunz").withPriority("6")
-            .withEmail("lydia@example.com").withAddress("little tokyo").build();
+            .withEmail("lydia@example.com").withAddress("little tokyo")
+            .withDueDate("01-01-2000").build();
     public static final Task GEORGE = new TaskBuilder().withName("George Best").withPriority("10")
-            .withEmail("anna@example.com").withAddress("4th street").build();
+            .withEmail("anna@example.com").withAddress("4th street").withDueDate("01-01-2000").build();
 
     // Manually added
     public static final Task HOON = new TaskBuilder().withName("Hoon Meier").withPriority("1")
-            .withEmail("stefan@example.com").withAddress("little india").build();
+            .withEmail("stefan@example.com").withAddress("little india")
+            .withDueDate("01-01-2000").build();
     public static final Task IDA = new TaskBuilder().withName("Ida Mueller").withPriority("5")
-            .withEmail("hans@example.com").withAddress("chicago ave").build();
+            .withEmail("hans@example.com").withAddress("chicago ave")
+            .withDueDate("01-01-2000").build();
 
     // Manually added - Task's details found in {@code CommandTestUtil}
     public static final Task AMY = new TaskBuilder().withName(VALID_NAME_AMY).withPriority(VALID_PRIORITY_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+            .withTags(VALID_TAG_FRIEND).withDueDate("01-01-2000").build();
     public static final Task BOB = new TaskBuilder().withName(VALID_NAME_BOB).withPriority(VALID_PRIORITY_BOB)
+
             .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withDueDate("01-01-2000").build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

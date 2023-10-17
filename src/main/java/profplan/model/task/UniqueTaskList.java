@@ -49,6 +49,28 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
+     * Marks the task at given index as done
+     * The index must be in range.
+     */
+    public void mark(int index) {
+        if (index > internalList.size()) {
+            throw new TaskNotFoundException();
+        }
+        internalList.get(index).setStatus(Status.DONE_STATUS);
+    }
+
+    /**
+     * Marks the task at given index as undone
+     * The index must be in range.
+     */
+    public void unmark(int index) {
+        if (index > internalList.size()) {
+            throw new TaskNotFoundException();
+        }
+        internalList.get(index).setStatus(Status.UNDONE_STATUS);
+    }
+
+    /**
      * Replaces the task {@code target} in the list with {@code editedTask}.
      * {@code target} must exist in the list.
      * The task identity of {@code editedTask} must not be the same as another existing task in the list.
@@ -75,6 +97,17 @@ public class UniqueTaskList implements Iterable<Task> {
     public void remove(Task toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
+            throw new TaskNotFoundException();
+        }
+    }
+
+    /**
+     * removes all the tasks present in the list.
+     */
+    public void remove() {
+        if (internalList.size() != 0) {
+            internalList.clear();
+        } else {
             throw new TaskNotFoundException();
         }
     }

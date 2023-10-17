@@ -2,6 +2,7 @@ package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -22,6 +23,7 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -43,7 +45,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]"
+            + "[" + PREFIX_DUEDATE + "DUEDATE...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -100,8 +103,8 @@ public class EditCommand extends Command {
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
-
-        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags);
+        DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
+        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags, updatedDueDate);
     }
 
     @Override
@@ -138,6 +141,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private DueDate dueDate;
 
         public EditTaskDescriptor() {}
 
@@ -151,13 +155,14 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setDueDate(toCopy.dueDate);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags, dueDate);
         }
 
         public void setName(Name name) {
@@ -207,6 +212,14 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        public void setDueDate(DueDate date) {
+            this.dueDate = date;
+        }
+
+        public Optional<DueDate> getDueDate() {
+            return Optional.ofNullable(dueDate);
         }
 
         @Override

@@ -64,10 +64,30 @@ public interface Model {
     void deleteTask(Task target);
 
     /**
+     * Deletes all the tasks present in the list.
+     */
+    void deleteTask();
+
+
+    /**
      * Adds the given task.
      * {@code task} must not already exist in the task list.
      */
     void addTask(Task task);
+
+    /**
+     * Marks the task at given index as done.
+     * {@code index} must be in range.
+     */
+    void markTask(int index);
+
+
+    /**
+     * Marks the task at given index as undone.
+     * {@code index} must be in range.
+     */
+    void unmarkTask(int index);
+
 
     /**
      * Replaces the given task {@code target} with {@code editedTask}.

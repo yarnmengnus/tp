@@ -99,8 +99,25 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteTask() {
+        profPlan.removeTask();
+    }
+
+    @Override
     public void addTask(Task task) {
         profPlan.addTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void markTask(int index) {
+        profPlan.markTask(index);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void unmarkTask(int index) {
+        profPlan.unmarkTask(index);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 

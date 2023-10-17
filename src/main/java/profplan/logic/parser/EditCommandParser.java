@@ -3,6 +3,7 @@ package profplan.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -31,9 +32,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_TAG);
-
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_EMAIL,
+                PREFIX_ADDRESS, PREFIX_TAG, PREFIX_DUEDATE);
         Index index;
 
         try {
@@ -59,6 +59,10 @@ public class EditCommandParser implements Parser<EditCommand> {
             editTaskDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editTaskDescriptor::setTags);
+
+        if (argMultimap.getValue(PREFIX_DUEDATE).isPresent()) {
+            editTaskDescriptor.setDueDate(ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).get()));
+        }
 
         if (!editTaskDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

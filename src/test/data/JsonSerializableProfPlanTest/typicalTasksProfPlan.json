@@ -5,42 +5,49 @@
     "priority" : "1",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+    "tags" : [ "friends" ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "Benson Meier",
     "priority" : "2",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
-    "tags" : [ "owesMoney", "friends" ]
+    "tags" : [ "owesMoney", "friends" ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "Carl Kurz",
     "priority" : "3",
     "email" : "heinz@example.com",
     "address" : "wall street",
-    "tags" : [ ]
+    "tags" : [ ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "Daniel Meier",
     "priority" : "4",
     "email" : "cornelia@example.com",
     "address" : "10th street",
-    "tags" : [ "friends" ]
+    "tags" : [ "friends" ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "Elle Meyer",
     "priority" : "5",
     "email" : "werner@example.com",
     "address" : "michegan ave",
-    "tags" : [ ]
+    "tags" : [ ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "Fiona Kunz",
     "priority" : "6",
     "email" : "lydia@example.com",
     "address" : "little tokyo",
-    "tags" : [ ]
+    "tags" : [ ],
+    "dueDate" : "01-01-2000"
   }, {
     "name" : "George Best",
     "priority" : "10",
     "email" : "anna@example.com",
     "address" : "4th street",
-    "tags" : [ ]
+    "tags" : [ ],
+    "dueDate" : "01-01-2000"
   } ]
 }

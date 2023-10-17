@@ -15,6 +15,7 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -49,7 +50,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000")
                 : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Task task = new Task(name, priority, email, address, tagList);
+        DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
+        Task task = new Task(name, priority, email, address, tagList, dueDate);
+
 
         return new AddCommand(task);
     }

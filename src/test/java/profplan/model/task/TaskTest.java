@@ -95,7 +95,10 @@ public class TaskTest {
         String expected = Task.class.getCanonicalName() + "{name=" + TypicalTasks.ALICE.getName() + ", priority="
                 + TypicalTasks.ALICE.getPriority()
                 + ", email=" + TypicalTasks.ALICE.getEmail() + ", address=" + TypicalTasks.ALICE.getAddress()
-                + ", tags=" + TypicalTasks.ALICE.getTags() + "}";
+                + ", status=" + TypicalTasks.ALICE.getStatus()
+                + ", tags=" + TypicalTasks.ALICE.getTags()
+                + ", dueDate=" + TypicalTasks.ALICE.getDueDate()
+                + "}";
         assertEquals(expected, TypicalTasks.ALICE.toString());
     }
 }

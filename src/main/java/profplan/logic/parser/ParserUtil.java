@@ -11,6 +11,7 @@ import profplan.commons.util.StringUtil;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -120,5 +121,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code DueDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static DueDate parseDueDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!DueDate.isValidDate(trimmedDate)) {
+            throw new ParseException(DueDate.MESSAGE_CONSTRAINTS);
+        }
+        return new DueDate(trimmedDate);
     }
 }
