@@ -5,11 +5,11 @@ import java.util.Set;
 
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
-import profplan.model.task.DueDate;
 import profplan.model.util.SampleDataUtil;
 
 /**
