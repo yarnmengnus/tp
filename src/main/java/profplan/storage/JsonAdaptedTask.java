@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
@@ -29,6 +30,7 @@ class JsonAdaptedTask {
     private final String phone;
     private final String email;
     private final String address;
+    private final String dueDate;
     private final String status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
@@ -38,12 +40,13 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("status") String status,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, 
+            @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.dueDate = dueDate;
         this.status = status;
         if (tags != null) {
             this.tags.addAll(tags);
@@ -58,10 +61,12 @@ class JsonAdaptedTask {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        status = source.getStatus().status;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        dueDate = source.getDueDate().value;
+        status = source.getStatus().status;
+
     }
 
     /**
@@ -107,14 +112,24 @@ class JsonAdaptedTask {
         }
         final Address modelAddress = new Address(address);
 
+        final Set<Tag> modelTags = new HashSet<>(taskTags);
+
+        if (dueDate == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DueDate.class.getSimpleName()));
+        }
+        if (!DueDate.isValidDate(dueDate)) {
+            throw new IllegalValueException(DueDate.MESSAGE_CONSTRAINTS);
+        }
+        final DueDate modelDueDate = new DueDate(dueDate);
+      
         Status modelStatus = Status.UNDONE_STATUS;
         if (status != null) {
             modelStatus = new Status(status);
         }
 
 
-        final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelStatus, modelTags);
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelStatus, modelTags, modelDueDate);
+
     }
 
 }

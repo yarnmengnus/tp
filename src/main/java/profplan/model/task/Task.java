@@ -24,11 +24,12 @@ public class Task {
     private final Address address;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
+    private final DueDate dueDate;
 
     /**
      * Every field except status must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
@@ -50,6 +51,7 @@ public class Task {
         this.address = address;
         this.status = status;
         this.tags.addAll(tags);
+        this.dueDate = dueDate;
     }
 
     public Name getName() {
@@ -68,12 +70,16 @@ public class Task {
         return address;
     }
 
+    public DueDate getDueDate() {
+        return dueDate;
+
     public Status getStatus() {
         return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
+
     }
 
     /**
@@ -117,14 +123,17 @@ public class Task {
                 && phone.equals(otherTask.phone)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
-                && status.equals(otherTask.status)
-                && tags.equals(otherTask.tags);
+                && tags.equals(otherTask.tags)
+                && dueDate.equals(otherTask.dueDate)
+                && status.equals(otherTask.status);
+
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, status, tags);
+        return Objects.hash(name, phone, email, address, status, tags, dueDate);
+
     }
 
     @Override
@@ -136,6 +145,7 @@ public class Task {
                 .add("address", address)
                 .add("status", status)
                 .add("tags", tags)
+                .add("dueDate", dueDate)
                 .toString();
     }
 

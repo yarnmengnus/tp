@@ -96,7 +96,9 @@ public class TaskTest {
                 + TypicalTasks.ALICE.getPhone()
                 + ", email=" + TypicalTasks.ALICE.getEmail() + ", address=" + TypicalTasks.ALICE.getAddress()
                 + ", status=" + TypicalTasks.ALICE.getStatus()
-                + ", tags=" + TypicalTasks.ALICE.getTags() + "}";
+                + ", tags=" + TypicalTasks.ALICE.getTags()
+                + ", dueDate=" + TypicalTasks.ALICE.getDueDate()
+                + "}";
         assertEquals(expected, TypicalTasks.ALICE.toString());
     }
 }
