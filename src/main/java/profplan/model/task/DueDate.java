@@ -11,15 +11,6 @@ import profplan.commons.util.AppUtil;
 public class DueDate {
     public static final String MESSAGE_CONSTRAINTS = "Due date should be of DD/MM/YYYY format, and should not be blank.";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    // public static final String DATE_REGEX = "(0[1-9]|[12][0-9]|3[01])"; // specify date beween 01 and 31
-    // public static final String MONTH_REGEX = "(0[1-9]|1[1,2])"; // specify month between 01 and 12
-    // public static final String YEAR_REGEX = "(19|20)\\d{2}";
-    // public static final String VALIDATION_REGEX = DATE_REGEX + "/" + MONTH_REGEX + "/" + YEAR_REGEX;
-
     public final String value;
 
     /**
