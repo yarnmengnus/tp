@@ -33,6 +33,7 @@ class JsonAdaptedTask {
     private final String dueDate;
     private final String status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedTask> children = new ArrayList<JsonAdaptedTask>();
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -41,7 +42,8 @@ class JsonAdaptedTask {
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("priority") String priority,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
-            @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate) {
+            @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
+            @JsonProperty("children") List<JsonAdaptedTask> children) {
         this.name = name;
         this.priority = priority;
         this.email = email;
@@ -50,6 +52,9 @@ class JsonAdaptedTask {
         this.status = status;
         if (tags != null) {
             this.tags.addAll(tags);
+        }
+        if (children != null) {
+            this.children.addAll(children);
         }
     }
 
@@ -64,6 +69,9 @@ class JsonAdaptedTask {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        children.addAll(source.getChildren().stream()
+                .map(JsonAdaptedTask::new)
+                .collect(Collectors.toList()));
         dueDate = source.getDueDate().value;
         status = source.getStatus().status;
     }
@@ -77,6 +85,11 @@ class JsonAdaptedTask {
         final List<Tag> taskTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tags) {
             taskTags.add(tag.toModelType());
+        }
+
+        final List<Task> taskChildren = new ArrayList<>();
+        for (JsonAdaptedTask child : children) {
+            taskChildren.add(child.toModelType());
         }
 
         if (name == null) {
@@ -114,6 +127,9 @@ class JsonAdaptedTask {
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
 
+        final Set<Task> modelChildren = new HashSet<>(taskChildren);
+
+
         if (dueDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DueDate.class.getSimpleName()));
         }
@@ -125,7 +141,7 @@ class JsonAdaptedTask {
         if (status != null) {
             modelStatus = new Status(status);
         }
-        return new Task(modelName, modelPriority, modelEmail, modelAddress, modelStatus, modelTags, modelDueDate);
+        return new Task(modelName, modelPriority, modelEmail, modelAddress, modelStatus, modelTags, modelDueDate, modelChildren);
     }
 
 }

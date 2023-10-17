@@ -28,6 +28,7 @@ public class TaskBuilder {
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Set<Task> children;
     private DueDate dueDate;
 
     /**
@@ -39,6 +40,7 @@ public class TaskBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
     }
 
@@ -51,6 +53,7 @@ public class TaskBuilder {
         email = taskToCopy.getEmail();
         address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
+        children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
     }
 
@@ -67,6 +70,14 @@ public class TaskBuilder {
      */
     public TaskBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code Tasks} into a {@code Set<Task>} and set it to the {@code Task} that we are building.
+     */
+    public TaskBuilder withChildren(Task ... children) {
+        this.children = SampleDataUtil.getTaskSet(children);
         return this;
     }
 
@@ -103,7 +114,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, priority, email, address, tags, dueDate);
+        return new Task(name, priority, email, address, tags, dueDate, children);
     }
 
 }

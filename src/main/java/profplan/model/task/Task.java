@@ -24,12 +24,13 @@ public class Task {
     private final Address address;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<Task> children = new HashSet<>();
     private final DueDate dueDate;
 
     /**
      * Every field except status must be present and not null.
      */
-    public Task(Name name, Priority priority, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
+    public Task(Name name, Priority priority, Email email, Address address, Set<Tag> tags, DueDate dueDate, Set<Task> children) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
@@ -38,19 +39,39 @@ public class Task {
         this.address = address;
         this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
+        this.children.addAll(children);
+        this.dueDate = dueDate;
     }
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, Status status, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
+    public Task(Name name, Priority priority, Email email, Address address, Status status, Set<Tag> tags,
+                DueDate dueDate, Set<Task> children) {
+        // CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
+        CollectionUtil.requireAllNonNull(name);
         this.name = name;
-        this.phone = phone;
+        this.priority = priority;
         this.email = email;
         this.address = address;
         this.status = status;
         this.tags.addAll(tags);
+        this.dueDate = dueDate;
+        this.children.addAll(children);
+    }
+
+    /**
+     * Overloaded constructor to create a Task given another Task
+     * @param task The task to copy from.
+     */
+    public Task(Task task) {
+        this.name = task.name;
+        this.priority = task.priority;
+        this.email = task.email;
+        this.address = task.address;
+        this.tags.addAll(task.getTags());
+        this.children.addAll(task.getChildren());
+        this.status = task.status;
         this.dueDate = dueDate;
     }
 
@@ -90,6 +111,10 @@ public class Task {
         return Collections.unmodifiableSet(tags);
     }
 
+    public Set<Task> getChildren() {
+        return Collections.unmodifiableSet(children);
+    }
+
     /**
      * Returns true if both tasks have the same name.
      * This defines a weaker notion of equality between two tasks.
@@ -124,9 +149,9 @@ public class Task {
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
                 && tags.equals(otherTask.tags)
+                && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
                 && status.equals(otherTask.status);
-
     }
 
     @Override

@@ -71,11 +71,11 @@ public class TypicalTasks {
      * Returns an {@code AddressBook} with all the typical tasks.
      */
     public static ProfPlan getTypicalProfPlan() {
-        ProfPlan ab = new ProfPlan();
+        ProfPlan pp = new ProfPlan();
         for (Task task : getTypicalTasks()) {
-            ab.addTask(task);
+            pp.addTask(task);
         }
-        return ab;
+        return pp;
     }
 
     public static List<Task> getTypicalTasks() {

@@ -7,6 +7,8 @@ import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
+
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -51,9 +53,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
-        Task task = new Task(name, priority, email, address, tagList, dueDate);
-
-
+        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>());
         return new AddCommand(task);
     }
 

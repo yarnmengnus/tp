@@ -103,8 +103,10 @@ public class EditCommand extends Command {
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
+        Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
-        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags, updatedDueDate);
+        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags,
+                        updatedDueDate, updatedChildren);
     }
 
     @Override
@@ -141,6 +143,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Set<Task> children;
         private DueDate dueDate;
 
         public EditTaskDescriptor() {}
@@ -213,7 +216,12 @@ public class EditCommand extends Command {
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
+        public void setChildren(Set<Task> children) {
+            this.children = (children != null) ? new HashSet<>(children) : null;
+        }
 
+        public Optional<Set<Task>> getChildren() {
+            return (children != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
         public void setDueDate(DueDate date) {
             this.dueDate = date;
         }
