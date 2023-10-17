@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import profplan.commons.util.AppUtil;
 
 /**
- * Represents a Task's email in the address book.
+ * Represents a Task's email in the task list.
  * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
  */
 public class Email {
