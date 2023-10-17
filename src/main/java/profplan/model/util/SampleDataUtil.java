@@ -15,7 +15,7 @@ import profplan.model.task.Phone;
 import profplan.model.task.Task;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code ProfPlan} with sample data.
  */
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
