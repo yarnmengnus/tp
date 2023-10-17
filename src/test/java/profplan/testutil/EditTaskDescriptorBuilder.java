@@ -83,9 +83,9 @@ public class EditTaskDescriptorBuilder {
         return this;
     }
 
-     /**
-     * Sets the {@code Link} of the {@code EditTaskDescriptor} that we are building.
-     */
+    /**
+    * Sets the {@code Link} of the {@code EditTaskDescriptor} that we are building.
+    */
     public EditTaskDescriptorBuilder withLink(String link) {
         descriptor.setLink(new Link(link));
         return this;
