@@ -11,8 +11,8 @@ import profplan.commons.util.AppUtil;
  * Represents a Task's due date in the address book.
  */
 public class DueDate {
-    public static final String MESSAGE_CONSTRAINTS
-        = "Due date should be of dd-MM-yyyy format, and should not be before today.";
+    public static final String MESSAGE_CONSTRAINTS =
+        "Due date should be of dd-MM-yyyy format, and should not be before today.";
 
     public final String value;
 
