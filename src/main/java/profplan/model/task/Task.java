@@ -41,15 +41,15 @@ public class Task {
     /**
      * Alternative constructor if link not specified
      */
-    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.link = new Link("-");
-    }
+    // public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    //     CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+    //     this.name = name;
+    //     this.phone = phone;
+    //     this.email = email;
+    //     this.address = address;
+    //     this.tags.addAll(tags);
+    //     this.link = new Link("-");
+    // }
 
     public Name getName() {
         return name;
