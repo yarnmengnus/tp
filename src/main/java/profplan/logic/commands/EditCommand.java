@@ -2,11 +2,11 @@ package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
-import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 
 import java.util.Collections;
 import java.util.HashSet;

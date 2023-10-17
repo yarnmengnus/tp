@@ -14,11 +14,11 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
-import profplan.model.task.DueDate;
 
 /**
  * Parses input arguments and creates a new AddCommand object
