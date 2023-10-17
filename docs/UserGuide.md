@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ProfPlan User Guide
+title: ProfPlan User-Guide
 ---
 
 
