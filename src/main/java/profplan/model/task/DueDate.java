@@ -9,7 +9,7 @@ import profplan.commons.util.AppUtil;
 
 
 public class DueDate {
-    public static final String MESSAGE_CONSTRAINTS = "Due date should be of dd/MM/yyyy format, and should not be blank.";
+    public static final String MESSAGE_CONSTRAINTS = "Due date should be of dd-MM-yyyy format, and should not be blank.";
 
     public final String value;
 
@@ -28,7 +28,7 @@ public class DueDate {
      * Returns true if a given string is a valid email.
      */
     public static boolean isValidDate(String test) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             format.parse(test);
             return true;

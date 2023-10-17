@@ -45,7 +45,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        DueDate dueDate = ParserUtil.parseDueDate("01/01/2000"); // TO CHANGE
+        DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
 
         Task task = new Task(name, phone, email, address, tagList, dueDate);
 
