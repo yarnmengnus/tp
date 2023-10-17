@@ -10,7 +10,7 @@ import profplan.commons.util.ToStringBuilder;
 import profplan.model.tag.Tag;
 
 /**
- * Represents a Task in the address book.
+ * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
@@ -28,7 +28,8 @@ public class Task {
      * Every field must be present and not null.
      */
     public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+        // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
+        CollectionUtil.requireAllNonNull(name);
         this.name = name;
         this.phone = phone;
         this.email = email;
