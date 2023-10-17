@@ -15,7 +15,7 @@ UniqueTaskList -right-> Task
 Task -up-> "*" Tag
 
 Task *--> Name
-Task *--> Phone
+Task *-->
 Task *--> Email
 Task *--> Address
 @enduml

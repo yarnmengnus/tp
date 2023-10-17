@@ -343,7 +343,7 @@ save it with `Model#setTask()`.
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = new Task(
-                taskToEdit.getName(), taskToEdit.getPhone(), taskToEdit.getEmail(),
+                taskToEdit.getName(), taskToEdit.get(), taskToEdit.getEmail(),
                 taskToEdit.getAddress(), remark, taskToEdit.getTags());
 
         model.setTask(taskToEdit, editedTask);

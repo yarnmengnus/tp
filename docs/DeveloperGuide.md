@@ -259,7 +259,7 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * has a need to manage a significant number of tasks
-* prefer to organise tasks by priority and classifications
+* prefer to organise tasks by  and classifications
 * want to link tasks together to visualise their relationships
 * prefer desktop apps over other types
 * can type fast

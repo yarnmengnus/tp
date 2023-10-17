@@ -9,7 +9,7 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
-import profplan.model.task.Phone;
+import profplan.model.task.Priority;
 import profplan.model.task.Task;
 
 /**
@@ -33,7 +33,7 @@ public class EditTaskDescriptorBuilder {
     public EditTaskDescriptorBuilder(Task task) {
         descriptor = new EditTaskDescriptor();
         descriptor.setName(task.getName());
-        descriptor.setPhone(task.getPhone());
+        descriptor.setPriority(task.getPriority());
         descriptor.setEmail(task.getEmail());
         descriptor.setAddress(task.getAddress());
         descriptor.setTags(task.getTags());
@@ -48,10 +48,10 @@ public class EditTaskDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code EditTaskDescriptor} that we are building.
+     * Sets the {@code Priority} of the {@code EditTaskDescriptor} that we are building.
      */
-    public EditTaskDescriptorBuilder withPhone(String phone) {
-        descriptor.setPhone(new Phone(phone));
+    public EditTaskDescriptorBuilder withPriority(String priority) {
+        descriptor.setPriority(new Priority(priority));
         return this;
     }
 

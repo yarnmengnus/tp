@@ -3,7 +3,7 @@ package profplan.logic.parser;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
+import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
-import profplan.model.task.Phone;
+import profplan.model.task.Priority;
 import profplan.testutil.EditTaskDescriptorBuilder;
 import profplan.testutil.TypicalIndexes;
 
@@ -61,8 +61,8 @@ public class EditCommandParserTest {
     public void parse_invalidValue_failure() {
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_NAME_DESC,
                 Name.MESSAGE_CONSTRAINTS); // invalid name
-        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_PHONE_DESC,
-                Phone.MESSAGE_CONSTRAINTS); // invalid phone
+        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_PRIORITY_DESC,
+                Priority.MESSAGE_CONSTRAINTS); // invalid priority
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_EMAIL_DESC,
                 Email.MESSAGE_CONSTRAINTS); // invalid email
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_ADDRESS_DESC,
@@ -70,9 +70,9 @@ public class EditCommandParserTest {
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_TAG_DESC,
                 Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
-        // invalid phone followed by valid email
-        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_PHONE_DESC
-                + CommandTestUtil.EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
+        // invalid priority followed by valid email
+        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_PRIORITY_DESC
+                + CommandTestUtil.EMAIL_DESC_AMY, Priority.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Task} being edited,
         // parsing it together with a valid tag results in error
@@ -86,19 +86,19 @@ public class EditCommandParserTest {
         // multiple invalid values, but only the first invalid value is captured
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_NAME_DESC
                         + CommandTestUtil.INVALID_EMAIL_DESC + CommandTestUtil.VALID_ADDRESS_AMY
-                        + CommandTestUtil.VALID_PHONE_AMY,
+                        + CommandTestUtil.VALID_PRIORITY_AMY,
                 Name.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = TypicalIndexes.INDEX_SECOND_TASK;
-        String userInput = targetIndex.getOneBased() + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
+        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
                 + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.NAME_DESC_AMY
                 + CommandTestUtil.TAG_DESC_FRIEND;
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_AMY)
-                .withPhone(CommandTestUtil.VALID_PHONE_BOB).withEmail(CommandTestUtil.VALID_EMAIL_AMY)
+                .withPriority(CommandTestUtil.VALID_PRIORITY_BOB).withEmail(CommandTestUtil.VALID_EMAIL_AMY)
                 .withAddress(CommandTestUtil.VALID_ADDRESS_AMY)
                 .withTags(CommandTestUtil.VALID_TAG_HUSBAND, CommandTestUtil.VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -109,9 +109,9 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = TypicalIndexes.INDEX_FIRST_TASK;
-        String userInput = targetIndex.getOneBased() + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.EMAIL_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_AMY;
 
-        EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withPhone(CommandTestUtil.VALID_PHONE_BOB)
+        EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withPriority(CommandTestUtil.VALID_PRIORITY_BOB)
                 .withEmail(CommandTestUtil.VALID_EMAIL_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -128,9 +128,9 @@ public class EditCommandParserTest {
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
 
-        // phone
-        userInput = targetIndex.getOneBased() + CommandTestUtil.PHONE_DESC_AMY;
-        descriptor = new EditTaskDescriptorBuilder().withPhone(CommandTestUtil.VALID_PHONE_AMY).build();
+        // priority
+        userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_AMY;
+        descriptor = new EditTaskDescriptorBuilder().withPriority(CommandTestUtil.VALID_PRIORITY_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -160,37 +160,37 @@ public class EditCommandParserTest {
 
         // valid followed by invalid
         Index targetIndex = TypicalIndexes.INDEX_FIRST_TASK;
-        String userInput = targetIndex.getOneBased() + CommandTestUtil.INVALID_PHONE_DESC
-                + CommandTestUtil.PHONE_DESC_BOB;
+        String userInput = targetIndex.getOneBased() + CommandTestUtil.INVALID_PRIORITY_DESC
+                + CommandTestUtil.PRIORITY_DESC_BOB;
 
         CommandParserTestUtil.assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
 
         // invalid followed by valid
-        userInput = targetIndex.getOneBased() + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.INVALID_PHONE_DESC;
+        userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.INVALID_PRIORITY_DESC;
 
         CommandParserTestUtil.assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
 
         // mulltiple valid fields repeated
-        userInput = targetIndex.getOneBased() + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
+        userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
                 + CommandTestUtil.EMAIL_DESC_AMY
-                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.PHONE_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
+                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.PRIORITY_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
                 + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.TAG_DESC_FRIEND
-                + CommandTestUtil.PHONE_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
+                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
                 + CommandTestUtil.TAG_DESC_HUSBAND;
 
         CommandParserTestUtil.assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY, PREFIX_EMAIL, PREFIX_ADDRESS));
 
         // multiple invalid values
-        userInput = targetIndex.getOneBased() + CommandTestUtil.INVALID_PHONE_DESC
+        userInput = targetIndex.getOneBased() + CommandTestUtil.INVALID_PRIORITY_DESC
                 + CommandTestUtil.INVALID_ADDRESS_DESC + CommandTestUtil.INVALID_EMAIL_DESC
-                + CommandTestUtil.INVALID_PHONE_DESC + CommandTestUtil.INVALID_ADDRESS_DESC
+                + CommandTestUtil.INVALID_PRIORITY_DESC + CommandTestUtil.INVALID_ADDRESS_DESC
                 + CommandTestUtil.INVALID_EMAIL_DESC;
 
         CommandParserTestUtil.assertParseFailure(parser, userInput,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY, PREFIX_EMAIL, PREFIX_ADDRESS));
     }
 
     @Test
