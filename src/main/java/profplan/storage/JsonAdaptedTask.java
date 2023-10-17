@@ -16,6 +16,7 @@ import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
+import profplan.model.task.Status;
 import profplan.model.task.Task;
 
 /**
@@ -30,6 +31,7 @@ class JsonAdaptedTask {
     private final String email;
     private final String address;
     private final String dueDate;
+    private final String status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -38,15 +40,17 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags, @JsonProperty("dueDate") String dueDate) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, 
+            @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.dueDate = dueDate;
+        this.status = status;
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.dueDate = dueDate;
     }
 
     /**
@@ -61,6 +65,8 @@ class JsonAdaptedTask {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         dueDate = source.getDueDate().value;
+        status = source.getStatus().status;
+
     }
 
     /**
@@ -115,8 +121,15 @@ class JsonAdaptedTask {
             throw new IllegalValueException(DueDate.MESSAGE_CONSTRAINTS);
         }
         final DueDate modelDueDate = new DueDate(dueDate);
+      
+        Status modelStatus = Status.UNDONE_STATUS;
+        if (status != null) {
+            modelStatus = new Status(status);
+        }
 
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDueDate);
+
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelStatus, modelTags, modelDueDate);
+
     }
 
 }

@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import profplan.model.task.Task;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of an task list
  */
 public interface ReadOnlyProfPlan {
 
