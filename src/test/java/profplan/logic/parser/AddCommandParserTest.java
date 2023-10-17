@@ -39,7 +39,8 @@ public class AddCommandParserTest {
                 .withTags(CommandTestUtil.VALID_TAG_FRIEND, CommandTestUtil.VALID_TAG_HUSBAND)
                 .build();
         CommandParserTestUtil.assertParseSuccess(parser,
-                CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
+                CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB
+                        + CommandTestUtil.EMAIL_DESC_BOB
                         + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
                         + CommandTestUtil.TAG_DESC_FRIEND,
                 new AddCommand(expectedTaskMultipleTags));
@@ -129,8 +130,8 @@ public class AddCommandParserTest {
         // zero tags
         Task expectedTask = new TaskBuilder(TypicalTasks.AMY).withTags().build();
         CommandParserTestUtil.assertParseSuccess(parser,
-                CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PRIORITY_DESC_AMY +
-                        CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY,
+                CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PRIORITY_DESC_AMY
+                        + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY,
                 new AddCommand(expectedTask));
     }
 
@@ -175,27 +176,27 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
-                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB +
-                CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND +
-                CommandTestUtil.TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
+                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
 
         // invalid priority
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.INVALID_PRIORITY_DESC + CommandTestUtil.EMAIL_DESC_BOB +
-                CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND +
-                CommandTestUtil.TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.INVALID_PRIORITY_DESC + CommandTestUtil.EMAIL_DESC_BOB
+                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
 
         // invalid email
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.INVALID_EMAIL_DESC +
-                CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND +
-                CommandTestUtil.TAG_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.INVALID_EMAIL_DESC
+                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
 
         // invalid address
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB +
-                CommandTestUtil.INVALID_ADDRESS_DESC + CommandTestUtil.TAG_DESC_HUSBAND +
-                CommandTestUtil.TAG_DESC_FRIEND, Address.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
+                + CommandTestUtil.INVALID_ADDRESS_DESC + CommandTestUtil.TAG_DESC_HUSBAND
+                + CommandTestUtil.TAG_DESC_FRIEND, Address.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB

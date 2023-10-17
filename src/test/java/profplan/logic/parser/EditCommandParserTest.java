@@ -95,9 +95,9 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = TypicalIndexes.INDEX_SECOND_TASK;
-        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB +
-                CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.EMAIL_DESC_AMY +
-                CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.NAME_DESC_AMY
+        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB
+                + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.EMAIL_DESC_AMY
+                + CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.NAME_DESC_AMY
                 + CommandTestUtil.TAG_DESC_FRIEND;
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_AMY)
@@ -112,8 +112,8 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = TypicalIndexes.INDEX_FIRST_TASK;
-        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB +
-                CommandTestUtil.EMAIL_DESC_AMY;
+        String userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_BOB
+                + CommandTestUtil.EMAIL_DESC_AMY;
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder()
                 .withPriority(CommandTestUtil.VALID_PRIORITY_BOB)
@@ -181,8 +181,9 @@ public class EditCommandParserTest {
         // mulltiple valid fields repeated
         userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_AMY + CommandTestUtil.ADDRESS_DESC_AMY
                 + CommandTestUtil.EMAIL_DESC_AMY
-                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.PRIORITY_DESC_AMY +
-                CommandTestUtil.ADDRESS_DESC_AMY + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.TAG_DESC_FRIEND
+                + CommandTestUtil.TAG_DESC_FRIEND + CommandTestUtil.PRIORITY_DESC_AMY
+                + CommandTestUtil.ADDRESS_DESC_AMY
+                + CommandTestUtil.EMAIL_DESC_AMY + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.EMAIL_DESC_BOB
                 + CommandTestUtil.TAG_DESC_HUSBAND;
 
