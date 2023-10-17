@@ -6,6 +6,7 @@ import java.util.Set;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
@@ -20,12 +21,14 @@ public class TaskBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LINK = "-";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Link link;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -36,6 +39,7 @@ public class TaskBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        link = new Link(DEFAULT_LINK);
     }
 
     /**
@@ -47,6 +51,7 @@ public class TaskBuilder {
         email = taskToCopy.getEmail();
         address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
+        link = taskToCopy.getLink();
     }
 
     /**
@@ -90,7 +95,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, phone, email, address, tags);
+        return new Task(name, phone, email, address, tags, link);
     }
 
 }

@@ -47,7 +47,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get());
+        Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
 
         Task task = new Task(name, phone, email, address, tagList, link);
 
