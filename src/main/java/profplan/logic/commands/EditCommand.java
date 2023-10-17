@@ -3,9 +3,9 @@ package profplan.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
-import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collections;
@@ -24,9 +24,9 @@ import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
-import profplan.model.task.Link;
 import profplan.model.task.Task;
 
 

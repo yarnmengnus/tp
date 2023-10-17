@@ -4,9 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
-import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;

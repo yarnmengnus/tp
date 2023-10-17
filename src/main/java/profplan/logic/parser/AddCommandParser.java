@@ -3,9 +3,9 @@ package profplan.logic.parser;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
-import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -16,9 +16,9 @@ import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
-import profplan.model.task.Link;
 import profplan.model.task.Task;
 
 /**
