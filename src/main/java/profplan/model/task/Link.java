@@ -33,10 +33,10 @@ public class Link {
      *
      * @param email A valid email address.
      */
-    public Link(String URL) {
-        requireNonNull(URL);
-        AppUtil.checkArgument(isValidLink(URL), MESSAGE_CONSTRAINTS);
-        value = URL;
+    public Link(String url) {
+        requireNonNull(url);
+        AppUtil.checkArgument(isValidLink(url), MESSAGE_CONSTRAINTS);
+        value = url;
     }
 
     /**

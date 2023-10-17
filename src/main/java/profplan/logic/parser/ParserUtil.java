@@ -13,8 +13,8 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
-import profplan.model.task.Phone;
 import profplan.model.task.Link;
+import profplan.model.task.Phone;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

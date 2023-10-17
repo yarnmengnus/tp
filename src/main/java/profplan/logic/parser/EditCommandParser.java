@@ -6,8 +6,8 @@ import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
-import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
+import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -32,7 +32,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_LINK);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, 
+                PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_LINK);
 
         Index index;
 
