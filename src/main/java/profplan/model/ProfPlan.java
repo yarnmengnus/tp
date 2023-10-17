@@ -111,6 +111,14 @@ public class ProfPlan implements ReadOnlyProfPlan {
         tasks.remove(key);
     }
 
+    /**
+     * Removes all the tasks from the Task List
+     */
+
+    public void removeTask() {
+        tasks.remove();
+    }
+
     //// util methods
 
     @Override
