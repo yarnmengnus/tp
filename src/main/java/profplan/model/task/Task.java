@@ -23,17 +23,19 @@ public class Task {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final DueDate dueDate;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags, DueDate dueDate) {
         CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.dueDate = dueDate;
     }
 
     public Name getName() {
@@ -50,6 +52,10 @@ public class Task {
 
     public Address getAddress() {
         return address;
+    }
+
+    public DueDate getDueDate() {
+        return dueDate;
     }
 
     /**
@@ -93,13 +99,14 @@ public class Task {
                 && phone.equals(otherTask.phone)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
-                && tags.equals(otherTask.tags);
+                && tags.equals(otherTask.tags)
+                && dueDate.equals(otherTask.dueDate);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, dueDate);
     }
 
     @Override
@@ -110,6 +117,7 @@ public class Task {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
+                .add("due date", dueDate)
                 .toString();
     }
 

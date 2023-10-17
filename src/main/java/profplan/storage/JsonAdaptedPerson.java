@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
@@ -29,6 +30,7 @@ class JsonAdaptedTask {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String dueDate;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -36,7 +38,7 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("tags") List<JsonAdaptedTag> tags, String dueDate) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -44,6 +46,7 @@ class JsonAdaptedTask {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.dueDate = dueDate;
     }
 
     /**
@@ -57,6 +60,7 @@ class JsonAdaptedTask {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        dueDate = source.getDueDate().value;
     }
 
     /**
@@ -103,7 +107,16 @@ class JsonAdaptedTask {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
-        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+
+        if (dueDate == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DueDate.class.getSimpleName()));
+        }
+        if (!DueDate.isValidDate(dueDate)) {
+            throw new IllegalValueException(DueDate.MESSAGE_CONSTRAINTS);
+        }
+        final DueDate modelDueDate = new DueDate(dueDate);
+
+        return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelDueDate);
     }
 
 }

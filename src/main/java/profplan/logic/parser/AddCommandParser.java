@@ -18,6 +18,7 @@ import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
+import profplan.model.task.DueDate;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -44,8 +45,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        DueDate dueDate = ParserUtil.parseDueDate("01/01/2000"); // TO CHANGE
 
-        Task task = new Task(name, phone, email, address, tagList);
+        Task task = new Task(name, phone, email, address, tagList, dueDate);
 
         return new AddCommand(task);
     }

@@ -9,6 +9,7 @@ import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
+import profplan.model.task.DueDate;
 import profplan.model.util.SampleDataUtil;
 
 /**
@@ -20,12 +21,14 @@ public class TaskBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_DUEDATE = "01/01/2000";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private DueDate dueDate;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -36,6 +39,7 @@ public class TaskBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        dueDate = new DueDate(DEFAULT_DUEDATE);
     }
 
     /**
@@ -47,6 +51,7 @@ public class TaskBuilder {
         email = taskToCopy.getEmail();
         address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
+        dueDate = taskToCopy.getDueDate();
     }
 
     /**
@@ -89,8 +94,16 @@ public class TaskBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code DueDate} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withDueDate(String date) {
+        this.dueDate = new DueDate(date);
+        return this;
+    }
+
     public Task build() {
-        return new Task(name, phone, email, address, tags);
+        return new Task(name, phone, email, address, tags, dueDate);
     }
 
 }
