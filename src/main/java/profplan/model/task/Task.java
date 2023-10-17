@@ -22,10 +22,11 @@ public class Task {
 
     // Data fields
     private final Address address;
+    private Status status;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
-     * Every field must be present and not null.
+     * Every field except status must be present and not null.
      */
     public Task(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
@@ -34,6 +35,20 @@ public class Task {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.status = Status.UNDONE_STATUS;
+        this.tags.addAll(tags);
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Task(Name name, Phone phone, Email email, Address address, Status status, Set<Tag> tags) {
+        CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.status = status;
         this.tags.addAll(tags);
     }
 
@@ -51,6 +66,14 @@ public class Task {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     /**
@@ -94,13 +117,14 @@ public class Task {
                 && phone.equals(otherTask.phone)
                 && email.equals(otherTask.email)
                 && address.equals(otherTask.address)
+                && status.equals(otherTask.status)
                 && tags.equals(otherTask.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, status, tags);
     }
 
     @Override
@@ -110,6 +134,7 @@ public class Task {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
+                .add("status", status)
                 .add("tags", tags)
                 .toString();
     }
