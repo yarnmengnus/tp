@@ -11,6 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
 import profplan.commons.util.CollectionUtil;
+import profplan.model.task.Status;
 import profplan.model.task.Task;
 
 /**
@@ -111,14 +112,16 @@ public class ModelManager implements Model {
 
     @Override
     public void markTask(int index) {
-        profPlan.markTask(index);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        Task temp = profPlan.getTaskList().get(index);
+        temp.setStatus(Status.DONE_STATUS);
+        profPlan.setTask(profPlan.getTaskList().get(index), temp);
     }
 
     @Override
     public void unmarkTask(int index) {
-        profPlan.unmarkTask(index);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        Task temp = profPlan.getTaskList().get(index);
+        temp.setStatus(Status.UNDONE_STATUS);
+        profPlan.setTask(profPlan.getTaskList().get(index), temp);
     }
 
     @Override
