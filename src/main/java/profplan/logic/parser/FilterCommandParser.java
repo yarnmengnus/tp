@@ -10,7 +10,7 @@ import profplan.model.task.TasksDueBeforeDatePredicate;
 /**
  * Parses input arguments and creates a new FilterCommand object
  */
-public class FilterCommandParser {
+public class FilterCommandParser implements Parser<FilterCommand> {
 
     /**
      * Parses input, which should be a valid DueDate value
