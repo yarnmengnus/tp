@@ -20,7 +20,7 @@ public class TasksDueBeforeDatePredicate implements Predicate<Task> {
 
     @Override
     public boolean test(Task task) {
-        return task.getDueDate().isBefore(date);
+        return task.getDueDate().isIncludedorBefore(date);
     }
 
     @Override

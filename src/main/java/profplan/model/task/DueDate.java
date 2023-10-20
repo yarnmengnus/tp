@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import profplan.commons.util.AppUtil;
 
@@ -12,11 +13,16 @@ import profplan.commons.util.AppUtil;
  */
 public class DueDate {
     public static final String MESSAGE_CONSTRAINTS =
-        "Due date should be of dd-MM-yyyy format, and should not be before today.";
+        "Due date should be of dd-MM-yyyy format, and should not be after the year 2030";
 
-    public final String value;
+    public static final String DATE_REGEX = "(0[1-9]|[12][0-9]|3[01])"; // specify date beween 01 and 31
+    public static final String MONTH_REGEX = "(0[1-9]|1[1,2])"; // specify month between 01 and 12
+    public static final String YEAR_REGEX = "(2000|20[0-2][0-9]|2030)";
+    public static final String VALIDATION_REGEX = DATE_REGEX + "-" + MONTH_REGEX + "-" + YEAR_REGEX;
 
     private static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+    public final String value;
 
     /**
      * Constructs an {@code Address}.
@@ -35,18 +41,24 @@ public class DueDate {
     public static boolean isValidDate(String test) {
         try {
             format.parse(test);
-            return true;
+            // Test regex
+            return test.matches(VALIDATION_REGEX);
         } catch (ParseException e) {
             return false;
         }
     }
 
-    public boolean isBefore(DueDate otherDate) {
-        try{
-            return format.parse(this.value).before(format.parse(otherDate.value));
+    /**
+     * Checks whether the current date is before, on equals the given date
+     */
+    public boolean isIncludedorBefore(DueDate otherDate) {
+        try {
+            Date parsedDate = format.parse(this.value);
+            Date parsedOtherDate = format.parse(otherDate.value);
+            return parsedDate.before(parsedOtherDate) || parsedDate.equals(parsedOtherDate);
         } catch (ParseException e) {
             return false;
-        }  
+        }
     }
 
     @Override

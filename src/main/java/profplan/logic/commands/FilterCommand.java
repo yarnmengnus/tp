@@ -4,27 +4,32 @@ import static java.util.Objects.requireNonNull;
 
 import profplan.commons.util.ToStringBuilder;
 import profplan.model.Model;
+import profplan.model.task.DueDate;
 import profplan.model.task.TasksDueBeforeDatePredicate;
 
 /**
- * Finds and lists all tasks in task list whose due date falls before the argument due date.
+ * Filters for all tasks in task list whose due date falls before the argument due date.
  */
 public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters for all tasks before "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters for all tasks before and on "
             + "the duedate given and displays them as a list with index numbers.\n"
             + "Parameters: [DUEDATE]\n"
-            + "Example: " + COMMAND_WORD + " 01-01-2023";
+            + "Example: " + COMMAND_WORD + " 01-01-2023\n"
+            + DueDate.MESSAGE_CONSTRAINTS;
+
+    private String messageSuccess;
 
     private final TasksDueBeforeDatePredicate datePredicate;
 
-    public final String MESSAGE_SUCCESS;
-
+    /**
+     * Initialise FilterCommand object
+     */
     public FilterCommand(TasksDueBeforeDatePredicate datePredicate) {
         this.datePredicate = datePredicate;
-        this.MESSAGE_SUCCESS = "Here are your tasks before " + datePredicate.getDate();
+        this.messageSuccess = "Here are your tasks before " + datePredicate.getDate();
     }
 
     @Override
@@ -32,7 +37,7 @@ public class FilterCommand extends Command {
         requireNonNull(model);
         model.updateFilteredTaskList(datePredicate);
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, model.getFilteredTaskList().size()));
+                String.format(messageSuccess, model.getFilteredTaskList().size()));
     }
 
     @Override
