@@ -16,6 +16,8 @@ public class DueDate {
 
     public final String value;
 
+    private static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
     /**
      * Constructs an {@code Address}.
      *
@@ -31,13 +33,20 @@ public class DueDate {
      * Returns true if a given string is a valid email.
      */
     public static boolean isValidDate(String test) {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             format.parse(test);
             return true;
         } catch (ParseException e) {
             return false;
         }
+    }
+
+    public boolean isBefore(DueDate otherDate) {
+        try{
+            return format.parse(this.value).before(format.parse(otherDate.value));
+        } catch (ParseException e) {
+            return false;
+        }  
     }
 
     @Override
