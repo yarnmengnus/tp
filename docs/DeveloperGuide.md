@@ -101,7 +101,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to an `ProfPlanParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a task).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
@@ -111,7 +111,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <img src="images/ParserClasses.png" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `ProfPlanParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `ProfPlanParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -154,6 +154,80 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+## Mark/Unmark feature
+### Actual implementation
+The Mark/Unmark feature in ProfPlan allows users to mark a task as done or unmark it to indicate that it is not completed. Below, we describe the implementation details for this feature through a uml class and state diagram:
+
+### UML Class Diagram
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="flex: 1; margin-right: 5px;">
+        <img src="images/MarkCommandClassDiagram.png" alt="MarkCommand Class Diagram" width="380">
+    </div>
+    <div style="flex: 1;">
+        <img src="images/UnmarkCommandClassDiagram.png" alt="UnmarkCommand Class Diagram" width="380">
+    </div>
+</div>
+
+
+The `MarkCommand` is a part of the ProfPlan application, a task management tool. The `MarkCommand` allows users to mark a task as done by specifying the task index. It is a critical part of the application's functionality, as it helps users manage and track their tasks efficiently.
+
+### Code Structure
+The code structure for the `MarkCommand` is well-organized. It consists of the following components:
+- `MarkCommand` class: Represents the command itself.
+- `MarkCommandParser` class: Responsible for parsing user input and creating `MarkCommand` instances.
+- `Status` class: Represents the status of a task (either "done" or "undone").
+- `Task` class: Represents a task, and it contains the status that the `MarkCommand` manipulates.
+
+### Class Details <a name="class-details"></a>
+### `MarkCommand` <a name="markcommand"></a>
+- Purpose: Represents the `mark` command that allows users to mark a task as done.
+- Key Methods:
+    - `execute(Model model)`: Executes the `MarkCommand` by marking the task as done in the model.
+    - `equals(Object other)`: Compares two `MarkCommand` objects for equality.
+    - `toString()`: Returns a string representation of the `MarkCommand`.
+
+### `MarkCommandParser` <a name="markcommandparser"></a>
+- Purpose: Parses user input to create `MarkCommand` instances.
+- Key Methods:
+    - `parse(String args)`: Parses the user input and returns a `MarkCommand` if the input is valid.
+
+### `Status` <a name="status"></a>
+- Purpose: Represents the status of a task. It can be either "done" or "undone."
+- Key Methods:
+    - `isValidStatus(String test)`: Checks if a given status is valid according to the predefined regex.
+
+### `Task` <a name="task"></a>
+- Purpose: Represents a task, and it contains the status that the `MarkCommand` changes.
+- Key Methods:
+    - `setStatus(Status status)`: Sets the status of the task.
+    - `Task(Task task)`: Constructor for creating a new task as a copy of an existing task.
+
+### Sequence Diagram <a name="sequence-diagram"></a>
+The sequence diagram provides an overview of how the `MarkCommand` is executed and interacts with other components.
+
+![Sequence Diagram](images/MarkCommandSequenceDiagram.png)
+
+Here's a breakdown of the sequence:
+1. The `LogicManager` receives the command "mark 1" from the user.
+2. The `ProfPlanParser` parses the command and recognizes it as a `MarkCommand`.
+3. The `MarkCommandParser` parses the argument "1" and creates a `MarkCommand`.
+4. The `MarkCommand` is executed.
+5. The `Model` is updated by marking the task as done.
+6. A `CommandResult` is created to provide feedback to the user.
+7. The result is returned to the `LogicManager`.
+
+### Usage <a name="usage"></a>
+To use the `MarkCommand` in the ProfPlan application, you can execute the following steps:
+
+1. Enter the "mark" command followed by the task index you want to mark as done. For example, "mark 1" marks the task with index 1 as done.
+
+2. The `MarkCommand` will handle the task marking process and update the task status in the model.
+
+3. The application will provide feedback, indicating the successful marking of the task as done.
+
+
+
 
 ### \[Proposed\] Undo/redo feature
 
