@@ -40,6 +40,9 @@ public class UnmarkCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (taskNumber > model.getFilteredTaskList().size()) {
+            throw new CommandException("Task not found please enter a valid Task Number.");
+        }
         model.unmarkTask(taskNumber - 1);
         return new CommandResult(MESSAGE_SUCCESS);
     }
