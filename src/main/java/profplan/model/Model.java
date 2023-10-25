@@ -109,4 +109,10 @@ public interface Model {
      * Sorts the task by nearest deadline.
      */
     void sortTaskByDeadline();
+
+    /**
+     * Sorts the task based on priority.
+     */
+    void sortTaskByPriority();
+
 }

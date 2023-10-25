@@ -3,6 +3,8 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -149,7 +151,12 @@ public class ModelManager implements Model {
 
     @Override
     public void sortTaskByDeadline() {
-        profPlan.setTasks(profPlan.getTaskList().sorted());
+        profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
+    }
+
+    @Override
+    public void sortTaskByPriority() {
+        profPlan.getTaskList().sort(Comparator.comparing(Task::getPriority));
     }
 
     @Override
