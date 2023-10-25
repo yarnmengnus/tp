@@ -3,7 +3,6 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
