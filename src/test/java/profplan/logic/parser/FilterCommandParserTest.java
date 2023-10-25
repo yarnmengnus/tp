@@ -23,10 +23,10 @@ public class FilterCommandParserTest {
         // no leading and trailing whitespaces
         FilterCommand expectedFilterCommand =
                 new FilterCommand(new TaskDueDatePredicate(new DueDate("01-01-2000")));
-        CommandParserTestUtil.assertParseSuccess(parser, "01-01-2000", expectedFilterCommand);
+        CommandParserTestUtil.assertParseSuccess(parser, " d/01-01-2000", expectedFilterCommand);
 
         // multiple whitespaces between keywords
-        CommandParserTestUtil.assertParseSuccess(parser, " \n 01-01-2000\t", expectedFilterCommand);
+        CommandParserTestUtil.assertParseSuccess(parser, " \n d/01-01-2000\t", expectedFilterCommand);
     }
 
 }

@@ -1,12 +1,11 @@
 package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
+import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.function.Predicate;
-
-import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
-import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
-import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
 import profplan.commons.util.ToStringBuilder;
 import profplan.model.Model;
@@ -22,7 +21,8 @@ public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters for tasks with one of the following criteria: \n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Filters for tasks with one of the following criteria: \n"
             + "[" + PREFIX_STATUS + "STATUS]" + " (done/undone)\n"
             + "[" + PREFIX_DUEDATE + "DUEDATE]" + " (dd-MM-yyyy)\n"
             + "[" + PREFIX_PRIORITY + "PRIORITY]" + " (integer between 1 and 10)\n"

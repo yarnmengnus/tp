@@ -44,7 +44,7 @@ public class FilterCommandTest {
     public void toStringMethod() {
         TaskDueDatePredicate predicate = new TaskDueDatePredicate(new DueDate("01-01-2000"));
         FilterCommand filterCommand = new FilterCommand(predicate);
-        String expected = FilterCommand.class.getCanonicalName() + "{date predicate=" + predicate + "}";
+        String expected = FilterCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, filterCommand.toString());
     }
 }

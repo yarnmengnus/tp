@@ -1,10 +1,9 @@
 package profplan.logic.parser;
 
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
-import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.function.Predicate;
 
@@ -21,7 +20,7 @@ import profplan.model.task.TaskStatusPredicate;
 public class FilterCommandParser implements Parser<FilterCommand> {
 
     /**
-     * Parses input, which should be a valid DueDate value
+     * Parses input, which should be a valid Status, DueDate, or Priority
      */
     public FilterCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
@@ -33,10 +32,11 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
 
         Predicate<?> pred = null;
- 
+
         try {
+
             if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            pred = new TaskPriorityPredicate(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
+                pred = new TaskPriorityPredicate(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
             }
 
             if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
