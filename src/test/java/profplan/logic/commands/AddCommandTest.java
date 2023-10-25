@@ -125,6 +125,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void markTask(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void unmarkTask(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setProfPlan(ReadOnlyProfPlan newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -141,6 +151,11 @@ public class AddCommandTest {
 
         @Override
         public void deleteTask(Task target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteTask() {
             throw new AssertionError("This method should not be called.");
         }
 

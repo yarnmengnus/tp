@@ -11,10 +11,11 @@ import profplan.commons.util.StringUtil;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
 import profplan.model.task.Name;
-import profplan.model.task.Phone;
+import profplan.model.task.Priority;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -52,18 +53,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String priority} into a {@code Priority}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException if the given {@code priority} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+    public static Priority parsePriority(String priority) throws ParseException {
+        requireNonNull(priority);
+        String trimmedPriority = priority.trim();
+        if (!Priority.isValidPriority(trimmedPriority)) {
+            throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
-        return new Phone(trimmedPhone);
+        return new Priority(trimmedPriority);
     }
 
     /**
@@ -136,5 +137,20 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Link(trimmedLink);
+    }
+
+     /** 
+     * Parses a {@code String date} into a {@code DueDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static DueDate parseDueDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!DueDate.isValidDate(trimmedDate)) {
+            throw new ParseException(DueDate.MESSAGE_CONSTRAINTS);
+        }
+        return new DueDate(trimmedDate);
     }
 }

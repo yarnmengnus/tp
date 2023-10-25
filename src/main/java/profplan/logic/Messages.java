@@ -37,8 +37,8 @@ public class Messages {
     public static String format(Task task) {
         final StringBuilder builder = new StringBuilder();
         builder.append(task.getName())
-                .append("; Phone: ")
-                .append(task.getPhone())
+                .append("; Priority: ")
+                .append(task.getPriority())
                 .append("; Email: ")
                 .append(task.getEmail())
                 .append("; Address: ")

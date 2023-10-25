@@ -2,10 +2,11 @@ package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
-import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
+import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collections;
@@ -23,16 +24,17 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
 import profplan.model.task.Name;
-import profplan.model.task.Phone;
+import profplan.model.task.Priority;
 import profplan.model.task.Task;
 
 
 
 /**
- * Edits the details of an existing task in the address book.
+ * Edits the details of an existing task in the task list.
  */
 public class EditCommand extends Command {
 
@@ -43,18 +45,19 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_DUEDATE + "DUEDATE...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
+            + PREFIX_PRIORITY + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
 
     private final Index index;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -100,13 +103,15 @@ public class EditCommand extends Command {
         assert taskToEdit != null;
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
-        Phone updatedPhone = editTaskDescriptor.getPhone().orElse(taskToEdit.getPhone());
+        Priority updatedPriority = editTaskDescriptor.getPriority().orElse(taskToEdit.getPriority());
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
-
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedLink);
+        Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
+        DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
+        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags,
+                        updatedDueDate, updatedChildren, updatedLink);
     }
 
     @Override
@@ -139,10 +144,12 @@ public class EditCommand extends Command {
      */
     public static class EditTaskDescriptor {
         private Name name;
-        private Phone phone;
+        private Priority priority;
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private Set<Task> children;
+        private DueDate dueDate;
         private Link link;
 
         public EditTaskDescriptor() {}
@@ -153,18 +160,19 @@ public class EditCommand extends Command {
          */
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.phone);
+            setPriority(toCopy.priority);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setLink(toCopy.link);
             setTags(toCopy.tags);
+            setDueDate(toCopy.dueDate);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, link);
+            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags, dueDate, link);
         }
 
         public void setName(Name name) {
@@ -175,12 +183,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setPriority(Priority priority) {
+            this.priority = priority;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<Priority> getPriority() {
+            return Optional.ofNullable(priority);
         }
 
         public void setEmail(Email email) {
@@ -215,6 +223,20 @@ public class EditCommand extends Command {
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
+        public void setChildren(Set<Task> children) {
+            this.children = (children != null) ? new HashSet<>(children) : null;
+        }
+
+        public Optional<Set<Task>> getChildren() {
+            return (children != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
+        }
+        public void setDueDate(DueDate date) {
+            this.dueDate = date;
+        }
+
+        public Optional<DueDate> getDueDate() {
+            return Optional.ofNullable(dueDate);
+        }
 
         public void setLink(Link link) {
             this.link = link;
@@ -237,7 +259,7 @@ public class EditCommand extends Command {
 
             EditTaskDescriptor otherEditTaskDescriptor = (EditTaskDescriptor) other;
             return Objects.equals(name, otherEditTaskDescriptor.name)
-                    && Objects.equals(phone, otherEditTaskDescriptor.phone)
+                    && Objects.equals(priority, otherEditTaskDescriptor.priority)
                     && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(address, otherEditTaskDescriptor.address)
                     && Objects.equals(tags, otherEditTaskDescriptor.tags)
@@ -248,7 +270,7 @@ public class EditCommand extends Command {
         public String toString() {
             return new ToStringBuilder(this)
                     .add("name", name)
-                    .add("phone", phone)
+                    .add("priority", priority)
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)

@@ -69,12 +69,12 @@ public class JsonProfPlanStorage implements ProfPlanStorage {
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveProfPlan(ReadOnlyProfPlan addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveProfPlan(ReadOnlyProfPlan profPlan, Path filePath) throws IOException {
+        requireNonNull(profPlan);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableProfPlan(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableProfPlan(profPlan), filePath);
     }
 
 }
