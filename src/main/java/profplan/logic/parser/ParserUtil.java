@@ -139,7 +139,7 @@ public class ParserUtil {
         return new Link(trimmedLink);
     }
 
-     /** 
+     /**
      * Parses a {@code String date} into a {@code DueDate}.
      * Leading and trailing whitespaces will be trimmed.
      *
