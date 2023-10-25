@@ -3,6 +3,7 @@ package profplan.logic.parser;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
@@ -18,6 +19,7 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Task;
@@ -35,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_TAG);
+                        PREFIX_TAG, PREFIX_LINK);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -51,8 +53,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000")
                 : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
         DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
-        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>());
+
+        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(), link);
         return new AddCommand(task);
     }
 

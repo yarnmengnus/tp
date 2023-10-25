@@ -22,6 +22,7 @@ public class Task {
 
     // Data fields
     private final Address address;
+    private final Link link;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Task> children = new HashSet<>();
@@ -31,7 +32,7 @@ public class Task {
      * Every field except status must be present and not null.
      */
     public Task(Name name, Priority priority, Email email, Address address,
-                Set<Tag> tags, DueDate dueDate, Set<Task> children) {
+                Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
@@ -42,13 +43,14 @@ public class Task {
         this.tags.addAll(tags);
         this.children.addAll(children);
         this.dueDate = dueDate;
+        this.link = link;
     }
 
     /**
      * Every field must be present and not null.
      */
     public Task(Name name, Priority priority, Email email, Address address, Status status, Set<Tag> tags,
-                DueDate dueDate, Set<Task> children) {
+                DueDate dueDate, Set<Task> children, Link link) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
@@ -59,6 +61,7 @@ public class Task {
         this.tags.addAll(tags);
         this.dueDate = dueDate;
         this.children.addAll(children);
+        this.link = link;
     }
 
     /**
@@ -74,6 +77,7 @@ public class Task {
         this.children.addAll(task.getChildren());
         this.status = task.status;
         this.dueDate = task.dueDate;
+        this.link = task.link;
     }
 
     public Name getName() {
@@ -92,6 +96,10 @@ public class Task {
         return address;
     }
 
+    public Link getLink() {
+        return link;
+    }
+
     public DueDate getDueDate() {
         return dueDate;
     }
@@ -102,7 +110,6 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
-
     }
 
     /**
@@ -153,13 +160,14 @@ public class Task {
                 && tags.equals(otherTask.tags)
                 && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
-                && status.equals(otherTask.status);
+                && status.equals(otherTask.status)
+                && link.equals(otherTask.link);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, priority, email, address, status, tags, dueDate);
+        return Objects.hash(name, priority, email, address, status, tags, dueDate, link);
     }
 
     @Override
@@ -172,6 +180,7 @@ public class Task {
                 .add("status", status)
                 .add("tags", tags)
                 .add("dueDate", dueDate)
+                .add("link", link)
                 .toString();
     }
 

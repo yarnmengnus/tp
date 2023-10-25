@@ -14,6 +14,7 @@ import profplan.logic.commands.Command;
 import profplan.logic.commands.DeleteCommand;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.ExitCommand;
+import profplan.logic.commands.FilterCommand;
 import profplan.logic.commands.FindCommand;
 import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
@@ -76,6 +77,9 @@ public class ProfPlanParser {
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
+
+        case FilterCommand.COMMAND_WORD:
+            return new FilterCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();

@@ -98,6 +98,7 @@ public class TaskTest {
                 + ", status=" + TypicalTasks.ALICE.getStatus()
                 + ", tags=" + TypicalTasks.ALICE.getTags()
                 + ", dueDate=" + TypicalTasks.ALICE.getDueDate()
+                + ", link=" + TypicalTasks.ALICE.getLink()
                 + "}";
         assertEquals(expected, TypicalTasks.ALICE.toString());
     }
