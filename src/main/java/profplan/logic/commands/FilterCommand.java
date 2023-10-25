@@ -2,10 +2,18 @@ package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.function.Predicate;
+
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
+import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
+import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
+
 import profplan.commons.util.ToStringBuilder;
 import profplan.model.Model;
-import profplan.model.task.DueDate;
-import profplan.model.task.TasksDueBeforeDatePredicate;
+import profplan.model.task.TaskDueDatePredicate;
+import profplan.model.task.TaskPriorityPredicate;
+import profplan.model.task.TaskStatusPredicate;
+
 
 /**
  * Filters for all tasks in task list whose due date falls before the argument due date.
@@ -14,28 +22,46 @@ public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters for all tasks before and on "
-            + "the duedate given and displays them as a list with index numbers.\n"
-            + "Parameters: [DUEDATE]\n"
-            + "Example: " + COMMAND_WORD + " 01-01-2023\n"
-            + DueDate.MESSAGE_CONSTRAINTS;
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters for tasks with one of the following criteria: \n"
+            + "[" + PREFIX_STATUS + "STATUS]" + " (done/undone)\n"
+            + "[" + PREFIX_DUEDATE + "DUEDATE]" + " (dd-MM-yyyy)\n"
+            + "[" + PREFIX_PRIORITY + "PRIORITY]" + " (integer between 1 and 10)\n"
+            + "And displays them as a list with index numbers.\n"
+            + "Example: " + COMMAND_WORD + " d/01-01-2024";
 
-    private String messageSuccess;
+    private String messageSuccess = "";
 
-    private final TasksDueBeforeDatePredicate datePredicate;
+    private final Predicate<?> predicate;
 
     /**
      * Initialise FilterCommand object
      */
-    public FilterCommand(TasksDueBeforeDatePredicate datePredicate) {
-        this.datePredicate = datePredicate;
-        this.messageSuccess = "Here are your tasks before " + datePredicate.getDate();
+    public FilterCommand(Predicate<?> predicate) {
+        this.predicate = predicate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredTaskList(datePredicate);
+
+        if (predicate instanceof TaskDueDatePredicate) {
+            TaskDueDatePredicate newPred = (TaskDueDatePredicate) predicate;
+            this.messageSuccess = "Here are your tasks before " + newPred.getDate() + "!";
+            model.updateFilteredTaskList(newPred);
+        }
+
+        if (predicate instanceof TaskPriorityPredicate) {
+            TaskPriorityPredicate newPred = (TaskPriorityPredicate) predicate;
+            this.messageSuccess = "Here are your tasks of priority " + newPred.getPriority() + "!";
+            model.updateFilteredTaskList(newPred);
+        }
+
+        if (predicate instanceof TaskStatusPredicate) {
+            TaskStatusPredicate newPred = (TaskStatusPredicate) predicate;
+            this.messageSuccess = "Here are your tasks that are " + newPred.getStatus() + "!";
+            model.updateFilteredTaskList(newPred);
+        }
+
         return new CommandResult(
                 String.format(messageSuccess, model.getFilteredTaskList().size()));
     }
@@ -52,13 +78,13 @@ public class FilterCommand extends Command {
         }
 
         FilterCommand otherCommand = (FilterCommand) other;
-        return datePredicate.equals(otherCommand.datePredicate);
+        return predicate.equals(otherCommand.predicate);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("date predicate", datePredicate)
+                .add("predicate", predicate)
                 .toString();
     }
 }

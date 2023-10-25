@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import profplan.model.task.DueDate;
-import profplan.model.task.TasksDueBeforeDatePredicate;
+import profplan.model.task.TaskDueDatePredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FilterCommand}.
@@ -15,10 +15,10 @@ import profplan.model.task.TasksDueBeforeDatePredicate;
 public class FilterCommandTest {
     @Test
     public void equals() {
-        TasksDueBeforeDatePredicate firstPredicate =
-                new TasksDueBeforeDatePredicate(new DueDate("01-01-2000"));
-        TasksDueBeforeDatePredicate secondPredicate =
-                new TasksDueBeforeDatePredicate(new DueDate("02-02-2002"));
+        TaskDueDatePredicate firstPredicate =
+                new TaskDueDatePredicate(new DueDate("01-01-2000"));
+        TaskDueDatePredicate secondPredicate =
+                new TaskDueDatePredicate(new DueDate("02-02-2002"));
 
         FilterCommand filterFirstCommand = new FilterCommand(firstPredicate);
         FilterCommand filterSecondCommand = new FilterCommand(secondPredicate);
@@ -42,7 +42,7 @@ public class FilterCommandTest {
 
     @Test
     public void toStringMethod() {
-        TasksDueBeforeDatePredicate predicate = new TasksDueBeforeDatePredicate(new DueDate("01-01-2000"));
+        TaskDueDatePredicate predicate = new TaskDueDatePredicate(new DueDate("01-01-2000"));
         FilterCommand filterCommand = new FilterCommand(predicate);
         String expected = FilterCommand.class.getCanonicalName() + "{date predicate=" + predicate + "}";
         assertEquals(expected, filterCommand.toString());

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import profplan.logic.commands.FilterCommand;
 import profplan.model.task.DueDate;
-import profplan.model.task.TasksDueBeforeDatePredicate;
+import profplan.model.task.TaskDueDatePredicate;
 
 public class FilterCommandParserTest {
 
@@ -22,7 +22,7 @@ public class FilterCommandParserTest {
     public void parse_validArgs_returnsFilterCommand() {
         // no leading and trailing whitespaces
         FilterCommand expectedFilterCommand =
-                new FilterCommand(new TasksDueBeforeDatePredicate(new DueDate("01-01-2000")));
+                new FilterCommand(new TaskDueDatePredicate(new DueDate("01-01-2000")));
         CommandParserTestUtil.assertParseSuccess(parser, "01-01-2000", expectedFilterCommand);
 
         // multiple whitespaces between keywords
