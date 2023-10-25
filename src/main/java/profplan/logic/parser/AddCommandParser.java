@@ -55,7 +55,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
         DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
-      
+
         Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(), link);
         return new AddCommand(task);
     }
