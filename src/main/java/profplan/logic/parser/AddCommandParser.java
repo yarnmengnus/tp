@@ -2,6 +2,7 @@ package profplan.logic.parser;
 
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
@@ -37,7 +38,7 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_TAG, PREFIX_LINK);
+                        PREFIX_TAG, PREFIX_DUEDATE, PREFIX_LINK);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -53,8 +54,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000")
                 : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        DueDate dueDate = ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).orElse("01-01-2000"));
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
-        DueDate dueDate = ParserUtil.parseDueDate("01-01-2000"); // TO CHANGE
 
         Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(), link);
         return new AddCommand(task);
