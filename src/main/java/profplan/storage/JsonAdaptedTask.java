@@ -137,7 +137,7 @@ class JsonAdaptedTask {
         }
 
         final Link modelLink = new Link(linkToLoad);
-      
+
         final Set<Task> modelChildren = new HashSet<>(taskChildren);
 
         if (dueDate == null) {
