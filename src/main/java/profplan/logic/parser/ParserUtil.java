@@ -139,12 +139,12 @@ public class ParserUtil {
         return new Link(trimmedLink);
     }
 
-     /**
-     * Parses a {@code String date} into a {@code DueDate}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code date} is invalid.
-     */
+    /**
+    * Parses a {@code String date} into a {@code DueDate}.
+    * Leading and trailing whitespaces will be trimmed.
+    *
+    * @throws ParseException if the given {@code date} is invalid.
+    */
     public static DueDate parseDueDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
