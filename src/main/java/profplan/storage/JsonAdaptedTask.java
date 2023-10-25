@@ -14,6 +14,7 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
@@ -32,6 +33,7 @@ class JsonAdaptedTask {
     private final String address;
     private final String dueDate;
     private final String status;
+    private final String link;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<JsonAdaptedTask> children = new ArrayList<JsonAdaptedTask>();
 
@@ -43,13 +45,14 @@ class JsonAdaptedTask {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
             @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
-            @JsonProperty("children") List<JsonAdaptedTask> children) {
+            @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link) {
         this.name = name;
         this.priority = priority;
         this.email = email;
         this.address = address;
         this.dueDate = dueDate;
         this.status = status;
+        this.link = link;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -69,6 +72,7 @@ class JsonAdaptedTask {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        link = source.getLink().value;
         children.addAll(source.getChildren().stream()
                 .map(JsonAdaptedTask::new)
                 .collect(Collectors.toList()));
@@ -127,8 +131,14 @@ class JsonAdaptedTask {
 
         final Set<Tag> modelTags = new HashSet<>(taskTags);
 
-        final Set<Task> modelChildren = new HashSet<>(taskChildren);
+        String linkToLoad = link;
+        if (link == null) {
+            linkToLoad = "-";
+        }
 
+        final Link modelLink = new Link(linkToLoad);
+
+        final Set<Task> modelChildren = new HashSet<>(taskChildren);
 
         if (dueDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DueDate.class.getSimpleName()));
@@ -142,7 +152,7 @@ class JsonAdaptedTask {
             modelStatus = new Status(status);
         }
         return new Task(modelName, modelPriority, modelEmail,
-                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren);
+                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren, modelLink);
     }
 
 }

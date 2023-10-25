@@ -8,6 +8,7 @@ import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Task;
@@ -37,6 +38,7 @@ public class EditTaskDescriptorBuilder {
         descriptor.setEmail(task.getEmail());
         descriptor.setAddress(task.getAddress());
         descriptor.setTags(task.getTags());
+        descriptor.setLink(task.getLink());
     }
 
     /**
@@ -78,6 +80,14 @@ public class EditTaskDescriptorBuilder {
     public EditTaskDescriptorBuilder withTags(String... tags) {
         Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
         descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+    * Sets the {@code Link} of the {@code EditTaskDescriptor} that we are building.
+    */
+    public EditTaskDescriptorBuilder withLink(String link) {
+        descriptor.setLink(new Link(link));
         return this;
     }
 

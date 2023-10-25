@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
@@ -25,9 +26,11 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Task;
+
 
 
 /**
@@ -45,7 +48,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]"
+            + "[" + PREFIX_LINK + "LINK] "
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "[" + PREFIX_DUEDATE + "DUEDATE...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "91234567 "
@@ -102,11 +106,12 @@ public class EditCommand extends Command {
         Priority updatedPriority = editTaskDescriptor.getPriority().orElse(taskToEdit.getPriority());
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
+        Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
         Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
         return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags,
-                        updatedDueDate, updatedChildren);
+                        updatedDueDate, updatedChildren, updatedLink);
     }
 
     @Override
@@ -145,6 +150,7 @@ public class EditCommand extends Command {
         private Set<Tag> tags;
         private Set<Task> children;
         private DueDate dueDate;
+        private Link link;
 
         public EditTaskDescriptor() {}
 
@@ -157,6 +163,7 @@ public class EditCommand extends Command {
             setPriority(toCopy.priority);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setLink(toCopy.link);
             setTags(toCopy.tags);
             setDueDate(toCopy.dueDate);
         }
@@ -165,7 +172,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags, dueDate);
+            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags, dueDate, link);
         }
 
         public void setName(Name name) {
@@ -231,6 +238,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(dueDate);
         }
 
+        public void setLink(Link link) {
+            this.link = link;
+        }
+
+        public Optional<Link> getLink() {
+            return Optional.ofNullable(link);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -247,7 +262,8 @@ public class EditCommand extends Command {
                     && Objects.equals(priority, otherEditTaskDescriptor.priority)
                     && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(address, otherEditTaskDescriptor.address)
-                    && Objects.equals(tags, otherEditTaskDescriptor.tags);
+                    && Objects.equals(tags, otherEditTaskDescriptor.tags)
+                    && Objects.equals(link, otherEditTaskDescriptor.link);
         }
 
         @Override
@@ -258,6 +274,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("link", link)
                     .toString();
         }
     }

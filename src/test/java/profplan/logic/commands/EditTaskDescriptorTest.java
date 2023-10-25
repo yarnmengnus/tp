@@ -65,7 +65,8 @@ public class EditTaskDescriptorTest {
                 + editTaskDescriptor.getPriority().orElse(null) + ", email="
                 + editTaskDescriptor.getEmail().orElse(null) + ", address="
                 + editTaskDescriptor.getAddress().orElse(null) + ", tags="
-                + editTaskDescriptor.getTags().orElse(null) + "}";
+                + editTaskDescriptor.getTags().orElse(null) + ", link="
+                + editTaskDescriptor.getLink().orElse(null) + "}";
         assertEquals(expected, editTaskDescriptor.toString());
     }
 }

@@ -7,6 +7,7 @@ import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Task;
@@ -22,6 +23,8 @@ public class TaskBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_DUEDATE = "01-01-2000";
+    public static final String DEFAULT_LINK = "-";
+
 
     private Name name;
     private Priority priority;
@@ -30,6 +33,7 @@ public class TaskBuilder {
     private Set<Tag> tags;
     private Set<Task> children;
     private DueDate dueDate;
+    private Link link;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -42,6 +46,7 @@ public class TaskBuilder {
         tags = new HashSet<>();
         children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
+        link = new Link(DEFAULT_LINK);
     }
 
     /**
@@ -55,6 +60,7 @@ public class TaskBuilder {
         tags = new HashSet<>(taskToCopy.getTags());
         children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
+        link = taskToCopy.getLink();
     }
 
     /**
@@ -114,7 +120,7 @@ public class TaskBuilder {
     }
 
     public Task build() {
-        return new Task(name, priority, email, address, tags, dueDate, children);
+        return new Task(name, priority, email, address, tags, dueDate, children, link);
     }
 
 }
