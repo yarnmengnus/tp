@@ -127,7 +127,6 @@ public class ModelManager implements Model {
     @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
-
         profPlan.setTask(target, editedTask);
     }
 
@@ -146,6 +145,11 @@ public class ModelManager implements Model {
     public void updateFilteredTaskList(Predicate<Task> predicate) {
         requireNonNull(predicate);
         filteredTasks.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortTaskByDeadline() {
+        profPlan.setTasks(profPlan.getTaskList().sorted());
     }
 
     @Override

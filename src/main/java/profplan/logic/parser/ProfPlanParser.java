@@ -20,6 +20,7 @@ import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
 import profplan.logic.commands.MarkCommand;
 import profplan.logic.commands.SetCommand;
+import profplan.logic.commands.SortDeadlineCommand;
 import profplan.logic.commands.UnmarkCommand;
 import profplan.logic.parser.exceptions.ParseException;
 
@@ -92,6 +93,9 @@ public class ProfPlanParser {
 
         case SetCommand.COMMAND_WORD:
             return new SetCommandParser().parse(arguments);
+
+        case SortDeadlineCommand.COMMAND_WORD:
+            return new SortDeadlineCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
