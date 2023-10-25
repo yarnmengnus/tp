@@ -128,7 +128,7 @@ public class JsonAdaptedTaskTest {
     public void toModelType_invalidDueDate_throwsIllegalValueException() {
         JsonAdaptedTask task =
                 new JsonAdaptedTask(VALID_NAME, VALID_PRIORITY, VALID_EMAIL,
-                    VALID_ADDRESS, VALID_TAGS, "undone", INVALID_DUEDATE, VALID_CHILDREN);
+                    VALID_ADDRESS, VALID_TAGS, "undone", INVALID_DUEDATE, VALID_CHILDREN, null);
         String expectedMessage = DueDate.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
