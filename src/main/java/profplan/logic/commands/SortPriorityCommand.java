@@ -1,6 +1,7 @@
 package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 
