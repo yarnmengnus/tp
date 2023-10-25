@@ -60,7 +60,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             editTaskDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editTaskDescriptor::setTags);
-      
+
         if (argMultimap.getValue(PREFIX_LINK).isPresent()) {
             editTaskDescriptor.setLink(ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).get()));
         }
