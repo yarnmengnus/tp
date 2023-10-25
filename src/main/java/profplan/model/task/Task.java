@@ -32,7 +32,7 @@ public class Task {
      * Every field except status must be present and not null.
      */
     public Task(Name name, Priority priority, Email email, Address address,
-                Set<Tag> tags, DueDate dueDate, Set<Task> children) {
+                Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link) {
         // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
         CollectionUtil.requireAllNonNull(name);
         this.name = name;
@@ -43,6 +43,7 @@ public class Task {
         this.tags.addAll(tags);
         this.children.addAll(children);
         this.dueDate = dueDate;
+        this.link = link;
     }
 
     /**
@@ -61,7 +62,6 @@ public class Task {
         this.dueDate = dueDate;
         this.children.addAll(children);
         this.link = link;
-
     }
 
     /**
@@ -77,6 +77,7 @@ public class Task {
         this.children.addAll(task.getChildren());
         this.status = task.status;
         this.dueDate = task.dueDate;
+        this.link = task.link;
     }
 
     public Name getName() {
