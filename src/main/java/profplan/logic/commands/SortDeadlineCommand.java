@@ -10,7 +10,7 @@ import profplan.model.Model;
  */
 public class SortDeadlineCommand extends Command {
 
-    public static final String COMMAND_WORD = "sort";
+    public static final String COMMAND_WORD = "sort_deadline";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the task by the deadline. "
             + "Example: " + COMMAND_WORD + " deadline";

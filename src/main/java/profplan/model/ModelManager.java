@@ -150,7 +150,7 @@ public class ModelManager implements Model {
 
     @Override
     public void sortTaskByDeadline() {
-        filteredTasks.sort(Task::compareTo);
+        profPlan.setTasks(profPlan.getTaskList().sorted());
     }
 
     @Override
