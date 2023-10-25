@@ -3,6 +3,7 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -127,7 +128,6 @@ public class ModelManager implements Model {
     @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
-
         profPlan.setTask(target, editedTask);
     }
 
@@ -146,6 +146,11 @@ public class ModelManager implements Model {
     public void updateFilteredTaskList(Predicate<Task> predicate) {
         requireNonNull(predicate);
         filteredTasks.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortTaskByDeadline() {
+        filteredTasks.sort(Task::compareTo);
     }
 
     @Override

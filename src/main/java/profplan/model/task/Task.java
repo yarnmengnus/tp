@@ -13,7 +13,7 @@ import profplan.model.tag.Tag;
  * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Task {
+public class Task implements Comparable<Task> {
 
     // Identity fields
     private final Name name;
@@ -184,4 +184,8 @@ public class Task {
                 .toString();
     }
 
+    @Override
+    public int compareTo(Task o) {
+        return this.dueDate.compareTo(o.dueDate);
+    }
 }
