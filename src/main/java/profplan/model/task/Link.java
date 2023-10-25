@@ -29,18 +29,18 @@ public class Link {
     public final String value;
 
     /**
-     * Constructs an {@code Email}.
+     * Constructs an {@code Link}.
      *
-     * @param email A valid email address.
+     * @param url A valid url.
      */
-    public Link(String URL) {
-        requireNonNull(URL);
-        AppUtil.checkArgument(isValidLink(URL), MESSAGE_CONSTRAINTS);
-        value = URL;
+    public Link(String url) {
+        requireNonNull(url);
+        AppUtil.checkArgument(isValidLink(url), MESSAGE_CONSTRAINTS);
+        value = url;
     }
 
     /**
-     * Returns if a given string is a valid email.
+     * Returns if a given string is a valid url.
      */
     public static boolean isValidLink(String test) {
         return test.matches(VALIDATION_REGEX);

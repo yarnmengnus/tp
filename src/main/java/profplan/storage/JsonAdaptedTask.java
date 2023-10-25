@@ -13,10 +13,10 @@ import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
-import profplan.model.task.Link;
 
 /**
  * Jackson-friendly version of {@link Task}.
@@ -112,7 +112,7 @@ class JsonAdaptedTask {
         if (link == null) {
             linkToLoad = "-";
         }
-        
+
         final Link modelLink = new Link(linkToLoad);
         return new Task(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelLink);
     }

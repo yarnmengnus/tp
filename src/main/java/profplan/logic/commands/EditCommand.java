@@ -3,10 +3,10 @@ package profplan.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
-import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,10 +24,11 @@ import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
 import profplan.model.task.Email;
+import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Phone;
 import profplan.model.task.Task;
-import profplan.model.task.Link;
+
 
 
 /**
@@ -102,7 +103,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editTaskDescriptor.getPhone().orElse(taskToEdit.getPhone());
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
-        Link updatedLink= editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
+        Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
 
         return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedLink);
