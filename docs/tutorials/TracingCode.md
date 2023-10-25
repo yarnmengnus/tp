@@ -85,7 +85,7 @@ Now let’s set the breakpoint. First, double-click the item to reach the corres
 
 ## Tracing the execution path
 
-Recall from the User Guide that the `edit` command has the format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` For this tutorial we will be issuing the command `edit 1 n/Alice Yeoh`.
+Recall from the User Guide that the `edit` command has the format: `edit INDEX [n/NAME] [p/PRIORITY] [e/EMAIL] [a/ADDRESS] [t/TAG]…​` For this tutorial we will be issuing the command `edit 1 n/Alice Yeoh`.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -292,10 +292,10 @@ Here are some quick questions you can try to answer based on your execution path
 
     2.  Allow `delete` to remove more than one index at a time
 
-    3.  Save the address book in the CSV format instead
+    3.  Save the task list in the CSV format instead
 
     4.  Add a new command
 
     5.  Add a new field to `Task`
 
-    6.  Add a new entity to the address book
+    6.  Add a new entity to the task list

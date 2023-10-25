@@ -14,9 +14,13 @@ import profplan.logic.commands.Command;
 import profplan.logic.commands.DeleteCommand;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.ExitCommand;
+import profplan.logic.commands.FilterCommand;
 import profplan.logic.commands.FindCommand;
 import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
+import profplan.logic.commands.MarkCommand;
+import profplan.logic.commands.SetCommand;
+import profplan.logic.commands.UnmarkCommand;
 import profplan.logic.parser.exceptions.ParseException;
 
 /**
@@ -59,6 +63,12 @@ public class ProfPlanParser {
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
+        case MarkCommand.COMMAND_WORD:
+            return new MarkCommandParser().parse(arguments);
+
+        case UnmarkCommand.COMMAND_WORD:
+            return new UnmarkCommandParser().parse(arguments);
+
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
@@ -68,6 +78,9 @@ public class ProfPlanParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
+        case FilterCommand.COMMAND_WORD:
+            return new FilterCommandParser().parse(arguments);
+
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
@@ -76,6 +89,9 @@ public class ProfPlanParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case SetCommand.COMMAND_WORD:
+            return new SetCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

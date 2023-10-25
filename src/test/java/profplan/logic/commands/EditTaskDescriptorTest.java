@@ -8,7 +8,7 @@ import static profplan.logic.commands.CommandTestUtil.DESC_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static profplan.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static profplan.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
@@ -40,8 +40,8 @@ public class EditTaskDescriptorTest {
         EditTaskDescriptor editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different phone -> returns false
-        editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
+        // different priority -> returns false
+        editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withPriority(VALID_PRIORITY_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different email -> returns false
@@ -61,8 +61,8 @@ public class EditTaskDescriptorTest {
     public void toStringMethod() {
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         String expected = EditTaskDescriptor.class.getCanonicalName() + "{name="
-                + editTaskDescriptor.getName().orElse(null) + ", phone="
-                + editTaskDescriptor.getPhone().orElse(null) + ", email="
+                + editTaskDescriptor.getName().orElse(null) + ", priority="
+                + editTaskDescriptor.getPriority().orElse(null) + ", email="
                 + editTaskDescriptor.getEmail().orElse(null) + ", address="
                 + editTaskDescriptor.getAddress().orElse(null) + ", tags="
                 + editTaskDescriptor.getTags().orElse(null) + ", link="

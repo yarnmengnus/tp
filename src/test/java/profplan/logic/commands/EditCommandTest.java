@@ -48,11 +48,11 @@ public class EditCommandTest {
 
         TaskBuilder taskInList = new TaskBuilder(lastTask);
         Task editedTask = taskInList.withName(CommandTestUtil.VALID_NAME_BOB)
-                .withPhone(CommandTestUtil.VALID_PHONE_BOB)
+                .withPriority(CommandTestUtil.VALID_PRIORITY_BOB)
                 .withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_BOB)
-                .withPhone(CommandTestUtil.VALID_PHONE_BOB).withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
+                .withPriority(CommandTestUtil.VALID_PRIORITY_BOB).withTags(CommandTestUtil.VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastTask, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, Messages.format(editedTask));
@@ -106,7 +106,7 @@ public class EditCommandTest {
     public void execute_duplicateTaskFilteredList_failure() {
         CommandTestUtil.showTaskAtIndex(model, TypicalIndexes.INDEX_FIRST_TASK);
 
-        // edit task in filtered list into a duplicate in address book
+        // edit task in filtered list into a duplicate in task list
         Task taskInList = model.getProfPlan().getTaskList().get(TypicalIndexes.INDEX_SECOND_TASK
                 .getZeroBased());
         EditCommand editCommand = new EditCommand(TypicalIndexes.INDEX_FIRST_TASK,
@@ -127,13 +127,13 @@ public class EditCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of address book
+     * but smaller than size of task list
      */
     @Test
     public void execute_invalidTaskIndexFilteredList_failure() {
         CommandTestUtil.showTaskAtIndex(model, TypicalIndexes.INDEX_FIRST_TASK);
         Index outOfBoundIndex = TypicalIndexes.INDEX_SECOND_TASK;
-        // ensures that outOfBoundIndex is still in bounds of address book list
+        // ensures that outOfBoundIndex is still in bounds of task list list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getProfPlan().getTaskList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,

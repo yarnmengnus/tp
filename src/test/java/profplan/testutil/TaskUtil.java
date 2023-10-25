@@ -4,7 +4,7 @@ import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
-import static profplan.logic.parser.CliSyntax.PREFIX_PHONE;
+import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -32,7 +32,7 @@ public class TaskUtil {
     public static String getTaskDetails(Task task) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + task.getName().fullName + " ");
-        sb.append(PREFIX_PHONE + task.getPhone().value + " ");
+        sb.append(PREFIX_PRIORITY + task.getPriority().value + " ");
         sb.append(PREFIX_EMAIL + task.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + task.getAddress().value + " ");
         task.getTags().stream().forEach(
@@ -48,7 +48,7 @@ public class TaskUtil {
     public static String getEditTaskDescriptorDetails(EditTaskDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
-        descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
+        descriptor.getPriority().ifPresent(priority -> sb.append(PREFIX_PRIORITY).append(priority.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         descriptor.getLink().ifPresent(link -> sb.append(PREFIX_LINK).append(link.value).append(" "));
