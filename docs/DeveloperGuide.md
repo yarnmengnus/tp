@@ -155,6 +155,88 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+## DoNext feature
+### Actual implementation
+- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next. 
+- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation. 
+- This is because a task is recommended if it has higher priority and lower number of days left to deadline.
+- Below, we describe the implementation details for this feature through a uml class and state diagram:
+
+### UML Class Diagram
+
+[//]: # (<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">)
+
+[//]: # (    <div style="flex: 1; margin-right: 5px;">)
+
+[//]: # (        <img src="images/DoNextCommandClassDiagram.png" alt="DoNextCommand Class Diagram" width="380">)
+
+[//]: # (    </div>)
+
+[//]: # (</div>)
+
+
+The `DoNextCommand` is a part of the ProfPlan application, a task management tool. It allows users to generate next task recommendation. It is one of the standout features of ProfPlan, as it generates smart recommendations for professors.
+
+### Code Structure
+The code structure for the `DoNextCommand` is well-organized. It consists of the following components:
+- `DoNextCommand` class: Represents the command itself.
+- `ProfPlanParser` class: Responsible for parsing user input and creating `DoNextCommand` instances.
+- `Priority` class: Represents the priority of a task (from 1 to 10).
+- `DueDate` class: Represents the deadline of a task (in dd-MM-yyyy format or '01-02-2023').
+- `Task` class: Represents a task, and it contains the priority and dueDate that `DoNextCommand` processes.
+- `ModelManager` class: contains the `getDoNextTask()` function to generate recommended task.
+
+### Class Details <a name="class-details"></a>
+### `DoNextCommand` <a name="donextcommand"></a>
+- Purpose: Represents the `do_next` command that generates next task recommendation.
+- Key Methods:
+    - `execute(Model model)`: Executes the `DoNextCommand` by computing and output the next task to do.
+
+### `Priority` <a name="priority"></a>
+- Purpose: Represents the priority of a task (from 1 to 10).
+- Key Methods:
+    - `isValidPriority(String test)`: Checks if a given priority is valid according to the predefined regex.
+
+### `DueDate` <a name="duedate"></a>
+- Purpose: Represents the deadline of a task (in dd-MM-yyyy format or '01-02-2023').
+- Key Methods:
+    - `isValidDate(String test)`: Checks if a given date is valid according to the predefined regex.
+    - `isIncludedorBefore(DueDate otherDate)`: Checks whether the current date is before, on equals the given date.
+
+### `Task` <a name="task"></a>
+- Purpose: Represents a task, and it contains the priority and dueDate.
+- Key Methods:
+    - `getPriority()`: returns the priority of the task.
+    - `getDueDate()`: returns the dueDate of the task.
+
+### `ModelManager` <a name="modelmanager"></a>
+- Purpose: Represents a model manager, implements the Model class and carries out core functionality for commands.
+- Key Methods:
+    - `getDoNextTask()`: returns the recommended task after processing priority/#daysTodueDate for every task.
+
+### Sequence Diagram <a name="sequence-diagram"></a>
+The sequence diagram provides an overview of how the `DoNext` is executed and interacts with other components.
+
+[//]: # ()
+[//]: # (![Sequence Diagram]&#40;images/DoNextCommandSequenceDiagram.png&#41;)
+
+Here's a breakdown of the sequence:
+1. The `LogicManager` receives the command "do_next" from the user.
+2. The `ProfPlanParser` parses the command and creates a `DoNextCommand`.
+4. The `DoNextCommand` is executed.
+5. The `ModelManager` executes the function `getDoNextTask`
+6. A `CommandResult` is created to provide feedback to the user, containing the recommended task as a String.
+7. The result is returned to the `LogicManager`.
+
+### Usage <a name="usage"></a>
+To use the `DoNext` in the ProfPlan application, you can execute the following steps:
+
+1. Enter the "do_next" command.
+
+2. The `DoNext` will handle the task recommendation generation.
+
+3. The application will provide feedback, and output the task generated in the message window.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
