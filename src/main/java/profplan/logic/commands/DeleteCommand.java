@@ -22,7 +22,8 @@ public class DeleteCommand extends Command {
             + ": Deletes the task identified by the index number used in the displayed task list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
-
+    public static final String MESSAGE_DETAILS = "Tip: Use \"delete all\" to delete all tasks."
+            + "Be careful, this is IRREVERSIBLE";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 

@@ -19,6 +19,7 @@ public class UnmarkCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "1 ";
 
+    public static final String MESSAGE_DETAILS = "";
     public static final String MESSAGE_SUCCESS = "Task successfully marked as undone, Prof! "
                                                     + "Here is your updated task list";
 

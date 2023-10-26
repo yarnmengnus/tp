@@ -54,6 +54,7 @@ public class EditCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
+    public static final String MESSAGE_DETAILS = "";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
