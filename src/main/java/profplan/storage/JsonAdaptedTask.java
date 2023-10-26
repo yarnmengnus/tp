@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
@@ -36,6 +37,7 @@ class JsonAdaptedTask {
     private final String link;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<JsonAdaptedTask> children = new ArrayList<JsonAdaptedTask>();
+    private final String description;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -45,7 +47,8 @@ class JsonAdaptedTask {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
             @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
-            @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link) {
+            @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link,
+            @JsonProperty("description") String description) {
         this.name = name;
         this.priority = priority;
         this.email = email;
@@ -59,6 +62,7 @@ class JsonAdaptedTask {
         if (children != null) {
             this.children.addAll(children);
         }
+        this.description = description;
     }
 
     /**
@@ -78,6 +82,7 @@ class JsonAdaptedTask {
                 .collect(Collectors.toList()));
         dueDate = source.getDueDate().value;
         status = source.getStatus().status;
+        description = source.getDescription().description;
     }
 
     /**
@@ -147,12 +152,21 @@ class JsonAdaptedTask {
             throw new IllegalValueException(DueDate.MESSAGE_CONSTRAINTS);
         }
         final DueDate modelDueDate = new DueDate(dueDate);
+
         Status modelStatus = Status.UNDONE_STATUS;
         if (status != null) {
             modelStatus = new Status(status);
         }
+
+        if (description == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
+        }
+        final Description modelDescription = new Description(description);
+
         return new Task(modelName, modelPriority, modelEmail,
-                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren, modelLink);
+                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren, modelLink,
+                modelDescription);
     }
 
 }

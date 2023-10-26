@@ -56,7 +56,8 @@ public class SetCommand extends Command {
         Set<Task> addedSet = parentTask.getChildren();
         addedSet.add(childTask);
         Task editedTask = new Task(parentTask.getName(), parentTask.getPriority(), parentTask.getEmail(),
-                parentTask.getAddress(), parentTask.getTags(), parentTask.getDueDate(), addedSet, parentTask.getLink());
+                parentTask.getAddress(), parentTask.getTags(), parentTask.getDueDate(), addedSet,
+                parentTask.getLink(), parentTask.getDescription());
 
         model.setTask(parentTask, editedTask);
         model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);

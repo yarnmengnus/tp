@@ -34,6 +34,7 @@
       <Label fx:id="link" styleClass="cell_small_label" text="\$link" />
       <Label fx:id="dueDate" styleClass="cell_small_label" text="\$dueDate" />
       <Label fx:id="status" styleClass="cell_small_label" text="\$status" />
+      <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
     </VBox>
   </GridPane>
 </HBox>

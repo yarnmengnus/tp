@@ -150,7 +150,7 @@ public class ParserUtil {
         requireNonNull(link);
         String trimmedLink = link.trim();
         if (!Link.isValidLink(trimmedLink)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Link.MESSAGE_CONSTRAINTS);
         }
         return new Link(trimmedLink);
     }

@@ -112,7 +112,7 @@ public class EditCommand extends Command {
         Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
         return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags,
-                        updatedDueDate, updatedChildren, updatedLink);
+                        updatedDueDate, updatedChildren, updatedLink, taskToEdit.getDescription());
     }
 
     @Override
