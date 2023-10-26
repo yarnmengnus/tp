@@ -32,12 +32,12 @@ public class AddCommand extends Command {
             + PREFIX_DUEDATE + "DUEDATE "
             + PREFIX_LINK + "LINK \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_PRIORITY + "98765432 "
+            + PREFIX_NAME + "Grade assignments "
+            + PREFIX_PRIORITY + "1 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_ADDRESS + "311, Clementi Ave 2, #02-25 "
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney "
+            + PREFIX_TAG + "assignment "
+            + PREFIX_TAG + "grade "
             + PREFIX_DUEDATE + "01-01-2023 "
             + PREFIX_LINK + "www.example.com";
     public static final String MESSAGE_DETAILS = "";

@@ -15,7 +15,7 @@ public class MarkCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as done. "
             + "Parameters: "
-            + "INDEX "
+            + "INDEX\n"
             + "Example: " + COMMAND_WORD + " "
             + "1 ";
 

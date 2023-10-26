@@ -264,6 +264,7 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(address, otherEditTaskDescriptor.address)
                     && Objects.equals(tags, otherEditTaskDescriptor.tags)
+                    && Objects.equals(dueDate, otherEditTaskDescriptor.dueDate)
                     && Objects.equals(link, otherEditTaskDescriptor.link);
         }
 
@@ -275,6 +276,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("dueDate", dueDate)
                     .add("link", link)
                     .toString();
         }
