@@ -7,7 +7,7 @@ import profplan.model.Model;
 import profplan.model.task.Task;
 
 /**
- * Adds a task to the address book.
+ * Recommends the prof. which task to do next, based on the priority as well as urgency.
  */
 public class DoNextCommand extends Command {
 

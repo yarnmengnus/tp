@@ -13,7 +13,7 @@ import profplan.model.tag.Tag;
  * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Task {
+public class Task implements Comparable<Task> {
 
     // Identity fields
     private final Name name;
@@ -184,6 +184,7 @@ public class Task {
                 .toString();
     }
 
+
     /**
      * Returns a beautified string representation of the task.
      * @return  a string representation of the task with name, priority and dueDate.
@@ -191,6 +192,12 @@ public class Task {
     public String beautifyString() {
         return this.getName().toString() + ", Priority: " + this.getPriority().toString()
                 + ", DueDate: " + this.getDueDate().toString();
+    }
+
+
+    @Override
+    public int compareTo(Task o) {
+        return this.dueDate.compareTo(o.dueDate);
     }
 
 }

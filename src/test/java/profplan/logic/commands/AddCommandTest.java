@@ -175,9 +175,20 @@ public class AddCommandTest {
         }
 
         @Override
+
         public Task getDoNextTask() {
             throw new AssertionError("THis method should not be called.");
         }
+
+        public void sortTaskByDeadline() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void sortTaskByPriority() {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

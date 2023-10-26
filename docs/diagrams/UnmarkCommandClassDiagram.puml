@@ -1,0 +1,23 @@
+@startuml UnmarkCommand
+!define classBackgroundColor #ff023134
+!define classFontStyle bold
+
+skinparam class {
+  BackgroundColor classBackgroundColor
+  FontStyle classFontStyle
+}
+
+class UnmarkCommand {
+  - COMMAND_WORD: String
+  - MESSAGE_USAGE: String
+  - MESSAGE_SUCCESS: String
+  - MESSAGE_INVALID_NUMBER: String
+  - MESSAGE_ALREADY_UNDONE: String
+  - taskNumber: int
+  + UnmarkCommand(number: int)
+  + execute(model: Model): CommandResult
+  + equals(other: Object): boolean
+  + toString(): String
+}
+
+@enduml

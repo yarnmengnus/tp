@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -133,7 +134,6 @@ public class ModelManager implements Model {
     @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
-
         profPlan.setTask(target, editedTask);
     }
 
@@ -152,6 +152,16 @@ public class ModelManager implements Model {
     public void updateFilteredTaskList(Predicate<Task> predicate) {
         requireNonNull(predicate);
         filteredTasks.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortTaskByDeadline() {
+        profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
+    }
+
+    @Override
+    public void sortTaskByPriority() {
+        profPlan.getTaskList().sort(Comparator.comparing(Task::getPriority));
     }
 
     @Override

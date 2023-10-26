@@ -113,7 +113,7 @@ public class ProfPlan implements ReadOnlyProfPlan {
 
     @Override
     public ObservableList<Task> getTaskList() {
-        return tasks.asUnmodifiableObservableList();
+        return tasks.getInternalList();
     }
 
     @Override
