@@ -44,7 +44,6 @@ public class MarkCommand extends Command {
         model.markTask(taskNumber - 1);
         return new CommandResult(MESSAGE_SUCCESS);
     }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {

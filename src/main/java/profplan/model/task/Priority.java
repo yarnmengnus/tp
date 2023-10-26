@@ -8,7 +8,7 @@ import profplan.commons.util.AppUtil;
  * Represents a Task's priority in the task list.
  * Guarantees: immutable; is valid as declared in {@link #isValidPriority(String)}
  */
-public class Priority {
+public class Priority implements Comparable<Priority> {
 
 
     public static final String MESSAGE_CONSTRAINTS =
@@ -59,4 +59,8 @@ public class Priority {
         return value.hashCode();
     }
 
+    @Override
+    public int compareTo(Priority o) {
+        return (Integer.parseInt(this.value) - Integer.parseInt(o.value));
+    }
 }
