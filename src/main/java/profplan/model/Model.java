@@ -104,4 +104,20 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+
+     * Returns the task to do next based on the formula: priority/#daysToDueDate.
+     * */
+    Task getDoNextTask();
+
+     * Sorts the task by nearest deadline.
+     */
+    void sortTaskByDeadline();
+
+    /**
+     * Sorts the task based on priority.
+     */
+    void sortTaskByPriority();
+
 }

@@ -101,7 +101,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to an `ProfPlanParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a task).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
@@ -111,7 +111,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <img src="images/ParserClasses.png" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `ProfPlanParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `ProfPlanParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -154,6 +154,163 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+
+## DoNext feature
+### Actual implementation
+- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next. 
+- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation. 
+- This is because a task is recommended if it has higher priority and lower number of days left to deadline.
+- Below, we describe the implementation details for this feature through a uml class and state diagram:
+
+### UML Class Diagram
+
+[//]: # (<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">)
+
+[//]: # (    <div style="flex: 1; margin-right: 5px;">)
+
+[//]: # (        <img src="images/DoNextCommandClassDiagram.png" alt="DoNextCommand Class Diagram" width="380">)
+
+[//]: # (    </div>)
+
+[//]: # (</div>)
+
+
+The `DoNextCommand` is a part of the ProfPlan application, a task management tool. It allows users to generate next task recommendation. It is one of the standout features of ProfPlan, as it generates smart recommendations for professors.
+
+### Code Structure
+The code structure for the `DoNextCommand` is well-organized. It consists of the following components:
+- `DoNextCommand` class: Represents the command itself.
+- `ProfPlanParser` class: Responsible for parsing user input and creating `DoNextCommand` instances.
+- `Priority` class: Represents the priority of a task (from 1 to 10).
+- `DueDate` class: Represents the deadline of a task (in dd-MM-yyyy format or '01-02-2023').
+- `Task` class: Represents a task, and it contains the priority and dueDate that `DoNextCommand` processes.
+- `ModelManager` class: contains the `getDoNextTask()` function to generate recommended task.
+
+### Class Details <a name="class-details"></a>
+### `DoNextCommand` <a name="donextcommand"></a>
+- Purpose: Represents the `do_next` command that generates next task recommendation.
+- Key Methods:
+    - `execute(Model model)`: Executes the `DoNextCommand` by computing and output the next task to do.
+
+### `Priority` <a name="priority"></a>
+- Purpose: Represents the priority of a task (from 1 to 10).
+- Key Methods:
+    - `isValidPriority(String test)`: Checks if a given priority is valid according to the predefined regex.
+
+### `DueDate` <a name="duedate"></a>
+- Purpose: Represents the deadline of a task (in dd-MM-yyyy format or '01-02-2023').
+- Key Methods:
+    - `isValidDate(String test)`: Checks if a given date is valid according to the predefined regex.
+    - `isIncludedorBefore(DueDate otherDate)`: Checks whether the current date is before, on equals the given date.
+
+### `Task` <a name="task"></a>
+- Purpose: Represents a task, and it contains the priority and dueDate.
+- Key Methods:
+    - `getPriority()`: returns the priority of the task.
+    - `getDueDate()`: returns the dueDate of the task.
+
+### `ModelManager` <a name="modelmanager"></a>
+- Purpose: Represents a model manager, implements the Model class and carries out core functionality for commands.
+- Key Methods:
+    - `getDoNextTask()`: returns the recommended task after processing priority/#daysTodueDate for every task.
+
+### Sequence Diagram <a name="sequence-diagram"></a>
+The sequence diagram provides an overview of how the `DoNext` is executed and interacts with other components.
+
+[//]: # ()
+[//]: # (![Sequence Diagram]&#40;images/DoNextCommandSequenceDiagram.png&#41;)
+
+Here's a breakdown of the sequence:
+1. The `LogicManager` receives the command "do_next" from the user.
+2. The `ProfPlanParser` parses the command and creates a `DoNextCommand`.
+4. The `DoNextCommand` is executed.
+5. The `ModelManager` executes the function `getDoNextTask`
+6. A `CommandResult` is created to provide feedback to the user, containing the recommended task as a String.
+7. The result is returned to the `LogicManager`.
+
+### Usage <a name="usage"></a>
+To use the `DoNext` in the ProfPlan application, you can execute the following steps:
+
+1. Enter the "do_next" command.
+
+2. The `DoNext` will handle the task recommendation generation.
+
+3. The application will provide feedback, and output the task generated in the message window.
+
+
+## Mark/Unmark feature
+### Actual implementation
+The Mark/Unmark feature in ProfPlan allows users to mark a task as done or unmark it to indicate that it is not completed. Below, we describe the implementation details for this feature through a uml class and state diagram:
+
+### UML Class Diagram
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="flex: 1; margin-right: 5px;">
+        <img src="images/MarkCommandClassDiagram.png" alt="MarkCommand Class Diagram" width="380">
+    </div>
+    <div style="flex: 1;">
+        <img src="images/UnmarkCommandClassDiagram.png" alt="UnmarkCommand Class Diagram" width="380">
+    </div>
+</div>
+
+
+The `MarkCommand` is a part of the ProfPlan application, a task management tool. The `MarkCommand` allows users to mark a task as done by specifying the task index. It is a critical part of the application's functionality, as it helps users manage and track their tasks efficiently.
+
+### Code Structure
+The code structure for the `MarkCommand` is well-organized. It consists of the following components:
+- `MarkCommand` class: Represents the command itself.
+- `MarkCommandParser` class: Responsible for parsing user input and creating `MarkCommand` instances.
+- `Status` class: Represents the status of a task (either "done" or "undone").
+- `Task` class: Represents a task, and it contains the status that the `MarkCommand` manipulates.
+
+### Class Details <a name="class-details"></a>
+### `MarkCommand` <a name="markcommand"></a>
+- Purpose: Represents the `mark` command that allows users to mark a task as done.
+- Key Methods:
+    - `execute(Model model)`: Executes the `MarkCommand` by marking the task as done in the model.
+    - `equals(Object other)`: Compares two `MarkCommand` objects for equality.
+    - `toString()`: Returns a string representation of the `MarkCommand`.
+
+### `MarkCommandParser` <a name="markcommandparser"></a>
+- Purpose: Parses user input to create `MarkCommand` instances.
+- Key Methods:
+    - `parse(String args)`: Parses the user input and returns a `MarkCommand` if the input is valid.
+
+### `Status` <a name="status"></a>
+- Purpose: Represents the status of a task. It can be either "done" or "undone."
+- Key Methods:
+    - `isValidStatus(String test)`: Checks if a given status is valid according to the predefined regex.
+
+### `Task` <a name="task"></a>
+- Purpose: Represents a task, and it contains the status that the `MarkCommand` changes.
+- Key Methods:
+    - `setStatus(Status status)`: Sets the status of the task.
+    - `Task(Task task)`: Constructor for creating a new task as a copy of an existing task.
+
+### Sequence Diagram <a name="sequence-diagram"></a>
+The sequence diagram provides an overview of how the `MarkCommand` is executed and interacts with other components.
+
+![Sequence Diagram](images/MarkCommandSequenceDiagram.png)
+
+Here's a breakdown of the sequence:
+1. The `LogicManager` receives the command "mark 1" from the user.
+2. The `ProfPlanParser` parses the command and recognizes it as a `MarkCommand`.
+3. The `MarkCommandParser` parses the argument "1" and creates a `MarkCommand`.
+4. The `MarkCommand` is executed.
+5. The `Model` is updated by marking the task as done.
+6. A `CommandResult` is created to provide feedback to the user.
+7. The result is returned to the `LogicManager`.
+
+### Usage <a name="usage"></a>
+To use the `MarkCommand` in the ProfPlan application, you can execute the following steps:
+
+1. Enter the "mark" command followed by the task index you want to mark as done. For example, "mark 1" marks the task with index 1 as done.
+
+2. The `MarkCommand` will handle the task marking process and update the task status in the model.
+
+3. The application will provide feedback, indicating the successful marking of the task as done.
+
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -238,6 +395,37 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
+
+
+### \[Proposed\] Displaying help for commands
+
+The listing detials mechanism is facilitated by a the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `execute()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String. For example `help` or `help delete`.
+
+Hence, this will be facicilitated by overloading the constructor in `HelpCommand` to either create and empty `HelpCommand` or a `HelpCommand` with a `COMMAND_WORD`:
+* When an empty `HelpCommand` executes `execute()`, a`CommandResult` with `showHelp` argument with value `True` will be created.
+* When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a`CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
+
+The following activity diagram shows how the help command works:
+
+![HelpActivityDiagram](images/HelpActivity.png)
+
+#### Design considerations:
+
+**Aspect: How to store `Command` details:**
+
+* **Alternative 1 (current choice): Store Command Details in each command.**
+
+  * Pros: Follows OOP.
+
+  * Cons: Will have to propogate changes in Command Usage and Details format to all Commands individually.
+
+* **Alternative 2: Store the Details in each command.**
+
+  * Pros: Centralised area to view all Messages.
+
+  * Cons: Does not follow OOP. Future implementations that tap on these Details will take longer to implement.
+
+
 
 
 --------------------------------------------------------------------------------------------------------------------
