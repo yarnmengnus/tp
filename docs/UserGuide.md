@@ -161,9 +161,8 @@ Some example commands you can try:
 Simple yet essential features for you to get started.
 
 
-<ol markdown="block">
 
-### <li> Viewing help : `help`</li>
+### Viewing help : `help`
 Shows a list of commands.
 **Command Format:**  
 `help`
@@ -174,7 +173,7 @@ Shows a list of commands.
 
 
 
-### <li> Create a new task : `add`</li>
+### Create a new task : `add`
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
 **Command Format:** `task [taskToDo] /by [deadline]` <br>
 **Acceptable Values for each Parameter:**<br>
@@ -194,7 +193,7 @@ Unable to create Task, Prof. Try entering in this format task [taskToDo] /by [de
 ```
 
 
-### <li> Edit existing tasks : `edit`</li>
+### Edit existing tasks : `edit`
 Edit the aspects of selected existing task, as specified by the user.
 
 **Command Format:** `edit [index] /[aspect] [new value]` <br>
@@ -220,7 +219,7 @@ Try entering in this format edit 1 /[aspect] [new value], with aspects being “
 
 
 
-### <li> Delete tasks and delete all tasks : `delete`</li>
+### Delete tasks and delete all tasks : `delete`
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
 
 **Command Format:** `delete [taskNumber]/delete all` <br>
@@ -251,7 +250,7 @@ Unable to delete the task, Prof. Please enter a valid task number from your task
 ```
 
 
-### <li> List all Tasks : `list`</li>
+### List all Tasks : `list`
 Shows a list of all persons in theProfPlan.. <br>
 **Command Format:** `list` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
@@ -259,7 +258,7 @@ Displays the contents of Task List.
 
 
 
-### <li> Locating Tasks by name: `find`</li>
+### Locating Tasks by name: `find`
 This task find is a user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is flexible, and only the task name is considered. Full words are matched, so "Tas" won't match "Task." The search operates on an OR logic, returning tasks matching at least one keyword. This ensures a simple and effective task-finding process. <br>
 **Command Format:** `find [KEYWORD]` <br>
 **Acceptable Values for each Parameter:** <br>
@@ -282,15 +281,15 @@ No Matching Tasks found prof.
 
 
 
-### <li> Editing the data file</li>
+### Editing the data file
 ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/profplan.json`. Advanced users are welcome to update data directly by editing that data file
 
 <div markdown = 'block' class = 'Warning' > :warning: Caution: If your changes to the data file makes its format invalid, ProfPlan will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it 
 </div>
 
-### <li> Saving the data</li>
+### Saving the data
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-### <li> Exiting the program : exit</li>
+### Exiting the program : exit
 Exits the program.
 Format: exit
 </ol>
@@ -300,7 +299,7 @@ Format: exit
 Recommended features for you to get more out of ProfPlan
 <ol markdown="block">
 
-### <li> Mark task as done/undone : `mark / unmark`</li>
+### Mark task as done/undone : `mark / unmark`
 **What it does:** <br>
 &emsp;Allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task. <br>
 
@@ -350,7 +349,7 @@ The following task has been marked done Successfully!
 
 
 
-### <li> Filter tasks : `filter`</li>
+### Filter tasks : `filter`
   #### a. Due Date:
 &emsp;**What it does:**<br>
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
@@ -411,7 +410,7 @@ Example: filter d/01-01-2024
 
 
 
-### <li> Set other tasks as parent : `set`</li>
+### Set other tasks as parent : `set`
 **What it does:** <br>
 Sets a given task as the parent or child task of another given task. <br>
 **Command Format:** `set [taskNumberParent] [taskNumberChild]` <br>
@@ -439,21 +438,21 @@ Example: set 3 2
 sets the task at list index 3 as the parent of the task at list index 2.
 ```
 
-### <li> Priority</li>
+### Priority
 Tasks now have priorities that can be assigned upon task adding, and also edited.
 Unassigned priorities will have the value `000`. <br>
 **Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
 
-### <li> Due Date</li>
+### Due Date
 You can specify the due date of a task upon creation and edit. <br>
 Unassigned due dates will have the value `01-01-2000`. <br>
 **Valid format:** `d/dd-MM-yyyy` <br>
 
-### <li> Tags</li>
+### Tags
 You can assign tags to a task, to further segregate and classify them. <br>
 **Valid format:** `t/[tag]` <br>
 
-### <li> Link</li> 
+### Link 
 You can assign a link to a task, to access the reference easily. <br>
 **Valid format:** `l/[www.LINKNAME.com]` <br>
 </ol>
@@ -463,14 +462,14 @@ Psst! Were the features mentioned in the introduction not quite enough to satiat
 
 <ol markdown="block">
 
-### <li> Recommend next task : </li>
+### Recommend next task : 
 Ever felt overwhelmed by a mountain of work, and lost on what to do next? Many tasks, each with slightly different deadlines and priorities, can come together to overload our capacities for good planning, and make it impossible for us to choose the optimal task to work on next.<br>
 With our customised algorithm, ProfPlan takes this cognitive load off your shoulders. Simply use the command do_next, and ProfPlan will identify the ideal task for you to work on next!<br>
-### <li> Visualise important and urgent tasks : </li>
+### Visualise important and urgent tasks : 
 Sometimes, we might have 20, 30, 40 or more tasks in our lists, and it’s hard to remember when each one is due, or what your most important task is for that week. 
-### <li> Create Recurring task : </li>
-### <li> Sort Tasks according to date, priority and status : </li>
-### <li> View Task statistics: stats </li>
+### Create Recurring task : 
+### Sort Tasks according to date, priority and status : 
+### View Task statistics: stats 
 </ol>
 
 --------------------------------------------------------------------------------------------------------------------
