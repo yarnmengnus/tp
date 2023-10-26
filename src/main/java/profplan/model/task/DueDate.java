@@ -27,7 +27,7 @@ public class DueDate {
     /**
      * Constructs an {@code Address}.
      *
-     * @param address A valid address.
+     * @param date A valid date.
      */
     public DueDate(String date) {
         requireNonNull(date);
