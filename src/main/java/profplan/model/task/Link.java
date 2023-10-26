@@ -6,7 +6,7 @@ import profplan.commons.util.AppUtil;
 
 /**
  * Represents a Task's email in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
  */
 public class Link {
 

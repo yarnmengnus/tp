@@ -25,7 +25,7 @@ public class TaskBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_DUEDATE = "01-01-2000";
     public static final String DEFAULT_LINK = "-";
-    public static final String DEFUALT_DESCRIPTION = "The essence of recursion.";
+    public static final String DEFUALT_DESCRIPTION = "";
 
 
     private Name name;
@@ -121,6 +121,14 @@ public class TaskBuilder {
      */
     public TaskBuilder withDueDate(String date) {
         this.dueDate = new DueDate(date);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Description} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withDescription(String description) {
+        this.description = new Description(description);
         return this;
     }
 
