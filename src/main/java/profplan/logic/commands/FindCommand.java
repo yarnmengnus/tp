@@ -20,6 +20,7 @@ public class FindCommand extends Command {
             + "Parameters: [KEYWORDS...]\n"
             + "Example: " + COMMAND_WORD + " canvas quiz";
 
+    public static final String MESSAGE_DETAILS = "";
     private final NameContainsKeywordsPredicate predicate;
 
     public FindCommand(NameContainsKeywordsPredicate predicate) {

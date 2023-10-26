@@ -40,7 +40,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney "
             + PREFIX_DUEDATE + "01-01-2023 "
             + PREFIX_LINK + "www.example.com";
-
+    public static final String MESSAGE_DETAILS = "";
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";
 

@@ -20,6 +20,7 @@ public class FilterCommand extends Command {
             + "Example: " + COMMAND_WORD + " 01-01-2023\n"
             + DueDate.MESSAGE_CONSTRAINTS;
 
+    public static final String MESSAGE_DETAILS = "";
     private String messageSuccess;
 
     private final TasksDueBeforeDatePredicate datePredicate;
