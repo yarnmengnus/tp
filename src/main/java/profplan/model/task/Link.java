@@ -5,12 +5,12 @@ import static java.util.Objects.requireNonNull;
 import profplan.commons.util.AppUtil;
 
 /**
- * Represents a Task's email in the address book.
+ * Represents a Task's link in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
  */
 public class Link {
 
-    public static final String MESSAGE_CONSTRAINTS = "Links should a valid URL "
+    public static final String MESSAGE_CONSTRAINTS = "Links should be a valid URL "
             + "and adhere to the following constraint:\n"
             + "The domain name is made up of domain labels "
             + "separated by periods.\n"
