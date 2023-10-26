@@ -158,8 +158,8 @@ This section describes some noteworthy details on how certain features are imple
 
 ## DoNext feature
 ### Actual implementation
-- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next. 
-- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation. 
+- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next.
+- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation.
 - This is because a task is recommended if it has higher priority and lower number of days left to deadline.
 - Below, we describe the implementation details for this feature through a uml class and state diagram:
 
