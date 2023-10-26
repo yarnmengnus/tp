@@ -5,12 +5,12 @@ import java.util.function.Predicate;
 import profplan.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Task}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Task}'s {@code DueDate} falls before the given duedate.
  */
-public class TasksDueBeforeDatePredicate implements Predicate<Task> {
+public class TaskDueDatePredicate implements Predicate<Task> {
     private final DueDate date;
 
-    public TasksDueBeforeDatePredicate(DueDate date) {
+    public TaskDueDatePredicate(DueDate date) {
         this.date = date;
     }
 
@@ -30,11 +30,11 @@ public class TasksDueBeforeDatePredicate implements Predicate<Task> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof TasksDueBeforeDatePredicate)) {
+        if (!(other instanceof TaskDueDatePredicate)) {
             return false;
         }
 
-        TasksDueBeforeDatePredicate otherPredicate = (TasksDueBeforeDatePredicate) other;
+        TaskDueDatePredicate otherPredicate = (TaskDueDatePredicate) other;
         return date.equals(otherPredicate.date);
     }
 

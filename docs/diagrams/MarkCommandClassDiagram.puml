@@ -1,0 +1,23 @@
+@startuml MarkCommand
+
+!define classFontStyle bold
+
+skinparam class {
+  FontStyle classFontStyle
+}
+
+
+class MarkCommand {
+  - COMMAND_WORD: String
+  - MESSAGE_USAGE: String
+  - MESSAGE_SUCCESS: String
+  - MESSAGE_INVALID_NUMBER: String
+  - MESSAGE_ALREADY_DONE: String
+  - taskNumber: int
+  + MarkCommand(number: int)
+  + execute(model: Model): CommandResult
+  + equals(other: Object): boolean
+  + toString(): String
+}
+
+@enduml

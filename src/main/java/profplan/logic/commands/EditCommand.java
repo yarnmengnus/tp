@@ -54,6 +54,7 @@ public class EditCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
+    public static final String MESSAGE_DETAILS = "";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -263,6 +264,7 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(address, otherEditTaskDescriptor.address)
                     && Objects.equals(tags, otherEditTaskDescriptor.tags)
+                    && Objects.equals(dueDate, otherEditTaskDescriptor.dueDate)
                     && Objects.equals(link, otherEditTaskDescriptor.link);
         }
 
@@ -274,6 +276,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("dueDate", dueDate)
                     .add("link", link)
                     .toString();
         }
