@@ -161,7 +161,7 @@ Some example commands you can try:
 Simple yet essential features for you to get started.
 
 
-<ol>
+<ol markdown="block">
 
 ### <li> Viewing help : `help`</li>
 Shows a list of commands.
@@ -285,7 +285,7 @@ No Matching Tasks found prof.
 ### <li> Editing the data file</li>
 ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/profplan.json`. Advanced users are welcome to update data directly by editing that data file
 
-<div markdown = 'block' class = 'Warning' > :warning: Caution: If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it 
+<div markdown = 'block' class = 'Warning' > :warning: Caution: If your changes to the data file makes its format invalid, ProfPlan will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it 
 </div>
 
 ### <li> Saving the data</li>
@@ -298,7 +298,7 @@ Format: exit
 
 ## Task Management Features
 Recommended features for you to get more out of ProfPlan
-<ol>
+<ol markdown="block">
 
 ### <li> Mark task as done/undone : `mark / unmark`</li>
 **What it does:** <br>
@@ -461,7 +461,7 @@ You can assign a link to a task, to access the reference easily. <br>
 ## Advanced Features
 Psst! Were the features mentioned in the introduction not quite enough to satiate your craving for productivity? Fret not! ProfPlan comes with novel capabilities that will reinvent the way you approach tasks! Before we end this guide, we’ll show you some ways our veteran users use ProfPlan to make themselves more productive than ever before!
 
-<ol>
+<ol markdown="block">
 
 ### <li> Recommend next task : </li>
 Ever felt overwhelmed by a mountain of work, and lost on what to do next? Many tasks, each with slightly different deadlines and priorities, can come together to overload our capacities for good planning, and make it impossible for us to choose the optimal task to work on next.<br>
