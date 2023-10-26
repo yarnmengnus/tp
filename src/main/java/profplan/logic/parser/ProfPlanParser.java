@@ -12,6 +12,7 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.ClearCommand;
 import profplan.logic.commands.Command;
 import profplan.logic.commands.DeleteCommand;
+import profplan.logic.commands.DescriptionCommand;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FilterCommand;
@@ -92,6 +93,9 @@ public class ProfPlanParser {
 
         case SetCommand.COMMAND_WORD:
             return new SetCommandParser().parse(arguments);
+
+        case DescriptionCommand.COMMAND_WORD:
+            return new DescriptionCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
