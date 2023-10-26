@@ -18,6 +18,7 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
@@ -57,7 +58,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         DueDate dueDate = ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).orElse("01-01-2000"));
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
 
-        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(), link);
+        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(),
+                link, new Description(""));
         return new AddCommand(task);
     }
 
