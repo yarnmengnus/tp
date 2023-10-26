@@ -12,6 +12,7 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.ClearCommand;
 import profplan.logic.commands.Command;
 import profplan.logic.commands.DeleteCommand;
+import profplan.logic.commands.DescriptionCommand;
 import profplan.logic.commands.DoNextCommand;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.ExitCommand;
@@ -99,6 +100,8 @@ public class ProfPlanParser {
         case SetCommand.COMMAND_WORD:
             return new SetCommandParser().parse(arguments);
 
+        case DescriptionCommand.COMMAND_WORD:
+            return new DescriptionCommandParser().parse(arguments);
         case SortDeadlineCommand.COMMAND_WORD:
             return new SortDeadlineCommand();
         case SortPriorityCommand.COMMAND_WORD:
