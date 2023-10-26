@@ -184,4 +184,13 @@ public class Task {
                 .toString();
     }
 
+    /**
+     * Returns a beautified string representation of the task.
+     * @return  a string representation of the task with name, priority and dueDate.
+     */
+    public String beautifyString() {
+        return this.getName().toString() + ", Priority: " + this.getPriority().toString()
+                + ", DueDate: " + this.getDueDate().toString();
+    }
+
 }
