@@ -88,4 +88,8 @@ public class FilterCommand extends Command {
                 .add("predicate", predicate)
                 .toString();
     }
+
+    public String getSuccessMessage() {
+        return messageSuccess;
+    }
 }
