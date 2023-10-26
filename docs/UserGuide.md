@@ -77,16 +77,16 @@ A Task contains all the information relevant to a piece of work that needs to be
 
 :question: What information does a Task contain?
 
-A Task must contain, minimally, a <u>Name</u>. Optionally, you may also choose to add a <u>Priority</u>, a <u>Link</u>, a <u>Due Date</u>, and/or a <u>Description</u> to it. Refer to the add and edit commands below for details on how to achieve this.
+A Task must contain, minimally, a <ins>Name</ins>. Optionally, you may also choose to add a <ins>Priority</ins>, a <ins>Link</ins>, a <ins>Due Date</ins>, and/or a <ins>Description</ins> to it. Refer to the add and edit commands below for details on how to achieve this.
 
 :question: What are all those underlined terms?
 
 These are the various attributes of a Task:
-* <u>Name</u>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
-* <u>Priority</u>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
-* <u>Link</u>: A hyperlink to an external URL.
-* <u>Due Date</u>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
-* <u>Description</u>: Further details about the task. Any information that is too long to be put into the name should go here.
+* <ins>Name</ins>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
+* <ins>Priority</ins>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
+* <ins>Link</ins>: A hyperlink to an external URL.
+* <ins>Due Date</ins>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
+* <ins>Description</ins>: Further details about the task. Any information that is too long to be put into the name should go here.
 
 :question: What else can I do with Tasks?
 
