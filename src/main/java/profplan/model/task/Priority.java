@@ -61,6 +61,6 @@ public class Priority implements Comparable<Priority> {
 
     @Override
     public int compareTo(Priority o) {
-        return (Integer.parseInt(this.value) - Integer.parseInt(o.value));
+        return (Integer.parseInt(o.value) - Integer.parseInt(this.value));
     }
 }
