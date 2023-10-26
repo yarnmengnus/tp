@@ -30,10 +30,10 @@ public class FilterCommand extends Command {
             + "And displays them as a list with index numbers.\n"
             + "Example: " + COMMAND_WORD + " d/01-01-2024";
 
-    private String messageSuccess = "";
     public static final String MESSAGE_DETAILS = "";
-
     private final Predicate<?> predicate;
+
+    private String messageSuccess = "";
 
     /**
      * Initialise FilterCommand object
