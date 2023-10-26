@@ -20,6 +20,8 @@ public class SetCommand extends Command {
             + "Parameters: [parentTaskIndex] [childTaskIndex], both positive integers.\n"
             + "Example: set 3 2\n"
             + "sets the task at list index 3 as the parent of the task at list index 2.";
+
+    public static final String MESSAGE_DETAILS = "";
     private final Index parentIndex;
     private final Index childIndex;
 

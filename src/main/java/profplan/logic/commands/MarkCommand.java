@@ -19,6 +19,7 @@ public class MarkCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "1 ";
 
+    public static final String MESSAGE_DETAILS = "";
     public static final String MESSAGE_SUCCESS = "Task successfully marked as done, Prof! "
                                                     + "Here is your updated task list";
 
@@ -38,10 +39,12 @@ public class MarkCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (taskNumber > model.getFilteredTaskList().size()) {
+            throw new CommandException("Task not found please enter a valid Task Number.");
+        }
         model.markTask(taskNumber - 1);
         return new CommandResult(MESSAGE_SUCCESS);
     }
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
