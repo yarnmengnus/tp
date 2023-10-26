@@ -12,6 +12,7 @@ import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.ClearCommand;
 import profplan.logic.commands.Command;
 import profplan.logic.commands.DeleteCommand;
+import profplan.logic.commands.DoNextCommand;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FilterCommand;
@@ -73,6 +74,9 @@ public class ProfPlanParser {
 
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
+
+        case DoNextCommand.COMMAND_WORD:
+            return new DoNextCommand();
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();

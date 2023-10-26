@@ -184,8 +184,20 @@ public class Task implements Comparable<Task> {
                 .toString();
     }
 
+
+    /**
+     * Returns a beautified string representation of the task.
+     * @return  a string representation of the task with name, priority and dueDate.
+     */
+    public String beautifyString() {
+        return this.getName().toString() + ", Priority: " + this.getPriority().toString()
+                + ", DueDate: " + this.getDueDate().toString();
+    }
+
+
     @Override
     public int compareTo(Task o) {
         return this.dueDate.compareTo(o.dueDate);
     }
+
 }
