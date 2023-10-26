@@ -27,14 +27,14 @@ public class Task {
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Task> children = new HashSet<>();
     private final DueDate dueDate;
+    private final Description description;
 
     /**
      * Every field except status must be present and not null.
      */
     public Task(Name name, Priority priority, Email email, Address address,
-                Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link) {
-        // CollectionUtil.requireAllNonNull(name, phone, email, address, tags);
-        CollectionUtil.requireAllNonNull(name);
+                Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link, Description description) {
+        CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
         this.email = email;
@@ -44,15 +44,15 @@ public class Task {
         this.children.addAll(children);
         this.dueDate = dueDate;
         this.link = link;
+        this.description = description;
     }
 
     /**
      * Every field must be present and not null.
      */
     public Task(Name name, Priority priority, Email email, Address address, Status status, Set<Tag> tags,
-                DueDate dueDate, Set<Task> children, Link link) {
-        // CollectionUtil.requireAllNonNull(name, phone, email, address, status, tags);
-        CollectionUtil.requireAllNonNull(name);
+                DueDate dueDate, Set<Task> children, Link link, Description description) {
+        CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
         this.email = email;
@@ -62,6 +62,7 @@ public class Task {
         this.dueDate = dueDate;
         this.children.addAll(children);
         this.link = link;
+        this.description = description;
     }
 
     /**
@@ -78,6 +79,7 @@ public class Task {
         this.status = task.status;
         this.dueDate = task.dueDate;
         this.link = task.link;
+        this.description = task.description;
     }
 
     public Name getName() {
@@ -124,6 +126,10 @@ public class Task {
         return Collections.unmodifiableSet(children);
     }
 
+    public Description getDescription() {
+        return description;
+    }
+
     /**
      * Returns true if both tasks have the same name.
      * This defines a weaker notion of equality between two tasks.
@@ -161,13 +167,14 @@ public class Task {
                 && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
                 && status.equals(otherTask.status)
-                && link.equals(otherTask.link);
+                && link.equals(otherTask.link)
+                && description.equals(otherTask.description);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, priority, email, address, status, tags, dueDate, link);
+        return Objects.hash(name, priority, email, address, status, tags, dueDate, link, description);
     }
 
     @Override
@@ -181,6 +188,7 @@ public class Task {
                 .add("tags", tags)
                 .add("dueDate", dueDate)
                 .add("link", link)
+                .add("description", description)
                 .toString();
     }
 

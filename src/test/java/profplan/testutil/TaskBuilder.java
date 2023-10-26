@@ -5,6 +5,7 @@ import java.util.Set;
 
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
+import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
@@ -24,6 +25,7 @@ public class TaskBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_DUEDATE = "01-01-2000";
     public static final String DEFAULT_LINK = "-";
+    public static final String DEFUALT_DESCRIPTION = "The essence of recursion.";
 
 
     private Name name;
@@ -34,6 +36,7 @@ public class TaskBuilder {
     private Set<Task> children;
     private DueDate dueDate;
     private Link link;
+    private Description description;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -47,6 +50,7 @@ public class TaskBuilder {
         children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
         link = new Link(DEFAULT_LINK);
+        description = new Description(DEFUALT_DESCRIPTION);
     }
 
     /**
@@ -61,6 +65,7 @@ public class TaskBuilder {
         children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
         link = taskToCopy.getLink();
+        description = taskToCopy.getDescription();
     }
 
     /**
@@ -119,8 +124,12 @@ public class TaskBuilder {
         return this;
     }
 
+    /**
+     * Builds a new task with the given fields.
+     */
     public Task build() {
-        return new Task(name, priority, email, address, tags, dueDate, children, link);
+        return new Task(name, priority, email, address, tags, dueDate, children,
+                link, description);
     }
 
 }

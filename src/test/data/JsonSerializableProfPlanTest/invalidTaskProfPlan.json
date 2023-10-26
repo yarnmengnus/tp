@@ -4,6 +4,7 @@
     "priority": "9482424",
     "email": "invalid@email!3e",
     "address": "4th street",
-    "dueDate" : "01-01-2000"
+    "dueDate" : "01-01-2000",
+    "description" : ""
   } ]
 }
