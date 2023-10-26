@@ -1,6 +1,7 @@
 package profplan.testutil;
 
 import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
@@ -38,6 +39,7 @@ public class TaskUtil {
         task.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
+        sb.append(PREFIX_DUEDATE + task.getDueDate().value + " ");
         sb.append(PREFIX_LINK + task.getLink().value + " ");
         return sb.toString();
     }

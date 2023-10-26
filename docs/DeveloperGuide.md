@@ -323,7 +323,7 @@ Below, we describe the implementation details for this feature through a UML cla
 ### UML Class Diagram
 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
     <div style="flex: 1; margin-right: 5px;">
-        <img src="images/FilterCommandClassDiagram.png" alt="FilterCommand Class Diagram" width="380">
+        <img src="images/FilterCommandClassDiagram.png" alt="FilterCommand Class Diagram" width="500px">
     </div>
 </div>
 
