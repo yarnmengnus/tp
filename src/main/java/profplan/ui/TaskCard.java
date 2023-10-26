@@ -47,6 +47,8 @@ public class TaskCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label link;
+    @FXML
+    private Label description;
 
     /**
      * Creates a {@code TaskCode} with the given {@code Task} and index to display.

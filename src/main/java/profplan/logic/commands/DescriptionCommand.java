@@ -5,6 +5,7 @@ import static profplan.commons.util.CollectionUtil.requireAllNonNull;
 import profplan.commons.core.index.Index;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
+import profplan.model.task.Description;
 
 /**
  * Adds a description to a Task.
@@ -23,13 +24,13 @@ public class DescriptionCommand extends Command {
             + "des/ Put particular emphasis on recursion.";
 
     private final Index index;
-    private final String description;
+    private final Description description;
 
     /**
      * @param index The index of the task to attach the description to.
      * @param description The description to be added to the task.
      */
-    public DescriptionCommand(Index index, String description) {
+    public DescriptionCommand(Index index, Description description) {
         requireAllNonNull(index, description);
 
         this.index = index;

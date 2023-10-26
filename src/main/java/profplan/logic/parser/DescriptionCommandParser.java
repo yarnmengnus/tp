@@ -8,6 +8,7 @@ import profplan.commons.core.index.Index;
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.logic.commands.DescriptionCommand;
 import profplan.logic.parser.exceptions.ParseException;
+import profplan.model.task.Description;
 
 /**
  * Parses user input and creates a DescriptionCommand object.
@@ -26,7 +27,8 @@ public class DescriptionCommandParser implements Parser<DescriptionCommand> {
                     DescriptionCommand.MESSAGE_USAGE), illegalValueException);
         }
 
-        String description = argumentMultimap.getValue(PREFIX_DESCRIPTION).orElse("");
+        Description description = new Description(argumentMultimap
+                .getValue(PREFIX_DESCRIPTION).orElse(""));
 
         return new DescriptionCommand(index, description);
     }
