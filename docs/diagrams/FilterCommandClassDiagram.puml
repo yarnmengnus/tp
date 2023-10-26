@@ -1,0 +1,27 @@
+@startuml
+class FilterCommand {
+  - COMMAND_WORD: String
+  - MESSAGE_USAGE: String
+  - MESSAGE_DETAILS: String
+  - messageSuccess: String
+  + FilterCommand(predicate: Predicate)
+  + execute(model: Model): CommandResult
+  + equals(other: Object): boolean
+  + toString(): String
+  + getSuccessMessage(): String
+}
+
+class TaskDueDatePredicate
+
+class TaskPriorityPredicate
+
+class TaskStatusPredicate
+
+class "<<interface>>\nPredicate" as Predicate
+
+FilterCommand <.. Predicate
+Predicate <-- TaskDueDatePredicate
+Predicate <-- TaskPriorityPredicate
+Predicate <-- TaskStatusPredicate
+
+@enduml
