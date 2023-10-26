@@ -63,6 +63,7 @@ public class TaskCard extends UiPart<Region> {
         email.setText(task.getEmail().value);
         dueDate.setText(task.getDueDate().value);
         status.setText(task.getStatus().status);
+        description.setText(task.getDescription().description);
 
         task.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
