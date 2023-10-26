@@ -24,7 +24,6 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.Address;
-import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;

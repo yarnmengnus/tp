@@ -2,14 +2,14 @@ package profplan.logic.commands;
 
 import static profplan.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.List;
+
 import profplan.commons.core.index.Index;
 import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.task.Description;
 import profplan.model.task.Task;
-
-import java.util.List;
 
 /**
  * Adds a description to a Task.
