@@ -240,6 +240,41 @@ _{more aspects and alternatives to be added}_
 _{Explain here how the data archiving feature will be implemented}_
 
 
+### \[Proposed\] Listing details for commands
+
+The listing detials mechanism is facilitated by a the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `execute()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String.
+Hence, this will be facicilitated by overloading the constructor in `HelpCommand` to either create and empty `HelpCommand` or a `HelpCommand` with a `COMMAND_WORD`. 
+When an empty `HelpCommand` executes `execute()`, a`CommandResult` with `showHelp` argument with value `True` will be created.
+When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a`CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
+
+The following activity diagram shows how the help command works:
+....
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial task list state, and the `currentStatePointer` pointing to that single task list state.
+....
+
+The following sequence diagram shows how the help command works:
+....
+
+Design considerations:
+Aspect: How to store `Command` details:
+
+Alternative 1 (current choice): Store Command Details in each command.
+
+Pros: Follows OOP.
+Cons: Will have to propogate changes in Command Usage and Details format to all Commands individually.
+
+Alternative 2: Store the Details in each command.
+
+Pros: Centralised area to view all Messages.
+Cons: Does not follow OOP. Future implementations that tap on these Details will take longer to implement.
+
+Aspect: 
+
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
