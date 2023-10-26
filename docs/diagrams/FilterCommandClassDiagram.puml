@@ -1,4 +1,8 @@
 @startuml
+class FilterCommandParser {
+  + parse: FilterCommand
+}
+
 class FilterCommand {
   - COMMAND_WORD: String
   - MESSAGE_USAGE: String
@@ -23,5 +27,7 @@ FilterCommand <.. Predicate
 Predicate <-- TaskDueDatePredicate
 Predicate <-- TaskPriorityPredicate
 Predicate <-- TaskStatusPredicate
+
+FilterCommandParser .left.> FilterCommand : parse >
 
 @enduml
