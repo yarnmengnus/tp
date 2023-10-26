@@ -348,7 +348,7 @@ The following task has been marked done Successfully!
 
 
 ### Filter tasks : `filter`
-  #### a. Due Date:
+#### a. Due Date:
 &emsp;**What it does:**<br>
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
 
@@ -365,7 +365,7 @@ Here are your tasks before [date]!
 ```
 
 
-  #### b. Priority
+#### b. Priority
 &emsp;**What it does:** <br>
 &emsp;&emsp;All tasks of the given priority is displayed. <br>
 
@@ -380,7 +380,7 @@ Here are your tasks of priority 3!
 	[Displays the list with the specific tasks found.]
 ```
 
-  #### c. Status
+#### c. Status
 &emsp;**What it does:** <br>
 &emsp;All tasks of the given status is displayed.
 
