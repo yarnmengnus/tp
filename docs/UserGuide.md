@@ -291,13 +291,11 @@ ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/pr
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 ### Exiting the program : exit
 Exits the program.
-Format: exit
-</ol>
+Format: `exit`
 
 
 ## Task Management Features
 Recommended features for you to get more out of ProfPlan
-<ol markdown="block">
 
 ### Mark task as done/undone : `mark / unmark`
 **What it does:** <br>
@@ -455,12 +453,10 @@ You can assign tags to a task, to further segregate and classify them. <br>
 ### Link 
 You can assign a link to a task, to access the reference easily. <br>
 **Valid format:** `l/[www.LINKNAME.com]` <br>
-</ol>
 
 ## Advanced Features
 Psst! Were the features mentioned in the introduction not quite enough to satiate your craving for productivity? Fret not! ProfPlan comes with novel capabilities that will reinvent the way you approach tasks! Before we end this guide, we’ll show you some ways our veteran users use ProfPlan to make themselves more productive than ever before!
 
-<ol markdown="block">
 
 ### Recommend next task : 
 Ever felt overwhelmed by a mountain of work, and lost on what to do next? Many tasks, each with slightly different deadlines and priorities, can come together to overload our capacities for good planning, and make it impossible for us to choose the optimal task to work on next.<br>
@@ -470,7 +466,6 @@ Sometimes, we might have 20, 30, 40 or more tasks in our lists, and it’s hard 
 ### Create Recurring task : 
 ### Sort Tasks according to date, priority and status : 
 ### View Task statistics: stats 
-</ol>
 
 --------------------------------------------------------------------------------------------------------------------
 
