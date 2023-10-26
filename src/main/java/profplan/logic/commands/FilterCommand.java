@@ -22,7 +22,8 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters for tasks with one of the following criteria: \n"
+            + ": Filters for tasks with one of the following criteria,"
+            + " with the corresponding format: \n"
             + "[" + PREFIX_STATUS + "STATUS]" + " (done/undone)\n"
             + "[" + PREFIX_DUEDATE + "DUEDATE]" + " (dd-MM-yyyy)\n"
             + "[" + PREFIX_PRIORITY + "PRIORITY]" + " (integer between 1 and 10)\n"
