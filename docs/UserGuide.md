@@ -486,7 +486,7 @@ contains the data in the previous ProfPlan home folder.
 ## Supported flags
 
 
-| **Name of flag** | **Flag in command** | **Description**                  |
+| **Name of flag** | **Flag in command** | **Description**                   |
 |------------------|:-------------------:|----------------------------------:|
 | Name             |      /name          |The name of the task               |
 | Due Date         |        /d           |The due date of the task           |
@@ -506,8 +506,7 @@ contains the data in the previous ProfPlan home folder.
 ## Glossary
 | **Word**       | **Definition**                                                            |
 |----------------|---------------------------------------------------------------------------|
-| **Syntax**     | The way that you should format your commands                              |
-|                |   such that ProfPlan can understand them.                                 |
+| **Syntax**     | The way that you should format your commands <br> such that ProfPlan can understand them.|
 | **Parent**     | When a task is the parent of another, it means that it is the parent task |
 | **Priority**   | Different from due date                                                   |
 
