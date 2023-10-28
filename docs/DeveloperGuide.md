@@ -147,7 +147,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `profplan.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -310,6 +310,19 @@ To use the `MarkCommand` in the ProfPlan application, you can execute the follow
 
 3. The application will provide feedback, indicating the successful marking of the task as done.
 
+## Set feature
+### Actual implementation
+The `set` command in ProfPlan allows the user to set one or more Tasks as the subtask of another Task.
+
+### Code structure
+The code structure for the `set` command consists of the following components:
+- The `SetCommand` class: Represents the command itself.
+- The `SetCommandParser` class: Responsible for parsing user input and creating `SetCommand` instances.
+- The `children` field: This is a field within a Task, implemented as a `HashSet<Task>`, that contains the 
+  references to the children of that Task.
+
+### Class Details
+
 
 ## Filter feature
 ### Actual implementation
@@ -388,6 +401,19 @@ For example, "filter d/01-01-2023" filters for tasks before and on 01-01-2023.
 
 3. The application will provide feedback, indicating the successful filtering, and display the relevant tasks.
 
+
+
+### `SetCommand` <a name="setcommand"></a>
+- Purpose: Represents the `set` command that allows users to set a task as the parent of another.
+- Key Methods:
+  - `execute(Model model)`: Executes the `SetCommand` by adding the indicated child task to the `children` set of 
+    the parent task.
+  - `equals(Object other)`: Compares two `SetCommand` objects for equality.
+
+### `SetCommandParser` <a name="setcommandparser"></a>
+- Purpose: Parses user input to create `SetCommand` instances.
+- Key Methods:
+    - `parse(String args)`: Parses the user input and returns a `SetCommand` if the input is valid.
 
 
 ### \[Proposed\] Undo/redo feature
