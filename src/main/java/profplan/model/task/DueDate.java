@@ -40,8 +40,10 @@ public class DueDate implements Comparable<DueDate> {
      */
     public static boolean isValidDate(String test) {
         try {
+            if (test.equals("No due date")) {
+                return true;
+            }
             format.parse(test);
-            // Test regex
             return test.matches(VALIDATION_REGEX);
         } catch (ParseException e) {
             return false;
