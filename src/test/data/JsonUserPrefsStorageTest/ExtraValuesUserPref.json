@@ -9,5 +9,5 @@
       "z" : 99
     }
   },
-  "profPlanFilePath" : "profplan.json"
+  "profPlanFilePath" : "data\\profplan.json"
 }

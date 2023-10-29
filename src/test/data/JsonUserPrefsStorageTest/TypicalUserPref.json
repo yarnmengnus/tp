@@ -7,5 +7,5 @@
       "y" : 100
     }
   },
-  "profPlanFilePath" : "profplan.json"
+  "profPlanFilePath" : "data\\profplan.json"
 }
