@@ -19,8 +19,6 @@ import profplan.testutil.TypicalTasks;
 public class JsonAdaptedTaskTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PRIORITY = "+651234";
-    private static final String INVALID_ADDRESS = " ";
-    private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_DUEDATE = "31/01/3000";
 

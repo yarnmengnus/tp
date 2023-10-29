@@ -36,7 +36,7 @@ public class DueDate implements Comparable<DueDate> {
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid due date.
      */
     public static boolean isValidDate(String test) {
         try {
