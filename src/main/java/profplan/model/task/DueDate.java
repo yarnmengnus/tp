@@ -55,6 +55,11 @@ public class DueDate implements Comparable<DueDate> {
      */
     public boolean isIncludedorBefore(DueDate otherDate) {
         try {
+            if (otherDate.value.equals("No due date")) {
+                return true;
+            } if (this.value.equals("No due date")) {
+                return false;
+            }
             Date parsedDate = format.parse(this.value);
             Date parsedOtherDate = format.parse(otherDate.value);
             return parsedDate.before(parsedOtherDate) || parsedDate.equals(parsedOtherDate);
