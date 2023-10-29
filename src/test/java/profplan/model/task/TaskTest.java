@@ -3,7 +3,6 @@ package profplan.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -32,7 +31,6 @@ public class TaskTest {
 
         // same name, all other attributes different -> returns true
         Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPriority(VALID_PRIORITY_BOB)
-                .withEmail(VALID_EMAIL_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(TypicalTasks.ALICE.isSameTask(editedAlice));
 
@@ -76,10 +74,6 @@ public class TaskTest {
         editedAlice = new TaskBuilder(TypicalTasks.ALICE).withPriority(VALID_PRIORITY_BOB).build();
         assertFalse(TypicalTasks.ALICE.equals(editedAlice));
 
-        // different email -> returns false
-        editedAlice = new TaskBuilder(TypicalTasks.ALICE).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(TypicalTasks.ALICE.equals(editedAlice));
-
         // different tags -> returns false
         editedAlice = new TaskBuilder(TypicalTasks.ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(TypicalTasks.ALICE.equals(editedAlice));
@@ -89,7 +83,6 @@ public class TaskTest {
     public void toStringMethod() {
         String expected = Task.class.getCanonicalName() + "{name=" + TypicalTasks.ALICE.getName() + ", priority="
                 + TypicalTasks.ALICE.getPriority()
-                + ", email=" + TypicalTasks.ALICE.getEmail()
                 + ", status=" + TypicalTasks.ALICE.getStatus()
                 + ", tags=" + TypicalTasks.ALICE.getTags()
                 + ", dueDate=" + TypicalTasks.ALICE.getDueDate()

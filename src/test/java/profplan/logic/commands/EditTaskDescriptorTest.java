@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.logic.commands.CommandTestUtil.DESC_AMY;
 import static profplan.logic.commands.CommandTestUtil.DESC_BOB;
-import static profplan.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
@@ -43,10 +42,6 @@ public class EditTaskDescriptorTest {
         editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withPriority(VALID_PRIORITY_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different email -> returns false
-        editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
-
         // different tags -> returns false
         editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
@@ -57,8 +52,7 @@ public class EditTaskDescriptorTest {
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         String expected = EditTaskDescriptor.class.getCanonicalName() + "{name="
                 + editTaskDescriptor.getName().orElse(null) + ", priority="
-                + editTaskDescriptor.getPriority().orElse(null) + ", email="
-                + editTaskDescriptor.getEmail().orElse(null) + ", tags="
+                + editTaskDescriptor.getPriority().orElse(null) + ", tags="
                 + editTaskDescriptor.getTags().orElse(null) + ", dueDate="
                 + editTaskDescriptor.getDueDate().orElse(null) + ", link="
                 + editTaskDescriptor.getLink().orElse(null) + "}";

@@ -14,7 +14,6 @@ import profplan.logic.commands.CommandTestUtil;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.model.tag.Tag;
-import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.testutil.EditTaskDescriptorBuilder;
@@ -64,8 +63,6 @@ public class EditCommandParserTest {
                 Name.MESSAGE_CONSTRAINTS); // invalid name
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_PRIORITY_DESC,
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
-        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_EMAIL_DESC,
-                Email.MESSAGE_CONSTRAINTS); // invalid email
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_TAG_DESC,
                 Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
@@ -98,8 +95,8 @@ public class EditCommandParserTest {
                 + CommandTestUtil.TAG_DESC_FRIEND;
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_AMY)
-                .withPriority(CommandTestUtil.VALID_PRIORITY_BOB).withEmail(CommandTestUtil.VALID_EMAIL_AMY)
-                .withTags(CommandTestUtil.VALID_TAG_HUSBAND, CommandTestUtil.VALID_TAG_FRIEND).build();
+                .withPriority(CommandTestUtil.VALID_PRIORITY_BOB).withTags(CommandTestUtil.VALID_TAG_HUSBAND,
+                        CommandTestUtil.VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
@@ -113,7 +110,7 @@ public class EditCommandParserTest {
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder()
                 .withPriority(CommandTestUtil.VALID_PRIORITY_BOB)
-                .withEmail(CommandTestUtil.VALID_EMAIL_AMY).build();
+                .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
@@ -132,12 +129,6 @@ public class EditCommandParserTest {
         // priority
         userInput = targetIndex.getOneBased() + CommandTestUtil.PRIORITY_DESC_AMY;
         descriptor = new EditTaskDescriptorBuilder().withPriority(CommandTestUtil.VALID_PRIORITY_AMY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
-
-        // email
-        userInput = targetIndex.getOneBased() + CommandTestUtil.EMAIL_DESC_AMY;
-        descriptor = new EditTaskDescriptorBuilder().withEmail(CommandTestUtil.VALID_EMAIL_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
 

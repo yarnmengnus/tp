@@ -24,7 +24,6 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.tag.Tag;
 import profplan.model.task.DueDate;
-import profplan.model.task.Email;
 import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -104,12 +103,11 @@ public class EditCommand extends Command {
 
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         Priority updatedPriority = editTaskDescriptor.getPriority().orElse(taskToEdit.getPriority());
-        Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
         Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
         Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
-        return new Task(updatedName, updatedPriority, updatedEmail, updatedTags,
+        return new Task(updatedName, updatedPriority, updatedTags,
                         updatedDueDate, updatedChildren, updatedLink, taskToEdit.getDescription());
     }
 
@@ -144,7 +142,6 @@ public class EditCommand extends Command {
     public static class EditTaskDescriptor {
         private Name name;
         private Priority priority;
-        private Email email;
         private Set<Tag> tags;
         private Set<Task> children;
         private DueDate dueDate;
@@ -159,7 +156,6 @@ public class EditCommand extends Command {
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             setName(toCopy.name);
             setPriority(toCopy.priority);
-            setEmail(toCopy.email);
             setLink(toCopy.link);
             setTags(toCopy.tags);
             setDueDate(toCopy.dueDate);
@@ -169,7 +165,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, priority, email, tags, dueDate, link);
+            return CollectionUtil.isAnyNonNull(name, priority, tags, dueDate, link);
         }
 
         public void setName(Name name) {
@@ -186,14 +182,6 @@ public class EditCommand extends Command {
 
         public Optional<Priority> getPriority() {
             return Optional.ofNullable(priority);
-        }
-
-        public void setEmail(Email email) {
-            this.email = email;
-        }
-
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
         }
 
         /**
@@ -249,7 +237,6 @@ public class EditCommand extends Command {
             EditTaskDescriptor otherEditTaskDescriptor = (EditTaskDescriptor) other;
             return Objects.equals(name, otherEditTaskDescriptor.name)
                     && Objects.equals(priority, otherEditTaskDescriptor.priority)
-                    && Objects.equals(email, otherEditTaskDescriptor.email)
                     && Objects.equals(tags, otherEditTaskDescriptor.tags)
                     && Objects.equals(dueDate, otherEditTaskDescriptor.dueDate)
                     && Objects.equals(link, otherEditTaskDescriptor.link);
@@ -260,7 +247,6 @@ public class EditCommand extends Command {
             return new ToStringBuilder(this)
                     .add("name", name)
                     .add("priority", priority)
-                    .add("email", email)
                     .add("tags", tags)
                     .add("dueDate", dueDate)
                     .add("link", link)

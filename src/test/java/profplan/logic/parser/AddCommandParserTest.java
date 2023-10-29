@@ -12,7 +12,6 @@ import profplan.logic.Messages;
 import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.CommandTestUtil;
 import profplan.model.tag.Tag;
-import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Task;
@@ -186,12 +185,6 @@ public class AddCommandParserTest {
                 + CommandTestUtil.INVALID_PRIORITY_DESC + CommandTestUtil.EMAIL_DESC_BOB
                 + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
                 + CommandTestUtil.TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
-
-        // invalid email
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.INVALID_EMAIL_DESC
-                + CommandTestUtil.ADDRESS_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
-                + CommandTestUtil.TAG_DESC_FRIEND, Email.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
