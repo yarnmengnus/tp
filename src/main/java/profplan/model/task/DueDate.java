@@ -58,7 +58,8 @@ public class DueDate implements Comparable<DueDate> {
         try {
             if (otherDate.value.equals("No due date")) {
                 return true;
-            } if (this.value.equals("No due date")) {
+            }
+            if (this.value.equals("No due date")) {
                 return false;
             }
             Date parsedDate = format.parse(this.value);
