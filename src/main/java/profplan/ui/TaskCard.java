@@ -35,10 +35,6 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label priority;
     @FXML
-    private Label address;
-    @FXML
-    private Label email;
-    @FXML
     private Label dueDate;
     @FXML
     private Label status;
