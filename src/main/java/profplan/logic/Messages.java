@@ -43,6 +43,8 @@ public class Messages {
                 .append(task.getEmail())
                 .append("; Address: ")
                 .append(task.getAddress())
+                .append("; Status: ")
+                .append(task.getStatus())
                 .append("; Tags: ");
         task.getTags().forEach(builder::append);
         builder.append("; Link: ")
