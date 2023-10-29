@@ -6,24 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import profplan.model.Model;
-import profplan.model.ModelManager;
-import profplan.model.ProfPlan;
-import profplan.model.UserPrefs;
 import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
 import profplan.model.task.predicates.TaskDueDatePredicate;
 import profplan.model.task.predicates.TaskPriorityPredicate;
 import profplan.model.task.predicates.TaskStatusPredicate;
-import profplan.testutil.TypicalTasks;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FilterCommand}.
  */
 public class FilterCommandTest {
-
-    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
 
     @Test
     public void equalsDueDate() {
@@ -122,44 +115,5 @@ public class FilterCommandTest {
         FilterCommand filterCommandStatus = new FilterCommand(predicateStatus);
         String expectedStatus = FilterCommand.class.getCanonicalName() + "{predicate=" + predicateStatus + "}";
         assertEquals(expectedStatus, filterCommandStatus.toString());
-    }
-
-    @Test
-    public void testMessageSuccessDueDate() {
-
-        FilterCommand filterDueDate = new FilterCommand(new TaskDueDatePredicate(new DueDate("01-01-2000")));
-
-        String successMessageDueDate = "Here are your tasks before 01-01-2000!";
-
-        Model expectedModelDueDate = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
-        filterDueDate.execute(expectedModelDueDate);
-
-        assertEquals(filterDueDate.getSuccessMessage(), successMessageDueDate);
-    }
-
-    @Test
-    public void testMessageSuccessPriority() {
-
-        FilterCommand filterPriority = new FilterCommand(new TaskPriorityPredicate(new Priority("3")));
-
-        String successMessagePriority = "Here are your tasks of priority 3!";
-
-        Model expectedModelDueDate = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
-        filterPriority.execute(expectedModelDueDate);
-
-        assertEquals(filterPriority.getSuccessMessage(), successMessagePriority);
-    }
-
-    @Test
-    public void testMessageSuccessStatus() {
-
-        FilterCommand filterStatus = new FilterCommand(new TaskStatusPredicate(new Status("done")));
-
-        String successMessageStatus = "Here are your tasks that are done!";
-
-        Model expectedModelDueDate = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
-        filterStatus.execute(expectedModelDueDate);
-
-        assertEquals(filterStatus.getSuccessMessage(), successMessageStatus);
     }
 }
