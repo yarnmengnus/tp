@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import profplan.commons.util.ToStringBuilder;
 import profplan.logic.Messages;
 import profplan.model.Model;
-import profplan.model.task.NameContainsKeywordsPredicate;
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all tasks in task list whose name contains any of the argument keywords.

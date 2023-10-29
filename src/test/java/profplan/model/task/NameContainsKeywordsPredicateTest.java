@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.TaskBuilder;
 
 public class NameContainsKeywordsPredicateTest {

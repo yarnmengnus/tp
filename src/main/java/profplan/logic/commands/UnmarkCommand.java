@@ -7,7 +7,7 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 
 /**
- * Adds a task to the address book.
+ * Marks Status of task as undone.
  */
 public class UnmarkCommand extends Command {
 

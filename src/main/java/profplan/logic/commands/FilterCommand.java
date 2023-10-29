@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 
 import profplan.commons.util.ToStringBuilder;
 import profplan.model.Model;
-import profplan.model.task.TaskDueDatePredicate;
-import profplan.model.task.TaskPriorityPredicate;
-import profplan.model.task.TaskStatusPredicate;
+import profplan.model.task.predicates.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskStatusPredicate;
 
 
 /**
