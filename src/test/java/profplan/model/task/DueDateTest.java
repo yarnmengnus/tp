@@ -25,9 +25,6 @@ public class DueDateTest {
 
     @Test
     public void isValidDate() {
-        // null date
-        Assert.assertThrows(NullPointerException.class, () -> DueDate.isValidDate(null));
-
         // invalid dates
         assertFalse(DueDate.isValidDate("01-01-2031")); // max year is 2030
         assertFalse(DueDate.isValidDate("01/01/2000"));

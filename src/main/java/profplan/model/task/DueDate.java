@@ -25,6 +25,8 @@ public class DueDate implements Comparable<DueDate> {
 
     public final String value;
 
+    private Date parsedValue = null;
+
     /**
      * Constructs an {@code Address}.
      *
@@ -32,12 +34,32 @@ public class DueDate implements Comparable<DueDate> {
      */
     public DueDate(String date) {
         requireNonNull(date);
-        AppUtil.checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         value = date;
+        AppUtil.checkArgument(isValidDate(this), MESSAGE_CONSTRAINTS);
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given Duedate is of correct format.
+     */
+    public static boolean isValidDate(DueDate test) {
+        try {
+            if (test.value.equals("No due date")) {
+                return true;
+            }
+            Date parsed = format.parse(test.value);
+            if (test.value.matches(VALIDATION_REGEX)) {
+                test.parsedValue = parsed;
+                return true;
+            } else {
+                return false;
+            }
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Overloaded method for isValidDate
      */
     public static boolean isValidDate(String test) {
         try {
@@ -55,67 +77,55 @@ public class DueDate implements Comparable<DueDate> {
      * Checks whether the current date is before, on equals the given date
      */
     public boolean isIncludedorBefore(DueDate otherDate) {
-        try {
-            if (otherDate.value.equals("No due date")) {
-                return true;
-            }
-            if (this.value.equals("No due date")) {
-                return false;
-            }
-            Date parsedDate = format.parse(this.value);
-            Date parsedOtherDate = format.parse(otherDate.value);
-            return parsedDate.before(parsedOtherDate) || parsedDate.equals(parsedOtherDate);
-        } catch (ParseException e) {
+        if (otherDate.value.equals("No due date")) {
+            return true;
+        }
+        if (this.value.equals("No due date")) {
             return false;
         }
+        Date parsedDate = this.parsedValue;
+        Date parsedOtherDate = otherDate.parsedValue;
+        return parsedDate.before(parsedOtherDate) || parsedDate.equals(parsedOtherDate);
     }
 
     /**
      * Returns true if due date is within a week of today.
      */
     public boolean isWithinWeek() {
-        try {
-            if (this.value.equals("No due date")) {
-                return false;
-            }
-            Date parsedDate = format.parse(this.value);
-
-            Calendar currentCal = Calendar.getInstance();
-            currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
-
-            Date currentDay = currentCal.getTime();
-
-            currentCal.add(Calendar.DAY_OF_YEAR, 7);
-            Date endOfWeek = currentCal.getTime();
-
-            return !parsedDate.before(currentDay) && !parsedDate.after(endOfWeek);
-        } catch (ParseException e) {
+        if (this.value.equals("No due date")) {
             return false;
         }
+        Date parsedDate = this.parsedValue;
+
+        Calendar currentCal = Calendar.getInstance();
+        currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
+
+        Date currentDay = currentCal.getTime();
+
+        currentCal.add(Calendar.DAY_OF_YEAR, 7);
+        Date endOfWeek = currentCal.getTime();
+
+        return !parsedDate.before(currentDay) && !parsedDate.after(endOfWeek);
     }
 
     /**
      * Returns true if due date is within a month of today.
      */
     public boolean isWithinMonth() {
-        try {
-            if (this.value.equals("No due date")) {
-                return false;
-            }
-            Date parsedDate = format.parse(this.value);
-
-            Calendar currentCal = Calendar.getInstance();
-            currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
-
-            Date currentDay = currentCal.getTime();
-
-            currentCal.add(Calendar.DAY_OF_YEAR, 30);
-            Date endOfMonth = currentCal.getTime();
-
-            return !parsedDate.before(currentDay) && !parsedDate.after(endOfMonth);
-        } catch (ParseException e) {
+        if (this.value.equals("No due date")) {
             return false;
         }
+        Date parsedDate = this.parsedValue;
+
+        Calendar currentCal = Calendar.getInstance();
+        currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
+
+        Date currentDay = currentCal.getTime();
+
+        currentCal.add(Calendar.DAY_OF_YEAR, 30);
+        Date endOfMonth = currentCal.getTime();
+
+        return !parsedDate.before(currentDay) && !parsedDate.after(endOfMonth);
     }
 
     @Override
