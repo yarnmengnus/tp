@@ -13,9 +13,9 @@ import profplan.model.UserPrefs;
 import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
-import profplan.model.task.TaskDueDatePredicate;
-import profplan.model.task.TaskPriorityPredicate;
-import profplan.model.task.TaskStatusPredicate;
+import profplan.model.task.predicates.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskStatusPredicate;
 import profplan.testutil.TypicalTasks;
 
 /**

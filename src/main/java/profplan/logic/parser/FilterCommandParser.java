@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 
 import profplan.logic.commands.FilterCommand;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.task.TaskDueDatePredicate;
-import profplan.model.task.TaskPriorityPredicate;
-import profplan.model.task.TaskStatusPredicate;
+import profplan.model.task.predicates.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskStatusPredicate;
 
 
 /**

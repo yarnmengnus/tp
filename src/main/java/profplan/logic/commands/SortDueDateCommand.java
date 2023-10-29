@@ -8,14 +8,13 @@ import profplan.model.Model;
 /**
  * Adds a task to the address book.
  */
-public class SortDeadlineCommand extends Command {
+public class SortDueDateCommand extends Command {
 
-    public static final String COMMAND_WORD = "sort_deadline";
+    public static final String COMMAND_WORD = "sort_duedate";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the task by the deadline. "
-            + "Example: " + COMMAND_WORD + " deadline";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the task by due date.";
 
-    public static final String MESSAGE_SUCCESS = " Here is your task list Prof!, sorted by nearest deadline";
+    public static final String MESSAGE_SUCCESS = " Here is your task list Prof, sorted by nearest due date.";
 
 
     @Override

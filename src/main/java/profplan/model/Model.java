@@ -119,5 +119,4 @@ public interface Model {
      * Sorts the task based on priority.
      */
     void sortTaskByPriority();
-
 }

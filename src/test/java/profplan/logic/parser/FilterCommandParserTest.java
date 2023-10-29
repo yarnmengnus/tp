@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import profplan.logic.commands.FilterCommand;
 import profplan.model.task.DueDate;
-import profplan.model.task.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskDueDatePredicate;
 
 public class FilterCommandParserTest {
 
