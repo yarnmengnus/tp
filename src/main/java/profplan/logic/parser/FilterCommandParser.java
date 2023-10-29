@@ -27,7 +27,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
 
         if (!argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE
+                + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
 
@@ -53,7 +54,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
 
         } catch (ParseException e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE
+                        + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
         }
 
         return new FilterCommand(pred);

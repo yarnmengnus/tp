@@ -22,15 +22,17 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters for tasks with one of the following criteria,"
-            + " with the corresponding format: \n"
+            + ": Filters for tasks with one criteria and displays them as a list with index numbers.\n";
+
+    public static final String MESSAGE_DETAILS = "Format: \n"
+            + COMMAND_WORD + " "
             + "[" + PREFIX_STATUS + "STATUS]" + " (done/undone)\n"
             + "[" + PREFIX_DUEDATE + "DUEDATE]" + " (dd-MM-yyyy)\n"
             + "[" + PREFIX_PRIORITY + "PRIORITY]" + " (integer between 1 and 10)\n"
-            + "And displays them as a list with index numbers.\n"
-            + "Example: " + COMMAND_WORD + " d/01-01-2024";
+            + "And displays them as a list with index numbers.\n";
 
-    public static final String MESSAGE_DETAILS = "";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " d/01-01-2024";
+
     private final Predicate<?> predicate;
 
     private String messageSuccess = "";

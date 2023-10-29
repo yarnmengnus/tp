@@ -12,8 +12,8 @@ public class SortDeadlineCommand extends Command {
 
     public static final String COMMAND_WORD = "sort_deadline";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the task by the deadline. "
-            + "Example: " + COMMAND_WORD + " deadline";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the task by the deadline.";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " deadline";
 
     public static final String MESSAGE_SUCCESS = " Here is your task list Prof!, sorted by nearest deadline";
 

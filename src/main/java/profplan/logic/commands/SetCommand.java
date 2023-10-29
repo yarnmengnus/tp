@@ -16,12 +16,14 @@ public class SetCommand extends Command {
     public static final String COMMAND_WORD = "set";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sets the first task, specified by index in the list,"
-            + "as the parent of the second task, also specified by its index in the list.\n"
-            + "Parameters: [parentTaskIndex] [childTaskIndex], both positive integers.\n"
-            + "Example: set 3 2\n"
+            + "as the parent of the second task, also specified by its index in the list.\n";
+
+    public static final String MESSAGE_DETAILS = "Parameters: "
+            + "[parentTaskIndex] [childTaskIndex], both positive integers.\n";
+
+    public static final String MESSAGE_EXAMPLE = "Example: set 3 2\n"
             + "sets the task at list index 3 as the parent of the task at list index 2.";
 
-    public static final String MESSAGE_DETAILS = "";
     private final Index parentIndex;
     private final Index childIndex;
 
