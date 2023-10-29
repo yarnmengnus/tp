@@ -11,9 +11,13 @@ import org.junit.jupiter.api.Test;
 import profplan.logic.commands.FilterCommand;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.task.DueDate;
+import profplan.model.task.Priority;
+import profplan.model.task.Status;
 import profplan.model.task.Task;
 import profplan.model.task.predicates.CombinedPredicate;
 import profplan.model.task.predicates.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskStatusPredicate;
 
 public class FilterCommandParserTest {
 
@@ -26,7 +30,7 @@ public class FilterCommandParserTest {
     }
 
     @Test
-    public void parse_validArgs_returnsFilterCommand() {
+    public void parse_validDueDate_returnsFilterCommand() {
         ArrayList<Predicate<Task>> preds = new ArrayList<>();
         preds.add(new TaskDueDatePredicate(new DueDate("01-01-2000")));
 
@@ -37,6 +41,34 @@ public class FilterCommandParserTest {
 
         // multiple whitespaces between keywords
         CommandParserTestUtil.assertParseSuccess(parser, " \n d/01-01-2000\t", expectedFilterCommand);
+    }
+
+    @Test
+    public void parse_validPriority_returnsFilterCommand() {
+        ArrayList<Predicate<Task>> preds = new ArrayList<>();
+        preds.add(new TaskPriorityPredicate(new Priority("1")));
+
+        // no leading and trailing whitespaces
+        FilterCommand expectedFilterCommand =
+                new FilterCommand(new CombinedPredicate(preds));
+        CommandParserTestUtil.assertParseSuccess(parser, " p/1", expectedFilterCommand);
+
+        // multiple whitespaces between keywords
+        CommandParserTestUtil.assertParseSuccess(parser, " \n p/1\t", expectedFilterCommand);
+    }
+
+    @Test
+    public void parse_validStatus_returnsFilterCommand() {
+        ArrayList<Predicate<Task>> preds = new ArrayList<>();
+        preds.add(new TaskStatusPredicate(new Status("done")));
+
+        // no leading and trailing whitespaces
+        FilterCommand expectedFilterCommand =
+                new FilterCommand(new CombinedPredicate(preds));
+        CommandParserTestUtil.assertParseSuccess(parser, " s/done", expectedFilterCommand);
+
+        // multiple whitespaces between keywords
+        CommandParserTestUtil.assertParseSuccess(parser, " \n s/done\t", expectedFilterCommand);
     }
 
     @Test
