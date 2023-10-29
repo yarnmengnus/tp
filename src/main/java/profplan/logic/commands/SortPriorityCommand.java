@@ -6,7 +6,7 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 
 /**
- * Adds a task to the address book.
+ * Sorts tasklist by Priority.
  */
 public class SortPriorityCommand extends Command {
 
