@@ -41,8 +41,6 @@ public class Messages {
                 .append(task.getPriority())
                 .append("; Email: ")
                 .append(task.getEmail())
-                .append("; Address: ")
-                .append(task.getAddress())
                 .append("; Tags: ");
         task.getTags().forEach(builder::append);
         builder.append("; DueDate: ")

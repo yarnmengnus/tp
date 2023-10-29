@@ -18,7 +18,6 @@ import java.util.stream.Stream;
 import profplan.logic.commands.AddCommand;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
@@ -53,13 +52,11 @@ public class AddCommandParser implements Parser<AddCommand> {
                 : ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
         Email email = (argMultimap.getValue(PREFIX_EMAIL) == Optional.<String>empty()) ? new Email("null@null")
                 : ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = (argMultimap.getValue(PREFIX_ADDRESS) == Optional.<String>empty()) ? new Address("000")
-                : ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         DueDate dueDate = ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).orElse("No due date"));
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
 
-        Task task = new Task(name, priority, email, address, tagList, dueDate, new HashSet<>(),
+        Task task = new Task(name, priority, email, tagList, dueDate, new HashSet<>(),
                 link, new Description(""));
         return new AddCommand(task);
     }

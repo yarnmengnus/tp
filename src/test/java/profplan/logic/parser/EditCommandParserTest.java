@@ -14,7 +14,6 @@ import profplan.logic.commands.CommandTestUtil;
 import profplan.logic.commands.EditCommand;
 import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -67,8 +66,6 @@ public class EditCommandParserTest {
                 Priority.MESSAGE_CONSTRAINTS); // invalid priority
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_EMAIL_DESC,
                 Email.MESSAGE_CONSTRAINTS); // invalid email
-        CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_ADDRESS_DESC,
-                Address.MESSAGE_CONSTRAINTS); // invalid address
         CommandParserTestUtil.assertParseFailure(parser, "1" + CommandTestUtil.INVALID_TAG_DESC,
                 Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
@@ -102,7 +99,6 @@ public class EditCommandParserTest {
 
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder().withName(CommandTestUtil.VALID_NAME_AMY)
                 .withPriority(CommandTestUtil.VALID_PRIORITY_BOB).withEmail(CommandTestUtil.VALID_EMAIL_AMY)
-                .withAddress(CommandTestUtil.VALID_ADDRESS_AMY)
                 .withTags(CommandTestUtil.VALID_TAG_HUSBAND, CommandTestUtil.VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -142,12 +138,6 @@ public class EditCommandParserTest {
         // email
         userInput = targetIndex.getOneBased() + CommandTestUtil.EMAIL_DESC_AMY;
         descriptor = new EditTaskDescriptorBuilder().withEmail(CommandTestUtil.VALID_EMAIL_AMY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
-
-        // address
-        userInput = targetIndex.getOneBased() + CommandTestUtil.ADDRESS_DESC_AMY;
-        descriptor = new EditTaskDescriptorBuilder().withAddress(CommandTestUtil.VALID_ADDRESS_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         CommandParserTestUtil.assertParseSuccess(parser, userInput, expectedCommand);
 

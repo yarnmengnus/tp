@@ -71,7 +71,7 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match priority, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("5", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new TaskBuilder().withName("Alice").withPriority("5")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withEmail("alice@email.com").build()));
     }
 
     @Test

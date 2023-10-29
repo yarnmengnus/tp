@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
@@ -31,7 +30,6 @@ public class TaskBuilder {
     private Name name;
     private Priority priority;
     private Email email;
-    private Address address;
     private Set<Tag> tags;
     private Set<Task> children;
     private DueDate dueDate;
@@ -45,7 +43,6 @@ public class TaskBuilder {
         name = new Name(DEFAULT_NAME);
         priority = new Priority(DEFAULT_PRIORITY);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
@@ -60,7 +57,6 @@ public class TaskBuilder {
         name = taskToCopy.getName();
         priority = taskToCopy.getPriority();
         email = taskToCopy.getEmail();
-        address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
         children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
@@ -89,14 +85,6 @@ public class TaskBuilder {
      */
     public TaskBuilder withChildren(Task ... children) {
         this.children = SampleDataUtil.getTaskSet(children);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withAddress(String address) {
-        this.address = new Address(address);
         return this;
     }
 
@@ -136,7 +124,7 @@ public class TaskBuilder {
      * Builds a new task with the given fields.
      */
     public Task build() {
-        return new Task(name, priority, email, address, tags, dueDate, children,
+        return new Task(name, priority, email, tags, dueDate, children,
                 link, description);
     }
 

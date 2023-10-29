@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import profplan.commons.exceptions.IllegalValueException;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Description;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
@@ -31,7 +30,6 @@ class JsonAdaptedTask {
     private final String name;
     private final String priority;
     private final String email;
-    private final String address;
     private final String dueDate;
     private final String status;
     private final String link;
@@ -44,15 +42,14 @@ class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("priority") String priority,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("email") String email,
+                           @JsonProperty("tags") List<JsonAdaptedTag> tags,
             @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
             @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link,
             @JsonProperty("description") String description) {
         this.name = name;
         this.priority = priority;
         this.email = email;
-        this.address = address;
         this.dueDate = dueDate;
         this.status = status;
         this.link = link;
@@ -72,7 +69,6 @@ class JsonAdaptedTask {
         name = source.getName().fullName;
         priority = source.getPriority().value;
         email = source.getEmail().value;
-        address = source.getAddress().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -126,14 +122,6 @@ class JsonAdaptedTask {
         }
         final Email modelEmail = new Email(email);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-
         final Set<Tag> modelTags = new HashSet<>(taskTags);
 
         String linkToLoad = link;
@@ -164,9 +152,8 @@ class JsonAdaptedTask {
         }
         final Description modelDescription = new Description(description);
 
-        return new Task(modelName, modelPriority, modelEmail,
-                modelAddress, modelStatus, modelTags, modelDueDate, modelChildren, modelLink,
-                modelDescription);
+        return new Task(modelName, modelPriority, modelEmail, modelStatus, modelTags, modelDueDate,
+                modelChildren, modelLink, modelDescription);
     }
 
 }

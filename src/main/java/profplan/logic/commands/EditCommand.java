@@ -23,7 +23,6 @@ import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.DueDate;
 import profplan.model.task.Email;
 import profplan.model.task.Link;
@@ -106,12 +105,11 @@ public class EditCommand extends Command {
         Name updatedName = editTaskDescriptor.getName().orElse(taskToEdit.getName());
         Priority updatedPriority = editTaskDescriptor.getPriority().orElse(taskToEdit.getPriority());
         Email updatedEmail = editTaskDescriptor.getEmail().orElse(taskToEdit.getEmail());
-        Address updatedAddress = editTaskDescriptor.getAddress().orElse(taskToEdit.getAddress());
         Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
         Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
-        return new Task(updatedName, updatedPriority, updatedEmail, updatedAddress, updatedTags,
+        return new Task(updatedName, updatedPriority, updatedEmail, updatedTags,
                         updatedDueDate, updatedChildren, updatedLink, taskToEdit.getDescription());
     }
 
@@ -147,7 +145,6 @@ public class EditCommand extends Command {
         private Name name;
         private Priority priority;
         private Email email;
-        private Address address;
         private Set<Tag> tags;
         private Set<Task> children;
         private DueDate dueDate;
@@ -163,7 +160,6 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPriority(toCopy.priority);
             setEmail(toCopy.email);
-            setAddress(toCopy.address);
             setLink(toCopy.link);
             setTags(toCopy.tags);
             setDueDate(toCopy.dueDate);
@@ -173,7 +169,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, priority, email, address, tags, dueDate, link);
+            return CollectionUtil.isAnyNonNull(name, priority, email, tags, dueDate, link);
         }
 
         public void setName(Name name) {
@@ -198,14 +194,6 @@ public class EditCommand extends Command {
 
         public Optional<Email> getEmail() {
             return Optional.ofNullable(email);
-        }
-
-        public void setAddress(Address address) {
-            this.address = address;
-        }
-
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
         }
 
         /**
@@ -262,7 +250,6 @@ public class EditCommand extends Command {
             return Objects.equals(name, otherEditTaskDescriptor.name)
                     && Objects.equals(priority, otherEditTaskDescriptor.priority)
                     && Objects.equals(email, otherEditTaskDescriptor.email)
-                    && Objects.equals(address, otherEditTaskDescriptor.address)
                     && Objects.equals(tags, otherEditTaskDescriptor.tags)
                     && Objects.equals(dueDate, otherEditTaskDescriptor.dueDate)
                     && Objects.equals(link, otherEditTaskDescriptor.link);
@@ -274,7 +261,6 @@ public class EditCommand extends Command {
                     .add("name", name)
                     .add("priority", priority)
                     .add("email", email)
-                    .add("address", address)
                     .add("tags", tags)
                     .add("dueDate", dueDate)
                     .add("link", link)

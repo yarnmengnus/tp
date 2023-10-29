@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Email;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -100,29 +99,6 @@ public class ParserUtilTest {
         String priorityWithWhitespace = WHITESPACE + VALID_PRIORITY + WHITESPACE;
         Priority expectedPriority = new Priority(VALID_PRIORITY);
         assertEquals(expectedPriority, ParserUtil.parsePriority(priorityWithWhitespace));
-    }
-
-    @Test
-    public void parseAddress_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
-    }
-
-    @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
-    }
-
-    @Test
-    public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(VALID_ADDRESS));
-    }
-
-    @Test
-    public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        Address expectedAddress = new Address(VALID_ADDRESS);
-        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
     }
 
     @Test

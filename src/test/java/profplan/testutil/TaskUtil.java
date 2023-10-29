@@ -1,6 +1,5 @@
 package profplan.testutil;
 
-import static profplan.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static profplan.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -36,7 +35,6 @@ public class TaskUtil {
         sb.append(PREFIX_NAME + task.getName().fullName + " ");
         sb.append(PREFIX_PRIORITY + task.getPriority().value + " ");
         sb.append(PREFIX_EMAIL + task.getEmail().value + " ");
-        sb.append(PREFIX_ADDRESS + task.getAddress().value + " ");
         task.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -54,7 +52,6 @@ public class TaskUtil {
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getPriority().ifPresent(priority -> sb.append(PREFIX_PRIORITY).append(priority.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
-        descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         descriptor.getLink().ifPresent(link -> sb.append(PREFIX_LINK).append(link.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
