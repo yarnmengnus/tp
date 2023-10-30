@@ -49,7 +49,7 @@ public interface Model {
      */
     void setProfPlan(ReadOnlyProfPlan profPlan);
 
-    /** Returns the AddressBook */
+    /** Returns the ProfPlan */
     ReadOnlyProfPlan getProfPlan();
 
     /**
@@ -119,5 +119,4 @@ public interface Model {
      * Sorts the task based on priority.
      */
     void sortTaskByPriority();
-
 }

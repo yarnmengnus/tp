@@ -39,6 +39,7 @@ public class Messages {
         builder.append(task.getName())
                 .append("; Priority: ")
                 .append(task.getPriority())
+
                 .append("; Email: ")
                 .append(task.getEmail())
                 .append("; Address: ")
@@ -47,7 +48,9 @@ public class Messages {
                 .append(task.getStatus())
                 .append("; Tags: ");
         task.getTags().forEach(builder::append);
-        builder.append("; Link: ")
+        builder.append("; DueDate: ")
+                .append(task.getDueDate())
+                .append("; Link: ")
                 .append(task.getLink());
         return builder.toString();
     }

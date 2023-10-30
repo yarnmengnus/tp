@@ -3,7 +3,6 @@ package profplan.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import java.util.Arrays;
@@ -45,7 +44,7 @@ public class ProfPlanTest {
     @Test
     public void resetData_withDuplicateTasks_throwsDuplicateTaskException() {
         // Two tasks with the same identity fields
-        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Task> newTasks = Arrays.asList(TypicalTasks.ALICE, editedAlice);
@@ -73,7 +72,7 @@ public class ProfPlanTest {
     @Test
     public void hasTask_taskWithSameIdentityFieldsInProfPlan_returnsTrue() {
         profPlan.addTask(TypicalTasks.ALICE);
-        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(profPlan.hasTask(editedAlice));

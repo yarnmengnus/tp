@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.TaskBuilder;
 
 public class NameContainsKeywordsPredicateTest {
@@ -68,10 +69,10 @@ public class NameContainsKeywordsPredicateTest {
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new TaskBuilder().withName("Alice Bob").build()));
 
-        // Keywords match priority, email and address, but does not match name
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("5", "alice@email.com", "Main", "Street"));
+        // Keywords match priority but does not match name
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("5"));
         assertFalse(predicate.test(new TaskBuilder().withName("Alice").withPriority("5")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .build()));
     }
 
     @Test

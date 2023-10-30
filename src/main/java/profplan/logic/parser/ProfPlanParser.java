@@ -20,9 +20,11 @@ import profplan.logic.commands.FilterCommand;
 import profplan.logic.commands.FindCommand;
 import profplan.logic.commands.HelpCommand;
 import profplan.logic.commands.ListCommand;
+import profplan.logic.commands.ListMonthCommand;
+import profplan.logic.commands.ListWeekCommand;
 import profplan.logic.commands.MarkCommand;
 import profplan.logic.commands.SetCommand;
-import profplan.logic.commands.SortDeadlineCommand;
+import profplan.logic.commands.SortDueDateCommand;
 import profplan.logic.commands.SortPriorityCommand;
 import profplan.logic.commands.UnmarkCommand;
 import profplan.logic.parser.exceptions.ParseException;
@@ -102,10 +104,18 @@ public class ProfPlanParser {
 
         case DescriptionCommand.COMMAND_WORD:
             return new DescriptionCommandParser().parse(arguments);
-        case SortDeadlineCommand.COMMAND_WORD:
-            return new SortDeadlineCommand();
+
+        case SortDueDateCommand.COMMAND_WORD:
+            return new SortDueDateCommand();
+
         case SortPriorityCommand.COMMAND_WORD:
             return new SortPriorityCommand();
+
+        case ListWeekCommand.COMMAND_WORD:
+            return new ListWeekCommand();
+
+        case ListMonthCommand.COMMAND_WORD:
+            return new ListMonthCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
