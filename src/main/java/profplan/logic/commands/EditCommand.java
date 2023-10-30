@@ -37,17 +37,18 @@ public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
-            + "by the index number used in the displayed task list. "
-            + "Existing values will be overwritten by the input values.\n"
+            + "by the index number used in the displayed task list. ";
+
+    public static final String MESSAGE_DETAILS = "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_TAG + "TAG]...\n"
-            + "[" + PREFIX_DUEDATE + "DUEDATE...\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "[" + PREFIX_DUEDATE + "DUEDATE...\n";
+
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "91234567 ";
-    public static final String MESSAGE_DETAILS = "";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

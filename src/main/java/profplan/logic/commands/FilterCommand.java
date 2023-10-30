@@ -31,7 +31,7 @@ public class FilterCommand extends Command {
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " d/01-01-2024";
 
-    private final Predicate<?> predicate;
+    private final Predicate<Task> predicate;
 
     private String messageSuccess = "Here are your tasks that are:\n";
 
