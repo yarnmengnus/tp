@@ -4,10 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
 import profplan.model.task.Description;
 import profplan.model.task.DueDate;
-import profplan.model.task.Email;
 import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -21,8 +19,6 @@ public class TaskBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PRIORITY = "85355255";
-    public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_DUEDATE = "01-01-2000";
     public static final String DEFAULT_LINK = "-";
     public static final String DEFUALT_DESCRIPTION = "";
@@ -30,8 +26,6 @@ public class TaskBuilder {
 
     private Name name;
     private Priority priority;
-    private Email email;
-    private Address address;
     private Set<Tag> tags;
     private Set<Task> children;
     private DueDate dueDate;
@@ -44,8 +38,6 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new Name(DEFAULT_NAME);
         priority = new Priority(DEFAULT_PRIORITY);
-        email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
@@ -59,8 +51,6 @@ public class TaskBuilder {
     public TaskBuilder(Task taskToCopy) {
         name = taskToCopy.getName();
         priority = taskToCopy.getPriority();
-        email = taskToCopy.getEmail();
-        address = taskToCopy.getAddress();
         tags = new HashSet<>(taskToCopy.getTags());
         children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
@@ -93,26 +83,10 @@ public class TaskBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
      * Sets the {@code Priority} of the {@code Task} that we are building.
      */
     public TaskBuilder withPriority(String priority) {
         this.priority = new Priority(priority);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withEmail(String email) {
-        this.email = new Email(email);
         return this;
     }
 
@@ -136,7 +110,7 @@ public class TaskBuilder {
      * Builds a new task with the given fields.
      */
     public Task build() {
-        return new Task(name, priority, email, address, tags, dueDate, children,
+        return new Task(name, priority, tags, dueDate, children,
                 link, description);
     }
 

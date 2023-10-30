@@ -2,14 +2,10 @@
   "tasks": [ {
     "name": "Valid Task",
     "priority": "4",
-    "email": "hans@example.com",
-    "address": "4th street",
     "dueDate" : "01-01-2000"
   }, {
     "name": "Task With Invalid Priority Field",
     "priority": "948asdf2424",
-    "email": "hans@example.com",
-    "address": "4th street",
     "dueDate" : "01-01-2000"
   } ]
 }

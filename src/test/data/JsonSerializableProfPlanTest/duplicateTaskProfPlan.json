@@ -2,16 +2,12 @@
   "tasks": [ {
     "name": "Alice Pauline",
     "priority": "3",
-    "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
     "tags": [ "friends" ],
     "dueDate" : "01-01-2000",
     "description" : ""
   }, {
     "name": "Alice Pauline",
     "priority": "5",
-    "email": "pauline@example.com",
-    "address": "4th street",
     "dueDate" : "01-01-2000",
     "description" : ""
   } ]

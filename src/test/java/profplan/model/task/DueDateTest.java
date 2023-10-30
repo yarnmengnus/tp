@@ -18,12 +18,6 @@ public class DueDateTest {
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
-        String invalidDate = "31-31/2000";
-        Assert.assertThrows(IllegalArgumentException.class, () -> new DueDate(invalidDate));
-    }
-
-    @Test
     public void isValidDate() {
         // invalid dates
         assertFalse(DueDate.isValidDate("01-01-2031")); // max year is 2030
