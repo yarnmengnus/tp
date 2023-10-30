@@ -58,6 +58,7 @@ public class SetCommand extends Command {
         Set<Task> addedSet = parentTask.getChildren();
         addedSet.add(childTask);
         Task editedTask = new Task(parentTask.getName(), parentTask.getPriority(),
+                parentTask.getIsRecurring(), parentTask.getRecurringType(),
                 parentTask.getTags(), parentTask.getDueDate(), addedSet,
                 parentTask.getLink(), parentTask.getDescription());
 

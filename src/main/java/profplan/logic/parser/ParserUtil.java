@@ -15,6 +15,7 @@ import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
+import profplan.model.task.Task;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -136,5 +137,37 @@ public class ParserUtil {
             throw new ParseException(DueDate.MESSAGE_CONSTRAINTS);
         }
         return new DueDate(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code RecurringTask}.
+     *
+     * @throws ParseException if the given {@code String} is invalid.
+     */
+    public static Task.RecurringType parseRecurringType(String input) throws ParseException {
+        requireNonNull(input);
+        String processedInput = input.trim().toLowerCase();
+
+        switch (processedInput) {
+
+        case "daily":
+        case "d":
+            return Task.RecurringType.DAILY;
+
+        case "weekly":
+        case "w":
+            return Task.RecurringType.WEEKLY;
+
+        case "monthly":
+        case "m":
+            return Task.RecurringType.MONTHLY;
+
+        default:
+            throw new ParseException("The input should be one of the following:\n"
+                    + "'daily', 'weekly', 'monthly', or the shortforms 'd', 'w', 'm',"
+                    + "case insensitive.");
+
+        }
+
     }
 }

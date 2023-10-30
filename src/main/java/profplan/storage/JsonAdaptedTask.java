@@ -28,6 +28,8 @@ class JsonAdaptedTask {
 
     private final String name;
     private final String priority;
+    private final boolean isRecurring;
+    private final Task.RecurringType recurringType;
     private final String dueDate;
     private final String status;
     private final String link;
@@ -40,12 +42,16 @@ class JsonAdaptedTask {
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("priority") String priority,
-                           @JsonProperty("tags") List<JsonAdaptedTag> tags,
+            @JsonProperty("isRecurring") boolean isRecurring,
+            @JsonProperty("recurringType") Task.RecurringType recurringType,
+            @JsonProperty("tags") List<JsonAdaptedTag> tags,
             @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
             @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link,
             @JsonProperty("description") String description) {
         this.name = name;
         this.priority = priority;
+        this.isRecurring = isRecurring;
+        this.recurringType = recurringType;
         this.dueDate = dueDate;
         this.status = status;
         this.link = link;
@@ -64,6 +70,8 @@ class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().fullName;
         priority = source.getPriority().value;
+        isRecurring = source.getIsRecurring();
+        recurringType = source.getRecurringType();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -109,6 +117,10 @@ class JsonAdaptedTask {
         }
         final Priority modelPriority = new Priority(priority);
 
+        final boolean modelIsRecurring = isRecurring;
+
+        final Task.RecurringType modelRecurringType = recurringType;
+
         final Set<Tag> modelTags = new HashSet<>(taskTags);
 
         String linkToLoad = link;
@@ -139,7 +151,8 @@ class JsonAdaptedTask {
         }
         final Description modelDescription = new Description(description);
 
-        return new Task(modelName, modelPriority, modelStatus, modelTags, modelDueDate,
+        return new Task(modelName, modelPriority, modelIsRecurring, modelRecurringType,
+                modelStatus, modelTags, modelDueDate,
                 modelChildren, modelLink, modelDescription);
     }
 

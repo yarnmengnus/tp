@@ -19,6 +19,8 @@ public class TaskBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PRIORITY = "85355255";
+    public static final boolean DEFAULT_RECURRING = false;
+    public static final Task.RecurringType DEFAULT_RECURRING_TYPE = null;
     public static final String DEFAULT_DUEDATE = "01-01-2000";
     public static final String DEFAULT_LINK = "-";
     public static final String DEFUALT_DESCRIPTION = "";
@@ -26,6 +28,8 @@ public class TaskBuilder {
 
     private Name name;
     private Priority priority;
+    private boolean isRecurring;
+    private Task.RecurringType recurringType;
     private Set<Tag> tags;
     private Set<Task> children;
     private DueDate dueDate;
@@ -38,6 +42,8 @@ public class TaskBuilder {
     public TaskBuilder() {
         name = new Name(DEFAULT_NAME);
         priority = new Priority(DEFAULT_PRIORITY);
+        isRecurring = DEFAULT_RECURRING;
+        recurringType = DEFAULT_RECURRING_TYPE;
         tags = new HashSet<>();
         children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
@@ -110,7 +116,7 @@ public class TaskBuilder {
      * Builds a new task with the given fields.
      */
     public Task build() {
-        return new Task(name, priority, tags, dueDate, children,
+        return new Task(name, priority, isRecurring, recurringType, tags, dueDate, children,
                 link, description);
     }
 

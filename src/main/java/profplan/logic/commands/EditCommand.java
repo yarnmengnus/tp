@@ -103,7 +103,8 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
         Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
-        return new Task(updatedName, updatedPriority, updatedTags,
+        return new Task(updatedName, updatedPriority, taskToEdit.getIsRecurring(),
+                taskToEdit.getRecurringType(), updatedTags,
                         updatedDueDate, updatedChildren, updatedLink, taskToEdit.getDescription());
     }
 
