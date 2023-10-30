@@ -1,8 +1,10 @@
-package profplan.model.task;
+package profplan.model.task.predicates;
 
 import java.util.function.Predicate;
 
 import profplan.commons.util.ToStringBuilder;
+import profplan.model.task.Priority;
+import profplan.model.task.Task;
 
 /**
  * Tests that a {@code Task}'s {@code Priority} matches the given priority.

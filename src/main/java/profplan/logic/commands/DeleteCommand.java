@@ -12,7 +12,7 @@ import profplan.model.Model;
 import profplan.model.task.Task;
 
 /**
- * Deletes a task identified using it's displayed index from the task list.
+ * Deletes a task identified using its displayed index from the task list.
  */
 public class DeleteCommand extends Command {
 

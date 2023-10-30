@@ -6,7 +6,7 @@ import profplan.model.Model;
 import profplan.model.ProfPlan;
 
 /**
- * Clears the task list.
+ * Clears the tasklist.
  */
 public class ClearCommand extends Command {
 

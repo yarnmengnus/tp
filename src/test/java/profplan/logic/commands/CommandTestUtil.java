@@ -14,8 +14,8 @@ import profplan.commons.core.index.Index;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.ProfPlan;
-import profplan.model.task.NameContainsKeywordsPredicate;
 import profplan.model.task.Task;
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.Assert;
 import profplan.testutil.EditTaskDescriptorBuilder;
 

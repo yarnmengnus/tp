@@ -1,10 +1,11 @@
-package profplan.model.task;
+package profplan.model.task.predicates;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import profplan.commons.util.StringUtil;
 import profplan.commons.util.ToStringBuilder;
+import profplan.model.task.Task;
 
 /**
  * Tests that a {@code Task}'s {@code Name} matches any of the keywords given.
