@@ -26,6 +26,6 @@ public class DeleteCommandParserTest {
     @Test
     public void parse_invalidArgs_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                DeleteCommand.MESSAGE_USAGE));
+                DeleteCommand.MESSAGE_USAGE + DeleteCommand.MESSAGE_DETAILS + DeleteCommand.MESSAGE_EXAMPLE));
     }
 }

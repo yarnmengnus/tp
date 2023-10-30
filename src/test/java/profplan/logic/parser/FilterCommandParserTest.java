@@ -26,7 +26,7 @@ public class FilterCommandParserTest {
     @Test
     public void parse_emptyArg_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                FilterCommand.MESSAGE_USAGE));
+            FilterCommand.MESSAGE_USAGE + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
     }
 
     @Test
