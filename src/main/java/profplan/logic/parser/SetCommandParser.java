@@ -22,7 +22,8 @@ public class SetCommandParser implements Parser<SetCommand> {
             parentIndex = ParserUtil.parseIndex(splitInput[0]);
             childIndex = ParserUtil.parseIndex(splitInput[1]);
         } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SetCommand.MESSAGE_USAGE),
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SetCommand.MESSAGE_USAGE
+                + SetCommand.MESSAGE_DETAILS + SetCommand.MESSAGE_EXAMPLE),
                     ive);
         }
         return new SetCommand(parentIndex, childIndex);

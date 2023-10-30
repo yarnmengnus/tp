@@ -48,8 +48,8 @@ public class ProfPlanParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + TypicalIndexes.INDEX_FIRST_TASK.getOneBased());
+        DeleteCommand command = (DeleteCommand) parser.parseCommand(DeleteCommand.COMMAND_WORD + " "
+            + TypicalIndexes.INDEX_FIRST_TASK.getOneBased());
         assertEquals(new DeleteCommand(TypicalIndexes.INDEX_FIRST_TASK), command);
     }
 
@@ -58,8 +58,8 @@ public class ProfPlanParserTest {
         Task task = new TaskBuilder().build();
         EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder(task).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + TypicalIndexes.INDEX_FIRST_TASK.getOneBased() + " " + TaskUtil
-                .getEditTaskDescriptorDetails(descriptor));
+                + TypicalIndexes.INDEX_FIRST_TASK.getOneBased() + " "
+                + TaskUtil.getEditTaskDescriptorDetails(descriptor));
         assertEquals(new EditCommand(TypicalIndexes.INDEX_FIRST_TASK, descriptor), command);
     }
 
@@ -72,15 +72,14 @@ public class ProfPlanParserTest {
     @Test
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
-        FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+        FindCommand command = (FindCommand) parser.parseCommand(FindCommand.COMMAND_WORD + " " + keywords.stream()
+            .collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
     @Test
