@@ -40,11 +40,6 @@ public class Messages {
         builder.append(task.getName())
                 .append("; Priority: ")
                 .append(task.getPriority())
-
-                .append("; Email: ")
-                .append(task.getEmail())
-                .append("; Address: ")
-                .append(task.getAddress())
                 .append("; Status: ")
                 .append(task.getStatus())
                 .append("; Tags: ");
