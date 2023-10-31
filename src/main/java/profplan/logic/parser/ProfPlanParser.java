@@ -106,10 +106,21 @@ public class ProfPlanParser {
             return new DescriptionCommandParser().parse(arguments);
 
         case SortDueDateCommand.COMMAND_WORD:
-            return new SortDueDateCommand();
+            if (arguments.isBlank()) {
+                return new SortDueDateCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            }
 
         case SortPriorityCommand.COMMAND_WORD:
-            return new SortPriorityCommand();
+            if (arguments.isBlank()) {
+                return new SortPriorityCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            }
+
 
         case ListWeekCommand.COMMAND_WORD:
             return new ListWeekCommand();
