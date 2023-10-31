@@ -105,11 +105,19 @@ public class ProfPlanParser {
         case SortDeadlineCommand.COMMAND_WORD:
             if (arguments.isBlank()) {
                 return new SortDeadlineCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
             }
+
         case SortPriorityCommand.COMMAND_WORD:
             if (arguments.isBlank()) {
                 return new SortPriorityCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
             }
+
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
