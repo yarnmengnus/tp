@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import profplan.commons.core.GuiSettings;
+import profplan.commons.core.Settings;
 import profplan.model.task.Task;
 
 /**
@@ -43,6 +44,26 @@ public interface Model {
      * Sets the user prefs' task list file path.
      */
     void setProfPlanFilePath(Path profPlanFilePath);
+
+    /**
+     * Replaces user configs data with the data in {@code userConfigs}.
+     */
+    void setUserConfigs(ReadOnlyUserConfigs userConfigs);
+
+    /**
+     * Returns the user configs.
+     */
+    ReadOnlyUserConfigs getUserConfigs();
+
+    /**
+     * Returns the user configs' settings.
+     */
+    Settings getSettings();
+
+    /**
+     * Sets the user configs' settings.
+     */
+    void setSettings(Settings settings);
 
     /**
      * Replaces task list data with the data in {@code profPlan}.

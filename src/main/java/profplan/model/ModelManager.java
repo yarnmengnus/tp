@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
+import profplan.commons.core.Settings;
 import profplan.commons.util.CollectionUtil;
 import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
@@ -29,23 +30,26 @@ public class ModelManager implements Model {
 
     private final ProfPlan profPlan;
     private final UserPrefs userPrefs;
+    private final UserConfigs userConfigs;
     private final FilteredList<Task> filteredTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyUserConfigs userConfigs) {
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with task list: " + addressBook + " and user prefs " + userPrefs);
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.userConfigs = new UserConfigs(userConfigs);
         filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
     }
 
     public ModelManager() {
-        this(new ProfPlan(), new UserPrefs());
+        this(new ProfPlan(), new UserPrefs(), new UserConfigs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -81,6 +85,30 @@ public class ModelManager implements Model {
     public void setProfPlanFilePath(Path profPlanFilePath) {
         requireNonNull(profPlanFilePath);
         userPrefs.setProfPlanFilePath(profPlanFilePath);
+    }
+
+    //=========== UserPrefs ==================================================================================
+
+    @Override
+    public void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
+        requireNonNull(userConfigs);
+        this.userConfigs.resetData(userConfigs);
+    }
+
+    @Override
+    public ReadOnlyUserConfigs getUserConfigs() {
+        return userConfigs;
+    }
+
+    @Override
+    public Settings getSettings() {
+        return userConfigs.getSettings();
+    }
+
+    @Override
+    public void setSettings(Settings settings) {
+        requireNonNull(settings);
+        userConfigs.setSettings(settings);
     }
 
     //=========== ProfPlan ================================================================================
