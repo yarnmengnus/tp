@@ -3,43 +3,29 @@ package profplan.ui;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import javafx.application.Platform;
-import javafx.beans.Observable;
-import javafx.beans.property.ReadOnlyListWrapper;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.ReadOnlyStringProperty;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputControl;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import profplan.MainApp;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
 import profplan.logic.Logic;
@@ -47,7 +33,6 @@ import profplan.logic.commands.CommandResult;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.task.DueDate;
-import profplan.model.task.Name;
 import profplan.model.task.Task;
 
 /**
@@ -113,28 +98,12 @@ public class MainWindow extends UiPart<Stage> {
         }
 
         public List<String> getUrgency(long i) {
-            return priorityTask.getOrDefault(i, new ArrayList<>()).stream().map(t -> t.getName().toString()).collect(Collectors.toList());
+            return priorityTask.getOrDefault(i, new ArrayList<>()).stream()
+                .map(t -> t.getName().toString()).collect(Collectors.toList());
         }
 
         public String getPriority() {
             return priority;
-        }
-    }
-
-    private long getDaysUntilDueDate(DueDate dueDate, String curDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date dueDateDate = dateFormat.parse(dueDate.toString());
-            Date currentDate = dateFormat.parse(curDate);
-
-            long difference = dueDateDate.getTime() - currentDate.getTime();
-            if (difference < 0) {
-                difference = 1;
-            }
-            return TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-        } catch (java.text.ParseException e) {
-            // Handle parsing errors
-            return -1;
         }
     }
 
@@ -195,6 +164,26 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Calculate number of days till due date
+     */
+    private long getDaysUntilDueDate(DueDate dueDate, String curDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date dueDateDate = dateFormat.parse(dueDate.toString());
+            Date currentDate = dateFormat.parse(curDate);
+
+            long difference = dueDateDate.getTime() - currentDate.getTime();
+            if (difference < 0) {
+                difference = 1;
+            }
+            return TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
+        } catch (java.text.ParseException e) {
+            // Handle parsing errors
+            return -1;
+        }
+    }
+
+    /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
@@ -233,7 +222,8 @@ public class MainWindow extends UiPart<Stage> {
             TableColumn<Order, ListView<String>> urgency = new TableColumn<>(String.valueOf(i));
             int finalI = i;
             urgency.setCellValueFactory(o -> {
-                ListView<String> temp = new ListView<>(FXCollections.observableArrayList(o.getValue().getUrgency(finalI)));
+                ListView<String> temp =
+                    new ListView<>(FXCollections.observableArrayList(o.getValue().getUrgency(finalI)));
                 temp.setSelectionModel(null);
                 return new ReadOnlyObjectWrapper<>(temp);
             });
