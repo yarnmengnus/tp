@@ -54,6 +54,7 @@ public class DescriptionCommand extends Command {
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = new Task(taskToEdit.getName(), taskToEdit.getPriority(),
+                taskToEdit.getIsRecurring(), taskToEdit.getRecurringType(),
                 taskToEdit.getTags(), taskToEdit.getDueDate(),
                 taskToEdit.getChildren(), taskToEdit.getLink(), description);
 

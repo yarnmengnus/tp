@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -128,9 +130,34 @@ public class DueDate implements Comparable<DueDate> {
         return !parsedDate.before(currentDay) && !parsedDate.after(endOfMonth);
     }
 
+    /**
+     * Increments a DueDate by the number of days specified.
+     * @param dueDate The DueDate to increment
+     * @param days The number of days to increment by. Must be between 0-31.
+     * @return A new DueDate object, with the incremented value.
+     */
+    public DueDate addDays(DueDate dueDate, long days) {
+        requireNonNull(dueDate);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(value, dateTimeFormatter);
+        return new DueDate(date.plusDays(days).format(dateTimeFormatter));
+    }
+
+    /**
+     * Increments a DueDate by 1 month.
+     * @param dueDate The DueDate to increment
+     * @return A new DueDate object, with the incremented value.
+     */
+    public DueDate addMonth(DueDate dueDate) {
+        requireNonNull(dueDate);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate date = LocalDate.parse(value, dateTimeFormatter);
+        return new DueDate(date.plusMonths(1).format(dateTimeFormatter));
+    }
+
     @Override
     public String toString() {
-        return value;
+        return parsedValue == null ? value : format.format(parsedValue);
     }
 
     @Override

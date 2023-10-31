@@ -42,7 +42,7 @@ public class JsonAdaptedTaskTest {
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(INVALID_NAME, VALID_PRIORITY,
+        JsonAdaptedTask task = new JsonAdaptedTask(INVALID_NAME, VALID_PRIORITY, false, null,
                 VALID_TAGS, "undone", VALID_DUEDATE, VALID_CHILDREN,
                 null, VALID_DESCRIPTION);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
@@ -51,7 +51,7 @@ public class JsonAdaptedTaskTest {
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(null, VALID_PRIORITY,
+        JsonAdaptedTask task = new JsonAdaptedTask(null, VALID_PRIORITY, false, null,
                 VALID_TAGS, "undone", VALID_DUEDATE, VALID_CHILDREN,
                 null, VALID_DESCRIPTION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
@@ -60,7 +60,7 @@ public class JsonAdaptedTaskTest {
 
     @Test
     public void toModelType_invalidPriority_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, INVALID_PRIORITY,
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, INVALID_PRIORITY, false, null,
                 VALID_TAGS, "undone", VALID_DUEDATE, VALID_CHILDREN,
                 null, VALID_DESCRIPTION);
         String expectedMessage = Priority.MESSAGE_CONSTRAINTS;
@@ -70,7 +70,7 @@ public class JsonAdaptedTaskTest {
     @Test
 
     public void toModelType_nullPhone_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, null,
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, null, false, null,
                 VALID_TAGS, "undone", VALID_DUEDATE, VALID_CHILDREN,
                 null, VALID_DESCRIPTION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Priority.class.getSimpleName());
@@ -81,14 +81,14 @@ public class JsonAdaptedTaskTest {
     public void toModelType_invalidTags_throwsIllegalValueException() {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_PRIORITY,
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_PRIORITY, false, null,
                 invalidTags, "undone", VALID_DUEDATE, VALID_CHILDREN, null, VALID_DESCRIPTION);
         Assert.assertThrows(IllegalValueException.class, task::toModelType);
     }
 
     @Test
     public void toModelType_invalidDueDate_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_PRIORITY,
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_PRIORITY, false, null,
                 VALID_TAGS, "undone", INVALID_DUEDATE, VALID_CHILDREN,
                 null, VALID_DESCRIPTION);
         String expectedMessage = DueDate.MESSAGE_CONSTRAINTS;
