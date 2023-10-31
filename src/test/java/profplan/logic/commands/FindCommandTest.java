@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.UserPrefs;
-import profplan.model.task.NameContainsKeywordsPredicate;
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.TypicalTasks;
 
 /**

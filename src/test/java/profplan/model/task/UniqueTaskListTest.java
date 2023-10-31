@@ -3,7 +3,6 @@ package profplan.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profplan.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import java.util.Arrays;
@@ -41,7 +40,7 @@ public class UniqueTaskListTest {
     @Test
     public void contains_taskWithSameIdentityFieldsInList_returnsTrue() {
         uniqueTaskList.add(TypicalTasks.ALICE);
-        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueTaskList.contains(editedAlice));
@@ -86,7 +85,7 @@ public class UniqueTaskListTest {
     @Test
     public void setTask_editedTaskHasSameIdentity_success() {
         uniqueTaskList.add(TypicalTasks.ALICE);
-        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE).withAddress(VALID_ADDRESS_BOB)
+        Task editedAlice = new TaskBuilder(TypicalTasks.ALICE)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueTaskList.setTask(TypicalTasks.ALICE, editedAlice);

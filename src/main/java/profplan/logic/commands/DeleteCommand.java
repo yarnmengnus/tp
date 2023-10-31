@@ -12,17 +12,17 @@ import profplan.model.Model;
 import profplan.model.task.Task;
 
 /**
- * Deletes a task identified using it's displayed index from the task list.
+ * Deletes a task identified using its displayed index from the task list.
  */
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the task identified by the index number used in the displayed task list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_DETAILS = "Tip: Use \"delete all\" to delete all tasks."
+            + ": Deletes the task identified by the index number used in the displayed task list.\n";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_DETAILS = "Parameters: INDEX (must be a positive integer)\n"
+            + "Tip: Use \"delete all\" to delete all tasks."
             + "Be careful, this is IRREVERSIBLE";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";

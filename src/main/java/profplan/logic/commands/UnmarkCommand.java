@@ -7,19 +7,19 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 
 /**
- * Adds a task to the address book.
+ * Marks Status of task as undone.
  */
 public class UnmarkCommand extends Command {
 
     public static final String COMMAND_WORD = "unmark";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as undone. "
-            + "Parameters: "
-            + "INDEX "
-            + "Example: " + COMMAND_WORD + " "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as undone.";
+    public static final String MESSAGE_DETAILS = "Parameters: "
+            + "INDEX ";
+
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " "
             + "1 ";
 
-    public static final String MESSAGE_DETAILS = "";
     public static final String MESSAGE_SUCCESS = "Task successfully marked as undone, Prof! "
                                                     + "Here is your updated task list";
 

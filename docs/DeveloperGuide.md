@@ -147,7 +147,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `profplan.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -158,8 +158,8 @@ This section describes some noteworthy details on how certain features are imple
 
 ## DoNext feature
 ### Actual implementation
-- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next. 
-- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation. 
+- The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next.
+- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation.
 - This is because a task is recommended if it has higher priority and lower number of days left to deadline.
 - Below, we describe the implementation details for this feature through a uml class and state diagram:
 
@@ -310,6 +310,110 @@ To use the `MarkCommand` in the ProfPlan application, you can execute the follow
 
 3. The application will provide feedback, indicating the successful marking of the task as done.
 
+## Set feature
+### Actual implementation
+The `set` command in ProfPlan allows the user to set one or more Tasks as the subtask of another Task.
+
+### Code structure
+The code structure for the `set` command consists of the following components:
+- The `SetCommand` class: Represents the command itself.
+- The `SetCommandParser` class: Responsible for parsing user input and creating `SetCommand` instances.
+- The `children` field: This is a field within a Task, implemented as a `HashSet<Task>`, that contains the 
+  references to the children of that Task.
+
+### Class Details
+
+
+## Filter feature
+### Actual implementation
+The Filter feature in ProfPlan allows users to filter according to one of the following criteria:
+- `DueDate`: displays tasks before given due date
+- `Priority`: displays tasks of given priority
+- `Status`: displays tasks of given status
+
+Below, we describe the implementation details for this feature through a UML class:
+
+### UML Class Diagram
+<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div style="flex: 1; margin-right: 5px;">
+        <img src="images/FilterCommandClassDiagram.png" alt="FilterCommand Class Diagram" width="500px">
+    </div>
+</div>
+
+
+The `FilterCommand` is a part of the ProfPlan application, a task management tool. The `FilterCommand` allows users to filter tasks by due date, priority, and status. This enables clearer visualisation of tasks.
+
+### Code Structure
+The code structure for the `FilterCommand` is well-organized. It consists of the following components:
+- `FilterCommand` class: Represents the command itself.
+- `FilterCommandParser` class: Responsible for parsing user input and creating `FilterCommand` instances.
+- `TaskDueDatePredicate` class: Represents the DueDate predicate.
+- `TaskPriorityPredicate` class: Represents the Priority predicate.
+- `TaskStatusPredicate` class: Represents the Status predicate.
+
+### Class Details <a name="class-details"></a>
+### `FilterCommand` <a name="filtercommand"></a>
+- Purpose: Represents the `filter` command that allows users to filter by DueDate, Priority, or Status.
+- Key Methods:
+    - `execute(Model model)`: Executes the `FilterCommand` by updating the filtered task list in model.
+    - `equals(Object other)`: Compares two `FilterCommand` objects for equality.
+    - `toString()`: Returns a string representation of the `FilterCommand`.
+
+### `FilterommandParser` <a name="filtercommandparser"></a>
+- Purpose: Parses user input to create `FilterCommand` instances.
+- Key Methods:
+    - `parse(String args)`: Parses the user input using the `ArgumentMultimap` and returns a `FilterCommand` if the input is valid.
+
+### `TaskDueDatePredicate` <a name="taskduedatepredicate"></a>
+- Purpose: Represents the DueDate predicate. It contains a `DueDate`, whose value is determined by the user input.
+- Key Methods:
+    - `getDueDate()`: Returns the `DueDate` predicate.
+    - `test(Task task)`: Returns true if a given Task falls before or on the `DueDate`.
+    - `equals(Object other)`: Compares two `TaskDueDatePredicate` objects for equality.
+    - `toString()`: Returns a string representation of the `TaskDueDatePredicate`.
+
+### `TaskPriorityPredicate` <a name="taskprioritypredicate"></a>
+- Purpose: Represents the Priority predicate. It contains a `Priority`, whose value is determined by the user input.
+- Key Methods:
+    - `getPriority()`: Returns the `Priority` predicate.
+    - `test(Task task)`: Returns true if given Task has the same `Priority` as the predicate.
+    - `equals(Object other)`: Compares two `TaskPriorityPredicate` objects for equality.
+    - `toString()`: Returns a string representation of the `TaskPriorityPredicate`.
+
+### `TaskStatusPredicate` <a name="taskstatuspredicate"></a>
+- Purpose: Represents the Status predicate. It contains a `Status`, whose value is determined by the user input.
+- Key Methods:
+    - `getStatus()`: Returns the `Status` predicate.
+    - `test(Task task)`: Returns true if given Task has the same `Status` as the predicate.
+    - `equals(Object other)`: Compares two `TaskStatusPredicate` objects for equality.
+    - `toString()`: Returns a string representation of the `TaskStatusPredicate`.
+
+### Usage <a name="usage"></a>
+To use the `FilterCommand` in the ProfPlan application, you can execute the following steps:
+
+1. Enter the "filter" command followed by "d/", "p/" or "s/", for DueDate, Priority and Status respectively. Then, input the value of predicate, which must follow the formats of the criteria:
+    - DueDate: a date in the format dd-MM-yyyy
+    - Priority: an Integer from 1 to 10 inclusive
+    - Status: "done" or "undone
+For example, "filter d/01-01-2023" filters for tasks before and on 01-01-2023.
+
+2. The `FilterCommand` will filter the task list in the model according to the predicate applied.
+
+3. The application will provide feedback, indicating the successful filtering, and display the relevant tasks.
+
+
+
+### `SetCommand` <a name="setcommand"></a>
+- Purpose: Represents the `set` command that allows users to set a task as the parent of another.
+- Key Methods:
+  - `execute(Model model)`: Executes the `SetCommand` by adding the indicated child task to the `children` set of 
+    the parent task.
+  - `equals(Object other)`: Compares two `SetCommand` objects for equality.
+
+### `SetCommandParser` <a name="setcommandparser"></a>
+- Purpose: Parses user input to create `SetCommand` instances.
+- Key Methods:
+    - `parse(String args)`: Parses the user input and returns a `SetCommand` if the input is valid.
 
 
 ### \[Proposed\] Undo/redo feature
