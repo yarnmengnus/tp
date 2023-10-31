@@ -7,19 +7,16 @@ import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 
 /**
- * Adds a task to the address book.
+ * Marks Status of task as done.
  */
 public class MarkCommand extends Command {
 
     public static final String COMMAND_WORD = "mark";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as done. "
-            + "Parameters: "
-            + "INDEX\n"
-            + "Example: " + COMMAND_WORD + " "
-            + "1 ";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as done.";
+    public static final String MESSAGE_DETAILS = "Parameters: INDEX\n";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DETAILS = "";
     public static final String MESSAGE_SUCCESS = "Task successfully marked as done, Prof! "
                                                     + "Here is your updated task list";
 

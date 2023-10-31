@@ -18,10 +18,8 @@ public class Task implements Comparable<Task> {
     // Identity fields
     private final Name name;
     private final Priority priority;
-    private final Email email;
 
     // Data fields
-    private final Address address;
     private final Link link;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
@@ -32,13 +30,11 @@ public class Task implements Comparable<Task> {
     /**
      * Every field except status must be present and not null.
      */
-    public Task(Name name, Priority priority, Email email, Address address,
+    public Task(Name name, Priority priority,
                 Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
-        this.email = email;
-        this.address = address;
         this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
         this.children.addAll(children);
@@ -50,13 +46,11 @@ public class Task implements Comparable<Task> {
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Priority priority, Email email, Address address, Status status, Set<Tag> tags,
+    public Task(Name name, Priority priority, Status status, Set<Tag> tags,
                 DueDate dueDate, Set<Task> children, Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
-        this.email = email;
-        this.address = address;
         this.status = status;
         this.tags.addAll(tags);
         this.dueDate = dueDate;
@@ -72,8 +66,6 @@ public class Task implements Comparable<Task> {
     public Task(Task task) {
         this.name = task.name;
         this.priority = task.priority;
-        this.email = task.email;
-        this.address = task.address;
         this.tags.addAll(task.getTags());
         this.children.addAll(task.getChildren());
         this.status = task.status;
@@ -88,14 +80,6 @@ public class Task implements Comparable<Task> {
 
     public Priority getPriority() {
         return priority;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 
     public Link getLink() {
@@ -161,8 +145,6 @@ public class Task implements Comparable<Task> {
         Task otherTask = (Task) other;
         return name.equals(otherTask.name)
                 && priority.equals(otherTask.priority)
-                && email.equals(otherTask.email)
-                && address.equals(otherTask.address)
                 && tags.equals(otherTask.tags)
                 && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
@@ -174,7 +156,7 @@ public class Task implements Comparable<Task> {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, priority, email, address, status, tags, dueDate, link, description);
+        return Objects.hash(name, priority, status, tags, dueDate, link, description);
     }
 
     @Override
@@ -182,8 +164,6 @@ public class Task implements Comparable<Task> {
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("priority", priority)
-                .add("email", email)
-                .add("address", address)
                 .add("status", status)
                 .add("tags", tags)
                 .add("dueDate", dueDate)

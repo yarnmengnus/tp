@@ -5,13 +5,16 @@ import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
 
+import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import profplan.logic.commands.FilterCommand;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.task.TaskDueDatePredicate;
-import profplan.model.task.TaskPriorityPredicate;
-import profplan.model.task.TaskStatusPredicate;
+import profplan.model.task.Task;
+import profplan.model.task.predicates.CombinedPredicate;
+import profplan.model.task.predicates.TaskDueDatePredicate;
+import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskStatusPredicate;
 
 
 /**
@@ -27,35 +30,52 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
 
         if (!argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE
+                + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
 
-        Predicate<?> pred = null;
+        ArrayList<Predicate<Task>> predList = new ArrayList<>();
+        ArrayList<String> filters = new ArrayList<>();
 
         try {
-
             if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-                pred = new TaskPriorityPredicate(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
+                TaskPriorityPredicate newPred = new TaskPriorityPredicate(
+                        ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
+                predList.add(newPred);
+                filters.add("Priority: " + newPred.getPriority() + "\n");
             }
 
             if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-                pred = new TaskStatusPredicate(ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+                TaskStatusPredicate newPred = new TaskStatusPredicate(
+                        ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+                predList.add(newPred);
+                filters.add("Status: " + newPred.getStatus() + "\n");
             }
 
             if (argMultimap.getValue(PREFIX_DUEDATE).isPresent()) {
-                pred = new TaskDueDatePredicate(ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).get()));
+                TaskDueDatePredicate newPred = new TaskDueDatePredicate(
+                        ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).get()));
+                predList.add(newPred);
+                filters.add("Due before: " + newPred.getDate() + "\n");
             }
 
-            if (pred == null) {
+            if (predList.isEmpty()) {
                 throw new ParseException("", null);
             }
 
         } catch (ParseException e) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE
+                        + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
         }
 
-        return new FilterCommand(pred);
+        FilterCommand cmd = new FilterCommand(new CombinedPredicate(predList));
+        StringBuilder success = new StringBuilder(cmd.getSuccessMessage());
+        for (String string : filters) {
+            success.append(string);
+        }
+        cmd.setSuccessMessage(success.toString());
+        return cmd;
     }
 }

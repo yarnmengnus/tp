@@ -12,7 +12,7 @@ public class Priority implements Comparable<Priority> {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Priority should only contain numbers between 1-10";
+        "Priority should only contain numbers between 1-10";
     public static final String VALIDATION_REGEX = "^[1-9]|10|\\d{3,}$"; //edit later in v1.3 to change tests and data
     public final String value;
 
