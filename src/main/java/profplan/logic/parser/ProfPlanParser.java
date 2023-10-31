@@ -23,7 +23,6 @@ import profplan.logic.commands.ListCommand;
 import profplan.logic.commands.ListMonthCommand;
 import profplan.logic.commands.ListWeekCommand;
 import profplan.logic.commands.MarkCommand;
-import profplan.logic.commands.SetCommand;
 import profplan.logic.commands.SortDueDateCommand;
 import profplan.logic.commands.SortPriorityCommand;
 import profplan.logic.commands.UnmarkCommand;
@@ -98,9 +97,6 @@ public class ProfPlanParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommandParser().parse(arguments);
-
-        case SetCommand.COMMAND_WORD:
-            return new SetCommandParser().parse(arguments);
 
         case DescriptionCommand.COMMAND_WORD:
             return new DescriptionCommandParser().parse(arguments);

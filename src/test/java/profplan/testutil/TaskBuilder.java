@@ -31,7 +31,6 @@ public class TaskBuilder {
     private boolean isRecurring;
     private Task.RecurringType recurringType;
     private Set<Tag> tags;
-    private Set<Task> children;
     private DueDate dueDate;
     private Link link;
     private Description description;
@@ -45,7 +44,6 @@ public class TaskBuilder {
         isRecurring = DEFAULT_RECURRING;
         recurringType = DEFAULT_RECURRING_TYPE;
         tags = new HashSet<>();
-        children = new HashSet<>();
         dueDate = new DueDate(DEFAULT_DUEDATE);
         link = new Link(DEFAULT_LINK);
         description = new Description(DEFUALT_DESCRIPTION);
@@ -58,7 +56,6 @@ public class TaskBuilder {
         name = taskToCopy.getName();
         priority = taskToCopy.getPriority();
         tags = new HashSet<>(taskToCopy.getTags());
-        children = new HashSet<>(taskToCopy.getChildren());
         dueDate = taskToCopy.getDueDate();
         link = taskToCopy.getLink();
         description = taskToCopy.getDescription();
@@ -77,14 +74,6 @@ public class TaskBuilder {
      */
     public TaskBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
-        return this;
-    }
-
-    /**
-     * Parses the {@code Tasks} into a {@code Set<Task>} and set it to the {@code Task} that we are building.
-     */
-    public TaskBuilder withChildren(Task ... children) {
-        this.children = SampleDataUtil.getTaskSet(children);
         return this;
     }
 
@@ -116,7 +105,7 @@ public class TaskBuilder {
      * Builds a new task with the given fields.
      */
     public Task build() {
-        return new Task(name, priority, isRecurring, recurringType, tags, dueDate, children,
+        return new Task(name, priority, isRecurring, recurringType, tags, dueDate,
                 link, description);
     }
 
