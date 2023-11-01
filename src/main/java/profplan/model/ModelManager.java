@@ -26,11 +26,12 @@ import profplan.model.task.Task;
  * Represents the in-memory model of the task list data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private static UserConfigs userConfigs;
     private final ProfPlan profPlan;
     private final UserPrefs userPrefs;
-    private final UserConfigs userConfigs;
     private final FilteredList<Task> filteredTasks;
 
     /**
@@ -44,7 +45,7 @@ public class ModelManager implements Model {
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        this.userConfigs = new UserConfigs(userConfigs);
+        ModelManager.userConfigs = new UserConfigs(userConfigs);
         filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
     }
 
@@ -89,24 +90,20 @@ public class ModelManager implements Model {
 
     //=========== UserConfigs ==================================================================================
 
-    @Override
-    public void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
+    public static void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
         requireNonNull(userConfigs);
-        this.userConfigs.resetData(userConfigs);
+        ModelManager.userConfigs.resetData(userConfigs);
     }
 
-    @Override
-    public ReadOnlyUserConfigs getUserConfigs() {
+    public static ReadOnlyUserConfigs getUserConfigs() {
         return userConfigs;
     }
 
-    @Override
-    public Settings getSettings() {
+    public static Settings getSettings() {
         return userConfigs.getSettings();
     }
 
-    @Override
-    public void setSettings(Settings settings) {
+    public static void setSettings(Settings settings) {
         requireNonNull(settings);
         userConfigs.setSettings(settings);
     }

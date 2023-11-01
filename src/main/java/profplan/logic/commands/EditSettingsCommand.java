@@ -9,6 +9,7 @@ import profplan.commons.core.Settings;
 import profplan.commons.util.ToStringBuilder;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
+import profplan.model.ModelManager;
 import profplan.model.ReadOnlyUserConfigs;
 
 /**
@@ -51,12 +52,12 @@ public class EditSettingsCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        ReadOnlyUserConfigs userConfigs = model.getUserConfigs();
+        ReadOnlyUserConfigs userConfigs = ModelManager.getUserConfigs();
 
         Settings settingsToEdit = userConfigs.getSettings();
         Settings editedSettings = createEditedSettings(settingsToEdit, editSettingsDescriptor);
 
-        model.setSettings(editedSettings);
+        ModelManager.setSettings(editedSettings);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

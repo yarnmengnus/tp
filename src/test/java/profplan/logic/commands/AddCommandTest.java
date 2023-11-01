@@ -14,13 +14,11 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import profplan.commons.core.GuiSettings;
-import profplan.commons.core.Settings;
 import profplan.logic.Messages;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
 import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
-import profplan.model.ReadOnlyUserConfigs;
 import profplan.model.ReadOnlyUserPrefs;
 import profplan.model.task.Task;
 import profplan.testutil.Assert;
@@ -118,26 +116,6 @@ public class AddCommandTest {
 
         @Override
         public void setProfPlanFilePath(Path profPlanFilePath) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ReadOnlyUserConfigs getUserConfigs() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public Settings getSettings() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setSettings(Settings settings) {
             throw new AssertionError("This method should not be called.");
         }
 

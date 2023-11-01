@@ -19,7 +19,7 @@ public class EditSettingsCommandParser implements Parser<EditSettingsCommand> {
     @Override
     public EditSettingsCommand parse(String userInput) throws ParseException {
         requireNonNull(userInput);
-        Prefix[] keywords = Settings.keywords;
+        Prefix[] keywords = Settings.KEYWORDS;
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(userInput, keywords);
 
         EditSettingsCommand.EditSettingsDescriptor editSettingsDescriptor =

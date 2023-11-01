@@ -222,7 +222,7 @@ public class MainApp extends Application {
             logger.severe("Failed to save user preferences " + StringUtil.getDetails(e));
         }
         try {
-            storage.saveUserConfigs(model.getUserConfigs());
+            storage.saveUserConfigs(ModelManager.getUserConfigs());
         } catch (IOException e) {
             logger.severe("Failed to save user configs " + StringUtil.getDetails(e));
         }

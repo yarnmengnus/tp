@@ -12,7 +12,7 @@ import profplan.logic.parser.Prefix;
  */
 public class Settings implements Serializable {
     // array containing all keywords used to specify these fields. contain these keywords in Prefixes.
-    public static final Prefix[] keywords = {new Prefix("semesterDays")};
+    public static final Prefix[] KEYWORDS = {new Prefix("semesterDays")};
 
     // default values
     private static final int DEFAULT_SEMESTER_DAYS = 180;
