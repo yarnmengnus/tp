@@ -19,14 +19,18 @@ import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.ProfPlan;
 import profplan.model.ReadOnlyProfPlan;
+import profplan.model.ReadOnlyUserConfigs;
 import profplan.model.ReadOnlyUserPrefs;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.util.SampleDataUtil;
 import profplan.storage.JsonProfPlanStorage;
+import profplan.storage.JsonUserConfigsStorage;
 import profplan.storage.JsonUserPrefsStorage;
 import profplan.storage.ProfPlanStorage;
 import profplan.storage.Storage;
 import profplan.storage.StorageManager;
+import profplan.storage.UserConfigsStorage;
 import profplan.storage.UserPrefsStorage;
 import profplan.ui.Ui;
 import profplan.ui.UiManager;
@@ -57,10 +61,12 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
+        UserConfigsStorage userConfigsStorage = new JsonUserConfigsStorage(config.getUserConfigsFilePath());
+        UserConfigs userConfigs = initConfigs(userConfigsStorage);
         ProfPlanStorage profPlanStorage = new JsonProfPlanStorage(userPrefs.getProfPlanFilePath());
-        storage = new StorageManager(profPlanStorage, userPrefsStorage);
+        storage = new StorageManager(profPlanStorage, userPrefsStorage, userConfigsStorage);
 
-        model = initModelManager(storage, userPrefs);
+        model = initModelManager(storage, userPrefs, userConfigs);
 
         logic = new LogicManager(model, storage);
 
@@ -72,7 +78,8 @@ public class MainApp extends Application {
      * The data from the sample task list will be used instead if {@code storage}'s task list is not found,
      * or an empty task list will be used instead if errors occur when reading {@code storage}'s task list.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs,
+                                   ReadOnlyUserConfigs userConfigs) {
         logger.info("Using data file : " + storage.getProfPlanFilePath());
 
         Optional<ReadOnlyProfPlan> addressBookOptional;
@@ -90,7 +97,7 @@ public class MainApp extends Application {
             initialData = new ProfPlan();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, userConfigs);
     }
 
     private void initLogging(Config config) {
@@ -166,6 +173,38 @@ public class MainApp extends Application {
         }
 
         return initializedPrefs;
+    }
+
+    /**
+     * Returns a {@code UserConfigs} using the file at {@code storage}'s user settings file path,
+     * or a new {@code UserConfigs} with default configuration if errors occur when
+     * reading from the file.
+     */
+    protected UserConfigs initConfigs(UserConfigsStorage storage) {
+        Path configsFilePath = storage.getUserConfigsFilePath();
+        logger.info("Using settings file : " + configsFilePath);
+
+        UserConfigs initializedConfigs;
+        try {
+            Optional<UserConfigs> configsOptional = storage.readUserConfigs();
+            if (!configsOptional.isPresent()) {
+                logger.info("Creating new config file " + configsFilePath);
+            }
+            initializedConfigs = configsOptional.orElse(new UserConfigs());
+        } catch (DataLoadingException e) {
+            logger.warning("Settings file at " + configsFilePath + " could not be loaded."
+                    + " Using default settings.");
+            initializedConfigs = new UserConfigs();
+        }
+
+        //Update prefs file in case it was missing to begin with or there are new/unused fields
+        try {
+            storage.saveUserConfigs(initializedConfigs);
+        } catch (IOException e) {
+            logger.warning("Failed to save settings file : " + StringUtil.getDetails(e));
+        }
+
+        return initializedConfigs;
     }
 
     @Override

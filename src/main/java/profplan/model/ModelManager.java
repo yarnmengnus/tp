@@ -87,7 +87,7 @@ public class ModelManager implements Model {
         userPrefs.setProfPlanFilePath(profPlanFilePath);
     }
 
-    //=========== UserPrefs ==================================================================================
+    //=========== UserConfigs ==================================================================================
 
     @Override
     public void setUserConfigs(ReadOnlyUserConfigs userConfigs) {

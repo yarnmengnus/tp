@@ -50,7 +50,7 @@ public class StorageManager implements Storage {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
-    // ================ UserPrefs methods ==============================
+    // ================ UserConfigs methods ==============================
 
     @Override
     public Path getUserConfigsFilePath() {
