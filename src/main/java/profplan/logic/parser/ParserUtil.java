@@ -170,4 +170,15 @@ public class ParserUtil {
         }
 
     }
+
+    /**
+     * Checks if a String is a valid integer and returns the int if so.
+     */
+    public static int parseInteger(String input) throws ParseException {
+        try {
+            return Integer.parseInt(input.trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException(e.getMessage());
+        }
+    }
 }
