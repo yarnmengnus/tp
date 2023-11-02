@@ -307,7 +307,7 @@ public class MainWindow extends UiPart<Stage> {
         System.out.println(split);
         System.out.println(minDaysLeft);
         System.out.println(maxDaysLeft);
-        taskUrgency.replaceAll((t, v) -> v / split + 1);
+        taskUrgency.replaceAll((t, v) -> v / (split + 1));
 
 
         for (int i = 10; i >= 1; i--) {
