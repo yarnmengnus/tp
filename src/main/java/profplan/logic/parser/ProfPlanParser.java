@@ -82,7 +82,12 @@ public class ProfPlanParser {
             return new DeleteCommandParser().parse(arguments);
 
         case DoNextCommand.COMMAND_WORD:
-            return new DoNextCommand();
+            if (arguments.isBlank()) {
+                return new DoNextCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException("Did you mean the 'do_next' command? Please enter 'do_next' only.");
+            }
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -110,7 +115,7 @@ public class ProfPlanParser {
                 return new SortDueDateCommand();
             } else {
                 logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+                throw new ParseException("Did you mean the 'sort_duedate' command? Please enter 'sort_duedate' only.");
             }
 
         case SortPriorityCommand.COMMAND_WORD:
@@ -118,7 +123,8 @@ public class ProfPlanParser {
                 return new SortPriorityCommand();
             } else {
                 logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+                throw new ParseException("Did you mean the 'sort_priority' command? "
+                        + "Please enter 'sort_priority' only.");
             }
 
         case ListWeekCommand.COMMAND_WORD:

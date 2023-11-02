@@ -83,7 +83,6 @@ public class MainWindow extends UiPart<Stage> {
         private final String priority;
 
         public Order(ObservableMap<Task, Long> urgencies, String priority) {
-            System.out.println("Priority: " + priority);
             this.priority = priority;
             for (long i = 1; i <= 10; i++) {
                 priorityTask.put(i, new ArrayList<>());
@@ -91,8 +90,6 @@ public class MainWindow extends UiPart<Stage> {
 
             for (Task task : urgencies.keySet()) {
                 if (task.getPriority().toString().equals(priority)) {
-                    System.out.println(task.getName());
-                    System.out.println(urgencies.get(task));
                     priorityTask.getOrDefault(urgencies.get(task), new ArrayList<>()).add(task);
                 }
             }
@@ -295,7 +292,6 @@ public class MainWindow extends UiPart<Stage> {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date currentDate = new Date();
         String curDate = dateFormat.format(currentDate);
-
         if (filteredTasks.isEmpty()) {
             for (int i = 10; i >= 1; i--) {
                 Order temp = new Order(taskUrgency, String.valueOf(i));

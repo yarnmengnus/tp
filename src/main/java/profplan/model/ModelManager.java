@@ -3,7 +3,6 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
@@ -226,7 +225,7 @@ public class ModelManager implements Model {
             DueDate dueDate = task.getDueDate();
 
             // Calculate the number of days left to the due date
-            long daysLeft = getDaysUntilDueDate(dueDate, curDate);
+            double daysLeft = getDaysUntilDueDate(dueDate, curDate);
 
             // Calculate the computed value (priority divided by days left)
             double computedValue = priorityValue(priority) / (double) daysLeft;
@@ -245,7 +244,7 @@ public class ModelManager implements Model {
     }
 
     // Helper method to calculate the number of days left to the due date
-    private long getDaysUntilDueDate(DueDate dueDate, String curDate) {
+    private double getDaysUntilDueDate(DueDate dueDate, String curDate) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
             Date dueDateDate = dateFormat.parse(dueDate.toString());
@@ -255,8 +254,13 @@ public class ModelManager implements Model {
             if (difference < 0) {
                 difference = 1;
             }
-            return TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-        } catch (ParseException e) {
+            double days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
+            if (days == 0) {
+                days = 0.1;
+            }
+            System.out.println(days);
+            return days;
+        } catch (java.text.ParseException e) {
             // Handle parsing errors
             return -1;
         }
