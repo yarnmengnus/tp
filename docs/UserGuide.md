@@ -213,7 +213,7 @@ to:
 
 **Precise Expected Outputs when the command fails:**
 ```
-Unable edit task. Check task index, or format of [aspect]. 
+Unable edit task. Check task index, or format of [aspect].
 Try entering in this format edit 1 /[aspect] [new value], with aspects being “name”, “priority”, “category”, “parent”, or “link”
 ```
 
@@ -464,7 +464,11 @@ With our customised algorithm, ProfPlan takes this cognitive load off your shoul
 ### Visualise important and urgent tasks :
 Sometimes, we might have 20, 30, 40 or more tasks in our lists, and it’s hard to remember when each one is due, or what your most important task is for that week.
 ### Create Recurring task :
-### Sort Tasks according to date, priority and status :
+### Sort Tasks based on priority :
+ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
+### Sort Tasks according to deadline :
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
+
 ### View Task statistics: stats
 
 --------------------------------------------------------------------------------------------------------------------
@@ -497,11 +501,14 @@ contains the data in the previous ProfPlan home folder.
 ## Command summary
 
 
-| **Action**     | **Format, Examples**                                     |
-|----------------|----------------------------------------------------------|
-| **Find**       | `find [keywords...]`, e.g. `find canvas quiz`            |
-| **Set parent** | `set [parentTaskIndex] [childTaskIndex]`, e.g. `set 1 3` |
-
+| **Action**        | **Format, Examples**                                     |
+|-------------------|----------------------------------------------------------|
+| **Find**          | `find [keywords...]`, e.g. `find canvas quiz`            |
+| **Set parent**    | `set [parentTaskIndex] [childTaskIndex]`, e.g. `set 1 3` |
+| **Mark**          | `Mark [TaskNumber]`, e.g. `Mark 2`                       |
+| **Delete**        | `delete [TaskNumber]`, e.g. `delete 2`                   |
+| **sort_priority** | `sort_priority`, e.g. `sort_priority`                    |
+| **sort_duedate**  | `sort_duedate`, e.g. `sort_duedate`                      |
 
 ## Glossary
 | **Word**       | **Definition**                                                            |
