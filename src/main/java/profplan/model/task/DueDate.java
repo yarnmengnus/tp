@@ -44,7 +44,12 @@ public class DueDate implements Comparable<DueDate> {
                 return true;
             }
             LocalDate parsed = LocalDate.parse(test.value, dateTimeFormatter);
-            return parsed.isBefore(max) && parsed.isAfter(min);
+            if (parsed.isBefore(max) && parsed.isAfter(min)) {
+                test.parsedValue = parsed;
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (DateTimeParseException e) {
             return false;
