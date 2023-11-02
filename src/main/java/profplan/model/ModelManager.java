@@ -179,7 +179,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortTaskByDeadline() {
+    public void sortTaskByDueDate() {
         profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
     }
 

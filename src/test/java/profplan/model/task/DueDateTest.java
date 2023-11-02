@@ -3,14 +3,15 @@ package profplan.model.task;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
 import profplan.testutil.Assert;
 
 public class DueDateTest {
+    private DateTimeFormatter dateTimeFormatter = DueDate.getDateFormat();
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -42,20 +43,14 @@ public class DueDateTest {
 
     @Test
     public void isDateWithinWeekMonth() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-        Calendar currentCal = Calendar.getInstance();
-        currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
+        LocalDate in4Days = LocalDate.now().plusDays(4);
 
-        Calendar testCal = Calendar.getInstance();
-        testCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
-        testCal.add(Calendar.DAY_OF_YEAR, 4);
-
-        DueDate test = new DueDate(sdf.format(testCal.getTime()));
+        DueDate test = new DueDate(dateTimeFormatter.format(in4Days));
         assertTrue(test.isWithinWeek());
 
-        testCal.add(Calendar.DAY_OF_YEAR, 15);
-        DueDate test2 = new DueDate(sdf.format(testCal.getTime()));
+        LocalDate in15Days = LocalDate.now().plusDays(15);
+        DueDate test2 = new DueDate(dateTimeFormatter.format(in15Days));
         assertFalse(test2.isWithinWeek());
         assertTrue(test2.isWithinMonth());
     }

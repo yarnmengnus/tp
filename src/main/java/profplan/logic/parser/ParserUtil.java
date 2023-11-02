@@ -166,13 +166,15 @@ public class ParserUtil {
         case "s":
             return Task.RecurringType.SEMESTERLY;
 
+        case "none":
+            return null;
+
         default:
             throw new ParseException("The input should be one of the following:\n"
                     + "'daily', 'weekly', 'monthly', 'semesterly', or the shortforms 'd', 'w', 'm', 's'\n"
                     + "case insensitive.");
 
         }
-
     }
 
     /**
