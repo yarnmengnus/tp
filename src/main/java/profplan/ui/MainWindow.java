@@ -178,9 +178,10 @@ public class MainWindow extends UiPart<Stage> {
                 difference = 1;
             }
             long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-            if (days < 1) {
-                days = 1;
-            }
+//            if (days < 1) {
+//                days = 1;
+//            }
+            System.out.println("1: " + days);
             return days;
         } catch (java.text.ParseException e) {
             // Handle parsing errors
@@ -303,7 +304,13 @@ public class MainWindow extends UiPart<Stage> {
         }
         long minDaysLeft = Collections.min(taskUrgency.values());
         long maxDaysLeft = Collections.max(taskUrgency.values());
-        long split = (minDaysLeft + maxDaysLeft) / 10;
+        long intermediate = (minDaysLeft + maxDaysLeft) / 10;
+        long split;
+        if (intermediate == 0) {
+            split = 1;
+        } else {
+            split = intermediate;
+        }
         System.out.println(split);
         System.out.println(minDaysLeft);
         System.out.println(maxDaysLeft);
