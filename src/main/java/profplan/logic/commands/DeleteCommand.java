@@ -44,9 +44,13 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
 
-        if (targetIndex == null) {
+        if (targetIndex == null && lastShownList.size() != 0) {
             model.deleteTask();
             return new CommandResult(MESSAGE_DELETE_ALL_TASKS_SUCCESS);
+        }
+
+        if (targetIndex == null && lastShownList.size() == 0) {
+            return new CommandResult("Can not delete all tasks in empty Task List");
         }
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
