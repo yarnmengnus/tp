@@ -119,4 +119,9 @@ public interface Model {
      * Sorts the task based on priority.
      */
     void sortTaskByPriority();
+
+    /**
+     * Gets completion rate of existing tasks.
+     */
+    double getCompletionRate();
 }
