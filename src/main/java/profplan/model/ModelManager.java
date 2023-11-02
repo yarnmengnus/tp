@@ -3,6 +3,7 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
+import profplan.commons.core.Settings;
 import profplan.commons.util.CollectionUtil;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
@@ -20,8 +22,10 @@ import profplan.model.task.Task;
  * Represents the in-memory model of the task list data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private static UserConfigs userConfigs;
     private final ProfPlan profPlan;
     private final UserPrefs userPrefs;
     private final FilteredList<Task> filteredTasks;
@@ -29,18 +33,20 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyUserConfigs userConfigs) {
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with task list: " + addressBook + " and user prefs " + userPrefs);
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        ModelManager.userConfigs = new UserConfigs(userConfigs);
         filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
     }
 
     public ModelManager() {
-        this(new ProfPlan(), new UserPrefs());
+        this(new ProfPlan(), new UserPrefs(), new UserConfigs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -76,6 +82,26 @@ public class ModelManager implements Model {
     public void setProfPlanFilePath(Path profPlanFilePath) {
         requireNonNull(profPlanFilePath);
         userPrefs.setProfPlanFilePath(profPlanFilePath);
+    }
+
+    //=========== UserConfigs ==================================================================================
+
+    public static void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
+        requireNonNull(userConfigs);
+        ModelManager.userConfigs.resetData(userConfigs);
+    }
+
+    public static ReadOnlyUserConfigs getUserConfigs() {
+        return userConfigs;
+    }
+
+    public static Settings getSettings() {
+        return userConfigs.getSettings();
+    }
+
+    public static void setSettings(Settings settings) {
+        requireNonNull(settings);
+        userConfigs.setSettings(settings);
     }
 
     //=========== ProfPlan ================================================================================
@@ -190,7 +216,7 @@ public class ModelManager implements Model {
             Priority priority = task.getPriority();
 
             // Calculate the number of days left to the due date
-            long daysLeft = task.getDueDate().getDaysFromNow();
+            double daysLeft = getDaysUntilDueDate(dueDate, curDate);
 
             // Calculate the computed value (priority divided by days left)
             double computedValue = priorityValue(priority) / (double) daysLeft;
@@ -206,6 +232,30 @@ public class ModelManager implements Model {
         }
 
         return recommendedTask;
+    }
+
+
+    // Helper method to calculate the number of days left to the due date
+    private double getDaysUntilDueDate(DueDate dueDate, String curDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date dueDateDate = dateFormat.parse(dueDate.toString());
+            Date currentDate = dateFormat.parse(curDate);
+
+            long difference = dueDateDate.getTime() - currentDate.getTime();
+            if (difference < 0) {
+                difference = 1;
+            }
+            double days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
+            if (days == 0) {
+                days = 0.1;
+            }
+            System.out.println(days);
+            return days;
+        } catch (java.text.ParseException e) {
+            // Handle parsing errors
+            return -1;
+        }
     }
 
     // Helper method to calculate the priority value
