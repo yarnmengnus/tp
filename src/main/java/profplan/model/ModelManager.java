@@ -277,4 +277,14 @@ public class ModelManager implements Model {
         // convert the priority string to a numeric value.
         return Double.parseDouble(priority.toString());
     }
+
+    public double getCompletionRate() {
+        Predicate<? super Task> currentPredicate = filteredTasks.getPredicate();
+        filteredTasks.setPredicate(PREDICATE_SHOW_ALL_TASKS);
+        int totalTasks = filteredTasks.size();
+        filteredTasks.setPredicate(x -> x.getStatus() == Status.DONE_STATUS);
+        int doneTasks = filteredTasks.size();
+        filteredTasks.setPredicate(currentPredicate);
+        return (double) doneTasks / totalTasks;
+    }
 }

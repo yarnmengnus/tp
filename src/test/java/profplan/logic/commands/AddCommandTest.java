@@ -189,6 +189,10 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public double getCompletionRate() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
