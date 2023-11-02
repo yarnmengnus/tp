@@ -111,11 +111,11 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #713432;
+    -fx-background-color: #769AC9;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #754A42;
+    -fx-background-color: #7981AD;
 }
 
 .list-cell:filled:selected {
@@ -176,7 +176,7 @@
     -fx-text-fill: white;
 }
 .matrix-display .table-row-cell {
-    -fx-background-color: #E15B22;
+    -fx-background-color: #6AB4BD;
 }
 
 .matrix-display .list-cell {
