@@ -74,6 +74,10 @@
     -fx-opacity: 1;
 }
 
+.table-view:focused .table-row-cell.list-cell {
+    -fx-background-color: #DC4247;
+}
+
 .table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: transparent;
 }
@@ -107,11 +111,11 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #3c3e3f;
+    -fx-background-color: #713432;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #515658;
+    -fx-background-color: #754A42;
 }
 
 .list-cell:filled:selected {
@@ -170,6 +174,13 @@
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
+}
+.matrix-display .table-row-cell {
+    -fx-background-color: #E15B22;
+}
+
+.matrix-display .list-cell {
+    -fx-background-color: #3c3e3f;
 }
 
 .result-display .label {
@@ -339,7 +350,7 @@
 #commandTextField {
     -fx-background-color: transparent #383838 transparent #383838;
     -fx-background-insets: 0;
-    -fx-border-color: #383838 #383838 #ffffff #383838;
+    -fx-border-color: #383838 #383838 #F06128 #383838;
     -fx-border-insets: 0;
     -fx-border-width: 1;
     -fx-font-family: "Segoe UI Light";
