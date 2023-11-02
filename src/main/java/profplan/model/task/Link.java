@@ -2,7 +2,6 @@ package profplan.model.task;
 
 import static java.util.Objects.requireNonNull;
 
-
 /**
  * Represents a Task's link in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
@@ -29,7 +28,6 @@ public class Link {
      */
     public Link(String url) {
         requireNonNull(url);
-        // AppUtil.checkArgument(isValidLink(url), MESSAGE_CONSTRAINTS);
         value = url;
     }
 

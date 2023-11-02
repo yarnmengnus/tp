@@ -175,8 +175,6 @@ public class MainWindow extends UiPart<Stage> {
                 difference = 1;
             }
             long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-
-            System.out.println("1: " + days);
             return days;
         } catch (java.text.ParseException e) {
             // Handle parsing errors
