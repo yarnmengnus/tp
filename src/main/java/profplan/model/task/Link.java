@@ -2,7 +2,6 @@ package profplan.model.task;
 
 import static java.util.Objects.requireNonNull;
 
-import profplan.commons.util.AppUtil;
 
 /**
  * Represents a Task's link in the address book.
