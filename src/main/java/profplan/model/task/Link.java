@@ -30,7 +30,7 @@ public class Link {
      */
     public Link(String url) {
         requireNonNull(url);
-//        AppUtil.checkArgument(isValidLink(url), MESSAGE_CONSTRAINTS);
+        AppUtil.checkArgument(isValidLink(url), MESSAGE_CONSTRAINTS);
         value = url;
     }
 
