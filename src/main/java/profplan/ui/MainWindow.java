@@ -293,23 +293,35 @@ public class MainWindow extends UiPart<Stage> {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date currentDate = new Date();
         String curDate = dateFormat.format(currentDate);
+        if (filteredTasks.isEmpty()) {
+            for (int i = 10; i >= 1; i--) {
+                Order temp = new Order(taskUrgency, String.valueOf(i));
+                rows.add(temp);
+            }
+            matrixDisplay.setItems(rows);
+            matrixDisplay.refresh();
+        } else {
+            for (Task t : filteredTasks) {
+                long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
+                taskUrgency.put(t, daysLeft);
+            }
+            long minDaysLeft = Collections.min(taskUrgency.values());
+            long maxDaysLeft = Collections.max(taskUrgency.values());
+            long split = (minDaysLeft + maxDaysLeft) / 10;
+            System.out.println(split);
+            System.out.println(minDaysLeft);
+            System.out.println(maxDaysLeft);
+            taskUrgency.replaceAll((t, v) -> v / split + 1);
+            taskUrgency.replaceAll((t, v) -> 10 - v + 1);
 
-        for (Task t : filteredTasks) {
-            long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
-            taskUrgency.put(t, daysLeft);
+
+            for (int i = 10; i >= 1; i--) {
+                Order temp = new Order(taskUrgency, String.valueOf(i));
+                rows.add(temp);
+            }
+            matrixDisplay.setItems(rows);
+            matrixDisplay.refresh();
         }
-        long minDaysLeft = Collections.min(taskUrgency.values());
-        long maxDaysLeft = Collections.max(taskUrgency.values());
-        long split = (minDaysLeft + maxDaysLeft) / 10;
-        taskUrgency.replaceAll((t, v) -> v / split + 1);
-
-
-        for (int i = 10; i >= 1; i--) {
-            Order temp = new Order(taskUrgency, String.valueOf(i));
-            rows.add(temp);
-        }
-        matrixDisplay.setItems(rows);
-        matrixDisplay.refresh();
     }
 
     /**

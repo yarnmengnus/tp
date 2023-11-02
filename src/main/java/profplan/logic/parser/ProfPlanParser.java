@@ -15,6 +15,7 @@ import profplan.logic.commands.DeleteCommand;
 import profplan.logic.commands.DescriptionCommand;
 import profplan.logic.commands.DoNextCommand;
 import profplan.logic.commands.EditCommand;
+import profplan.logic.commands.EditSettingsCommand;
 import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FilterCommand;
 import profplan.logic.commands.FindCommand;
@@ -23,7 +24,6 @@ import profplan.logic.commands.ListCommand;
 import profplan.logic.commands.ListMonthCommand;
 import profplan.logic.commands.ListWeekCommand;
 import profplan.logic.commands.MarkCommand;
-import profplan.logic.commands.SetCommand;
 import profplan.logic.commands.SortDueDateCommand;
 import profplan.logic.commands.SortPriorityCommand;
 import profplan.logic.commands.UnmarkCommand;
@@ -69,6 +69,9 @@ public class ProfPlanParser {
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
+        case EditSettingsCommand.COMMAND_WORD:
+            return new EditSettingsCommandParser().parse(arguments);
+
         case MarkCommand.COMMAND_WORD:
             return new MarkCommandParser().parse(arguments);
 
@@ -103,9 +106,6 @@ public class ProfPlanParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommandParser().parse(arguments);
-
-        case SetCommand.COMMAND_WORD:
-            return new SetCommandParser().parse(arguments);
 
         case DescriptionCommand.COMMAND_WORD:
             return new DescriptionCommandParser().parse(arguments);

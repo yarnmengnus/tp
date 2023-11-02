@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
+import profplan.commons.core.Settings;
 import profplan.commons.util.CollectionUtil;
 import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
@@ -24,8 +25,10 @@ import profplan.model.task.Task;
  * Represents the in-memory model of the task list data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private static UserConfigs userConfigs;
     private final ProfPlan profPlan;
     private final UserPrefs userPrefs;
     private final FilteredList<Task> filteredTasks;
@@ -33,18 +36,20 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyUserConfigs userConfigs) {
         CollectionUtil.requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with task list: " + addressBook + " and user prefs " + userPrefs);
 
         this.profPlan = new ProfPlan(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        ModelManager.userConfigs = new UserConfigs(userConfigs);
         filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
     }
 
     public ModelManager() {
-        this(new ProfPlan(), new UserPrefs());
+        this(new ProfPlan(), new UserPrefs(), new UserConfigs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -80,6 +85,26 @@ public class ModelManager implements Model {
     public void setProfPlanFilePath(Path profPlanFilePath) {
         requireNonNull(profPlanFilePath);
         userPrefs.setProfPlanFilePath(profPlanFilePath);
+    }
+
+    //=========== UserConfigs ==================================================================================
+
+    public static void setUserConfigs(ReadOnlyUserConfigs userConfigs) {
+        requireNonNull(userConfigs);
+        ModelManager.userConfigs.resetData(userConfigs);
+    }
+
+    public static ReadOnlyUserConfigs getUserConfigs() {
+        return userConfigs;
+    }
+
+    public static Settings getSettings() {
+        return userConfigs.getSettings();
+    }
+
+    public static void setSettings(Settings settings) {
+        requireNonNull(settings);
+        userConfigs.setSettings(settings);
     }
 
     //=========== ProfPlan ================================================================================

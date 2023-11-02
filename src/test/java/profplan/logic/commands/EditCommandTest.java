@@ -13,6 +13,7 @@ import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.ProfPlan;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.Task;
 import profplan.testutil.EditTaskDescriptorBuilder;
@@ -25,7 +26,7 @@ import profplan.testutil.TypicalTasks;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
+    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs(), new UserConfigs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -35,7 +36,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, Messages.format(editedTask));
 
-        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs(), new UserConfigs());
         expectedModel.setTask(model.getFilteredTaskList().get(0), editedTask);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -57,7 +58,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, Messages.format(editedTask));
 
-        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs(), new UserConfigs());
         expectedModel.setTask(lastTask, editedTask);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -70,7 +71,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, Messages.format(editedTask));
 
-        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs(), new UserConfigs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -87,7 +88,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, Messages.format(editedTask));
 
-        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs());
+        Model expectedModel = new ModelManager(new ProfPlan(model.getProfPlan()), new UserPrefs(), new UserConfigs());
         expectedModel.setTask(model.getFilteredTaskList().get(0), editedTask);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
