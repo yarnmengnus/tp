@@ -54,8 +54,9 @@ public class DescriptionCommand extends Command {
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = new Task(taskToEdit.getName(), taskToEdit.getPriority(),
+                taskToEdit.getIsRecurring(), taskToEdit.getRecurringType(),
                 taskToEdit.getTags(), taskToEdit.getDueDate(),
-                taskToEdit.getChildren(), taskToEdit.getLink(), description);
+                taskToEdit.getLink(), description);
 
         model.setTask(taskToEdit, editedTask);
         model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);

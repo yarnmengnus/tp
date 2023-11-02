@@ -53,8 +53,6 @@ public class JsonUserPrefsStorageTest {
     public void readUserPrefs_fileInOrder_successfullyRead() throws DataLoadingException {
         UserPrefs expected = getTypicalUserPrefs();
         UserPrefs actual = readUserPrefs("TypicalUserPref.json").get();
-        System.out.println(expected);
-        System.out.println(actual);
         assertEquals(expected, actual);
     }
 
