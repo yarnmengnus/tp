@@ -26,7 +26,6 @@ public class Task implements Comparable<Task> {
     private final Link link;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<Task> children = new HashSet<>();
     private DueDate dueDate;
     private final Description description;
 
@@ -49,7 +48,7 @@ public class Task implements Comparable<Task> {
      * Every field except status must be present and not null.
      */
     public Task(Name name, Priority priority, boolean isRecurringTask, RecurringType recurringType,
-                Set<Tag> tags, DueDate dueDate, Set<Task> children,
+                Set<Tag> tags, DueDate dueDate,
                 Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
@@ -58,7 +57,6 @@ public class Task implements Comparable<Task> {
         this.recurringType = recurringType;
         this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
-        this.children.addAll(children);
         this.dueDate = dueDate;
         this.link = link;
         this.description = description;
@@ -74,7 +72,7 @@ public class Task implements Comparable<Task> {
     public Task(Name name, Priority priority, boolean isRecurringTask, RecurringType recurringType,
                 Status status,
                 Set<Tag> tags,
-                DueDate dueDate, Set<Task> children, Link link, Description description) {
+                DueDate dueDate, Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
@@ -83,7 +81,6 @@ public class Task implements Comparable<Task> {
         this.status = status;
         this.tags.addAll(tags);
         this.dueDate = dueDate;
-        this.children.addAll(children);
         this.link = link;
         this.description = description;
 
@@ -102,7 +99,6 @@ public class Task implements Comparable<Task> {
         this.isRecurringTask = task.isRecurringTask;
         this.recurringType = task.recurringType;
         this.tags.addAll(task.getTags());
-        this.children.addAll(task.getChildren());
         this.status = task.status;
         this.dueDate = task.dueDate;
         this.link = task.link;
@@ -176,10 +172,6 @@ public class Task implements Comparable<Task> {
         return Collections.unmodifiableSet(tags);
     }
 
-    public Set<Task> getChildren() {
-        return Collections.unmodifiableSet(children);
-    }
-
     public Description getDescription() {
         return description;
     }
@@ -216,7 +208,6 @@ public class Task implements Comparable<Task> {
         return name.equals(otherTask.name)
                 && priority.equals(otherTask.priority)
                 && tags.equals(otherTask.tags)
-                && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
                 && status.equals(otherTask.status)
                 && link.equals(otherTask.link)
