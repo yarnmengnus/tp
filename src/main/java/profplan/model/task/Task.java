@@ -7,6 +7,7 @@ import java.util.Set;
 
 import profplan.commons.util.CollectionUtil;
 import profplan.commons.util.ToStringBuilder;
+import profplan.model.ModelManager;
 import profplan.model.tag.Tag;
 
 /**
@@ -33,7 +34,7 @@ public class Task implements Comparable<Task> {
      * Encapsulates the different types of recurring Tasks.
      */
     public enum RecurringType {
-        DAILY("Daily"), WEEKLY("Weekly"), MONTHLY("Monthly");
+        DAILY("Daily"), WEEKLY("Weekly"), MONTHLY("Monthly"), SEMESTERLY("Semesterly");
 
         private final String name;
         RecurringType(String name) {
@@ -151,6 +152,10 @@ public class Task implements Comparable<Task> {
 
             case MONTHLY:
                 dueDate = dueDate.addMonth(dueDate);
+                break;
+
+            case SEMESTERLY:
+                dueDate = dueDate.addDays(dueDate, ModelManager.getSettings().getSemesterDays());
                 break;
 
             default:

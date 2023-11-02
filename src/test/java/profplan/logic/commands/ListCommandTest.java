@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import profplan.model.Model;
 import profplan.model.ModelManager;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.predicates.TaskInMonthPredicate;
 import profplan.model.task.predicates.TaskInWeekPredicate;
@@ -25,8 +26,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
-        expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
+        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs(), new UserConfigs());
+        expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs(), new UserConfigs());
     }
 
     @Test
