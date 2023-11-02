@@ -13,6 +13,7 @@ import profplan.commons.core.index.Index;
 import profplan.logic.Messages;
 import profplan.model.Model;
 import profplan.model.ModelManager;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.Task;
 import profplan.testutil.TypicalIndexes;
@@ -24,7 +25,7 @@ import profplan.testutil.TypicalTasks;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
+    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs(), new UserConfigs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -34,7 +35,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS,
                 Messages.format(taskToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs(), new UserConfigs());
         expectedModel.deleteTask(taskToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -58,7 +59,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS,
                 Messages.format(taskToDelete));
 
-        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs(), new UserConfigs());
         expectedModel.deleteTask(taskToDelete);
         showNoTask(expectedModel);
 

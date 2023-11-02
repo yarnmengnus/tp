@@ -162,12 +162,29 @@ public class ParserUtil {
         case "m":
             return Task.RecurringType.MONTHLY;
 
+        case "semesterly":
+        case "s":
+            return Task.RecurringType.SEMESTERLY;
+
+        case "none":
+            return null;
+
         default:
             throw new ParseException("The input should be one of the following:\n"
-                    + "'daily', 'weekly', 'monthly', or the shortforms 'd', 'w', 'm',"
+                    + "'daily', 'weekly', 'monthly', 'semesterly', or the shortforms 'd', 'w', 'm', 's'\n"
                     + "case insensitive.");
 
         }
+    }
 
+    /**
+     * Checks if a String is a valid integer and returns the int if so.
+     */
+    public static int parseInteger(String input) throws ParseException {
+        try {
+            return Integer.parseInt(input.trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException(e.getMessage());
+        }
     }
 }

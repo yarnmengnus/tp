@@ -83,7 +83,6 @@ public class MainWindow extends UiPart<Stage> {
         private final String priority;
 
         public Order(ObservableMap<Task, Long> urgencies, String priority) {
-            System.out.println("Priority: " + priority);
             this.priority = priority;
             for (long i = 1; i <= 10; i++) {
                 priorityTask.put(i, new ArrayList<>());
@@ -91,8 +90,6 @@ public class MainWindow extends UiPart<Stage> {
 
             for (Task task : urgencies.keySet()) {
                 if (task.getPriority().toString().equals(priority)) {
-                    System.out.println(task.getName());
-                    System.out.println(urgencies.get(task));
                     priorityTask.getOrDefault(urgencies.get(task), new ArrayList<>()).add(task);
                 }
             }
@@ -178,9 +175,8 @@ public class MainWindow extends UiPart<Stage> {
                 difference = 1;
             }
             long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-            if (days < 1) {
-                days = 1;
-            }
+
+            System.out.println("1: " + days);
             return days;
         } catch (java.text.ParseException e) {
             // Handle parsing errors
@@ -296,26 +292,39 @@ public class MainWindow extends UiPart<Stage> {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date currentDate = new Date();
         String curDate = dateFormat.format(currentDate);
+        if (filteredTasks.isEmpty()) {
+            for (int i = 10; i >= 1; i--) {
+                Order temp = new Order(taskUrgency, String.valueOf(i));
+                rows.add(temp);
+            }
+            matrixDisplay.setItems(rows);
+            matrixDisplay.refresh();
+        } else {
+            for (Task t : filteredTasks) {
+                long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
+                taskUrgency.put(t, daysLeft);
+            }
+            long minDaysLeft = Collections.min(taskUrgency.values());
+            long maxDaysLeft = Collections.max(taskUrgency.values());
+            long intermediate = (minDaysLeft + maxDaysLeft) / 10;
+            long split;
+            if (intermediate == 0) {
+                split = 1;
+            } else {
+                split = intermediate;
+            }
+            taskUrgency.replaceAll((t, v) -> v / split + 1);
+            taskUrgency.replaceAll((t, v) -> 10 - v + 1);
 
-        for (Task t : filteredTasks) {
-            long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
-            taskUrgency.put(t, daysLeft);
+
+            for (int i = 10; i >= 1; i--) {
+                Order temp = new Order(taskUrgency, String.valueOf(i));
+                rows.add(temp);
+            }
+            matrixDisplay.setItems(rows);
+            matrixDisplay.refresh();
+
         }
-        long minDaysLeft = Collections.min(taskUrgency.values());
-        long maxDaysLeft = Collections.max(taskUrgency.values());
-        long split = (minDaysLeft + maxDaysLeft) / 10;
-        System.out.println(split);
-        System.out.println(minDaysLeft);
-        System.out.println(maxDaysLeft);
-        taskUrgency.replaceAll((t, v) -> v / split + 1);
-
-
-        for (int i = 10; i >= 1; i--) {
-            Order temp = new Order(taskUrgency, String.valueOf(i));
-            rows.add(temp);
-        }
-        matrixDisplay.setItems(rows);
-        matrixDisplay.refresh();
     }
 
     /**

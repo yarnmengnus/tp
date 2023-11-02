@@ -58,7 +58,6 @@ public class TaskCard extends UiPart<Region> {
         dueDate.setText("DueDate: "+ task.getDueDate().value);
         status.setText(" " + task.getStatus().status + " ");
         description.setText(task.getDescription().description);
-
         task.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

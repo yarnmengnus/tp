@@ -34,7 +34,6 @@ class JsonAdaptedTask {
     private final String status;
     private final String link;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
-    private final List<JsonAdaptedTask> children = new ArrayList<JsonAdaptedTask>();
     private final String description;
 
     /**
@@ -46,7 +45,7 @@ class JsonAdaptedTask {
             @JsonProperty("recurringType") Task.RecurringType recurringType,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
             @JsonProperty("status") String status, @JsonProperty("dueDate") String dueDate,
-            @JsonProperty("children") List<JsonAdaptedTask> children, @JsonProperty("link") String link,
+            @JsonProperty("link") String link,
             @JsonProperty("description") String description) {
         this.name = name;
         this.priority = priority;
@@ -57,9 +56,6 @@ class JsonAdaptedTask {
         this.link = link;
         if (tags != null) {
             this.tags.addAll(tags);
-        }
-        if (children != null) {
-            this.children.addAll(children);
         }
         this.description = description;
     }
@@ -76,9 +72,6 @@ class JsonAdaptedTask {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         link = source.getLink().value;
-        children.addAll(source.getChildren().stream()
-                .map(JsonAdaptedTask::new)
-                .collect(Collectors.toList()));
         dueDate = source.getDueDate().value;
         status = source.getStatus().status;
         description = source.getDescription().description;
@@ -93,11 +86,6 @@ class JsonAdaptedTask {
         final List<Tag> taskTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tags) {
             taskTags.add(tag.toModelType());
-        }
-
-        final List<Task> taskChildren = new ArrayList<>();
-        for (JsonAdaptedTask child : children) {
-            taskChildren.add(child.toModelType());
         }
 
         if (name == null) {
@@ -130,8 +118,6 @@ class JsonAdaptedTask {
 
         final Link modelLink = new Link(linkToLoad);
 
-        final Set<Task> modelChildren = new HashSet<>(taskChildren);
-
         if (dueDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DueDate.class.getSimpleName()));
         }
@@ -153,7 +139,7 @@ class JsonAdaptedTask {
 
         return new Task(modelName, modelPriority, modelIsRecurring, modelRecurringType,
                 modelStatus, modelTags, modelDueDate,
-                modelChildren, modelLink, modelDescription);
+                modelLink, modelDescription);
     }
 
 }
