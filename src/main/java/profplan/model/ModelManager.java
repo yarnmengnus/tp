@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -14,6 +16,7 @@ import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
 import profplan.commons.core.Settings;
 import profplan.commons.util.CollectionUtil;
+import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
 import profplan.model.task.Task;
@@ -176,7 +179,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortTaskByDueDate() {
+    public void sortTaskByDeadline() {
         profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
     }
 
@@ -211,9 +214,15 @@ public class ModelManager implements Model {
         Task recommendedTask = null;
         double highestComputedValue = Double.NEGATIVE_INFINITY; // Initialize with a very low value
 
+        // Get the current date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date currentDate = new Date();
+        String curDate = dateFormat.format(currentDate);
+
         // Iterate through the list to find the task with the highest computed value
         for (Task task : internalUnmodifiableList) {
             Priority priority = task.getPriority();
+            DueDate dueDate = task.getDueDate();
 
             // Calculate the number of days left to the due date
             double daysLeft = getDaysUntilDueDate(dueDate, curDate);
@@ -233,7 +242,6 @@ public class ModelManager implements Model {
 
         return recommendedTask;
     }
-
 
     // Helper method to calculate the number of days left to the due date
     private double getDaysUntilDueDate(DueDate dueDate, String curDate) {
