@@ -21,7 +21,12 @@ public class SortPriorityCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.sortTaskByPriority();
+        try {
+            model.sortTaskByPriority();
+        } catch (UnsupportedOperationException e) {
+            return new CommandResult(e.getMessage());
+        }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

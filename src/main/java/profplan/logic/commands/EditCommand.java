@@ -1,10 +1,12 @@
 package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static profplan.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collections;
@@ -41,14 +43,16 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_DETAILS = "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PRIORITY + "PRIORITY] "
-            + "[" + PREFIX_LINK + "LINK] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
-            + "[" + PREFIX_DUEDATE + "DUEDATE...\n";
+            + PREFIX_NAME + "NAME "
+            + PREFIX_PRIORITY + "PRIORITY "
+            + PREFIX_RECURRING + "RECUR "
+            + "[" + PREFIX_TAG + "TAG]... "
+            + PREFIX_DUEDATE + "DUEDATE "
+            + PREFIX_LINK + "LINK "
+            + PREFIX_DESCRIPTION + "DESCRIPTION \n";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PRIORITY + "91234567 ";
+            + PREFIX_PRIORITY + "4 ";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -101,10 +105,10 @@ public class EditCommand extends Command {
         Priority updatedPriority = editTaskDescriptor.getPriority().orElse(taskToEdit.getPriority());
         Link updatedLink = editTaskDescriptor.getLink().orElse(taskToEdit.getLink());
         Set<Tag> updatedTags = editTaskDescriptor.getTags().orElse(taskToEdit.getTags());
-        Set<Task> updatedChildren = editTaskDescriptor.getChildren().orElse(taskToEdit.getChildren());
         DueDate updatedDueDate = editTaskDescriptor.getDueDate().orElse(taskToEdit.getDueDate());
-        return new Task(updatedName, updatedPriority, updatedTags,
-                        updatedDueDate, updatedChildren, updatedLink, taskToEdit.getDescription());
+        return new Task(updatedName, updatedPriority, taskToEdit.getIsRecurring(),
+                taskToEdit.getRecurringType(), updatedTags,
+                        updatedDueDate, updatedLink, taskToEdit.getDescription());
     }
 
     @Override
@@ -139,7 +143,6 @@ public class EditCommand extends Command {
         private Name name;
         private Priority priority;
         private Set<Tag> tags;
-        private Set<Task> children;
         private DueDate dueDate;
         private Link link;
 
@@ -196,13 +199,7 @@ public class EditCommand extends Command {
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
-        public void setChildren(Set<Task> children) {
-            this.children = (children != null) ? new HashSet<>(children) : null;
-        }
 
-        public Optional<Set<Task>> getChildren() {
-            return (children != null) ? Optional.of(Collections.unmodifiableSet(children)) : Optional.empty();
-        }
         public void setDueDate(DueDate date) {
             this.dueDate = date;
         }

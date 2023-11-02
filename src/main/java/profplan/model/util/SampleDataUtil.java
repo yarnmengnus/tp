@@ -1,7 +1,6 @@
 package profplan.model.util;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,23 +20,23 @@ import profplan.model.task.Task;
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         return new Task[] {
-            new Task(new Name("Alex Yeoh"), new Priority("4"),
-                    getTagSet("friends"), new DueDate("01-01-2000"), new HashSet<>(), new Link("-"),
+            new Task(new Name("Alex Yeoh"), new Priority("4"), false, null,
+                    getTagSet("friends"), new DueDate("01-01-2000"), new Link("-"),
                     new Description("")),
-            new Task(new Name("Bernice Yu"), new Priority("2"),
-                    getTagSet("colleagues", "friends"), new DueDate("01-01-2000"), new HashSet<>(),
+            new Task(new Name("Bernice Yu"), new Priority("2"), false, null,
+                    getTagSet("colleagues", "friends"), new DueDate("01-01-2000"),
                     new Link("-"), new Description("")),
-            new Task(new Name("Charlotte Oliveiro"), new Priority("3"),
-                    getTagSet("neighbours"), new DueDate("01-01-2000"), new HashSet<>(),
+            new Task(new Name("Charlotte Oliveiro"), new Priority("3"), false, null,
+                    getTagSet("neighbours"), new DueDate("01-01-2000"),
                     new Link("-"), new Description("")),
-            new Task(new Name("David Li"), new Priority("10"),
-                    getTagSet("family"), new DueDate("01-01-2000"), new HashSet<>(),
+            new Task(new Name("David Li"), new Priority("10"), false, null,
+                    getTagSet("family"), new DueDate("01-01-2000"),
                     new Link("-"), new Description("")),
-            new Task(new Name("Irfan Ibrahim"), new Priority("6"),
-                    getTagSet("classmates"), new DueDate("01-01-2000"), new HashSet<>(),
+            new Task(new Name("Irfan Ibrahim"), new Priority("6"), false, null,
+                    getTagSet("classmates"), new DueDate("01-01-2000"),
                     new Link("-"), new Description("")),
-            new Task(new Name("Roy Balakrishnan"), new Priority("9"),
-                    getTagSet("colleagues"), new DueDate("01-01-2000"), new HashSet<>(),
+            new Task(new Name("Roy Balakrishnan"), new Priority("9"), false, null,
+                    getTagSet("colleagues"), new DueDate("01-01-2000"),
                     new Link("-"), new Description(""))
         };
     }

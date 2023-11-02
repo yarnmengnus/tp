@@ -7,6 +7,7 @@ import java.util.Set;
 
 import profplan.commons.util.CollectionUtil;
 import profplan.commons.util.ToStringBuilder;
+import profplan.model.ModelManager;
 import profplan.model.tag.Tag;
 
 /**
@@ -18,45 +19,74 @@ public class Task implements Comparable<Task> {
     // Identity fields
     private final Name name;
     private final Priority priority;
+    private final boolean isRecurringTask;
+    private final RecurringType recurringType;
 
     // Data fields
     private final Link link;
     private Status status;
     private final Set<Tag> tags = new HashSet<>();
-    private final Set<Task> children = new HashSet<>();
-    private final DueDate dueDate;
+    private DueDate dueDate;
     private final Description description;
+
+    /**
+     * Encapsulates the different types of recurring Tasks.
+     */
+    public enum RecurringType {
+        DAILY("Daily"), WEEKLY("Weekly"), MONTHLY("Monthly"), SEMESTERLY("Semesterly");
+
+        private final String name;
+        RecurringType(String name) {
+            this.name = name;
+        }
+        private String getName() {
+            return name;
+        }
+    }
 
     /**
      * Every field except status must be present and not null.
      */
-    public Task(Name name, Priority priority,
-                Set<Tag> tags, DueDate dueDate, Set<Task> children, Link link, Description description) {
+    public Task(Name name, Priority priority, boolean isRecurringTask, RecurringType recurringType,
+                Set<Tag> tags, DueDate dueDate,
+                Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
+        this.isRecurringTask = isRecurringTask;
+        this.recurringType = recurringType;
         this.status = Status.UNDONE_STATUS;
         this.tags.addAll(tags);
-        this.children.addAll(children);
         this.dueDate = dueDate;
         this.link = link;
         this.description = description;
+
+        if (isRecurringTask) {
+            this.tags.add(new Tag(recurringType.getName()));
+        }
     }
 
     /**
-     * Every field must be present and not null.
+     * Every field must be present
      */
-    public Task(Name name, Priority priority, Status status, Set<Tag> tags,
-                DueDate dueDate, Set<Task> children, Link link, Description description) {
+    public Task(Name name, Priority priority, boolean isRecurringTask, RecurringType recurringType,
+                Status status,
+                Set<Tag> tags,
+                DueDate dueDate, Link link, Description description) {
         CollectionUtil.requireAllNonNull(name, priority, tags, dueDate);
         this.name = name;
         this.priority = priority;
+        this.isRecurringTask = isRecurringTask;
+        this.recurringType = recurringType;
         this.status = status;
         this.tags.addAll(tags);
         this.dueDate = dueDate;
-        this.children.addAll(children);
         this.link = link;
         this.description = description;
+
+        if (isRecurringTask) {
+            this.tags.add(new Tag(recurringType.getName()));
+        }
     }
 
     /**
@@ -66,8 +96,9 @@ public class Task implements Comparable<Task> {
     public Task(Task task) {
         this.name = task.name;
         this.priority = task.priority;
+        this.isRecurringTask = task.isRecurringTask;
+        this.recurringType = task.recurringType;
         this.tags.addAll(task.getTags());
-        this.children.addAll(task.getChildren());
         this.status = task.status;
         this.dueDate = task.dueDate;
         this.link = task.link;
@@ -80,6 +111,14 @@ public class Task implements Comparable<Task> {
 
     public Priority getPriority() {
         return priority;
+    }
+
+    public boolean getIsRecurring() {
+        return isRecurringTask;
+    }
+
+    public RecurringType getRecurringType() {
+        return recurringType;
     }
 
     public Link getLink() {
@@ -95,7 +134,34 @@ public class Task implements Comparable<Task> {
     }
 
     public void setStatus(Status status) {
-        this.status = status;
+        if (status == Status.DONE_STATUS && this.isRecurringTask) {
+
+            switch (recurringType) {
+
+            case DAILY:
+                dueDate = dueDate.addDays(dueDate, 1);
+                break;
+
+            case WEEKLY:
+                dueDate = dueDate.addDays(dueDate, 7);
+                break;
+
+            case MONTHLY:
+                dueDate = dueDate.addMonth(dueDate);
+                break;
+
+            case SEMESTERLY:
+                dueDate = dueDate.addDays(dueDate, ModelManager.getSettings().getSemesterDays());
+                break;
+
+            default:
+                throw new RuntimeException("Execution should not reach this point.");
+
+            }
+
+        } else {
+            this.status = status;
+        }
     }
 
     /**
@@ -104,10 +170,6 @@ public class Task implements Comparable<Task> {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
-    }
-
-    public Set<Task> getChildren() {
-        return Collections.unmodifiableSet(children);
     }
 
     public Description getDescription() {
@@ -146,7 +208,6 @@ public class Task implements Comparable<Task> {
         return name.equals(otherTask.name)
                 && priority.equals(otherTask.priority)
                 && tags.equals(otherTask.tags)
-                && children.equals(otherTask.children)
                 && dueDate.equals(otherTask.dueDate)
                 && status.equals(otherTask.status)
                 && link.equals(otherTask.link)
