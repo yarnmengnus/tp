@@ -98,10 +98,11 @@ public class ModelManagerTest {
                 TypicalTasks.ALICE).withTask(TypicalTasks.BENSON).build();
         ProfPlan differentProfPlan = new ProfPlan();
         UserPrefs userPrefs = new UserPrefs();
+        UserConfigs userConfigs = new UserConfigs();
 
         // same values -> returns true
-        modelManager = new ModelManager(profPlan, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(profPlan, userPrefs);
+        modelManager = new ModelManager(profPlan, userPrefs, userConfigs);
+        ModelManager modelManagerCopy = new ModelManager(profPlan, userPrefs, userConfigs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -114,12 +115,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentProfPlan, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentProfPlan, userPrefs, userConfigs)));
 
         // different filteredList -> returns false
         String[] keywords = TypicalTasks.ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(profPlan, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(profPlan, userPrefs, userConfigs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
@@ -127,6 +128,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setProfPlanFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(profPlan, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(profPlan, differentUserPrefs, userConfigs)));
     }
 }

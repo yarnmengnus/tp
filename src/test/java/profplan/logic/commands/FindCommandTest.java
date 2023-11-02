@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import profplan.model.Model;
 import profplan.model.ModelManager;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.TypicalTasks;
@@ -21,8 +22,9 @@ import profplan.testutil.TypicalTasks;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
-    private Model expectedModel = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
+    private Model model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs(), new UserConfigs());
+    private Model expectedModel = new ModelManager(TypicalTasks.getTypicalProfPlan(),
+            new UserPrefs(), new UserConfigs());
 
     @Test
     public void equals() {
