@@ -313,9 +313,9 @@ public class MainWindow extends UiPart<Stage> {
             long intermediate = (minDaysLeft + maxDaysLeft) / 10;
             long split;
             if (intermediate == 0) {
-                  split = 1;
+                split = 1;
             } else {
-                  split = intermediate;
+                split = intermediate;
             }
             taskUrgency.replaceAll((t, v) -> v / split + 1);
             taskUrgency.replaceAll((t, v) -> 10 - v + 1);
