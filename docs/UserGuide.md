@@ -213,7 +213,7 @@ to:
 
 **Precise Expected Outputs when the command fails:**
 ```
-Unable edit task. Check task index, or format of [aspect]. 
+Unable edit task. Check task index, or format of [aspect].
 Try entering in this format edit 1 /[aspect] [new value], with aspects being “name”, “priority”, “category”, “parent”, or “link”
 ```
 
