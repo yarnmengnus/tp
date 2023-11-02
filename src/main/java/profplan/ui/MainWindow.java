@@ -1,11 +1,8 @@
 package profplan.ui;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -32,7 +29,6 @@ import profplan.logic.Logic;
 import profplan.logic.commands.CommandResult;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.logic.parser.exceptions.ParseException;
-import profplan.model.task.DueDate;
 import profplan.model.task.Task;
 
 /**
@@ -165,30 +161,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Calculate number of days till due date
-     */
-    private long getDaysUntilDueDate(DueDate dueDate, String curDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date dueDateDate = dateFormat.parse(dueDate.toString());
-            Date currentDate = dateFormat.parse(curDate);
-
-            long difference = dueDateDate.getTime() - currentDate.getTime();
-            if (difference < 0) {
-                difference = 1;
-            }
-            long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-            if (days < 1) {
-                days = 1;
-            }
-            return days;
-        } catch (java.text.ParseException e) {
-            // Handle parsing errors
-            return -1;
-        }
-    }
-
-    /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
@@ -293,12 +265,9 @@ public class MainWindow extends UiPart<Stage> {
 
         ObservableList<Task> filteredTasks = logic.getFilteredTaskList();
         ObservableMap<Task, Long> taskUrgency = FXCollections.observableHashMap();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date currentDate = new Date();
-        String curDate = dateFormat.format(currentDate);
 
         for (Task t : filteredTasks) {
-            long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
+            long daysLeft = t.getDueDate().getDaysFromNow();
             taskUrgency.put(t, daysLeft);
         }
         long minDaysLeft = Collections.min(taskUrgency.values());

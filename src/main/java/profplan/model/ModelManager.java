@@ -3,11 +3,7 @@ package profplan.model;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -16,7 +12,6 @@ import javafx.collections.transformation.FilteredList;
 import profplan.commons.core.GuiSettings;
 import profplan.commons.core.LogsCenter;
 import profplan.commons.util.CollectionUtil;
-import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
 import profplan.model.task.Task;
@@ -190,18 +185,12 @@ public class ModelManager implements Model {
         Task recommendedTask = null;
         double highestComputedValue = Double.NEGATIVE_INFINITY; // Initialize with a very low value
 
-        // Get the current date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date currentDate = new Date();
-        String curDate = dateFormat.format(currentDate);
-
         // Iterate through the list to find the task with the highest computed value
         for (Task task : internalUnmodifiableList) {
             Priority priority = task.getPriority();
-            DueDate dueDate = task.getDueDate();
 
             // Calculate the number of days left to the due date
-            long daysLeft = getDaysUntilDueDate(dueDate, curDate);
+            long daysLeft = task.getDueDate().getDaysFromNow();
 
             // Calculate the computed value (priority divided by days left)
             double computedValue = priorityValue(priority) / (double) daysLeft;
@@ -217,24 +206,6 @@ public class ModelManager implements Model {
         }
 
         return recommendedTask;
-    }
-
-    // Helper method to calculate the number of days left to the due date
-    private long getDaysUntilDueDate(DueDate dueDate, String curDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date dueDateDate = dateFormat.parse(dueDate.toString());
-            Date currentDate = dateFormat.parse(curDate);
-
-            long difference = dueDateDate.getTime() - currentDate.getTime();
-            if (difference < 0) {
-                difference = 1;
-            }
-            return TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-        } catch (ParseException e) {
-            // Handle parsing errors
-            return -1;
-        }
     }
 
     // Helper method to calculate the priority value

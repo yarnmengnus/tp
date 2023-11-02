@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 import profplan.commons.util.AppUtil;
 
@@ -136,6 +137,29 @@ public class DueDate implements Comparable<DueDate> {
         return new DueDate(date.plusMonths(1).format(dateTimeFormatter));
     }
 
+    /**
+     * Returns the format for DueDate
+     */
+    public static DateTimeFormatter getDateFormat() {
+        return dateTimeFormatter;
+    }
+
+    /**
+     * Returns number of days between now and due date, returns 1 if due date has passed.
+     * Used in MainWindow.java and ModelManager.java
+     */
+    public long getDaysFromNow() {
+        try {
+            LocalDate due = LocalDate.parse(this.value.toString(), dateTimeFormatter);
+            long daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), due);
+            return daysBetween < 0 ? 1 : daysBetween;
+
+        } catch (DateTimeParseException e) {
+            // Handle parsing errors
+            return -1;
+        }
+    }
+
     @Override
     public String toString() {
         return parsedValue == null ? value : dateTimeFormatter.format(parsedValue);
@@ -170,6 +194,6 @@ public class DueDate implements Comparable<DueDate> {
             return thisDate.compareTo(otherDate);
         } catch (DateTimeParseException e) {
             return 0;
-        } 
+        }
     }
 }

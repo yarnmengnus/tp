@@ -111,7 +111,7 @@ public interface Model {
     Task getDoNextTask();
 
     /**
-     * Sorts the task by nearest deadline.
+     * Sorts the task by nearest duedate.
      */
     void sortTaskByDueDate();
 
