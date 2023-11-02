@@ -2,12 +2,10 @@ package profplan.model.task;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 import profplan.commons.util.AppUtil;
 
@@ -16,18 +14,15 @@ import profplan.commons.util.AppUtil;
  */
 public class DueDate implements Comparable<DueDate> {
     public static final String MESSAGE_CONSTRAINTS =
-        "Due date should be of dd-MM-yyyy format, and should not be after the year 2030";
+        "Due date should be of dd-MM-yyyy format, and should be between 2000 and 2030.";
 
-    public static final String DATE_REGEX = "(0[1-9]|[12][0-9]|3[0,1])"; // specify date beween 01 and 31
-    public static final String MONTH_REGEX = "(0[1-9]|1[0-2])"; // specify month between 01 and 12
-    public static final String YEAR_REGEX = "(2000|20[0-2][0-9]|2030)";
-    public static final String VALIDATION_REGEX = DATE_REGEX + "-" + MONTH_REGEX + "-" + YEAR_REGEX;
-
-    private static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static LocalDate min = LocalDate.of(1999, 12, 31);
+    private static LocalDate max = LocalDate.of(2031, 1, 1);
 
     public final String value;
 
-    private Date parsedValue = null;
+    private LocalDate parsedValue = null;
 
     /**
      * Constructs an {@code Address}.
@@ -48,14 +43,15 @@ public class DueDate implements Comparable<DueDate> {
             if (test.value.equals("No due date")) {
                 return true;
             }
-            Date parsed = format.parse(test.value);
-            if (test.value.matches(VALIDATION_REGEX)) {
+            LocalDate parsed = LocalDate.parse(test.value, dateTimeFormatter);
+            if (parsed.isBefore(max) && parsed.isAfter(min)) {
                 test.parsedValue = parsed;
                 return true;
             } else {
                 return false;
             }
-        } catch (ParseException e) {
+
+        } catch (DateTimeParseException e) {
             return false;
         }
     }
@@ -68,9 +64,10 @@ public class DueDate implements Comparable<DueDate> {
             if (test.equals("No due date")) {
                 return true;
             }
-            format.parse(test);
-            return test.matches(VALIDATION_REGEX);
-        } catch (ParseException e) {
+            LocalDate parsed = LocalDate.parse(test, dateTimeFormatter);
+            return parsed.isBefore(max) && parsed.isAfter(min);
+
+        } catch (DateTimeParseException e) {
             return false;
         }
     }
@@ -85,9 +82,8 @@ public class DueDate implements Comparable<DueDate> {
         if (this.value.equals("No due date")) {
             return false;
         }
-        Date parsedDate = this.parsedValue;
-        Date parsedOtherDate = otherDate.parsedValue;
-        return parsedDate.before(parsedOtherDate) || parsedDate.equals(parsedOtherDate);
+        return this.parsedValue.isBefore(otherDate.parsedValue)
+            || this.parsedValue.equals(otherDate.parsedValue);
     }
 
     /**
@@ -97,17 +93,11 @@ public class DueDate implements Comparable<DueDate> {
         if (this.value.equals("No due date")) {
             return false;
         }
-        Date parsedDate = this.parsedValue;
+        LocalDate endOfWeek = LocalDate.now().plusWeeks(1);
+        System.out.println(this.parsedValue);
 
-        Calendar currentCal = Calendar.getInstance();
-        currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
-
-        Date currentDay = currentCal.getTime();
-
-        currentCal.add(Calendar.DAY_OF_YEAR, 7);
-        Date endOfWeek = currentCal.getTime();
-
-        return !parsedDate.before(currentDay) && !parsedDate.after(endOfWeek);
+        return !this.parsedValue.isBefore(LocalDate.now())
+            && !this.parsedValue.isAfter(endOfWeek);
     }
 
     /**
@@ -117,17 +107,10 @@ public class DueDate implements Comparable<DueDate> {
         if (this.value.equals("No due date")) {
             return false;
         }
-        Date parsedDate = this.parsedValue;
+        LocalDate endOfMonth = LocalDate.now().plusMonths(1);
 
-        Calendar currentCal = Calendar.getInstance();
-        currentCal.set(Calendar.DAY_OF_WEEK, currentCal.getFirstDayOfWeek());
-
-        Date currentDay = currentCal.getTime();
-
-        currentCal.add(Calendar.DAY_OF_YEAR, 30);
-        Date endOfMonth = currentCal.getTime();
-
-        return !parsedDate.before(currentDay) && !parsedDate.after(endOfMonth);
+        return !this.parsedValue.isBefore(LocalDate.now())
+            && !this.parsedValue.isAfter(endOfMonth);
     }
 
     /**
@@ -138,7 +121,6 @@ public class DueDate implements Comparable<DueDate> {
      */
     public DueDate addDays(DueDate dueDate, long days) {
         requireNonNull(dueDate);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate date = LocalDate.parse(value, dateTimeFormatter);
         return new DueDate(date.plusDays(days).format(dateTimeFormatter));
     }
@@ -150,14 +132,36 @@ public class DueDate implements Comparable<DueDate> {
      */
     public DueDate addMonth(DueDate dueDate) {
         requireNonNull(dueDate);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate date = LocalDate.parse(value, dateTimeFormatter);
         return new DueDate(date.plusMonths(1).format(dateTimeFormatter));
     }
 
+    /**
+     * Returns the format for DueDate
+     */
+    public static DateTimeFormatter getDateFormat() {
+        return dateTimeFormatter;
+    }
+
+    /**
+     * Returns number of days between now and due date, returns 1 if due date has passed.
+     * Used in MainWindow.java and ModelManager.java
+     */
+    public long getDaysFromNow() {
+        try {
+            LocalDate due = LocalDate.parse(this.value.toString(), dateTimeFormatter);
+            long daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), due);
+            return daysBetween < 0 ? 1 : daysBetween;
+
+        } catch (DateTimeParseException e) {
+            // Handle parsing errors
+            return -1;
+        }
+    }
+
     @Override
     public String toString() {
-        return parsedValue == null ? value : format.format(parsedValue);
+        return parsedValue == null ? value : dateTimeFormatter.format(parsedValue);
     }
 
     @Override
@@ -183,8 +187,11 @@ public class DueDate implements Comparable<DueDate> {
     @Override
     public int compareTo(DueDate o) {
         try {
-            return format.parse(this.value).compareTo(format.parse(o.value));
-        } catch (ParseException e) {
+            LocalDate thisDate = LocalDate.parse(this.value, dateTimeFormatter);
+            LocalDate otherDate = LocalDate.parse(o.value, dateTimeFormatter);
+
+            return thisDate.compareTo(otherDate);
+        } catch (DateTimeParseException e) {
             return 0;
         }
     }

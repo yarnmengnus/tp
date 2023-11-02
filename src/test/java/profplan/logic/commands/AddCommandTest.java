@@ -180,7 +180,7 @@ public class AddCommandTest {
             throw new AssertionError("THis method should not be called.");
         }
 
-        public void sortTaskByDeadline() {
+        public void sortTaskByDueDate() {
             throw new AssertionError("This method should not be called.");
         }
 

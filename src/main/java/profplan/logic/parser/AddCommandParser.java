@@ -9,7 +9,6 @@ import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -56,7 +55,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Task.RecurringType recurringType = isRecurring
                 ? ParserUtil.parseRecurringType(argMultimap.getValue(PREFIX_RECURRING).get()) : null;
 
-        Task task = new Task(name, priority, isRecurring, recurringType, tagList, dueDate, new HashSet<>(),
+        Task task = new Task(name, priority, isRecurring, recurringType, tagList, dueDate,
                 link, new Description(""));
         return new AddCommand(task);
     }

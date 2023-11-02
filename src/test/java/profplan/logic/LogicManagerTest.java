@@ -21,9 +21,11 @@ import profplan.logic.parser.exceptions.ParseException;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 import profplan.model.ReadOnlyProfPlan;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.Task;
 import profplan.storage.JsonProfPlanStorage;
+import profplan.storage.JsonUserConfigsStorage;
 import profplan.storage.JsonUserPrefsStorage;
 import profplan.storage.StorageManager;
 import profplan.testutil.Assert;
@@ -45,7 +47,9 @@ public class LogicManagerTest {
         JsonProfPlanStorage addressBookStorage =
                 new JsonProfPlanStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonUserConfigsStorage userConfigsStorage = new JsonUserConfigsStorage(
+                temporaryFolder.resolve("userConfigs.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userConfigsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -120,7 +124,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs(), new UserConfigs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -157,7 +161,9 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonUserConfigsStorage userConfigsStorage =
+                new JsonUserConfigsStorage(temporaryFolder.resolve("ExceptionUserConfigs.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userConfigsStorage);
 
         logic = new LogicManager(model, storage);
 

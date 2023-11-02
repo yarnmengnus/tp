@@ -3,6 +3,7 @@ package profplan.logic.parser;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
+import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_STATUS;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import profplan.model.task.Task;
 import profplan.model.task.predicates.CombinedPredicate;
 import profplan.model.task.predicates.TaskDueDatePredicate;
 import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskRecurringTypePredicate;
 import profplan.model.task.predicates.TaskStatusPredicate;
 
 
@@ -27,13 +29,13 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      */
     public FilterCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
+                ArgumentTokenizer.tokenize(args, PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE, PREFIX_RECURRING);
 
         if (!argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE
                 + FilterCommand.MESSAGE_DETAILS + FilterCommand.MESSAGE_EXAMPLE));
         }
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_STATUS, PREFIX_DUEDATE, PREFIX_RECURRING);
 
         ArrayList<Predicate<Task>> predList = new ArrayList<>();
         ArrayList<String> filters = new ArrayList<>();
@@ -58,6 +60,16 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                         ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).get()));
                 predList.add(newPred);
                 filters.add("Due before: " + newPred.getDate() + "\n");
+            }
+
+            if (argMultimap.getValue(PREFIX_RECURRING).isPresent()) {
+                TaskRecurringTypePredicate newPred = new TaskRecurringTypePredicate(
+                        ParserUtil.parseRecurringType(argMultimap.getValue(PREFIX_RECURRING).get()));
+                predList.add(newPred);
+                String recurringType = newPred.getRecurringType() == null
+                    ? "NONE" : newPred.getRecurringType()
+                    .toString();
+                filters.add("Recurring: " + recurringType + "\n");
             }
 
             if (predList.isEmpty()) {

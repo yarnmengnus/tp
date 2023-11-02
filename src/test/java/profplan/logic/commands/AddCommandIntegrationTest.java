@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import profplan.logic.Messages;
 import profplan.model.Model;
 import profplan.model.ModelManager;
+import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 import profplan.model.task.Task;
 import profplan.testutil.TaskBuilder;
@@ -22,14 +23,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs());
+        model = new ModelManager(TypicalTasks.getTypicalProfPlan(), new UserPrefs(), new UserConfigs());
     }
 
     @Test
     public void execute_newTask_success() {
         Task validTask = new TaskBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getProfPlan(), new UserPrefs(), new UserConfigs());
         expectedModel.addTask(validTask);
 
         assertCommandSuccess(new AddCommand(validTask), model,
