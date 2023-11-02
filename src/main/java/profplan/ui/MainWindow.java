@@ -1,8 +1,11 @@
 package profplan.ui;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,7 @@ import profplan.logic.Logic;
 import profplan.logic.commands.CommandResult;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.logic.parser.exceptions.ParseException;
+import profplan.model.task.DueDate;
 import profplan.model.task.Task;
 
 /**
@@ -319,6 +323,7 @@ public class MainWindow extends UiPart<Stage> {
             }
             matrixDisplay.setItems(rows);
             matrixDisplay.refresh();
+
         }
     }
 
