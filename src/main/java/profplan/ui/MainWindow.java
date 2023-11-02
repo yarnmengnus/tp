@@ -178,9 +178,8 @@ public class MainWindow extends UiPart<Stage> {
                 difference = 1;
             }
             long days = TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
-            if (days < 1) {
-                days = 1;
-            }
+
+            System.out.println("1: " + days);
             return days;
         } catch (java.text.ParseException e) {
             // Handle parsing errors
@@ -311,10 +310,13 @@ public class MainWindow extends UiPart<Stage> {
             }
             long minDaysLeft = Collections.min(taskUrgency.values());
             long maxDaysLeft = Collections.max(taskUrgency.values());
-            long split = (minDaysLeft + maxDaysLeft) / 10;
-            System.out.println(split);
-            System.out.println(minDaysLeft);
-            System.out.println(maxDaysLeft);
+            long intermediate = (minDaysLeft + maxDaysLeft) / 10;
+            long split;
+            if (intermediate == 0) {
+                split = 1;
+            } else {
+                split = intermediate;
+            }
             taskUrgency.replaceAll((t, v) -> v / split + 1);
             taskUrgency.replaceAll((t, v) -> 10 - v + 1);
 
@@ -325,6 +327,7 @@ public class MainWindow extends UiPart<Stage> {
             }
             matrixDisplay.setItems(rows);
             matrixDisplay.refresh();
+
         }
     }
 
