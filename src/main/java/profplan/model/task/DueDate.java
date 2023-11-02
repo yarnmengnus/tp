@@ -14,14 +14,11 @@ import profplan.commons.util.AppUtil;
  */
 public class DueDate implements Comparable<DueDate> {
     public static final String MESSAGE_CONSTRAINTS =
-        "Due date should be of dd-MM-yyyy format, and should not be after the year 2030";
-
-    public static final String DATE_REGEX = "(0[1-9]|[12][0-9]|3[0,1])"; // specify date beween 01 and 31
-    public static final String MONTH_REGEX = "(0[1-9]|1[0-2])"; // specify month between 01 and 12
-    public static final String YEAR_REGEX = "(2000|20[0-2][0-9]|2030)";
-    public static final String VALIDATION_REGEX = DATE_REGEX + "-" + MONTH_REGEX + "-" + YEAR_REGEX;
+        "Due date should be of dd-MM-yyyy format, and should be between 2000 and 2030.";
 
     private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static LocalDate min = LocalDate.of(1999, 12, 31);
+    private static LocalDate max = LocalDate.of(2031, 1, 1);
 
     public final String value;
 
@@ -47,12 +44,8 @@ public class DueDate implements Comparable<DueDate> {
                 return true;
             }
             LocalDate parsed = LocalDate.parse(test.value, dateTimeFormatter);
-            if (test.value.matches(VALIDATION_REGEX)) {
-                test.parsedValue = parsed;
-                return true;
-            } else {
-                return false;
-            }
+            return parsed.isBefore(max) && parsed.isAfter(min);
+
         } catch (DateTimeParseException e) {
             return false;
         }
@@ -66,8 +59,9 @@ public class DueDate implements Comparable<DueDate> {
             if (test.equals("No due date")) {
                 return true;
             }
-            LocalDate.parse(test, dateTimeFormatter);
-            return test.matches(VALIDATION_REGEX);
+            LocalDate parsed = LocalDate.parse(test, dateTimeFormatter);
+            return parsed.isBefore(max) && parsed.isAfter(min);
+
         } catch (DateTimeParseException e) {
             return false;
         }
