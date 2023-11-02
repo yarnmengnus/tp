@@ -123,8 +123,8 @@ public class ProfPlanParser {
                 return new SortPriorityCommand();
             } else {
                 logger.finer("This user input caused a ParseException: " + userInput);
-                throw new ParseException("Did you mean the 'sort_priority' command? " +
-                        "Please enter 'sort_priority' only.");
+                throw new ParseException("Did you mean the 'sort_priority' command? "
+                        + "Please enter 'sort_priority' only.");
             }
 
         case ListWeekCommand.COMMAND_WORD:
