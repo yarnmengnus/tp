@@ -78,6 +78,8 @@ Contact us at [teamprofplan@gmail.com](mailto:teamprofplan@gmail.com) to connect
     1. [Sort Tasks according to date, priority and status :](#sort-tasks-according-to-date-priority-and-status)
     1. [View Task statistics: stats](#view-task-statistics-stats)
 * [Supported flags](#supported-flags)
+* [Command summary](#command-summary)
+* [Supported Setting Parameters](#supported-setting-parameters)
 * [Glossary](#glossary)
 * [Contact Us for Feedback & More!](#contact-us-for-feedback--more)
 
@@ -257,7 +259,7 @@ Here are your tasks within a week Prof!
 
 
 ### List Tasks within a month from now: `list_month`
-Shows a list of tasks within a month from now in ProfPlan.. <br>
+Shows a list of tasks within a month from now in ProfPlan. <br>
 **Command Format:** `list_week` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
 
@@ -268,7 +270,9 @@ Here are your tasks within a month Prof!
 
 
 ### Locating Tasks by name: `find`
-This task find is a user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is flexible, and only the task name is considered. Full words are matched, so "Tas" won't match "Task." The search operates on an OR logic, returning tasks matching at least one keyword. This ensures a simple and effective task-finding process. <br>
+Finding a task is user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is 
+flexible, 
+and only the task name is considered. Full words are matched, so "Tas" won't match "Task." The search operates on an OR logic, returning tasks matching at least one keyword. This ensures a simple and effective task-finding process. <br>
 **Command Format:** `find [KEYWORD]` <br>
 **Acceptable Values for each Parameter:** <br>
 &emsp;`[TaskName]` - A task name that matches in the TaskList. <br>
@@ -299,8 +303,8 @@ ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/pr
 ### Saving the data
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### Exiting the program : exit
-Exits the program.
+### Exiting the program : `exit`
+Exits the program. <br>
 Format: `exit`
 
 
@@ -312,6 +316,15 @@ Shows a list of commands.
 &emsp;Shows the description and usage of the command you specified. <br>
 &emsp;**Command Format:** `help {command name}` <br>
 &emsp;**Example Command:** `help add`
+
+
+### Configuring Settings : `set`
+Allows you to configure certain parameters as you see fit. <br>
+Command Format: `set [parameterName] [value]`
+
+For a list of the currently supported parameters, click [here](#supported-setting-parameters).
+To make ProfPlan more customizable, we are looking to add more in the future, so stay tuned!
+
 
 
 ## Task Management Features
@@ -461,7 +474,7 @@ Example: filter d/01-01-2024 s/done
 
 
 ### Priority
-Tasks now have priorities that can be assigned upon task adding, and also edited.
+Tasks have priorities that can be assigned upon task adding, and also edited.
 Unassigned priorities will have the value `000`. <br>
 **Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
 
@@ -505,6 +518,8 @@ The higher the urgency and the priority, the more important is the task.
 ![img.png](matrix.png)
 
 ### Create Recurring task :
+
+
 ### Sort Tasks based on priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
 ### Sort Tasks according to deadline :
@@ -559,6 +574,11 @@ contains the data in the previous ProfPlan home folder.
 | **Sort Duedate**  | `sort_duedate`                                                                  |
 | **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                    |
 | **Help**          | `help`                                                                          |
+
+## Supported Setting Parameters
+| **Parameter**    | **Description**                   | **Valid values**         | **Default value** |
+|------------------|-----------------------------------|--------------------------|-------------------|
+| **semesterDays** | The number of days in a semester. | Any non-negative integer | 180               |
 
 ## Glossary
 | **Word**     | **Definition**                                                                            |
