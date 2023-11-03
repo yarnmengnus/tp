@@ -461,8 +461,25 @@ Psst! Were the features mentioned in the introduction not quite enough to satiat
 ### Recommend next task :
 Ever felt overwhelmed by a mountain of work, and lost on what to do next? Many tasks, each with slightly different deadlines and priorities, can come together to overload our capacities for good planning, and make it impossible for us to choose the optimal task to work on next.<br>
 With our customised algorithm, ProfPlan takes this cognitive load off your shoulders. Simply use the command do_next, and ProfPlan will identify the ideal task for you to work on next!<br>
+**Valid Format:** `do_next` <br>
+**Expected Output:** <br>
+`Here is the next task you need to do Prof:
+Grade assignments, Priority: 10, DueDate: 02-11-2023`
+
+
 ### Visualise important and urgent tasks :
-Sometimes, we might have 20, 30, 40 or more tasks in our lists, and it’s hard to remember when each one is due, or what your most important task is for that week.
+Sometimes, we might have 20, 30, 40 or more tasks in our lists!
+It can be extremely difficult to prioritize and visualize them based on what to do next.
+Fret not! With the Urgency-Priority Matrix, you can constantly visualize your tasks with ease.<br>
+The matrix is updated automatically whenever there's any change to your taskList.<br><br>
+
+The columns represent the different Urgency Levels: `1-10`
+<br>
+The rows represent the different Priority Levels: `1-10`
+
+The higher the urgency and the priority, the more important is the task.
+![img.png](matrix.png)
+
 ### Create Recurring task :
 ### Sort Tasks based on priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
