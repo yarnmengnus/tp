@@ -40,7 +40,7 @@ import profplan.ui.UiManager;
  */
 public class MainApp extends Application {
 
-    public static final Version VERSION = new Version(0, 2, 2, true);
+    public static final Version VERSION = new Version(1, 3, 2, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
