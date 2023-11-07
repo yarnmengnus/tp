@@ -223,19 +223,23 @@ The Delete Task feature allows you to remove a specific task from your task list
 
 (For Deleting a particular Task)
 ```
-[Task Description] successfully Deleted, Prof! Here is your updated list -
-[Displays the list with the specific task removed/deleted from the list].
+Deleted Task: [Task Description]
+[Displays the list with the specific task deleted from the list].
 ```
 
 (For Deleting all the Tasks in the list)
 ```
-All the tasks have been successfully Deleted, Prof! The list does not contain any task.
+All Tasks Deleted Successfully Prof!
 ```
 **Precise Expected Outputs when the command fails:** <br>
 (If provided with an invalid tasknumber which is not in the list or even a negative index number
 the following message will be printed)
 ```
-Unable to delete the task, Prof. Please enter a valid task number from your task list
+Please enter a valid Task number.
+```
+**Precise Expected Outputs when the command fails: (for delete all command)** <br>
+```
+Can not delete all tasks in empty Task List
 ```
 
 
