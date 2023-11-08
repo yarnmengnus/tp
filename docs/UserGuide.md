@@ -211,7 +211,8 @@ Try entering in this format edit 1 /[aspect] [new value], with aspects being “
 ### Delete tasks and delete all tasks : `delete`
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
 
-**Command Format:** `delete [taskNumber]/delete all` <br>
+**Command Format:** `delete [taskNumber]` <br>
+**Command Format:** `delete all` (for delete all) <br>
 **Example Commands:** <br>
 &emsp; `delete 2` (To delete a task present at index number 2) <br>
 &emsp; `delete all` (To delete all the tasks present in the list) <br>
@@ -365,24 +366,10 @@ Task successfully marked as undone, Prof! Here is your updated task list:
 
 **Precise Expected Outputs when the command fails:** <br>
 If you provide an invalid task number (e.g., a task number that does not exist in your task list),
-you will receive the following error message:
+you will receive the following error message: (both for mark and unmark command)
 ```
-/*Unable to mark the task as done/undone, Prof. Please enter a valid task number
-  from your task list.*/
+Task not found please enter a valid Task Number.
 ```
-**Precise Expected Outputs when the command succeeds:** <br>
-```
-The following task has been marked done Successfully!
-              [T][D] Prepare Quiz
-```
-
-(When undone command  is run)
-```
-The following task has been marked done Successfully!
-                [T][U] Prepare Quiz
-```
-
-
 
 ### Filter tasks : `filter`
 #### a. Due Date:
@@ -526,8 +513,19 @@ The higher the urgency and the priority, the more important is the task.
 
 ### Sort Tasks based on priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
-### Sort Tasks according to deadline :
+**Valid Format:** `sort_priority` <br>
+**Expected Output:** 
+` Here is your task list Prof, sorted based on priority` <br>
+**Expected Output (when command fails):** (i.e. When there is no tasks in the list) <br>
+`Can not sort an empty task list.`
+
+### Sort Tasks according to deadline:
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
+**Valid Format:** `sort_duedate` <br>
+**Expected Output:**
+` Here is your task list Prof, sorted based on nearest deadline` <br>
+**Expected Output (when command fails):** (i.e. When there is no tasks in the list) <br>
+`Can not sort an empty task list.`
 
 ### View Task statistics: stats
 
