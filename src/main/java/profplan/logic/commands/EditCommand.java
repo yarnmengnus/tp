@@ -45,11 +45,9 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_NAME + "NAME "
             + PREFIX_PRIORITY + "PRIORITY "
-            + PREFIX_RECURRING + "RECUR "
             + "[" + PREFIX_TAG + "TAG]... "
             + PREFIX_DUEDATE + "DUEDATE "
-            + PREFIX_LINK + "LINK "
-            + PREFIX_DESCRIPTION + "DESCRIPTION \n";
+            + PREFIX_LINK + "LINK\n";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "4 ";
