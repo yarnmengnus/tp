@@ -1,12 +1,10 @@
 package profplan.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static profplan.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_LINK;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
-import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collections;

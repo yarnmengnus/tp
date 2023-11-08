@@ -542,15 +542,9 @@ The higher the urgency and the priority, the more important is the task.
 
 ### Sort Tasks based on Priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
-**Valid Format:** `sort_priority` <br>
-**Expected Output:** <br>
-`Here is your task list Prof, sorted based on priority`
 
 ### Sort Tasks according to Due Date :
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
-**Valid Format:** `sort_duedate` <br>
-**Expected Output:** <br>
-`Here is your task list Prof, sorted by nearest due date.`
 
 ### View Task statistics: stats
 
