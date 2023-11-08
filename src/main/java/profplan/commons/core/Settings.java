@@ -11,17 +11,18 @@ import profplan.logic.parser.Prefix;
  * Guarantees: immutable.
  */
 public class Settings implements Serializable {
+
     // array containing all keywords used to specify these fields. contain these keywords in Prefixes.
     public static final Prefix[] KEYWORDS = {new Prefix("semesterDays")};
+
+    // misc.
+    public static final String SEMESTER_DAYS_CONSTRAINTS = "The parameter semesterDays must be a non-negative integer.";
 
     // default values
     private static final int DEFAULT_SEMESTER_DAYS = 180;
 
     // fields
     private final int semesterDays;
-
-    // misc.
-    public static final String SEMESTER_DAYS_CONSTRAINTS = "The parameter semesterDays must be a non-negative integer.";
 
     /**
      * Constructs a {@code Settings} with default settings.
