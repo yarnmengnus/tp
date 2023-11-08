@@ -20,6 +20,9 @@ public class Settings implements Serializable {
     // fields
     private final int semesterDays;
 
+    // misc.
+    public static final String SEMESTER_DAYS_CONSTRAINTS = "The parameter semesterDays must be a non-negative integer.";
+
     /**
      * Constructs a {@code Settings} with default settings.
      */
