@@ -1,9 +1,10 @@
 @startuml
-!define MODEL_COLOR #LightBlue
+!define MODEL_COLOR #0055CC
+!define BACKGROUND_COLOR #D0E4FF
 
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
-skinparam classBackgroundColor MODEL_COLOR
+skinparam classBackgroundColor BACKGROUND_COLOR
 
 Package Model as ModelPackage <<Rectangle>> {
     Class "<<interface>>\nReadOnlyProfPlan" as ReadOnlyProfPlan
@@ -35,8 +36,6 @@ Package Model as ModelPackage <<Rectangle>> {
 }
 
 
-
-
 ReadOnlyProfPlan <|.. ProfPlan
 Model <|.. ModelManager
 ReadOnlyUserPrefs <|.. UserPrefs
@@ -46,7 +45,7 @@ ModelManager -right-> "1" UserPrefs
 ModelManager --> "~* filtered" Task
 
 ProfPlan *--> "1" UniqueTaskList
-UniqueTaskList --> "~* all" Task
+UniqueTaskList --> "~* all  " Task
 
 Task *-- Name
 Task *-- Priority
