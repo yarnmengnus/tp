@@ -1,10 +1,10 @@
 package profplan.logic.commands;
 
 import static profplan.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static profplan.logic.commands.HelpCommand.SHOWING_HELP_MESSAGE;
 
 import org.junit.jupiter.api.Test;
 
+import profplan.logic.HelperCommandUtil;
 import profplan.model.Model;
 import profplan.model.ModelManager;
 
@@ -14,7 +14,8 @@ public class HelpCommandTest {
 
     @Test
     public void execute_help_success() {
-        CommandResult expectedCommandResult = new CommandResult(SHOWING_HELP_MESSAGE, true, false);
+        CommandResult expectedCommandResult = new CommandResult(new HelperCommandUtil()
+            .getAllCommandDescriptions(), false, false);
         assertCommandSuccess(new HelpCommand(), model, expectedCommandResult, expectedModel);
     }
 }

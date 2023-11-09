@@ -13,6 +13,7 @@ public class SortPriorityCommand extends Command {
     public static final String COMMAND_WORD = "sort_priority";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the tasks based on priority.";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = " Here is your task list Prof, sorted based on priority";
 
@@ -20,7 +21,12 @@ public class SortPriorityCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.sortTaskByPriority();
+        try {
+            model.sortTaskByPriority();
+        } catch (UnsupportedOperationException e) {
+            return new CommandResult(e.getMessage());
+        }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

@@ -20,7 +20,12 @@ public class SortDueDateCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.sortTaskByDeadline();
+        try {
+            model.sortTaskByDueDate();
+        } catch (UnsupportedOperationException e) {
+            return new CommandResult(e.getMessage());
+        }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

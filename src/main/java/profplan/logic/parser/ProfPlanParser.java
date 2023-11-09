@@ -15,6 +15,7 @@ import profplan.logic.commands.DeleteCommand;
 import profplan.logic.commands.DescriptionCommand;
 import profplan.logic.commands.DoNextCommand;
 import profplan.logic.commands.EditCommand;
+import profplan.logic.commands.EditSettingsCommand;
 import profplan.logic.commands.ExitCommand;
 import profplan.logic.commands.FilterCommand;
 import profplan.logic.commands.FindCommand;
@@ -23,9 +24,9 @@ import profplan.logic.commands.ListCommand;
 import profplan.logic.commands.ListMonthCommand;
 import profplan.logic.commands.ListWeekCommand;
 import profplan.logic.commands.MarkCommand;
-import profplan.logic.commands.SetCommand;
 import profplan.logic.commands.SortDueDateCommand;
 import profplan.logic.commands.SortPriorityCommand;
+import profplan.logic.commands.StatsCommand;
 import profplan.logic.commands.UnmarkCommand;
 import profplan.logic.parser.exceptions.ParseException;
 
@@ -69,6 +70,9 @@ public class ProfPlanParser {
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
+        case EditSettingsCommand.COMMAND_WORD:
+            return new EditSettingsCommandParser().parse(arguments);
+
         case MarkCommand.COMMAND_WORD:
             return new MarkCommandParser().parse(arguments);
 
@@ -79,7 +83,12 @@ public class ProfPlanParser {
             return new DeleteCommandParser().parse(arguments);
 
         case DoNextCommand.COMMAND_WORD:
-            return new DoNextCommand();
+            if (arguments.isBlank()) {
+                return new DoNextCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException("Did you mean the 'do_next' command? Please enter 'do_next' only.");
+            }
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
@@ -97,25 +106,35 @@ public class ProfPlanParser {
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
-
-        case SetCommand.COMMAND_WORD:
-            return new SetCommandParser().parse(arguments);
+            return new HelpCommandParser().parse(arguments);
 
         case DescriptionCommand.COMMAND_WORD:
             return new DescriptionCommandParser().parse(arguments);
 
         case SortDueDateCommand.COMMAND_WORD:
-            return new SortDueDateCommand();
+            if (arguments.isBlank()) {
+                return new SortDueDateCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException("Did you mean the 'sort_duedate' command? Please enter 'sort_duedate' only.");
+            }
 
         case SortPriorityCommand.COMMAND_WORD:
-            return new SortPriorityCommand();
+            if (arguments.isBlank()) {
+                return new SortPriorityCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException("Did you mean the 'sort_priority' command? "
+                        + "Please enter 'sort_priority' only.");
+            }
 
         case ListWeekCommand.COMMAND_WORD:
             return new ListWeekCommand();
 
         case ListMonthCommand.COMMAND_WORD:
             return new ListMonthCommand();
+        case StatsCommand.COMMAND_WORD:
+            return new StatsCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

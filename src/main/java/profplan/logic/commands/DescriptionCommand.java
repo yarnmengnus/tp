@@ -20,11 +20,11 @@ public class DescriptionCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the description of the task identified "
-            + "by the index number used in the last task listing. "
-            + "Existing description will be overwritten by the input.\n"
+            + "by the index number used in the last task listing.";
+    public static final String MESSAGE_DETAILS = "Existing description will be overwritten by the input.\n"
             + "Parameters: [index] (must be a positive integer) "
-            + "des/ [description]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "des/ [description]\n";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + "des/ Put particular emphasis on recursion.";
 
     public static final String MESSAGE_ADD_DESCRIPTION_SUCCESS = "Added description to Task %d";
@@ -54,8 +54,9 @@ public class DescriptionCommand extends Command {
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
         Task editedTask = new Task(taskToEdit.getName(), taskToEdit.getPriority(),
+                taskToEdit.getIsRecurring(), taskToEdit.getRecurringType(),
                 taskToEdit.getTags(), taskToEdit.getDueDate(),
-                taskToEdit.getChildren(), taskToEdit.getLink(), description);
+                taskToEdit.getLink(), description);
 
         model.setTask(taskToEdit, editedTask);
         model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);

@@ -111,12 +111,17 @@ public interface Model {
     Task getDoNextTask();
 
     /**
-     * Sorts the task by nearest deadline.
+     * Sorts the task by nearest duedate.
      */
-    void sortTaskByDeadline();
+    void sortTaskByDueDate();
 
     /**
      * Sorts the task based on priority.
      */
     void sortTaskByPriority();
+
+    /**
+     * Gets completion rate of existing tasks.
+     */
+    double getCompletionRate();
 }

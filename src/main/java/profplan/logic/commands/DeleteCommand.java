@@ -19,10 +19,10 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the task identified by the index number used in the displayed task list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-    public static final String MESSAGE_DETAILS = "Tip: Use \"delete all\" to delete all tasks."
+            + ": Deletes the task identified by the index number used in the displayed task list.\n";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_DETAILS = "Parameters: INDEX (must be a positive integer)\n"
+            + "Tip: Use \"delete all\" to delete all tasks."
             + "Be careful, this is IRREVERSIBLE";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
@@ -44,9 +44,13 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
 
-        if (targetIndex == null) {
+        if (targetIndex == null && lastShownList.size() != 0) {
             model.deleteTask();
             return new CommandResult(MESSAGE_DELETE_ALL_TASKS_SUCCESS);
+        }
+
+        if (targetIndex == null && lastShownList.size() == 0) {
+            return new CommandResult("Can not delete all tasks in empty Task List");
         }
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {

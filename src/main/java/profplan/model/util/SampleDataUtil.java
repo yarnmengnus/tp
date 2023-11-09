@@ -1,7 +1,6 @@
 package profplan.model.util;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,24 +20,27 @@ import profplan.model.task.Task;
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         return new Task[] {
-            new Task(new Name("Alex Yeoh"), new Priority("4"),
-                    getTagSet("friends"), new DueDate("01-01-2000"), new HashSet<>(), new Link("-"),
-                    new Description("")),
-            new Task(new Name("Bernice Yu"), new Priority("2"),
-                    getTagSet("colleagues", "friends"), new DueDate("01-01-2000"), new HashSet<>(),
-                    new Link("-"), new Description("")),
-            new Task(new Name("Charlotte Oliveiro"), new Priority("3"),
-                    getTagSet("neighbours"), new DueDate("01-01-2000"), new HashSet<>(),
-                    new Link("-"), new Description("")),
-            new Task(new Name("David Li"), new Priority("10"),
-                    getTagSet("family"), new DueDate("01-01-2000"), new HashSet<>(),
-                    new Link("-"), new Description("")),
-            new Task(new Name("Irfan Ibrahim"), new Priority("6"),
-                    getTagSet("classmates"), new DueDate("01-01-2000"), new HashSet<>(),
-                    new Link("-"), new Description("")),
-            new Task(new Name("Roy Balakrishnan"), new Priority("9"),
-                    getTagSet("colleagues"), new DueDate("01-01-2000"), new HashSet<>(),
-                    new Link("-"), new Description(""))
+            new Task(new Name("3D Chip Printing Research"), new Priority("8"), false, null,
+                    getTagSet("research", "application"), new DueDate("01-01-2024"),
+                    new Link("https://nus.edu.sg/nuslibraries/spaces/tel-imaginarium/services/3d-printing"),
+                    new Description("Test blueprints and apply for 3D Printing machine access.")),
+            new Task(new Name("Review Student Project Proposal"), new Priority("5"), false, null,
+                    getTagSet("student", "research"), new DueDate("04-11-2023"),
+                    new Link("urop.com"), new Description("Review Raman's UROP Proposal.")),
+            new Task(new Name("CS2100 Lecture"), new Priority("7"), false, null,
+                    getTagSet("course", "weekly", "lecture"), new DueDate("07-11-2023"),
+                    new Link("https://nus-sg.zoom.us/j/84615636187?pwd=RWRHc1hiTDlUaU54dUIrRVFiT2l2Zz09"),
+                    new Description("9AM Lecture in COM1-Seminar Room")),
+            new Task(new Name("Read Neural Network Paper"), new Priority("6"), false, null,
+                    getTagSet("reading", "research"), new DueDate("10-11-2023"),
+                    new Link("arivx.com/12366"), new Description("Read and review newly released paper on CNNs")),
+            new Task(new Name("CS2106 Course Admin"), new Priority("5"), false, null,
+                    getTagSet("course", "admin", "weekly"), new DueDate("10-11-2023"),
+                    new Link("https://blog.nus.edu.sg/cs2106/about/"),
+                    new Description("Release Quiz 9 and Midterm Grades")),
+            new Task(new Name("Grant Application"), new Priority("8"), false, null,
+                    getTagSet("grant", "research"), new DueDate("20-12-2023"),
+                    new Link("-"), new Description("NUS SOC Grant Application for DLD Project"))
         };
     }
 
