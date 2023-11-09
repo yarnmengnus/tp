@@ -1,54 +1,60 @@
 @startuml
-!include style.puml
+!define MODEL_COLOR #LightBlue
+
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Package Model as ModelPackage <<Rectangle>>{
-Class "<<interface>>\nReadOnlyProfPlan" as ReadOnlyProfPlan
-Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
-Class "<<interface>>\nModel" as Model
-Class ProfPlan
-Class ModelManager
-Class UserPrefs
+Package Model as ModelPackage <<Rectangle>> {
+    Class "<<interface>>\nReadOnlyProfPlan" as ReadOnlyProfPlan
+    Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
+    Class "<<interface>>\nModel" as Model
+    Class ProfPlan
+    Class ModelManager
+    Class UserPrefs
 
-Class UniqueTaskList
-Class Task
-Class Address
-Class Email
-Class Name
-Class
-Class Tag
+    Class UniqueTaskList
+    Class Task {
+        - Name name
+        - Priority priority
+        - RecurringType recurringType
+        - Link link
+        - Status status
+        - DueDate dueDate
+        - Description description
+    }
 
-Class I #FFFFFF
+    Class Name
+    Class Priority
+    Class RecurringType
+    Class Link
+    Class Status
+    Class DueDate
+    Class Description
+    Class Tag
 }
 
-Class HiddenOutside #FFFFFF
-HiddenOutside ..> Model
 
-ProfPlan .up.|> ReadOnlyProfPlan
 
-ModelManager .up.|> Model
-Model .right.> ReadOnlyUserPrefs
-Model .left.> ReadOnlyProfPlan
+
+ReadOnlyProfPlan <|.. ProfPlan
+Model <|.. ModelManager
+ReadOnlyUserPrefs <|.. UserPrefs
+
 ModelManager -left-> "1" ProfPlan
 ModelManager -right-> "1" UserPrefs
-UserPrefs .up.|> ReadOnlyUserPrefs
+ModelManager --> "~* filtered" Task
 
 ProfPlan *--> "1" UniqueTaskList
 UniqueTaskList --> "~* all" Task
-Task *--> Name
-Task *-->
-Task *--> Email
-Task *--> Address
-Task *--> "*" Tag
 
-Task -[hidden]up--> I
-UniqueTaskList -[hidden]right-> I
+Task *-- Name
+Task *-- Priority
+Task *-- RecurringType
+Task *-- Link
+Task *-- Status
+Task *-- DueDate
+Task *-- Description
+Task *-- "*" Tag
 
-Name -[hidden]right->
- -[hidden]right-> Address
-Address -[hidden]right-> Email
-
-ModelManager --> "~* filtered" Task
 @enduml
