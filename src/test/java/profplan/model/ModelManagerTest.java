@@ -12,7 +12,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import profplan.commons.core.GuiSettings;
-import profplan.model.task.NameContainsKeywordsPredicate;
+import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.Assert;
 import profplan.testutil.ProfPlanBuilder;
 import profplan.testutil.TypicalTasks;

@@ -6,8 +6,6 @@ import java.util.stream.Stream;
 
 import profplan.logic.commands.EditCommand.EditTaskDescriptor;
 import profplan.model.tag.Tag;
-import profplan.model.task.Address;
-import profplan.model.task.Email;
 import profplan.model.task.Link;
 import profplan.model.task.Name;
 import profplan.model.task.Priority;
@@ -35,8 +33,6 @@ public class EditTaskDescriptorBuilder {
         descriptor = new EditTaskDescriptor();
         descriptor.setName(task.getName());
         descriptor.setPriority(task.getPriority());
-        descriptor.setEmail(task.getEmail());
-        descriptor.setAddress(task.getAddress());
         descriptor.setTags(task.getTags());
         descriptor.setLink(task.getLink());
     }
@@ -54,22 +50,6 @@ public class EditTaskDescriptorBuilder {
      */
     public EditTaskDescriptorBuilder withPriority(String priority) {
         descriptor.setPriority(new Priority(priority));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code EditTaskDescriptor} that we are building.
-     */
-    public EditTaskDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
-        return this;
-    }
-
-    /**
-     * Sets the {@code Address} of the {@code EditTaskDescriptor} that we are building.
-     */
-    public EditTaskDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
         return this;
     }
 

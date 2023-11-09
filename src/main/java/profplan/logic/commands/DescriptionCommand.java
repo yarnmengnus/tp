@@ -27,8 +27,8 @@ public class DescriptionCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + "des/ Put particular emphasis on recursion.";
 
-    public static final String MESSAGE_ADD_DESCRIPTION_SUCCESS = "Added description to Task: %1$s";
-    public static final String MESSAGE_DELETE_DESCRIPTION_SUCCESS = "Removed description from Task: %1$s";
+    public static final String MESSAGE_ADD_DESCRIPTION_SUCCESS = "Added description to Task %d";
+    public static final String MESSAGE_DELETE_DESCRIPTION_SUCCESS = "Removed description from Task: %d";
 
     private final Index index;
     private final Description description;
@@ -53,24 +53,24 @@ public class DescriptionCommand extends Command {
         }
 
         Task taskToEdit = lastShownList.get(index.getZeroBased());
-        Task editedTask = new Task(taskToEdit.getName(), taskToEdit.getPriority(), taskToEdit.getEmail(),
-                taskToEdit.getAddress(), taskToEdit.getTags(), taskToEdit.getDueDate(),
+        Task editedTask = new Task(taskToEdit.getName(), taskToEdit.getPriority(),
+                taskToEdit.getTags(), taskToEdit.getDueDate(),
                 taskToEdit.getChildren(), taskToEdit.getLink(), description);
 
         model.setTask(taskToEdit, editedTask);
         model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
 
-        return new CommandResult(generateSuccessMessage(editedTask));
+        return new CommandResult(generateSuccessMessage(index.getOneBased()));
     }
 
     /**
      * Generates a command execution success message based on whether
      * the description is added to or removed from {@code taskToEdit}.
      */
-    private String generateSuccessMessage(Task editedTask) {
+    private String generateSuccessMessage(int index) {
         String message = !description.description.isEmpty() ? MESSAGE_ADD_DESCRIPTION_SUCCESS
                 : MESSAGE_DELETE_DESCRIPTION_SUCCESS;
-        return String.format(message, editedTask);
+        return String.format(message, index);
     }
 
     @Override
