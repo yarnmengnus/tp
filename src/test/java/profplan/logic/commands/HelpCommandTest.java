@@ -1,5 +1,7 @@
 package profplan.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.logic.Messages.MESSAGE_INVALID_COMMAND_WORD;
 import static profplan.logic.commands.CommandTestUtil.assertCommandFailure;
 import static profplan.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -17,6 +19,18 @@ import profplan.model.ModelManager;
 public class HelpCommandTest {
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();
+
+    @Test
+    public void equality_help_success() {
+        assertTrue(new HelpCommand("add").equals(new HelpCommand("add")));
+        assertTrue(new HelpCommand().equals(new HelpCommand()));
+    }
+
+    @Test
+    public void equality_help_failure() {
+        assertFalse(new HelpCommand("add").equals(new HelpCommand("delete")));
+        assertFalse(new HelpCommand().equals(new HelpCommand("invalidCommand")));
+    }
 
     @Test
     public void execute_help_success() {
