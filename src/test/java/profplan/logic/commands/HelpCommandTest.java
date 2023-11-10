@@ -25,11 +25,204 @@ public class HelpCommandTest {
     }
 
     @Test
-    public void execute_helpCommandWord_success() {
+    public void execute_helpAdd_success() {
         try {
             CommandResult expectedCommandResult = new CommandResult(
                 getOneCommandDescription(AddCommand.COMMAND_WORD), false, false);
-            assertCommandSuccess(new HelpCommand(AddCommand.COMMAND_WORD), model, expectedCommandResult, expectedModel);
+            assertCommandSuccess(new HelpCommand(AddCommand.COMMAND_WORD), model,
+                expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpDelete_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(DeleteCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(DeleteCommand.COMMAND_WORD), model,
+                expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpEdiSettings_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(EditSettingsCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(EditSettingsCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpMark_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(MarkCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(MarkCommand.COMMAND_WORD), model,
+                expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpUnmark_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(UnmarkCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(UnmarkCommand.COMMAND_WORD), model,
+                expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpClear_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(ClearCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(ClearCommand.COMMAND_WORD), model,
+                expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpFind_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(FindCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(FindCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpFilter_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(FilterCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(FilterCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpList_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(ListCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(ListCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpExit_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(ExitCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(ExitCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpHelp_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(HelpCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(HelpCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpDescription_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(DescriptionCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(DescriptionCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpSortDueDate_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(SortDueDateCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(SortDueDateCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpSortPriority_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(SortPriorityCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(SortPriorityCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpListWeek_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(ListWeekCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(ListWeekCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpListMonth_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(ListMonthCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(ListMonthCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpStats_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(StatsCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(StatsCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
         } catch (CommandException e) {
             assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
         }
