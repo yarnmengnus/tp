@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.model.Model.PREDICATE_SHOW_ALL_TASKS;
+import static profplan.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 import profplan.commons.core.GuiSettings;
 import profplan.model.task.predicates.NameContainsKeywordsPredicate;
-import profplan.testutil.Assert;
 import profplan.testutil.ProfPlanBuilder;
 import profplan.testutil.TypicalTasks;
 
@@ -30,7 +30,7 @@ public class ModelManagerTest {
 
     @Test
     public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.setUserPrefs(null));
+        assertThrows(NullPointerException.class, () -> modelManager.setUserPrefs(null));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ModelManagerTest {
 
     @Test
     public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.setGuiSettings(null));
+        assertThrows(NullPointerException.class, () -> modelManager.setGuiSettings(null));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ModelManagerTest {
 
     @Test
     public void setProfPlanFilePath_nullPath_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.setProfPlanFilePath(null));
+        assertThrows(NullPointerException.class, () -> modelManager.setProfPlanFilePath(null));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ModelManagerTest {
 
     @Test
     public void hasTask_nullTask_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
+        assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
     }
 
     @Test
@@ -86,10 +86,9 @@ public class ModelManagerTest {
         modelManager.addTask(TypicalTasks.ALICE);
         assertTrue(modelManager.hasTask(TypicalTasks.ALICE));
     }
-
     @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
-        Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
 
     @Test
