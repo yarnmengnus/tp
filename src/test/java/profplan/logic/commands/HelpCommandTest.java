@@ -25,6 +25,12 @@ public class HelpCommandTest {
     }
 
     @Test
+    public void execute_helpInvalidCommand_failure() {
+        assertCommandFailure(new HelpCommand("Invalid Command"),
+            model, HelpCommand.MESSAGE_INVALID_COMMAND_WORD);
+    }
+
+    @Test
     public void execute_helpAdd_success() {
         try {
             CommandResult expectedCommandResult = new CommandResult(
@@ -49,7 +55,19 @@ public class HelpCommandTest {
     }
 
     @Test
-    public void execute_helpEdiSettings_success() {
+    public void execute_helpEdit_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(EditCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(EditCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpEditSettings_success() {
         try {
             CommandResult expectedCommandResult = new CommandResult(
                 getOneCommandDescription(EditSettingsCommand.COMMAND_WORD), false, false);
@@ -79,6 +97,18 @@ public class HelpCommandTest {
                 getOneCommandDescription(UnmarkCommand.COMMAND_WORD), false, false);
             assertCommandSuccess(new HelpCommand(UnmarkCommand.COMMAND_WORD), model,
                 expectedCommandResult, expectedModel);
+        } catch (CommandException e) {
+            assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
+        }
+    }
+
+    @Test
+    public void execute_helpDoNext_success() {
+        try {
+            CommandResult expectedCommandResult = new CommandResult(
+                getOneCommandDescription(DoNextCommand.COMMAND_WORD), false, false);
+            assertCommandSuccess(new HelpCommand(DoNextCommand.COMMAND_WORD),
+                model, expectedCommandResult, expectedModel);
         } catch (CommandException e) {
             assertCommandFailure(null, model, MESSAGE_INVALID_COMMAND_WORD);
         }
