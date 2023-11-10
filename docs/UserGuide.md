@@ -101,6 +101,7 @@ A Task must contain, minimally, a <ins>Name</ins>. Optionally, you may also choo
 These are the various attributes of a Task:
 * <ins>Name</ins>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
 * <ins>Priority</ins>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
+* <ins>Status</ins>: Represents the current completion state of a task. (Done or Undone)
 * <ins>Link</ins>: A hyperlink to an external URL.
 * <ins>Due Date</ins>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
 * <ins>Description</ins>: Further details about the task. Any information that is too long to be put into the name should go here.
@@ -136,7 +137,7 @@ Some example commands you can try:
     * `list` : Lists all tasks.
     * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a task named John Doe to ProfPlan.
     * `delete 3` : Deletes the 3rd task shown in the current list.
-    * `clear` : Deletes all tasks.
+    * `delete all` : Deletes all tasks.
     * `exit` : Exits the app.
 1. Refer to the [Features](#basic-features) below for details of each command.
 
@@ -224,7 +225,8 @@ Example: edit 1 p/4
 ### Delete tasks and delete all tasks : `delete`
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
 
-**Command Format:** `delete [taskNumber]/delete all` <br>
+**Command Format:** `delete [taskNumber]` <br>
+**Command Format:** `delete all` (for delete all) <br>
 **Example Commands:** <br>
 &emsp; `delete 2` (To delete a task present at index number 2) <br>
 &emsp; `delete all` (To delete all the tasks present in the list) <br>
@@ -236,19 +238,23 @@ The Delete Task feature allows you to remove a specific task from your task list
 
 (For Deleting a particular Task)
 ```
-[Task Description] successfully Deleted, Prof! Here is your updated list -
-[Displays the list with the specific task removed/deleted from the list].
+Deleted Task: [Task Description]
+[Displays the list with the specific task deleted from the list in the UI].
 ```
 
 (For Deleting all the Tasks in the list)
 ```
-All the tasks have been successfully Deleted, Prof! The list does not contain any task.
+All Tasks Deleted Successfully Prof!
 ```
 **Precise Expected Outputs when the command fails:** <br>
 (If provided with an invalid tasknumber which is not in the list or even a negative index number
 the following message will be printed)
 ```
-Unable to delete the task, Prof. Please enter a valid task number from your task list
+Please enter a valid Task number.
+```
+**Precise Expected Outputs when the command fails: (for delete all command)** <br>
+```
+Can not delete all tasks in empty Task List
 ```
 
 
@@ -362,36 +368,22 @@ Recommended features for you to get more out of ProfPlan
 When you mark Task as done, you will receive the following confirmation message:
 ```
 Task successfully marked as done, Prof! Here is your updated task list :
-  /*This message will display the current TaskList after the command is executed*/
+  [The tasklist will be shown in the UI with the status of that task as undone]
 ```
 
 **Precise Expected Outputs when marking a task as undone:** <br>
 When you mark a task as undone, you'll receive the following confirmation message:
 ```
 Task successfully marked as undone, Prof! Here is your updated task list:
-  /*This message will display the current TaskList after the command is  executed*/
+  [The tasklist will be shown in the UI with the status of that task as undone]
 ```
 
 **Precise Expected Outputs when the command fails:** <br>
 If you provide an invalid task number (e.g., a task number that does not exist in your task list),
-you will receive the following error message:
+you will receive the following error message: (both for mark and unmark command)
 ```
-/*Unable to mark the task as done/undone, Prof. Please enter a valid task number
-  from your task list.*/
+Task not found please enter a valid Task Number.
 ```
-**Precise Expected Outputs when the command succeeds:** <br>
-```
-The following task has been marked done Successfully!
-              [T][D] Prepare Quiz
-```
-
-(When undone command  is run)
-```
-The following task has been marked done Successfully!
-                [T][U] Prepare Quiz
-```
-
-
 
 ### Filter tasks : `filter`
 #### a. Due Date:
@@ -492,6 +484,15 @@ Tasks have priorities that can be assigned upon task adding, and also edited.
 Unassigned priorities will have the value `000`. <br>
 **Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
 
+### Status
+Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
+
+* **Valid States**:
+    * `Done`: This status is set when all objectives of the task are met and no further action is required.
+    * `Undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
+
+Note: Status is set as undone by default as soon as a task is added.
+
 ### Due Date
 You can specify the due date of a task upon creation and edit. <br>
 Unassigned due dates will have the value `No due date`. <br>
@@ -542,10 +543,29 @@ The higher the urgency and the priority, the more important is the task.
 
 ### Sort Tasks based on Priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
+**Valid Format:** `sort_priority` <br>
+**Expected Output:** 
+` Here is your task list Prof, sorted based on priority` <br>
 
 ### Sort Tasks according to Due Date :
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
+=======
 
+
+**Things to Note:** 
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+### Sort Tasks according to deadline:
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
+
+
+**Valid Format:** `sort_duedate` <br>
+**Expected Output:**
+` Here is your task list Prof, sorted based on nearest deadline` <br>
+
+**Things to Note:**
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### View Task statistics: stats
 
 --------------------------------------------------------------------------------------------------------------------
@@ -591,6 +611,7 @@ contains the data in the previous ProfPlan home folder.
 | **Mark**          | `mark [INDEX]`, e.g. `mark 2`                                                   |
 | **Unmark**        | `unmark [INDEX]`, e.g. `unmark 2`                                               |
 | **Delete**        | `delete [INDEX]`, e.g. `delete 2`                                               |
+| **Delete All**    | `delete all`                                                                    |
 | **Sort Priority** | `sort_priority`                                                                 |
 | **Sort Duedate**  | `sort_duedate`                                                                  |
 | **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                    |

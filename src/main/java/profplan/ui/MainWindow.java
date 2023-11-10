@@ -300,18 +300,24 @@ public class MainWindow extends UiPart<Stage> {
         } else {
             for (Task t : filteredTasks) {
                 long daysLeft = getDaysUntilDueDate(t.getDueDate(), curDate);
+                System.out.println(t.getName().toString() + ":" + daysLeft);
                 taskUrgency.put(t, daysLeft);
             }
             long minDaysLeft = Collections.min(taskUrgency.values());
+            System.out.println("minDays: " + minDaysLeft);
             long maxDaysLeft = Collections.max(taskUrgency.values());
-            long intermediate = (minDaysLeft + maxDaysLeft) / 10;
+            System.out.println("maxDays: " + maxDaysLeft);
+            long intermediate = (maxDaysLeft - minDaysLeft) / 9;
+            System.out.println("intermediate: " + intermediate);
             long split;
             if (intermediate == 0) {
                 split = 1;
             } else {
                 split = intermediate;
             }
-            taskUrgency.replaceAll((t, v) -> v / split + 1);
+            System.out.println("split: " + split);
+            taskUrgency.replaceAll((t, v) -> (v - minDaysLeft) / split + 1);
+            System.out.println(taskUrgency);
             taskUrgency.replaceAll((t, v) -> 10 - v + 1);
 
 
