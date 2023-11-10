@@ -100,7 +100,12 @@ public class ProfPlanParser {
             return new FilterCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            if (arguments.isBlank()) {
+                return new ListCommand();
+            } else {
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException("Did you mean the 'list' command? Please enter 'list' only.");
+            }
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
