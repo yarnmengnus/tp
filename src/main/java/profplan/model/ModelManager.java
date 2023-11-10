@@ -239,7 +239,7 @@ public class ModelManager implements Model {
             System.out.println(computedValue);
 
             // Update the recommended task if we find a higher computed value
-            if (computedValue > highestComputedValue) {
+            if ((computedValue > highestComputedValue) && (task.getStatus().equals(Status.UNDONE_STATUS))) {
                 highestComputedValue = computedValue;
                 recommendedTask = task;
                 System.out.println(task.getName().toString());

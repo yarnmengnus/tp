@@ -23,6 +23,10 @@ public class DoNextCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         Task t = model.getDoNextTask();
-        return new CommandResult(MESSAGE_SUCCESS + "\n" + t.beautifyString());
+        if (t == null) {
+            return new CommandResult("No more tasks to do Prof! Skies are clear ahead :)");
+        } else {
+            return new CommandResult(MESSAGE_SUCCESS + "\n" + t.beautifyString());
+        }
     }
 }
