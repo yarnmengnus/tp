@@ -165,46 +165,59 @@ Simple yet essential features for you to get started.
 
 ### Create a new task : `add`
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
-**Command Format:** `task [taskToDo] /by [deadline]` <br>
+**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]` <br>
 **Acceptable Values for each Parameter:**<br>
-&emsp;`[taskToDo]` - String of len > 0<br>
-&emsp;`[deadline]` - String of len > 0<br>
-**Example Commands:** `task submit quiz /by 02 Sep 2023`<br>
+&emsp;`[taskName]` - String of len > 0<br>
+&emsp;`[priority]` - Integer between 1 and 10<br>
+&emsp;`[dueDate]` - Format: dd-MM-yyyy<br>
+&emsp;`[recur]` - daily, weekly, monthly, semesterly<br>
+&emsp;`[tag]` - String of len > 0<br>
+&emsp;`[link]` - Format: www.example.com > 0<br>
+&emsp;`[description]` - String of len > 0<br>
+
+**Example Commands:** `add n/submit quiz p/2 d/01-01-2023 recur/weekly t/quiz t/graded l/www.quiz.com des/for mod cs0000`<br>
 
 **Precise Expected Outputs when the command succeeds:**
 ```
 Task successfully created, Prof! Here is your current task list:
-	1. submit quiz (by - 02 Sep 2023)
+[Displays the updated contents of the task list.]
 ```
 
 **Precise Expected Outputs when the command fails:**
 ```
-Unable to create Task, Prof. Try entering in this format task [taskToDo] /by [deadline] and ensure that parameter lengths are > 0.
+Invalid command format! 
+add: Adds a task to the task list.
+Parameters: n/NAME p/PRIORITY recur/RECUR [t/TAG]... d/DUEDATE l/LINK des/DESCRIPTION 
+Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.example.com
 ```
 
 
 ### Edit existing tasks : `edit`
 Edit the aspects of selected existing task, as specified by the user.
 
-**Command Format:** `edit [index] /[aspect] [new value]` <br>
+**Command Format:** `edit [index] [prefix]/[newValue]` <br>
 **Acceptable Values for each Parameter:** <br>
 &emsp;`[index]` - integer <br>
-&emsp;`[aspect]` - String: “name”, “priority”, “category”, “parent”, or “link” <br>
-&emsp;`[new value]`- String based on input for [aspect] <br>
-**Example Commands:** `edit 2 /name Updated task /priority 3` <br>
+&emsp;`[prefix]` - String: "n" (Name), “p” (Priority), "d" (Due Date), "t" (Tag), or “l” (Link) <br>
+&emsp;`[new value]`- String based on input for [prefix] <br>
+**Example Commands:** `edit 2 n/Updated task p/3 d/01-01-2023 t/newTag l/www.newlink.com` <br>
 
+<div markdown="block" class="alert alert-primary">
+:note: Inputting t/ will result in all tags being erased.
+</div>
+
+<br>
 **Precise Expected Outputs when the command succeeds:**
 ```
-Your task has been changed from:
-	1. submit quiz (by - 02 Sep 2023)
-to:
-	1. Submit assignment (by - 02 Sep 2023)
+Edited Task: [Displays edited task]
 ```
 
 **Precise Expected Outputs when the command fails:**
 ```
-Unable edit task. Check task index, or format of [aspect].
-Try entering in this format edit 1 /[aspect] [new value], with aspects being “name”, “priority”, “category”, “parent”, or “link”
+Invalid command format! 
+edit: Edits the details of the task identified by the index number used in the displayed task list. Existing values will be overwritten by the input values.
+Parameters: INDEX (must be a positive integer) n/NAME p/PRIORITY recur/RECUR [t/TAG]... d/DUEDATE l/LINK des/DESCRIPTION 
+Example: edit 1 p/4 
 ```
 
 
@@ -266,7 +279,7 @@ Here are your tasks within a week Prof!
 
 ### List Tasks within a month from now: `list_month`
 Shows a list of tasks within a month from now in ProfPlan. <br>
-**Command Format:** `list_week` <br>
+**Command Format:** `list_month` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
 
 ```
@@ -464,6 +477,7 @@ Parameters: d/DUEDATE p/PRIORITY recur/RECUR s/STATUS
 Example: filter d/01-01-2024 s/done
 ```
 
+## Parameters
 
 ### Priority
 Tasks have priorities that can be assigned upon task adding, and also edited.
@@ -481,16 +495,25 @@ Note: Status is set as undone by default as soon as a task is added.
 
 ### Due Date
 You can specify the due date of a task upon creation and edit. <br>
-Unassigned due dates will have the value `01-01-2000`. <br>
+Unassigned due dates will have the value `No due date`. <br>
 **Valid format:** `d/dd-MM-yyyy` <br>
 
+### Recurrence
+You can specify whether the task recurs on a `daily`, `weekly`, `monthly`, or `semesterly` basis.
+Tasks with unassigned recurrence will not recur.
+**Valid format:** `recur/[recur]` <br>
+
 ### Tags
-You can assign tags to a task, to further segregate and classify them. <br>
-**Valid format:** `t/[tag]` <br>
+You can assign tags to a task, to further segregate and classify them.<br>
+**Valid format:** `t/[Alphanumeric value (no space)]` <br>
 
 ### Link
 You can assign a link to a task, to access the reference easily. <br>
 **Valid format:** `l/[www.LINKNAME.com]` <br>
+
+### Description
+You can insert a description for each task, to note down additional details. <br>
+**Valid format:** `des/[description]` <br>
 
 ## Advanced Features
 Psst! Were the features mentioned in the introduction not quite enough to satiate your craving for productivity? Fret not! ProfPlan comes with novel capabilities that will reinvent the way you approach tasks! Before we end this guide, we’ll show you some ways our veteran users use ProfPlan to make themselves more productive than ever before!
@@ -518,21 +541,23 @@ The rows represent the different Priority Levels: `1-10`
 The higher the urgency and the priority, the more important is the task.
 ![img.png](matrix.png)
 
-### Create Recurring task :
-
-
-### Sort Tasks based on priority :
+### Sort Tasks based on Priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
-
 **Valid Format:** `sort_priority` <br>
 **Expected Output:** 
 ` Here is your task list Prof, sorted based on priority` <br>
+
+### Sort Tasks according to Due Date :
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
+=======
+
 
 **Things to Note:** 
 1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### Sort Tasks according to deadline:
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
+
 
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
@@ -578,8 +603,8 @@ contains the data in the previous ProfPlan home folder.
 
 | **Action**        | **Format, Examples**                                                            |
 |-------------------|---------------------------------------------------------------------------------|
-| **Add**           | `add n/[name] p/[priority]...`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
-| **Edit**          | `edit [INDEX] n/[name] p/[priority]...`, e.g. `edit 1 n/Task p/1 d/01-01-2023`  |
+| **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
+| **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]`, e.g. `edit 1 n/Task p/1 d/01-01-2023`  |
 | **Find**          | `find [keywords...]`, e.g. `find canvas quiz`                                   |
 | **List Week**     | `list_week`                                                                     |
 | **List Month**    | `list_month`                                                                    |
