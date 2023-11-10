@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static profplan.model.Model.PREDICATE_SHOW_ALL_TASKS;
+import static profplan.testutil.TypicalTasks.ALICE;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -78,13 +79,13 @@ public class ModelManagerTest {
 
     @Test
     public void hasTask_taskNotInProfPlan_returnsFalse() {
-        assertFalse(modelManager.hasTask(TypicalTasks.ALICE));
+        assertFalse(modelManager.hasTask(ALICE));
     }
 
     @Test
     public void hasTask_taskInProfPlan_returnsTrue() {
-        modelManager.addTask(TypicalTasks.ALICE);
-        assertTrue(modelManager.hasTask(TypicalTasks.ALICE));
+        modelManager.addTask(ALICE);
+        assertTrue(modelManager.hasTask(ALICE));
     }
 
     @Test
@@ -95,7 +96,7 @@ public class ModelManagerTest {
     @Test
     public void equals() {
         ProfPlan profPlan = new ProfPlanBuilder().withTask(
-                TypicalTasks.ALICE).withTask(TypicalTasks.BENSON).build();
+                ALICE).withTask(TypicalTasks.BENSON).build();
         ProfPlan differentProfPlan = new ProfPlan();
         UserPrefs userPrefs = new UserPrefs();
         UserConfigs userConfigs = new UserConfigs();
@@ -118,7 +119,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentProfPlan, userPrefs, userConfigs)));
 
         // different filteredList -> returns false
-        String[] keywords = TypicalTasks.ALICE.getName().fullName.split("\\s+");
+        String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(profPlan, userPrefs, userConfigs)));
 
