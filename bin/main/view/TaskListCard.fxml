@@ -28,11 +28,11 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" />
-      <Label fx:id="link" styleClass="cell_small_label" text="\$link" />
-      <Label fx:id="dueDate" styleClass="cell_small_label" text="\$dueDate" />
-      <Label fx:id="status" styleClass="cell_small_label" text="\$status" />
       <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
+      <Label fx:id="link" styleClass="cell_small_label" text="\$link" />
+      <Label fx:id="priority" styleClass="cell_small_label" text="\$priority" />
+      <Label fx:id="dueDate" styleClass="cell_small_label" text="\$dueDate" />
+      <Label fx:id="status" styleClass="cell_small_label" text="\$status" style="-fx-background-color: #1F9978; -fx-background-radius: 5;" />
     </VBox>
   </GridPane>
 </HBox>
