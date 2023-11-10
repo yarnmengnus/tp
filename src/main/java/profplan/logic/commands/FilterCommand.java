@@ -21,7 +21,7 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters for tasks with one or more criteria and displays them as a list with index numbers.\n";
+            + ": Filters for tasks with one or more criteria and displays them as a list with index numbers.";
 
     public static final String MESSAGE_DETAILS = "Parameters: "
             + PREFIX_DUEDATE + "DUEDATE "

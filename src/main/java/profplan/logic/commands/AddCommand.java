@@ -22,7 +22,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list.\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list.";
     public static final String MESSAGE_DETAILS = "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PRIORITY + "PRIORITY "
@@ -30,7 +30,7 @@ public class AddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]... "
             + PREFIX_DUEDATE + "DUEDATE "
             + PREFIX_LINK + "LINK "
-            + PREFIX_DESCRIPTION + "DESCRIPTION \n";
+            + PREFIX_DESCRIPTION + "DESCRIPTION";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Grade assignments "
             + PREFIX_PRIORITY + "1 "

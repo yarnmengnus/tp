@@ -12,7 +12,7 @@ public class HelpCommandParserTest {
 
     @Test
     public void parse_emptyArg_returnsEmptyHelpCommand() {
-        CommandParserTestUtil.assertParseSuccess(parser, "     ", new HelpCommand());
+        CommandParserTestUtil.assertParseSuccess(parser, "     ", new HelpCommand(""));
     }
 
     @Test
@@ -26,7 +26,7 @@ public class HelpCommandParserTest {
     @Test
     public void parse_invalidArgs_returnsHelpCommand() {
         // no leading and trailing whitespaces
-        CommandParserTestUtil.assertParseFailure(parser, "invalidCommand",
+        CommandParserTestUtil.assertParseFailure(parser, "invalid Command",
             String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 HelpCommand.MESSAGE_USAGE + HelpCommand.MESSAGE_DETAILS + HelpCommand.MESSAGE_EXAMPLE));
     }
