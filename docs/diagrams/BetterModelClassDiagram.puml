@@ -4,8 +4,8 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-AddressBook *-right-> "1" UniqueTaskList
-AddressBook *-right-> "1" UniqueTagList
+ProfPlan *-right-> "1" UniqueTaskList
+ProfPlan *-right-> "1" UniqueTagList
 UniqueTagList -[hidden]down- UniqueTaskList
 UniqueTagList -[hidden]down- UniqueTaskList
 
@@ -14,8 +14,13 @@ UniqueTaskList -right-> Task
 
 Task -up-> "*" Tag
 
-Task *--> Name
-Task *-->
-Task *--> Email
-Task *--> Address
+
+Task *-- Name
+Task *-- Priority
+Task *-- RecurringType
+Task *-- Link
+Task *-- Status
+Task *-- DueDate
+Task *-- Description
+Task *-- "*" Tag
 @enduml
