@@ -22,6 +22,7 @@ public class SortPriorityCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         try {
+//            model.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
             model.sortTaskByPriority();
         } catch (UnsupportedOperationException e) {
             return new CommandResult(e.getMessage());

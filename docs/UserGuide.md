@@ -226,7 +226,7 @@ The Delete Task feature allows you to remove a specific task from your task list
 (For Deleting a particular Task)
 ```
 Deleted Task: [Task Description]
-[Displays the list with the specific task deleted from the list].
+[Displays the list with the specific task deleted from the list in the UI].
 ```
 
 (For Deleting all the Tasks in the list)
@@ -355,14 +355,14 @@ Recommended features for you to get more out of ProfPlan
 When you mark Task as done, you will receive the following confirmation message:
 ```
 Task successfully marked as done, Prof! Here is your updated task list :
-  /*This message will display the current TaskList after the command is executed*/
+  [The tasklist will be shown in the UI with the status of that task as undone]
 ```
 
 **Precise Expected Outputs when marking a task as undone:** <br>
 When you mark a task as undone, you'll receive the following confirmation message:
 ```
 Task successfully marked as undone, Prof! Here is your updated task list:
-  /*This message will display the current TaskList after the command is  executed*/
+  [The tasklist will be shown in the UI with the status of that task as undone]
 ```
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -470,6 +470,15 @@ Tasks have priorities that can be assigned upon task adding, and also edited.
 Unassigned priorities will have the value `000`. <br>
 **Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
 
+### Status
+Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
+
+* **Valid States**:
+    * `Done`: This status is set when all objectives of the task are met and no further action is required.
+    * `Undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
+
+Note: Status is set as undone by default as soon as a task is added.
+
 ### Due Date
 You can specify the due date of a task upon creation and edit. <br>
 Unassigned due dates will have the value `01-01-2000`. <br>
@@ -514,20 +523,24 @@ The higher the urgency and the priority, the more important is the task.
 
 ### Sort Tasks based on priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
+
 **Valid Format:** `sort_priority` <br>
 **Expected Output:** 
 ` Here is your task list Prof, sorted based on priority` <br>
-**Expected Output (when command fails):** (i.e. When there is no tasks in the list) <br>
-`Can not sort an empty task list.`
 
+**Things to Note:** 
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### Sort Tasks according to deadline:
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
+
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest deadline` <br>
-**Expected Output (when command fails):** (i.e. When there is no tasks in the list) <br>
-`Can not sort an empty task list.`
 
+**Things to Note:**
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### View Task statistics: stats
 
 --------------------------------------------------------------------------------------------------------------------
@@ -573,6 +586,7 @@ contains the data in the previous ProfPlan home folder.
 | **Mark**          | `mark [INDEX]`, e.g. `mark 2`                                                   |
 | **Unmark**        | `unmark [INDEX]`, e.g. `unmark 2`                                               |
 | **Delete**        | `delete [INDEX]`, e.g. `delete 2`                                               |
+| **Delete All**    | `delete all`                                                                    |
 | **Sort Priority** | `sort_priority`                                                                 |
 | **Sort Duedate**  | `sort_duedate`                                                                  |
 | **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                    |
