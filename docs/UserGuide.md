@@ -101,6 +101,7 @@ A Task must contain, minimally, a <ins>Name</ins>. Optionally, you may also choo
 These are the various attributes of a Task:
 * <ins>Name</ins>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
 * <ins>Priority</ins>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
+* <ins>Status</ins>: Represents the current completion state of a task. (Done or Undone)
 * <ins>Link</ins>: A hyperlink to an external URL.
 * <ins>Due Date</ins>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
 * <ins>Description</ins>: Further details about the task. Any information that is too long to be put into the name should go here.
@@ -136,7 +137,7 @@ Some example commands you can try:
     * `list` : Lists all tasks.
     * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a task named John Doe to ProfPlan.
     * `delete 3` : Deletes the 3rd task shown in the current list.
-    * `clear` : Deletes all tasks.
+    * `delete all` : Deletes all tasks.
     * `exit` : Exits the app.
 1. Refer to the [Features](#basic-features) below for details of each command.
 
