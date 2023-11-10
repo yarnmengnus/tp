@@ -30,6 +30,7 @@ public class HelpCommandTest {
     public void equality_help_failure() {
         assertFalse(new HelpCommand("add").equals(new HelpCommand("delete")));
         assertFalse(new HelpCommand().equals(new HelpCommand("invalidCommand")));
+        assertFalse(new HelpCommand().equals(new ListCommand()));
     }
 
     @Test
