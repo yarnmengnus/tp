@@ -56,19 +56,27 @@ Contact us at [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with
     1. [Edit existing tasks : edit](#edit-existing-tasks--edit)
     1. [Delete tasks and delete all tasks : delete](#delete-tasks-and-delete-all-tasks--delete)
     1. [List all Tasks : list](#list-all-tasks--list)
-    1. [Locating Tasks by name: find](#locating-tasks-by-name-find)
+    1. [List Tasks due within week : list week](#list-tasks-within-a-week-from-now--listweek)
+    1. [List Tasks due within month: list month](#list-tasks-within-a-month-from-now--listmonth)
+    1. [Locating Tasks by name: find](#locating-tasks-by-name--find)
+    1. [Setting Configurations](#configuring-settings--set)
     1. [Editing the data file](#editing-the-data-file)
     1. [Saving the data](#saving-the-data)
     1. [Exiting the program : exit](#exiting-the-program--exit)
 * [Task Management Features](#task-management-features)
-    1. [Priority](#priority)
-    1. [Due Date](#due-date-1)
-    1. [Tags](#tags)
-    1. [Link](#link)
-    1. [Set other tasks as parent : set](#set-other-tasks-as-parent--set)
-    1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
-    1. [Filter tasks : filter](#filter-tasks--filter)
-        <ol type="a">
+  1. [Parameters](#parameters)
+      1. [Description](#description)
+      1. [Priority](#priority)
+      1. [Status](#status)
+      1. [Due Date](#due-date-1)
+      1. [Tags](#tags)
+      1. [Link](#link)
+      1. [Recurrence](#recurrence)
+
+  1. Management Commands
+     1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
+     1. [Filter tasks : filter](#filter-tasks--filter)
+        <ol type="i">
         <li><a href="#a-due-date">Due Date</a></li>
         <li><a href="#b-priority">Priority</a></li>
         <li><a href="#c-status">Status</a></li>
@@ -76,7 +84,7 @@ Contact us at [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with
         </ol>
 * [Advanced Features](#advanced-features)
     1. [Recommend next task](#recommend-next-task)
-    1. [Urgency-Importance Matrix: Visualise tasks!](#visualise-important-and-urgent-tasks)
+    1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks)
     1. [Create Recurring task](#create-recurring-task)
     1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-date-priority-and-status)
     1. [View Task statistics](#view-task-statistics-stats)
@@ -84,7 +92,7 @@ Contact us at [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with
 * [Command summary](#command-summary)
 * [Supported Setting Parameters](#supported-setting-parameters)
 * [Glossary](#glossary)
-* [Contact Us for Feedback & More!](#contact-us-for-feedback--more)
+* [Contact Us for Feedback & More](#contact-us-for-feedback--more)
 
 --------------------------------------------------------------------------------------------------------------------
 ## A Task in ProfPlan
@@ -154,6 +162,15 @@ Some example commands you can try:
 
 ## Basic Features
 Simple yet essential features for you to get started.
+
+### Viewing help : `help`
+Shows a list of commands.
+**Command Format:**
+`help`
+#### a. Viewing help for a specific command:
+&emsp;Shows the description and usage of the command you specified. <br>
+&emsp;**Command Format:** `help {command name}` <br>
+&emsp;**Example Command:** `help add`
 
 ### Create a new task : `add`
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
@@ -303,7 +320,12 @@ the following message will be printed)
 No Matching Tasks found prof.
 ```
 
+### Configuring Settings : `set`
+Allows you to configure certain parameters as you see fit. <br>
+Command Format: `set [parameterName] [value]`
 
+For a list of the currently supported parameters, click [here](#supported-setting-parameters).
+To make ProfPlan more customizable, we are looking to add more in the future, so stay tuned!
 
 ### Editing the data file
 ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/profplan.json`. Advanced users are welcome to update data directly by editing that data file
@@ -318,39 +340,58 @@ ProfPlan data is saved in the hard disk automatically after any command that cha
 Exits the program. <br>
 Format: `exit`
 
-
-### Viewing help : `help`
-Shows a list of commands.
-**Command Format:**
-`help`
-#### a. Viewing help for a specific command:
-&emsp;Shows the description and usage of the command you specified. <br>
-&emsp;**Command Format:** `help {command name}` <br>
-&emsp;**Example Command:** `help add`
-
-
-### Configuring Settings : `set`
-Allows you to configure certain parameters as you see fit. <br>
-Command Format: `set [parameterName] [value]`
-
-For a list of the currently supported parameters, click [here](#supported-setting-parameters).
-To make ProfPlan more customizable, we are looking to add more in the future, so stay tuned!
-
-
-
 ## Task Management Features
 Recommended features for you to get more out of ProfPlan
 
+## Parameters
+
+### Description
+You can insert a description for each task, to note down additional details. <br>
+**Valid format:** `des/[description]` <br>
+
+### Priority
+Tasks have priorities that can be assigned upon task adding, and also edited.
+Unassigned priorities will have the value `000`. <br>
+**Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
+
+### Status
+Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
+
+* **Valid States**:
+    * `done`: This status is set when all objectives of the task are met and no further action is required.
+    * `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
+
+Note: Status is set as undone by default as soon as a task is added.
+
+### Due Date
+You can specify the due date of a task upon creation and edit. <br>
+Unassigned due dates will have the value `No due date`. <br>
+**Valid format:** `d/dd-MM-yyyy` <br>
+
+### Tags
+You can assign tags to a task, to further segregate and classify them.<br>
+**Valid format:** `t/[Alphanumeric value (no space)]` <br>
+
+### Link
+You can assign a link to a task, to access the reference easily. <br>
+**Valid format:** `l/[www.LINKNAME.com]` <br>
+
+### Recurrence
+You can specify whether the task recurs on a `daily`, `weekly`, `monthly`, or `semesterly` basis.
+Tasks with unassigned recurrence will not recur.
+**Valid format:** `recur/[recur]` <br>
+
+
 ### Mark task as done/undone : `mark / unmark`
 **What it does:** <br>
-&emsp;Allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task. <br>
+Allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task. <br>
 
 **Command Format:** <br>
-&emsp;To mark Task as done: `mark [tasknumber]` <br>
-&emsp;To mark Task as undone: `unmark [tasknumber]` <br>
+&emsp;To mark Task as done: `mark [taskNumber]` <br>
+&emsp;To mark Task as undone: `unmark [taskNumber]` <br>
 
 **Acceptable Values for each Parameter:** <br>
-&emsp;`[taskNumber]` - Integer representing the task number in your task list (0,1, 2, 3, ...) <br>
+&emsp;`[taskNumber]` - Integer representing the task number in your task list (1, 2, 3, ...) <br>
 
 **Example Commands:** <br>
 &emsp;`mark 5` <br>
@@ -359,15 +400,13 @@ Recommended features for you to get more out of ProfPlan
 **Precise Expected Outputs when marking a task as done:** <br>
 When you mark Task as done, you will receive the following confirmation message:
 ```
-Task successfully marked as done, Prof! Here is your updated task list :
-  [The tasklist will be shown in the UI with the status of that task as undone]
+Task successfully marked as done, Prof! Here is your updated task list
 ```
 
 **Precise Expected Outputs when marking a task as undone:** <br>
 When you mark a task as undone, you'll receive the following confirmation message:
 ```
-Task successfully marked as undone, Prof! Here is your updated task list:
-  [The tasklist will be shown in the UI with the status of that task as undone]
+Task successfully marked as undone, Prof! Here is your updated task list
 ```
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -469,44 +508,6 @@ Parameters: d/DUEDATE p/PRIORITY recur/RECUR s/STATUS
 Example: filter d/01-01-2024 s/done
 ```
 
-## Parameters
-
-### Priority
-Tasks have priorities that can be assigned upon task adding, and also edited.
-Unassigned priorities will have the value `000`. <br>
-**Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
-
-### Status
-Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
-
-* **Valid States**:
-    * `Done`: This status is set when all objectives of the task are met and no further action is required.
-    * `Undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
-
-Note: Status is set as undone by default as soon as a task is added.
-
-### Due Date
-You can specify the due date of a task upon creation and edit. <br>
-Unassigned due dates will have the value `No due date`. <br>
-**Valid format:** `d/dd-MM-yyyy` <br>
-
-### Recurrence
-You can specify whether the task recurs on a `daily`, `weekly`, `monthly`, or `semesterly` basis.
-Tasks with unassigned recurrence will not recur.
-**Valid format:** `recur/[recur]` <br>
-
-### Tags
-You can assign tags to a task, to further segregate and classify them.<br>
-**Valid format:** `t/[Alphanumeric value (no space)]` <br>
-
-### Link
-You can assign a link to a task, to access the reference easily. <br>
-**Valid format:** `l/[www.LINKNAME.com]` <br>
-
-### Description
-You can insert a description for each task, to note down additional details. <br>
-**Valid format:** `des/[description]` <br>
-
 ## Advanced Features
 Psst! Were the features mentioned in the introduction not quite enough to satiate your craving for productivity? Fret not! ProfPlan comes with novel capabilities that will reinvent the way you approach tasks! Before we end this guide, we’ll show you some ways our veteran users use ProfPlan to make themselves more productive than ever before!
 
@@ -535,28 +536,25 @@ The higher the urgency and the priority, the more important is the task.
 
 ### Sort Tasks based on Priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
+<br>
 **Valid Format:** `sort_priority` <br>
-**Expected Output:** 
-` Here is your task list Prof, sorted based on priority` <br>
+**Expected Output:** ` Here is your task list Prof, sorted based on priority` <br>
+
+
+**Things to Note:**
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+
 
 ### Sort Tasks according to Due Date :
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
-=======
-
-
-**Things to Note:** 
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
-2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
-### Sort Tasks according to deadline:
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
-
 
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest deadline` <br>
 
 **Things to Note:**
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### View Task statistics: stats
 
