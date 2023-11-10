@@ -18,7 +18,7 @@ import profplan.model.util.SampleDataUtil;
 public class TaskBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
-    public static final String DEFAULT_PRIORITY = "85355255";
+    public static final String DEFAULT_PRIORITY = "9";
     public static final boolean DEFAULT_RECURRING = false;
     public static final Task.RecurringType DEFAULT_RECURRING_TYPE = null;
     public static final String DEFAULT_DUEDATE = "01-01-2000";
