@@ -41,11 +41,11 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_DETAILS = "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_PRIORITY + "PRIORITY "
-            + "[" + PREFIX_TAG + "TAG]... "
-            + PREFIX_DUEDATE + "DUEDATE "
-            + PREFIX_LINK + "LINK\n";
+            + PREFIX_NAME + "[name] "
+            + PREFIX_PRIORITY + "[priority] "
+            + PREFIX_DUEDATE + "[dueDate] "
+            + PREFIX_TAG + "[tag...] "
+            + PREFIX_LINK + "[link] ";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "4 ";

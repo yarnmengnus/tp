@@ -24,10 +24,10 @@ public class FilterCommand extends Command {
             + ": Filters for tasks with one or more criteria and displays them as a list with index numbers.";
 
     public static final String MESSAGE_DETAILS = "Parameters: "
-            + PREFIX_DUEDATE + "DUEDATE "
-            + PREFIX_PRIORITY + "PRIORITY "
-            + PREFIX_RECURRING + "RECUR "
-            + PREFIX_STATUS + "STATUS\n";
+            + PREFIX_DUEDATE + "[dueDate] "
+            + PREFIX_PRIORITY + "[priority] "
+            + PREFIX_RECURRING + "[recur] "
+            + PREFIX_STATUS + "[status]\n";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " d/01-01-2024 s/done";
 
