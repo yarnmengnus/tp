@@ -79,7 +79,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
      1. [Link](#link)
      1. [Recurrence](#recurrence)
 
-  1. Management Commands
+  1. [Management Commands](#management-commands)
      1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
      1. [Filter tasks : filter](#filter-tasks--filter)
         <ol type="i">
@@ -90,11 +90,11 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
         </ol>
 
 - [Advanced Features](#advanced-features)
-  1. [Recommend next task](#recommend-next-task)
-  1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks)
+  1. [Recommend next task](#recommend-next-task-)
+  1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks-)
   1. [Create A Recurring task](#create-a-recurring-task)
-  1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-date-priority-and-status)
-  1. [View Task statistics](#view-task-statistics-stats)
+  1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-due-date-)
+  1. [View Task statistics](#view-task-statistics--stats)
 - [Supported flags](#supported-flags)
 - [Command summary](#command-summary)
 - [Supported Setting Parameters](#supported-setting-parameters)
@@ -454,6 +454,8 @@ You can specify whether the task recurs on a daily, weekly, monthly, or semester
 Tasks with unassigned recurrence will not recur.
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
+
+### Management Commands
 
 ### Mark task as done/undone : `mark / unmark`
 
