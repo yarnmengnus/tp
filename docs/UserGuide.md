@@ -55,7 +55,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
 - [Quick Start](#quick-start)
 - [Basic Features](#basic-features)
   1. [Viewing help : help](#viewing-help--help) <br>
-        a. [Viewing help for a specific command](#a-viewing-help-for-a-specific-command-)
+        a. [Viewing help for a specific command](#a-viewing-help-for-a-specific-command)
   1. [Create a new task : add](#create-a-new-task--add)
   1. [Edit existing tasks : edit](#edit-existing-tasks--edit)
   1. [Delete tasks and delete all tasks : delete](#delete-tasks-and-delete-all-tasks--delete)
