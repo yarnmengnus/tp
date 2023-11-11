@@ -204,6 +204,7 @@ Simple yet essential features for you to get started.
 ### Create a new task : `add`
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
+
 **Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur/[recur] t/[tag...] l/[link] des/[description]` <br>
 **Compulsory Parameters:** `[taskname]`, `[priority]`, `[dueDate]`
 
@@ -239,6 +240,7 @@ Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.exa
 Edit the aspects of selected existing task, as specified by the user.
 
 **Command Format:** `edit [index] [prefix]/[newValue]` <br>
+
 **Acceptable Values for each Parameter:** <br>
 &emsp;`[index]` - integer <br>
 &emsp;`[taskName]` - String of len > 0 <br>
@@ -276,20 +278,18 @@ Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link]
 Example: edit 1 p/4
 ```
 
-### Edit a task's description : `description`
-
-Edit the description of the task 
-
 ### Delete tasks and delete all tasks : `delete`
 
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
 
 **Command Format:** `delete [taskNumber]` <br>
 **Command Format:** `delete all` or `clear` (for delete all)<br>
+
 **Example Commands:** <br>
 &emsp; `delete 2` (To delete a task present at index number 2) <br>
 &emsp; `delete all` (To delete all the tasks present in the list) <br>
 &emsp; `clear` (To delete all the tasks present in the list) <br>
+
 **Acceptable Values for each Parameter:** <br>
 &emsp; `[taskNumber]` - Integer, that is a valid task number in the list <br>
 &emsp; `“all”` - A keyword (type String) to delete all the tasks present in the list. <br>
@@ -325,6 +325,7 @@ Can not delete all tasks in empty Task List
 ### List all Tasks : `list`
 
 Shows a list of all tasks in ProfPlan. Displays done and undone tasks. <br>
+
 **Command Format:** `list` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
 
@@ -335,6 +336,7 @@ Listed all tasks
 ### List Tasks within a week from now: `list_week`
 
 Shows a list of tasks within a week from now in ProfPlan. Displays done and undone tasks. <br>
+
 **Command Format:** `list_week` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
 
@@ -357,12 +359,16 @@ Here are your tasks within a month Prof!
 Finding a task is user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is
 flexible,
 and only the task name is considered. Full words are matched, so "Tas" won't match "Task." The search operates on an OR logic, returning tasks matching at least one keyword. This ensures a simple and effective task-finding process. <br>
+
 **Command Format:** `find [keywords]...` <br>
+
 **Acceptable Values for each Parameter:** <br>
 &emsp;`[TaskName]` - A task name that matches in the Task list. <br>
+
 **Example Commands:** <br>
 &emsp;`find quiz` (returns quiz grading task and make a quiz) <br>
 &emsp;`find project` (returns project grading) <br>
+
 **Precise Expected Outputs when the command succeeds:** <br>
 (For Finding a particular Task)
 
@@ -381,7 +387,8 @@ the following message will be printed)
 ### Configuring Settings : `set`
 
 Allows you to configure certain parameters as you see fit. <br>
-Command Format: `set [parameterName] [value]`
+
+**Command Format:** `set [parameterName] [value]`
 
 For a list of the currently supported parameters, click [here](#supported-setting-parameters).
 To make ProfPlan more customizable, we are looking to add more in the future, so stay tuned!
@@ -400,7 +407,8 @@ ProfPlan data is saved in the hard disk automatically after any command that cha
 ### Exiting the program : `exit`
 
 Exits the program. <br>
-Format: `exit`
+
+**Command Format:** `exit`
 
 ## Task Management Features
 
@@ -450,15 +458,15 @@ You can assign a link to a task, to access the reference easily. <br>
 
 ### Recurrence
 
-You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
-If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.
-Tasks with unassigned recurrence will not recur.
+You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.<br>
+If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.<br>
+Tasks with unassigned recurrence will not recur.<br>
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
 ### Management Commands
 
-### Mark task as done/undone : `mark / unmark`
+### Mark task as done / undone : `mark / unmark`
 
 **What it does:** <br>
 Allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task. <br>
@@ -504,11 +512,13 @@ Task not found please enter a valid Task Number.
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
 
 &emsp;**Command Format:** `filter d/[date]` <br>
-&emsp;**Example Commands:** `filter d/01-01-2023`<br>
+
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[date]` - In dd-MM-yyyy format. <br>
 
-**Precise Expected Outputs when the command succeeds:**
+&emsp;**Example Commands:** `filter d/01-01-2023`<br>
+
+&emsp;**Precise Expected Outputs when the command succeeds:**
 
 ```
 Here are your tasks that are:
@@ -522,11 +532,13 @@ Due before: 01-01-2023
 &emsp;&emsp;All tasks of the given priority is displayed. <br>
 
 &emsp;**Command Format:** `filter p/[priority]` <br>
-&emsp;**Example Commands:** `filter p/3` <br>
+
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[priority]` - Integer from 1 to 10 inclusive. <br>
 
-**Precise Expected Outputs when the command succeeds:**
+&emsp;**Example Commands:** `filter p/3` <br>
+
+&emsp;**Precise Expected Outputs when the command succeeds:**
 
 ```
 Here are your tasks that are:
@@ -540,11 +552,13 @@ Priority: 3
 &emsp;All tasks of the given status is displayed.
 
 &emsp;**Command Format:** `filter s/[status]` <br>
-&emsp;**Example Commands:** `filter s/done` <br>
+
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[status]`- done or undone <br>
 
-**Precise Expected Outputs when the command succeeds:**
+&emsp;**Example Commands:** `filter s/done` <br>
+
+&emsp;**Precise Expected Outputs when the command succeeds:**
 
 ```
 Here are your tasks that are:
@@ -558,11 +572,13 @@ Status: done
 &emsp;All tasks of the given recurring type is displayed.
 
 &emsp;**Command Format:** `filter recur/[recurringType]` <br>
-&emsp;**Example Commands:** `filter recur/weekly` <br>
+
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[recurringType]`- none, daily, weekly, monthly, semesterly <br>
 
-**Precise Expected Outputs when the command succeeds:**
+&emsp;**Example Commands:** `filter recur/weekly` <br>
+
+&emsp;**Precise Expected Outputs when the command succeeds:**
 
 ```
 Here are your tasks that are:
@@ -576,9 +592,10 @@ Recurring: WEEKLY
 &emsp;All tasks meeting the specified criteria is displayed.
 
 &emsp;**Command Format:** `filter d/[dueDate] p/[priority] s[status] recur/[recurringType]` <br>
+
 &emsp;**Example Commands:** `filter p/3 recur/weekly` <br>
 
-**Precise Expected Outputs when the command succeeds:**
+&emsp;**Precise Expected Outputs when the command succeeds:**
 
 ```
 Here are your tasks that are:
@@ -587,7 +604,7 @@ Recurring: WEEKLY
   [The tasklist will be shown in the UI displaying tasks that fulfill the criteria]
 ```
 
-**Precise Expected Outputs when the command fails:**
+&emsp;**Precise Expected Outputs when the command fails:**
 
 ```
 Invalid command format! 
@@ -629,9 +646,9 @@ The task(s) in the top right of the matrix should be done first.
 
 ### Create A Recurring Task
 
-You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
-If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.
-Tasks with unassigned recurrence will not recur.
+You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.<br>
+If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.<br>
+Tasks with unassigned recurrence will not recur.<br>
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
@@ -704,7 +721,7 @@ contains the data in the previous ProfPlan home folder.
 
 | **Action**        | **Format, Examples**                                                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
+| **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tags...] l/[link] des/[description]`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
 | **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]`, e.g. `edit 1 n/Task p/1 d/01-01-2023`                                   |
 | **Find**          | `find [keywords...]`, e.g. `find canvas quiz`                                                                                                  |
 | **List Week**     | `list_week`                                                                                                                                    |
