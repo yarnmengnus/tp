@@ -9,7 +9,6 @@ import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -38,15 +37,14 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_RECURRING,
                         PREFIX_TAG, PREFIX_DUEDATE, PREFIX_LINK, PREFIX_DESCRIPTION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PRIORITY, PREFIX_DUEDATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_FULL_HELP));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PRIORITY, PREFIX_RECURRING);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Priority priority = (argMultimap.getValue(PREFIX_PRIORITY) == Optional.<String>empty()) ? new Priority("000")
-                : ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
+        Priority priority = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         DueDate dueDate = ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE).orElse("No due date"));
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("-"));
