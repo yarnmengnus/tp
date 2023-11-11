@@ -93,7 +93,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Recommend next task](#recommend-next-task-)
   1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks-)
   1. [Create A Recurring task](#create-a-recurring-task)
-  1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-due-date-)
+  1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
 - [Supported flags](#supported-flags)
 - [Command summary](#command-summary)
@@ -204,7 +204,7 @@ Simple yet essential features for you to get started.
 ### Create a new task : `add`
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
-**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur/[recur] t/[tag..] l/[link] des/[description]` <br>
+**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur/[recur] t/[tag...] l/[link] des/[description]` <br>
 **Compulsory Parameters:** `[taskname]`, `[priority]`, `[dueDate]`
 
 **Acceptable Values for each Parameter:**<br>
@@ -451,6 +451,7 @@ You can assign a link to a task, to access the reference easily. <br>
 ### Recurrence
 
 You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
+If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.
 Tasks with unassigned recurrence will not recur.
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
@@ -503,7 +504,7 @@ Task not found please enter a valid Task Number.
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
 
 &emsp;**Command Format:** `filter d/[date]` <br>
-&emsp;**Example Commands:** `filter d/01-01-2000`<br>
+&emsp;**Example Commands:** `filter d/01-01-2023`<br>
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[date]` - In dd-MM-yyyy format. <br>
 
@@ -511,7 +512,8 @@ Task not found please enter a valid Task Number.
 
 ```
 Here are your tasks that are:
-Due before: [date]
+Due before: 01-01-2023
+  [The tasklist will be shown in the UI displaying tasks that fall on, and before 01-01-2023]
 ```
 
 #### b. Priority
@@ -528,7 +530,8 @@ Due before: [date]
 
 ```
 Here are your tasks that are:
-Priority: [priority]
+Priority: 3
+  [The tasklist will be shown in the UI displaying tasks with Priority 3]
 ```
 
 #### c. Status
@@ -545,7 +548,8 @@ Priority: [priority]
 
 ```
 Here are your tasks that are:
-Status: [status]
+Status: done
+  [The tasklist will be shown in the UI displaying tasks that are done]
 ```
 
 #### d. Recurrence
@@ -562,7 +566,8 @@ Status: [status]
 
 ```
 Here are your tasks that are:
-Recurring: [recurringType]
+Recurring: WEEKLY
+  [The tasklist will be shown in the UI displaying weekly tasks]
 ```
 
 #### e. Combination of the above
@@ -577,10 +582,9 @@ Recurring: [recurringType]
 
 ```
 Here are your tasks that are:
-Priority: [priority]
-Status: [status]
-Due before: [dueDate]
-Recurring: [recurringType]
+Priority: 3
+Recurring: WEEKLY
+  [The tasklist will be shown in the UI displaying tasks that fulfill the criteria]
 ```
 
 **Precise Expected Outputs when the command fails:**
@@ -591,6 +595,7 @@ filter: Filters for tasks with one or more criteria and displays them as a list 
 Parameters: d/[dueDate] p/[priority] recur/[recur] s/[status]
 Example: filter d/01-01-2024 s/done
 ```
+
 
 ## Advanced Features
 
@@ -621,42 +626,43 @@ The higher the urgency and the priority, the task will appear further towards th
 The task(s) in the top right of the matrix should be done first.
 ![img.png](matrix.png)
 
+
 ### Create A Recurring Task
 
 You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
+If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.
 Tasks with unassigned recurrence will not recur.
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
+
 ### Sort Tasks based on Priority :
-
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered. <br>
-**Command Format:** `sort_priority` <br>
-**Expected Output:** ` Here is your task list Prof, sorted based on priority` <br>
-
-**Things to Note:**
-
-1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-2. ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
-
-### Sort Tasks according to Due Date :
-
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
-
-**Command Format:** `sort_duedate` <br>
+**Valid Format:** `sort_priority` <br>
 **Expected Output:**
-` Here is your task list Prof, sorted based on nearest due date` <br>
+` Here is your task list Prof, sorted based on priority!` <br>
+
+**Things to Note:** 
+1) 1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+
+
+### Sort Tasks based on DueDate:
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next. <br>
+**Valid Format:** `sort_duedate` <br>
+**Expected Output:**
+` Here is your task list Prof, sorted based on nearest due date!` <br>
 
 **Things to Note:**
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
+2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
-1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-2. ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 ### View Task statistics: `stats`
 
 Retrieves a list of statistics about your tasks in ProfPlan. As of now, Completion Rate of Tasks is available.
 <br>
-**Command Format:** `stats`
+**Valid Format:** `stats`
 <br>
 **Precise Expected Outputs when the command succeeds:**
 
