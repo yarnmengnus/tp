@@ -630,30 +630,31 @@ The task(s) in the top right of the matrix should be done first.
 ### Create A Recurring Task
 
 You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
+If a task does recur, marking the task as `done` will refresh its due date, and its Status will always be `undone`.
 Tasks with unassigned recurrence will not recur.
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
 
 ### Sort Tasks based on Priority :
-ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
+ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered. <br>
 **Valid Format:** `sort_priority` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on priority!` <br>
 
 **Things to Note:** 
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+1) 1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 
 ### Sort Tasks based on DueDate:
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next. <br>
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest due date!` <br>
 
 **Things to Note:**
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
+1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 
