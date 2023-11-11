@@ -93,7 +93,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Recommend next task](#recommend-next-task-)
   1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks-)
   1. [Create A Recurring task](#create-a-recurring-task)
-  1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-due-date-)
+  1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
 - [Supported flags](#supported-flags)
 - [Command summary](#command-summary)
