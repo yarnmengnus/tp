@@ -278,10 +278,6 @@ Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link]
 Example: edit 1 p/4
 ```
 
-### Edit a task's description : `description`
-
-Edit the description of the task 
-
 ### Delete tasks and delete all tasks : `delete`
 
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
