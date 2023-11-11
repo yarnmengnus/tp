@@ -16,8 +16,9 @@ public class HelpCommand extends Command {
     public static final String MESSAGE_DETAILS = "Alternatively, "
         + "you can use help with a command to see an example of it.\n"
         + "Parameters: [command] (must be a valid command) "
-        + "help [command]\n";
+        + "help [command]";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + "[command]";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_INVALID_COMMAND_WORD = "Invalid command word!";
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";

@@ -40,7 +40,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed task list. ";
 
     public static final String MESSAGE_DETAILS = "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: [index] "
             + PREFIX_NAME + "[name] "
             + PREFIX_PRIORITY + "[priority] "
             + PREFIX_DUEDATE + "[dueDate] "
@@ -49,6 +49,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PRIORITY + "4 ";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

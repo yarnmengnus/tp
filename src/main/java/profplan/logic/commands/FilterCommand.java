@@ -27,9 +27,10 @@ public class FilterCommand extends Command {
             + PREFIX_DUEDATE + "[dueDate] "
             + PREFIX_PRIORITY + "[priority] "
             + PREFIX_RECURRING + "[recur] "
-            + PREFIX_STATUS + "[status]\n";
+            + PREFIX_STATUS + "[status]";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " d/01-01-2024 s/done";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     private final Predicate<Task> predicate;
 
