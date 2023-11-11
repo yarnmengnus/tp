@@ -165,7 +165,7 @@ Simple yet essential features for you to get started.
 
 ### Create a new task : `add`
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
-**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]` <br>
+**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur/[recur] t/[tag...] l/[link] des/[description]` <br>
 **Acceptable Values for each Parameter:**<br>
 &emsp;`[taskName]` - String of len > 0<br>
 &emsp;`[priority]` - Integer between 1 and 10<br>
@@ -391,7 +391,7 @@ Task not found please enter a valid Task Number.
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
 
 &emsp;**Command Format:** `filter d/[date]` <br>
-&emsp;**Example Commands:** `filter d/01-01-2000`<br>
+&emsp;**Example Commands:** `filter d/01-01-2023`<br>
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[date]` - In dd-MM-yyyy format. <br>
 
@@ -399,8 +399,8 @@ Task not found please enter a valid Task Number.
 **Precise Expected Outputs when the command succeeds:**
 ```
 Here are your tasks that are:
-Due before: [date]
-[Displays the list with the specific tasks found.]
+Due before: 01-01-2023
+  [The tasklist will be shown in the UI displaying tasks that fall on, and before 01-01-2023]
 ```
 
 
@@ -416,8 +416,8 @@ Due before: [date]
 **Precise Expected Outputs when the command succeeds:**
 ```
 Here are your tasks that are:
-Priority: [priority]
-[Displays the list with the specific tasks found.]
+Priority: 3
+  [The tasklist will be shown in the UI displaying tasks with Priority 3]
 ```
 
 #### c. Status
@@ -432,8 +432,8 @@ Priority: [priority]
 **Precise Expected Outputs when the command succeeds:**
 ```
 Here are your tasks that are:
-Status: [status]
-[Displays the list with the specific tasks found.]
+Status: done
+  [The tasklist will be shown in the UI displaying tasks that are done]
 ```
 
 #### d. Recurrence
@@ -448,8 +448,8 @@ Status: [status]
 **Precise Expected Outputs when the command succeeds:**
 ```
 Here are your tasks that are:
-Recurring: [recurringType]
-[Displays the list with the specific tasks found.]
+Recurring: WEEKLY
+  [The tasklist will be shown in the UI displaying weekly tasks]
 ```
 
 #### e. Combination of the above
@@ -462,11 +462,9 @@ Recurring: [recurringType]
 **Precise Expected Outputs when the command succeeds:**
 ```
 Here are your tasks that are:
-Priority: [priority]
-Status: [status]
-Due before: [dueDate]
-Recurring: [recurringType]
-[Displays the list with the specific tasks found.]
+Priority: 3
+Recurring: WEEKLY
+  [The tasklist will be shown in the UI displaying tasks that fulfill the criteria]
 ```
 
 **Precise Expected Outputs when the command fails:**
@@ -488,8 +486,8 @@ Unassigned priorities will have the value `000`. <br>
 Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
 
 * **Valid States**:
-    * `Done`: This status is set when all objectives of the task are met and no further action is required.
-    * `Undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
+    * `done`: This status is set when all objectives of the task are met and no further action is required.
+    * `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
 
 Note: Status is set as undone by default as soon as a task is added.
 
@@ -499,9 +497,16 @@ Unassigned due dates will have the value `No due date`. <br>
 **Valid format:** `d/dd-MM-yyyy` <br>
 
 ### Recurrence
-You can specify whether the task recurs on a `daily`, `weekly`, `monthly`, or `semesterly` basis.
-Tasks with unassigned recurrence will not recur.
+You can specify whether the task recurs. If it does, marking the task as `done` will refresh its due date, and change the Status back to `undone`. <br>
 **Valid format:** `recur/[recur]` <br>
+
+* **Valid States**:
+    * `daily`
+    * `weekly`
+    * `monthly`
+    * `semesterly`
+
+Note: Tasks with unassigned recurrence will not recur.
 
 ### Tags
 You can assign tags to a task, to further segregate and classify them.<br>
@@ -544,28 +549,25 @@ The higher the urgency and the priority, the more important is the task.
 ### Sort Tasks based on Priority :
 ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
 **Valid Format:** `sort_priority` <br>
-**Expected Output:** 
-` Here is your task list Prof, sorted based on priority` <br>
-
-### Sort Tasks according to Due Date :
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
-=======
-
+**Expected Output:**
+` Here is your task list Prof, sorted based on priority!` <br>
 
 **Things to Note:** 
 1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
-### Sort Tasks according to deadline:
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
 
+
+### Sort Tasks based on DueDate:
+TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
 
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
-` Here is your task list Prof, sorted based on nearest deadline` <br>
+` Here is your task list Prof, sorted based on nearest due date!` <br>
 
 **Things to Note:**
 1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use list all and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+
 ### View Task statistics: stats
 
 --------------------------------------------------------------------------------------------------------------------
