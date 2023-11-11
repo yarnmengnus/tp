@@ -58,11 +58,11 @@ public class HelpCommand extends Command {
                 System.out.println(usage.get(null).toString());
                 rtn += usage.get(null).toString() + DELIMITTER_BETWEEN_COMMANDS;
             } catch (NoSuchFieldException e) {
-                //impossible unless your command has no command word??
+                //when command has no usage field
                 System.out.println(e);
                 continue;
             } catch (IllegalAccessException e) {
-                //impossible as command word MUST be public
+                //impossible as command usage MUST be public
                 System.out.println(e);
                 continue;
             }
@@ -96,7 +96,7 @@ public class HelpCommand extends Command {
             return DoNextCommand.MESSAGE_USAGE;
 
         case ClearCommand.COMMAND_WORD:
-            return ClearCommand.MESSAGE_DETAILS;
+            return ClearCommand.MESSAGE_USAGE;
 
         case FindCommand.COMMAND_WORD:
             return FindCommand.MESSAGE_USAGE + "\n" + FindCommand.MESSAGE_EXAMPLE;
@@ -105,11 +105,11 @@ public class HelpCommand extends Command {
             return FilterCommand.MESSAGE_USAGE + "\n" + FilterCommand.MESSAGE_EXAMPLE;
 
         case ListCommand.COMMAND_WORD:
-            return ListCommand.MESSAGE_DETAILS;
+            return ListCommand.MESSAGE_USAGE;
 
 
         case ExitCommand.COMMAND_WORD:
-            return ExitCommand.MESSAGE_DETAILS;
+            return ExitCommand.MESSAGE_USAGE;
 
         case HelpCommand.COMMAND_WORD:
             return HelpCommand.MESSAGE_USAGE + "\n" + HelpCommand.MESSAGE_EXAMPLE;

@@ -557,7 +557,12 @@ TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. Thi
 1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
 2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 ### View Task statistics: stats
+Retrieves a list of statistics about your tasks in ProfPlan.
+Command Format: `stats`
+Precise Expected Outputs when the command succeeds:
 
+Here are your statistics Prof!
+[Displays some statistics of Task List.]
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
