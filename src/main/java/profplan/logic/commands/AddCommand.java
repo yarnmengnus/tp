@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + PREFIX_NAME + "[name] "
             + PREFIX_PRIORITY + "[priority] "
             + PREFIX_DUEDATE + "[dueDate] "
-            + "Optional Parameters:\n"
+            + "\nOptional Parameters: "
             + PREFIX_RECURRING + "[recur] "
             + PREFIX_TAG + "[tag...] "
             + PREFIX_LINK + "[link] "
@@ -39,6 +39,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "grade "
             + PREFIX_DUEDATE + "01-01-2023 "
             + PREFIX_LINK + "www.example.com";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";

@@ -28,6 +28,6 @@ public class HelpCommandParserTest {
         // no leading and trailing whitespaces
         CommandParserTestUtil.assertParseFailure(parser, "invalid Command",
             String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                HelpCommand.MESSAGE_USAGE + HelpCommand.MESSAGE_DETAILS + HelpCommand.MESSAGE_EXAMPLE));
+                HelpCommand.MESSAGE_FULL_HELP));
     }
 }

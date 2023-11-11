@@ -18,8 +18,7 @@ public class HelpCommandParser implements Parser<HelpCommand> {
     public HelpCommand parse(String args) throws ParseException {
         String command = args.strip();
         if (command.contains(" ")) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE
-            + HelpCommand.MESSAGE_DETAILS + HelpCommand.MESSAGE_EXAMPLE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_FULL_HELP));
         }
         return new HelpCommand(command);
     }

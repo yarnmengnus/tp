@@ -21,8 +21,7 @@ public class MarkCommandParser implements Parser<MarkCommand> {
             }
             return new MarkCommand(number);
         } catch (NumberFormatException e) {
-            throw new ParseException(MarkCommand.MESSAGE_USAGE
-                + MarkCommand.MESSAGE_DETAILS + MarkCommand.MESSAGE_EXAMPLE);
+            throw new ParseException(MarkCommand.MESSAGE_FULL_HELP);
         }
     }
 }

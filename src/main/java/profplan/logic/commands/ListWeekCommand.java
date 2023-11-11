@@ -14,6 +14,7 @@ public class ListWeekCommand extends Command {
     public static final String COMMAND_WORD = "list_week";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all tasks within this week.";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE;
 
     public static final String MESSAGE_SUCCESS = " Here are your tasks within a week Prof!";
 
