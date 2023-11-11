@@ -9,7 +9,6 @@ import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_RECURRING;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 

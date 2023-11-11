@@ -682,15 +682,15 @@ contains the data in the previous ProfPlan home folder.
 
 ## Supported flags
 
-| **Name of flag** | **Flag in command** |                **Description** |
-| ---------------- | ------------------- | ------------------------------ |
-| Name             |         n/          |           The name of the task |
-| Due Date         |         d/          |       The due date of the task |
-| Priority         |         p/          |       The priority of the task |
-| Tag              |         t/          | The tag that the task is under |
-| Link             |         l/          |           The link of the task |
-| Recur            |       recur/        | The recurring type of the task |
-| Description      |        des/         |    The description of the task |
+| **Name of flag**                        | **Flag in command** |                **Description** |
+|-----------------------------------------| ------------------- | ------------------------------ |
+| Name                                    |         n/          |           The name of the task |
+| Due Date                                |         d/          |       The due date of the task |
+| Priority                                |         p/          |       The priority of the task |
+| Tag                                     |         t/          | The tag that the task is under |
+| Link                                    |         l/          |           The link of the task |
+| Recur (not editable)                    |       recur/        | The recurring type of the task |
+| Description (not editable through `edit`) |        des/         |    The description of the task |
 
 ## Command summary
 
