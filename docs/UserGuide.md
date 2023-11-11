@@ -2,6 +2,7 @@
 layout: page
 title: ProfPlan User-Guide
 ---
+
 <style>
   .alert-primary{
       background-color: #d6e6ff;
@@ -18,60 +19,66 @@ title: ProfPlan User-Guide
   }
 </style>
 
-# User Guide - ProfPlan</center>
-![TeamProfPlan](images/ProfPlan_32.png)
+# <center>User Guide - ProfPlan</center>
 
+<div markdown = "block">
+![TeamProfPlan](images/profplan_32.png)
+</div>
 
 ## Overview
-We believe that no CS professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.
 
-ProfPlan is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
+We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.
 
+ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
 
 ## What It Does
+
 ProfPlan can help you manage tasks seamlessly. Create, edit, delete tasks with ease. Our specialised tasks help you assign priorities, deadlines, status and much more to enhance your task management experience.
 
 Our **<i>smart recommendation</i>** and **<i>visualisation</i>** features help you decide what to do next, and rank tasks based on several factors. You can also manage **<i>recurring tasks</i>** smoothly using ProfPlan’s recurring task functionality.
 
 ## Target Users
+
 This product is specifically designed for **CS professors** who prefer **CLI** over GUI and have a **variety of tasks** such as module management (lecture, assessments, readings), research tracking (deadlines, publications, collaborations, papers), admin tasks (department, paperwork, meetings, budget) and so on.
 
 ## Team Behind ProfPlan
 
 ![TeamProfPlan](images/TeamProfPlan.png)
-Contact us at [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with us, leave feedback, and more!
+Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with us, leave feedback, and more!
 
---------------------------------------------------------------------------------------------------------------------
+---
+
 ## Contents
-* [Overview](#overview)
-* [A Task in ProfPlan](#a-task-in-profplan)
-* [What ProfPlan can do for you?](#what-profplan-can-do-for-you)
-* [Quick Start](#quick-start)
-* [Basic Features](#basic-features)
-    1. [Viewing help : help](#viewing-help--help)
-        <ol type="a">
-        <li><a href="#a-viewing-help-for-a-specific-command">Viewing help for a specific command</a></li>
-        </ol>
-    1. [Create a new task : add](#create-a-new-task--add)
-    1. [Edit existing tasks : edit](#edit-existing-tasks--edit)
-    1. [Delete tasks and delete all tasks : delete](#delete-tasks-and-delete-all-tasks--delete)
-    1. [List all Tasks : list](#list-all-tasks--list)
-    1. [List Tasks due within week : list week](#list-tasks-within-a-week-from-now--listweek)
-    1. [List Tasks due within month: list month](#list-tasks-within-a-month-from-now--listmonth)
-    1. [Locating Tasks by name: find](#locating-tasks-by-name--find)
-    1. [Setting Configurations](#configuring-settings--set)
-    1. [Editing the data file](#editing-the-data-file)
-    1. [Saving the data](#saving-the-data)
-    1. [Exiting the program : exit](#exiting-the-program--exit)
-* [Task Management Features](#task-management-features)
+
+- [Overview](#overview)
+- [A Task in ProfPlan](#a-task-in-profplan)
+- [What ProfPlan can do for you?](#what-profplan-can-do-for-you)
+- [Quick Start](#quick-start)
+- [Basic Features](#basic-features)
+  1. [Viewing help : help](#viewing-help--help) <br>
+        a. [Viewing help for a specific command](#b-viewing-help-for-a-specific-command)
+  1. [Create a new task : add](#create-a-new-task--add)
+  1. [Edit existing tasks : edit](#edit-existing-tasks--edit)
+  1. [Delete tasks and delete all tasks : delete](#delete-tasks-and-delete-all-tasks--delete)
+  1. [List all Tasks : list](#list-all-tasks--list)
+  1. [List Tasks due within week : list week](#list-tasks-within-a-week-from-now-list_week)
+  1. [List Tasks due within month: list month](#list-tasks-within-a-month-from-now-list_month)
+  1. [Locating Tasks by name: find](#locating-tasks-by-name-find)
+  1. [Setting Configurations](#configuring-settings--set)
+  1. [Editing the data file](#editing-the-data-file)
+  1. [Saving the data](#saving-the-data)
+  1. [Exiting the program : exit](#exiting-the-program--exit)
+- [Task Management Features](#task-management-features)
+
   1. [Parameters](#parameters)
-      1. [Description](#description)
-      1. [Priority](#priority)
-      1. [Status](#status)
-      1. [Due Date](#due-date-1)
-      1. [Tags](#tags)
-      1. [Link](#link)
-      1. [Recurrence](#recurrence)
+
+     1. [Description](#description)
+     1. [Priority](#priority)
+     1. [Status](#status)
+     1. [Due Date](#due-date)
+     1. [Tags](#tags)
+     1. [Link](#link)
+     1. [Recurrence](#recurrence)
 
   1. Management Commands
      1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
@@ -82,26 +89,29 @@ Contact us at [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with
         <li><a href="#c-status">Status</a></li>
         <li><a href="#d-recurrence">Recurrence</a></li>
         </ol>
-* [Advanced Features](#advanced-features)
-    1. [Recommend next task](#recommend-next-task)
-    1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks)
-    1. [Create Recurring task](#create-recurring-task)
-    1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-date-priority-and-status)
-    1. [View Task statistics](#view-task-statistics-stats)
-* [Supported flags](#supported-flags)
-* [Command summary](#command-summary)
-* [Supported Setting Parameters](#supported-setting-parameters)
-* [Glossary](#glossary)
-* [Contact Us for Feedback & More](#contact-us-for-feedback--more)
 
---------------------------------------------------------------------------------------------------------------------
+- [Advanced Features](#advanced-features)
+  1. [Recommend next task](#recommend-next-task)
+  1. [Urgency-Importance Matrix: Visualise tasks](#visualise-important-and-urgent-tasks)
+  1. [Create A Recurring task](#create-a-recurring-task)
+  1. [Sort Tasks according to duedate and priority](#sort-tasks-according-to-date-priority-and-status)
+  1. [View Task statistics](#view-task-statistics-stats)
+- [Supported flags](#supported-flags)
+- [Command summary](#command-summary)
+- [Supported Setting Parameters](#supported-setting-parameters)
+- [Glossary](#glossary)
+- [Contact Us for Feedback & More](#contact-us-for-feedback--more)
+
+---
+
 ## A Task in ProfPlan
 
 Your central interaction with ProfPlan is through the creation and management of Tasks.
 
+---
 
---------------------------------------------------------------------------------------------------------------------
 ## What ProfPlan can do for you?
+
 Your central interaction with ProfPlan is through the creation and management of Tasks.
 
 :question: So, what is a Task in ProfPlan?
@@ -115,12 +125,13 @@ A Task must contain, minimally, a <ins>Name</ins>. Optionally, you may also choo
 :question: What are all those underlined terms?
 
 These are the various attributes of a Task:
-* <ins>Name</ins>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
-* <ins>Priority</ins>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
-* <ins>Status</ins>: Represents the current completion state of a task. (Done or Undone)
-* <ins>Link</ins>: A hyperlink to an external URL.
-* <ins>Due Date</ins>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
-* <ins>Description</ins>: Further details about the task. Any information that is too long to be put into the name should go here.
+
+- <ins>Name</ins>: A short summary of the work. Consider this akin to the title of a book, or an abstract of a paper - concise, yet descriptive.
+- <ins>Priority</ins>: An integer from 1 to 10, indicative of the importance of the task. The higher the number, the more important the task.
+- <ins>Status</ins>: Represents the current completion state of a task. (Done or Undone)
+- <ins>Link</ins>: A field to store reference material.
+- <ins>Due Date</ins>: The date by which the task should be completed by. Presented in the dd-MM-yyyy format.
+- <ins>Description</ins>: Further details about the task. Any information that is too long to be put into the name should go here.
 
 :question: What else can I do with Tasks?
 
@@ -135,7 +146,7 @@ Puzzled about which task to do next? Worry not, ProfPlan has you covered.
 
 To explore more, visit [this section](#advanced-features) for more advanced tips.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Quick start
 
@@ -145,74 +156,111 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 1. Copy the file to the folder you want to use as the home folder for your ProfPlan.
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` command to run the application.<br>
-A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
-![NewLaunch](images/Ui.png)
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
+   ![NewLaunch](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
-Some example commands you can try:
-    * `list` : Lists all tasks.
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a task named John Doe to ProfPlan.
-    * `delete 3` : Deletes the 3rd task shown in the current list.
-    * `delete all` : Deletes all tasks.
-    * `exit` : Exits the app.
+   Some example commands you can try:
+   _ `list` : Lists all tasks.
+   _ `add n/submit application p/2 d/01-01-2023 t/quiz t/graded l/www.quiz.com des/for mod cs0000` : Adds a task named `submit application` to ProfPlan.
+   _ `delete 3` : Deletes the 3rd task shown in the current list.
+   _ `delete all` : Deletes all tasks. \* `exit` : Exits the app.
 1. Refer to the [Features](#basic-features) below for details of each command.
 
+---
 
---------------------------------------------------------------------------------------------------------------------
+## Before you start
+
+<div markdown="block" class="alert alert-primary">
+:blue_book: Notes about the command format:
+
+- Words in square brackets are the parameters you should supply to ProfPlan.
+  - Example: `task [taskToDo] /by [deadline]`
+- Commands specified under **Compulsory Commands** are mandatory for the function to run. The rest are optional.
+- Items with `…` after them can accept multiple parameters.
+  - Example: `find [keywords…]`
+- If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines, as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+</div>
 
 ## Basic Features
+
 Simple yet essential features for you to get started.
 
 ### Viewing help : `help`
+
 Shows a list of commands.
 **Command Format:**
 `help`
+
+#### Viewing help for all commands:
+
+&emsp;Shows the list of usage of all commands. <br>
+&emsp;**Command Format:** `help` <br>
+
 #### a. Viewing help for a specific command:
+
 &emsp;Shows the description and usage of the command you specified. <br>
-&emsp;**Command Format:** `help {command name}` <br>
+&emsp;**Command Format:** `help [commandName]` <br>
+**&emsp;Acceptable Values for each Parameter:**<br>
+&emsp;&emsp;`[taskName]` - String of len > 0<br>
 &emsp;**Example Command:** `help add`
 
 ### Create a new task : `add`
+
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
-**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]` <br>
+**Command Format:** `add n/[taskName] p/[priority] d/[dueDate] recur/[recur] t/[tag..] l/[link] des/[description]` <br>
+**Compulsory Parameters:** `[taskname]`, `[priority]`, `[dueDate]`
+
 **Acceptable Values for each Parameter:**<br>
-&emsp;`[taskName]` - String of len > 0<br>
-&emsp;`[priority]` - Integer between 1 and 10<br>
-&emsp;`[dueDate]` - Format: dd-MM-yyyy<br>
-&emsp;`[recur]` - daily, weekly, monthly, semesterly<br>
-&emsp;`[tag]` - String of len > 0<br>
-&emsp;`[link]` - Format: www.example.com > 0<br>
+&emsp;`[taskName]` - String of len > 0 <br>
+&emsp;`[priority]` - Integer between 1 and 10 <br>
+&emsp;`[dueDate]` - Format: dd-MM-yyyy <br>
+&emsp;`[recur]` - daily, weekly, monthly, semesterly <br>
+&emsp;`[tag]` - String of len > 0 <br>
+&emsp;`[link]` - String of len > 0 <br>
 &emsp;`[description]` - String of len > 0<br>
 
 **Example Commands:** `add n/submit quiz p/2 d/01-01-2023 recur/weekly t/quiz t/graded l/www.quiz.com des/for mod cs0000`<br>
 
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Task successfully created, Prof! Here is your current task list:
 [Displays the updated contents of the task list.]
 ```
 
 **Precise Expected Outputs when the command fails:**
+
 ```
-Invalid command format! 
+Invalid command format!
 add: Adds a task to the task list.
-Parameters: n/NAME p/PRIORITY recur/RECUR [t/TAG]... d/DUEDATE l/LINK des/DESCRIPTION 
+Parameters: n/[name] p/[priority] recur/[recur] t/[tag]... d/[dueDate] l/link des/description
 Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.example.com
 ```
 
-
 ### Edit existing tasks : `edit`
+
 Edit the aspects of selected existing task, as specified by the user.
 
 **Command Format:** `edit [index] [prefix]/[newValue]` <br>
 **Acceptable Values for each Parameter:** <br>
 &emsp;`[index]` - integer <br>
-&emsp;`[prefix]` - String: "n" (Name), “p” (Priority), "d" (Due Date), "t" (Tag), or “l” (Link) <br>
-&emsp;`[new value]`- String based on input for [prefix] <br>
+&emsp;`[taskName]` - String of len > 0 <br>
+&emsp;`[priority]` - Integer between 1 and 10 <br>
+&emsp;`[dueDate]` - Format: dd-MM-yyyy <br>
+&emsp;`[tag]` - String of len > 0 <br>
+&emsp;`[link]` - String of len > 0 <br>
+
 **Example Commands:** `edit 2 n/Updated task p/3 d/01-01-2023 t/newTag l/www.newlink.com` <br>
 
 <div markdown="block" class="alert alert-primary">
-:note: Inputting t/ will result in all tags being erased.
+
+:note: Note that:
+- Inputting `t/` will result in all tags being erased. <br>
+- Recurrence cannot be edited. <br>
+- To edit description, use `description [index] des/[description]`
+
 </div>
 
 <br>
@@ -222,23 +270,28 @@ Edited Task: [Displays edited task]
 ```
 
 **Precise Expected Outputs when the command fails:**
+
 ```
-Invalid command format! 
+Invalid command format!
 edit: Edits the details of the task identified by the index number used in the displayed task list. Existing values will be overwritten by the input values.
-Parameters: INDEX (must be a positive integer) n/NAME p/PRIORITY recur/RECUR [t/TAG]... d/DUEDATE l/LINK des/DESCRIPTION 
-Example: edit 1 p/4 
+Parameters: INDEX (must be a positive integer) n/name p/priority recur/recur [t/TAG]... d/dueDate l/link des/description
+Example: edit 1 p/4
 ```
 
+### Edit a task's description : `description`
 
+Edit the description of the task 
 
 ### Delete tasks and delete all tasks : `delete`
+
 The Delete Task feature allows you to remove a specific task from your task list when it is no longer relevant or even remove all the tasks if required.
 
 **Command Format:** `delete [taskNumber]` <br>
-**Command Format:** `delete all` (for delete all) <br>
+**Command Format:** `delete all` or `clear` (for delete all)<br>
 **Example Commands:** <br>
 &emsp; `delete 2` (To delete a task present at index number 2) <br>
 &emsp; `delete all` (To delete all the tasks present in the list) <br>
+&emsp; `clear` (To delete all the tasks present in the list) <br>
 **Acceptable Values for each Parameter:** <br>
 &emsp; `[taskNumber]` - Integer, that is a valid task number in the list <br>
 &emsp; `“all”` - A keyword (type String) to delete all the tasks present in the list. <br>
@@ -246,47 +299,55 @@ The Delete Task feature allows you to remove a specific task from your task list
 **Precise Expected Outputs when the command succeeds:** <br>
 
 (For Deleting a particular Task)
+
 ```
 Deleted Task: [Task Description]
 [Displays the list with the specific task deleted from the list in the UI].
 ```
 
 (For Deleting all the Tasks in the list)
+
 ```
 All Tasks Deleted Successfully Prof!
 ```
+
 **Precise Expected Outputs when the command fails:** <br>
 (If provided with an invalid tasknumber which is not in the list or even a negative index number
 the following message will be printed)
+
 ```
 Please enter a valid Task number.
 ```
+
 **Precise Expected Outputs when the command fails: (for delete all command)** <br>
+
 ```
 Can not delete all tasks in empty Task List
 ```
 
-
 ### List all Tasks : `list`
-Shows a list of all tasks in ProfPlan.. <br>
+
+Shows a list of all tasks in ProfPlan. <br>
 **Command Format:** `list` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
-```
-Displays the contents of Task List.
-```
 
+```
+[Displays the contents of Task List.]
+```
 
 ### List Tasks within a week from now: `list_week`
-Shows a list of tasks within a week from now in ProfPlan.. <br>
+
+Shows a list of tasks within a week from now in ProfPlan. <br>
 **Command Format:** `list_week` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
+
 ```
 Here are your tasks within a week Prof!
 [Displays the contents of Task List.]
 ```
 
-
 ### List Tasks within a month from now: `list_month`
+
 Shows a list of tasks within a month from now in ProfPlan. <br>
 **Command Format:** `list_month` <br>
 **Precise Expected Outputs when the command succeeds:** <br>
@@ -296,31 +357,35 @@ Here are your tasks within a month Prof!
 [Displays the contents of Task List.]
 ```
 
-
 ### Locating Tasks by name: `find`
-Finding a task is user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is 
-flexible, 
+
+Finding a task is user-friendly and efficient. It's case-insensitive, allowing "task" to match "Task." Keyword order is
+flexible,
 and only the task name is considered. Full words are matched, so "Tas" won't match "Task." The search operates on an OR logic, returning tasks matching at least one keyword. This ensures a simple and effective task-finding process. <br>
-**Command Format:** `find [KEYWORD]` <br>
+**Command Format:** `find [keywords]...` <br>
 **Acceptable Values for each Parameter:** <br>
-&emsp;`[TaskName]` - A task name that matches in the TaskList. <br>
+&emsp;`[TaskName]` - A task name that matches in the Task list. <br>
 **Example Commands:** <br>
 &emsp;`find quiz` (returns quiz grading task and make a quiz) <br>
 &emsp;`find project` (returns project grading) <br>
 **Precise Expected Outputs when the command succeeds:** <br>
 (For Finding a particular Task)
+
 ```
 [Task Description] Here is your updated list prof!, found 3 tasks.-
-[Displays the list with the specific tasks found.].
+[Displays the list with the specific tasks found.]
 ```
+
 **Precise Expected Outputs when the command fails:** <br>
 (If provided with an invalid tasknumber which is not in the list or even a negative index number
 the following message will be printed)
+
 ```
 No Matching Tasks found prof.
 ```
 
 ### Configuring Settings : `set`
+
 Allows you to configure certain parameters as you see fit. <br>
 Command Format: `set [parameterName] [value]`
 
@@ -328,61 +393,76 @@ For a list of the currently supported parameters, click [here](#supported-settin
 To make ProfPlan more customizable, we are looking to add more in the future, so stay tuned!
 
 ### Editing the data file
+
 ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/profplan.json`. Advanced users are welcome to update data directly by editing that data file
 
 <div markdown = 'block' class = 'Warning' > :warning: Caution: If your changes to the data file makes its format invalid, ProfPlan will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it
 </div>
 
 ### Saving the data
+
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Exiting the program : `exit`
+
 Exits the program. <br>
 Format: `exit`
 
 ## Task Management Features
+
 Recommended features for you to get more out of ProfPlan
 
 ## Parameters
 
 ### Description
+
 You can insert a description for each task, to note down additional details. <br>
 **Valid format:** `des/[description]` <br>
+**Acceptable Parameter Values**: `description`: Any text input.
 
 ### Priority
-Tasks have priorities that can be assigned upon task adding, and also edited.
-Unassigned priorities will have the value `000`. <br>
-**Valid format:** `p/[Integer from 1 to 10 inclusive]` <br>
+
+All tasks must have a priority level specified on creation, which can also be edited. <br>
+**Valid format:** `p/[priority]` <br>
+**Acceptable Parameter Values**: `priority`: Integer from 1 to 10, inclusive.
 
 ### Status
+
 Indicates the current completion state of a task. It is crucial for tracking the progress and managing the workload.
 
-* **Valid States**:
-    * `done`: This status is set when all objectives of the task are met and no further action is required.
-    * `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
+- **Valid States**:
+  - `done`: This status is set when all objectives of the task are met and no further action is required.
+  - `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
 
-Note: Status is set as undone by default as soon as a task is added.
+Note: Status is set as undone by default as soon as a task is added. This parameter is not available to be directly set on the creation of a task.
 
 ### Due Date
-You can specify the due date of a task upon creation and edit. <br>
-Unassigned due dates will have the value `No due date`. <br>
-**Valid format:** `d/dd-MM-yyyy` <br>
+
+All tasks must have a due date specified on creation, which can also be edited. <br>
+**Valid format:** `d/[dueDate]` <br>
+**Acceptable Parameter Values**: `dueDate`: A date of the format dd-MM-yyyy.
 
 ### Tags
+
 You can assign tags to a task, to further segregate and classify them.<br>
-**Valid format:** `t/[Alphanumeric value (no space)]` <br>
+**Valid format:** `t/[tag]` <br>
+**Acceptable Parameter Values**: `tag`: Any alphanumeric value, without spaces.
 
 ### Link
+
 You can assign a link to a task, to access the reference easily. <br>
-**Valid format:** `l/[www.LINKNAME.com]` <br>
+**Valid format:** `l/[link]` <br>
+**Acceptable Parameter Values**: `link`: Any text input.
 
 ### Recurrence
-You can specify whether the task recurs on a `daily`, `weekly`, `monthly`, or `semesterly` basis.
-Tasks with unassigned recurrence will not recur.
-**Valid format:** `recur/[recur]` <br>
 
+You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
+Tasks with unassigned recurrence will not recur.
+**Valid format:** `recur/[recurrenceType]` <br>
+**Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
 ### Mark task as done/undone : `mark / unmark`
+
 **What it does:** <br>
 Allows you to easily track the completion status of your tasks. You can mark a task as done when you have completed it, and mark it as undone if you need to revisit or revise the same task. <br>
 
@@ -399,12 +479,14 @@ Allows you to easily track the completion status of your tasks. You can mark a t
 
 **Precise Expected Outputs when marking a task as done:** <br>
 When you mark Task as done, you will receive the following confirmation message:
+
 ```
 Task successfully marked as done, Prof! Here is your updated task list
 ```
 
 **Precise Expected Outputs when marking a task as undone:** <br>
 When you mark a task as undone, you'll receive the following confirmation message:
+
 ```
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
@@ -412,12 +494,15 @@ Task successfully marked as undone, Prof! Here is your updated task list
 **Precise Expected Outputs when the command fails:** <br>
 If you provide an invalid task number (e.g., a task number that does not exist in your task list),
 you will receive the following error message: (both for mark and unmark command)
+
 ```
 Task not found please enter a valid Task Number.
 ```
 
 ### Filter tasks : `filter`
+
 #### a. Due Date:
+
 &emsp;**What it does:**<br>
 &emsp;&emsp;All tasks that fall before the given due date is displayed<br>
 
@@ -426,16 +511,16 @@ Task not found please enter a valid Task Number.
 &emsp;**Acceptable Values for each Parameter:** <br>
 &emsp;&emsp;`[date]` - In dd-MM-yyyy format. <br>
 
-
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Here are your tasks that are:
 Due before: [date]
 [Displays the list with the specific tasks found.]
 ```
 
-
 #### b. Priority
+
 &emsp;**What it does:** <br>
 &emsp;&emsp;All tasks of the given priority is displayed. <br>
 
@@ -445,6 +530,7 @@ Due before: [date]
 &emsp;&emsp;`[priority]` - Integer from 1 to 10 inclusive. <br>
 
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Here are your tasks that are:
 Priority: [priority]
@@ -452,6 +538,7 @@ Priority: [priority]
 ```
 
 #### c. Status
+
 &emsp;**What it does:** <br>
 &emsp;All tasks of the given status is displayed.
 
@@ -461,6 +548,7 @@ Priority: [priority]
 &emsp;&emsp;`[status]`- done or undone <br>
 
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Here are your tasks that are:
 Status: [status]
@@ -468,6 +556,7 @@ Status: [status]
 ```
 
 #### d. Recurrence
+
 &emsp;**What it does:** <br>
 &emsp;All tasks of the given recurring type is displayed.
 
@@ -477,6 +566,7 @@ Status: [status]
 &emsp;&emsp;`[recurringType]`- none, daily, weekly, monthly, semesterly <br>
 
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Here are your tasks that are:
 Recurring: [recurringType]
@@ -484,13 +574,15 @@ Recurring: [recurringType]
 ```
 
 #### e. Combination of the above
+
 &emsp;**What it does:** <br>
 &emsp;All tasks meeting the specified criteria is displayed.
 
-&emsp;**Command Format:** `filter d/[duedate] p/[priority] s[status] recur/[recurringType]` <br>
+&emsp;**Command Format:** `filter d/[dueDate] p/[priority] s[status] recur/[recurringType]` <br>
 &emsp;**Example Commands:** `filter p/3 recur/weekly` <br>
 
 **Precise Expected Outputs when the command succeeds:**
+
 ```
 Here are your tasks that are:
 Priority: [priority]
@@ -501,18 +593,20 @@ Recurring: [recurringType]
 ```
 
 **Precise Expected Outputs when the command fails:**
+
 ```
-Invalid command format! 
+Invalid command format!
 filter: Filters for tasks with one or more criteria and displays them as a list with index numbers.
 Parameters: d/DUEDATE p/PRIORITY recur/RECUR s/STATUS
 Example: filter d/01-01-2024 s/done
 ```
 
 ## Advanced Features
+
 Psst! Were the features mentioned in the introduction not quite enough to satiate your craving for productivity? Fret not! ProfPlan comes with novel capabilities that will reinvent the way you approach tasks! Before we end this guide, we’ll show you some ways our veteran users use ProfPlan to make themselves more productive than ever before!
 
-
 ### Recommend next task :
+
 Ever felt overwhelmed by a mountain of work, and lost on what to do next? Many tasks, each with slightly different deadlines and priorities, can come together to overload our capacities for good planning, and make it impossible for us to choose the optimal task to work on next.<br>
 With our customised algorithm, ProfPlan takes this cognitive load off your shoulders. Simply use the command do_next, and ProfPlan will identify the ideal task for you to work on next!<br>
 **Valid Format:** `do_next` <br>
@@ -520,33 +614,40 @@ With our customised algorithm, ProfPlan takes this cognitive load off your shoul
 `Here is the next task you need to do Prof:
 Grade assignments, Priority: 10, DueDate: 02-11-2023`
 
-
 ### Visualise important and urgent tasks :
+
 Sometimes, we might have 20, 30, 40 or more tasks in our lists!
 It can be extremely difficult to prioritize and visualize them based on what to do next.
 Fret not! With the Urgency-Priority Matrix, you can constantly visualize your tasks with ease.<br>
 The matrix is updated automatically whenever there's any change to your taskList.<br><br>
 
-The columns represent the different Urgency Levels: `1-10`
-<br>
-The rows represent the different Priority Levels: `1-10`
+The columns represent the different Urgency Levels (How close the deadline is): `1-10`<br>
+The rows represent the different Priority Levels (How important the task is): `1-10`
 
-The higher the urgency and the priority, the more important is the task.
+The higher the urgency and the priority, the task will appear further towards the top right of the matrix.
+The task(s) in the top right of the matrix should be done first.
 ![img.png](matrix.png)
 
+### Create A Recurring Task
+
+You can specify whether the task recurs on a daily, weekly, monthly, or semesterly basis.
+Tasks with unassigned recurrence will not recur.
+**Valid format:** `recur/[recurrenceType]` <br>
+**Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
+
 ### Sort Tasks based on Priority :
-ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered.
-<br>
+
+ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered. <br>
 **Valid Format:** `sort_priority` <br>
 **Expected Output:** ` Here is your task list Prof, sorted based on priority` <br>
 
-
 **Things to Note:**
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
+1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
+2. ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 ### Sort Tasks according to Due Date :
+
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next.
 
 **Valid Format:** `sort_duedate` <br>
@@ -554,16 +655,20 @@ TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. Thi
 ` Here is your task list Prof, sorted based on nearest deadline` <br>
 
 **Things to Note:**
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
-### View Task statistics: stats
+
+1. If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
+2. ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+
+### View Task statistics: `stats`
+
 Retrieves a list of statistics about your tasks in ProfPlan.
 Command Format: `stats`
 Precise Expected Outputs when the command succeeds:
 
 Here are your statistics Prof!
 [Displays some statistics of Task List.]
---------------------------------------------------------------------------------------------------------------------
+
+---
 
 ## FAQ
 
@@ -571,19 +676,19 @@ Here are your statistics Prof!
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data in the previous ProfPlan home folder.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When scrolling through Urgency-Priority Matrix**, if you scroll too quickly, the cells take some time to render and display the tasks.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Supported flags
 
-
 | **Name of flag** | **Flag in command** |                **Description** |
-|------------------|:-------------------:|-------------------------------:|
+| ---------------- | ------------------- | ------------------------------ |
 | Name             |         n/          |           The name of the task |
 | Due Date         |         d/          |       The due date of the task |
 | Priority         |         p/          |       The priority of the task |
@@ -592,39 +697,40 @@ contains the data in the previous ProfPlan home folder.
 | Recur            |       recur/        | The recurring type of the task |
 | Description      |        des/         |    The description of the task |
 
-
 ## Command summary
 
-
-| **Action**        | **Format, Examples**                                                            |
-|-------------------|---------------------------------------------------------------------------------|
+| **Action**        | **Format, Examples**                                                                                                                           |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tag..] l/[link] des/[description]`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
-| **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]`, e.g. `edit 1 n/Task p/1 d/01-01-2023`  |
-| **Find**          | `find [keywords...]`, e.g. `find canvas quiz`                                   |
-| **List Week**     | `list_week`                                                                     |
-| **List Month**    | `list_month`                                                                    |
-| **Mark**          | `mark [INDEX]`, e.g. `mark 2`                                                   |
-| **Unmark**        | `unmark [INDEX]`, e.g. `unmark 2`                                               |
-| **Delete**        | `delete [INDEX]`, e.g. `delete 2`                                               |
-| **Delete All**    | `delete all`                                                                    |
-| **Sort Priority** | `sort_priority`                                                                 |
-| **Sort Duedate**  | `sort_duedate`                                                                  |
-| **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                    |
-| **Help**          | `help`                                                                          |
+| **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]`, e.g. `edit 1 n/Task p/1 d/01-01-2023`                                   |
+| **Find**          | `find [keywords...]`, e.g. `find canvas quiz`                                                                                                  |
+| **List Week**     | `list_week`                                                                                                                                    |
+| **List Month**    | `list_month`                                                                                                                                   |
+| **Mark**          | `mark [INDEX]`, e.g. `mark 2`                                                                                                                  |
+| **Unmark**        | `unmark [INDEX]`, e.g. `unmark 2`                                                                                                              |
+| **Delete**        | `delete [INDEX]`, e.g. `delete 2`                                                                                                              |
+| **Delete All**    | `delete all`                                                                                                                                   |
+| **Sort Priority** | `sort_priority`                                                                                                                                |
+| **Sort Duedate**  | `sort_duedate`                                                                                                                                 |
+| **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                                                                                   |
+| **Help**          | `help`                                                                                                                                         |
 
 ## Supported Setting Parameters
+
 | **Parameter**    | **Description**                   | **Valid values**         | **Default value** |
-|------------------|-----------------------------------|--------------------------|-------------------|
+| ---------------- | --------------------------------- | ------------------------ | ----------------- |
 | **semesterDays** | The number of days in a semester. | Any non-negative integer | 180               |
 
 ## Glossary
+
 | **Word**     | **Definition**                                                                            |
-|--------------|-------------------------------------------------------------------------------------------|
+| ------------ | ----------------------------------------------------------------------------------------- |
 | **Syntax**   | The way that you should format your commands <br> such that ProfPlan can understand them. |
 | **Status**   | Whether a task is done or undone                                                          |
 | **Priority** | Importance of a task (different from due date)                                            |
 
 ## Contact Us for Feedback & More!
+
 We're delighted to hear from you! At ProfPlan, we value your thoughts, inquiries, and suggestions. Your feedback helps us continually improve and provide you with the best possible experience. Whether you have a question, need assistance, or want to share your insights, we're here to assist.
 
 Kindly fill in the form below and we will get back to you as soon as possible.
