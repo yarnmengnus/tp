@@ -526,7 +526,12 @@ ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest deadlines are revealed like shining stars, beckoning you to attend to them next.
 
 ### View Task statistics: stats
+Retrieves a list of statistics about your tasks in ProfPlan.
+Command Format: `stats`
+Precise Expected Outputs when the command succeeds:
 
+Here are your statistics Prof!
+[Displays some statistics of Task List.]
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
