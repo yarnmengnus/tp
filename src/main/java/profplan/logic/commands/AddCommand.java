@@ -22,15 +22,16 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list.\n";
-    public static final String MESSAGE_DETAILS = "Parameters: "
-            + PREFIX_NAME + "NAME "
-            + PREFIX_PRIORITY + "PRIORITY "
-            + PREFIX_RECURRING + "RECUR "
-            + "[" + PREFIX_TAG + "TAG]... "
-            + PREFIX_DUEDATE + "DUEDATE "
-            + PREFIX_LINK + "LINK "
-            + PREFIX_DESCRIPTION + "DESCRIPTION \n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list.";
+    public static final String MESSAGE_DETAILS = "Compulsory Parameters: "
+            + PREFIX_NAME + "[name] "
+            + PREFIX_PRIORITY + "[priority] "
+            + PREFIX_DUEDATE + "[dueDate] "
+            + "\nOptional Parameters: "
+            + PREFIX_RECURRING + "[recur] "
+            + PREFIX_TAG + "[tag...] "
+            + PREFIX_LINK + "[link] "
+            + PREFIX_DESCRIPTION + "[description]";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Grade assignments "
             + PREFIX_PRIORITY + "1 "
@@ -38,6 +39,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "grade "
             + PREFIX_DUEDATE + "01-01-2023 "
             + PREFIX_LINK + "www.example.com";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list";

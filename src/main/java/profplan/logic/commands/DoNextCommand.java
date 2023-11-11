@@ -15,7 +15,7 @@ public class DoNextCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Recommends the next task to do."
             + "Example: " + COMMAND_WORD + "";
-
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE;
     public static final String MESSAGE_SUCCESS = " Here is the next task you need to do Prof:";
 
 

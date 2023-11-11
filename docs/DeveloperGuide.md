@@ -389,6 +389,70 @@ For example, "filter d/01-01-2023" filters for tasks before and on 01-01-2023.
 3. The application will provide feedback, indicating the successful filtering, and display the relevant tasks.
 
 
+## Displaying help for commands
+
+The listing details mechanism is facilitated by a the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `parse()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String. For example `help` or `help delete`.
+
+Hence, this will be facicilitated by overloading the constructor in `HelpCommand` to either create and empty `HelpCommand` or a `HelpCommand` with a `COMMAND_WORD`:
+* When an empty `HelpCommand` executes `execute()`, a`CommandResult` with `MESSAGE_USAGE` of all commands will be created.
+* When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a`CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
+
+The following activity diagram shows how the help command works:
+
+![HelpActivityDiagram](images/HelpActivity.png)
+
+### Design considerations:
+
+**Aspect: How to store `Command` details:**
+
+* **Alternative 1 (current choice): Store Command Details in each command.**
+
+  * Pros: Follows OOP.
+
+  * Cons: Will have to propogate changes in Command Usage and Details format to all Commands individually.
+
+* **Alternative 2: Store the Details in each command.**
+
+  * Pros: Centralised area to view all Messages.
+
+  * Cons: Does not follow OOP. Future implementations that tap on these Details will take longer to implement.
+
+
+## Displaying statistics
+
+The statistics mechanism requires support from `Model`, which will provide `StatsCommand` the required statistics. Currently, this is done using a public getter `getCompletionRate()`. 
+
+When `StatsCommand` executes `execute()`, it calls this getter and returns a new `CommandResult` containing a formatted `String` with the statistics retrieved.
+
+The following sequence diagram shows how the stats command works:
+
+![StatsSequenceDiagram](images/StatsSequenceDiagram.png)
+
+Here's a breakdown of the sequence:
+1. The `LogicManager` receives the command "stats" from the user.
+1. The `ProfPlanParser` parses the command and creates a `StatsCommand`.
+1. The `StatsCommand` is executed by `LogicManager`.
+1. The getter, `getCompletionRate()`, is called on `Model`. 
+1. `Model` returns a `double` containing the completion rate.
+1. A `CommandResult` is created and formatted to provide feedback to the user.
+1. The result is returned to the `LogicManager`.
+
+### Design considerations:
+
+**Aspect: How to retrieve statistics:**
+
+* **Alternative 1 (current choice): Use a public getter in Model.**
+
+  * Pros: Simple and readable.
+
+  * Cons: Exposes more of Model, which may result in unintended use by developers.
+
+* **Alternative 2: Retrive a copy of the task list and calculate statistics as such.**
+
+  * Pros: List is not mutated. All calculations of Statistics is centralised under StatsCommand.
+
+  * Cons: Does not follow OOP. Operations regarding the list should be handled by the list.
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -473,37 +537,6 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
-
-
-### \[Proposed\] Displaying help for commands
-
-The listing detials mechanism is facilitated by a the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `execute()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String. For example `help` or `help delete`.
-
-Hence, this will be facicilitated by overloading the constructor in `HelpCommand` to either create and empty `HelpCommand` or a `HelpCommand` with a `COMMAND_WORD`:
-* When an empty `HelpCommand` executes `execute()`, a`CommandResult` with `showHelp` argument with value `True` will be created.
-* When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a`CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
-
-The following activity diagram shows how the help command works:
-
-![HelpActivityDiagram](images/HelpActivity.png)
-
-#### Design considerations:
-
-**Aspect: How to store `Command` details:**
-
-* **Alternative 1 (current choice): Store Command Details in each command.**
-
-  * Pros: Follows OOP.
-
-  * Cons: Will have to propogate changes in Command Usage and Details format to all Commands individually.
-
-* **Alternative 2: Store the Details in each command.**
-
-  * Pros: Centralised area to view all Messages.
-
-  * Cons: Does not follow OOP. Future implementations that tap on these Details will take longer to implement.
-
-
 
 
 --------------------------------------------------------------------------------------------------------------------

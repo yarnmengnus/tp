@@ -15,10 +15,10 @@ public class UnmarkCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as undone.";
     public static final String MESSAGE_DETAILS = "Parameters: "
-            + "INDEX ";
+            + "[index] ";
 
-    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " "
-            + "1 ";
+    public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "Task successfully marked as undone, Prof! "
                                                     + "Here is your updated task list";

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import profplan.commons.core.Settings;
 import profplan.commons.core.index.Index;
 import profplan.commons.util.StringUtil;
 import profplan.logic.parser.exceptions.ParseException;
@@ -186,5 +187,21 @@ public class ParserUtil {
         } catch (NumberFormatException e) {
             throw new ParseException(e.getMessage());
         }
+    }
+
+    /**
+     * Checks if a String is a valid input value for the semesterDays setting and returns it if so.
+     */
+    public static int parseSemesterDays(String input) throws ParseException {
+        int parsedInteger = -1;
+        try {
+            parsedInteger = Integer.parseInt(input.trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException("Could not parse an integer. " + e.getMessage());
+        }
+        if (parsedInteger < 0) {
+            throw new ParseException(Settings.SEMESTER_DAYS_CONSTRAINTS);
+        }
+        return parsedInteger;
     }
 }

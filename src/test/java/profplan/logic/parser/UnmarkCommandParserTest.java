@@ -24,19 +24,19 @@ public class UnmarkCommandParserTest {
     @Test
     public void parse_nonNumeric_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "a", String.format(
-            UnmarkCommand.MESSAGE_USAGE + UnmarkCommand.MESSAGE_DETAILS + UnmarkCommand.MESSAGE_EXAMPLE));
+            UnmarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test
     public void parse_emptyString_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "", String.format(
-            UnmarkCommand.MESSAGE_USAGE + UnmarkCommand.MESSAGE_DETAILS + UnmarkCommand.MESSAGE_EXAMPLE));
+            UnmarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test
     public void parse_whitespaceOnly_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "   ", String.format(
-            UnmarkCommand.MESSAGE_USAGE + UnmarkCommand.MESSAGE_DETAILS + UnmarkCommand.MESSAGE_EXAMPLE));
+            UnmarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test

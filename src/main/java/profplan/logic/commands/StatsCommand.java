@@ -13,6 +13,7 @@ public class StatsCommand extends Command {
     public static final String COMMAND_WORD = "stats";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + "Shows a summary of your progress";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE;
 
     public static final String MESSAGE_SUCCESS = "Here are your statistics Prof!\n";
 

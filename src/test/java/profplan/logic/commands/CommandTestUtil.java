@@ -2,6 +2,8 @@ package profplan.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static profplan.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static profplan.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static profplan.logic.parser.CliSyntax.PREFIX_NAME;
 import static profplan.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static profplan.logic.parser.CliSyntax.PREFIX_TAG;
@@ -32,14 +34,16 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_LINK_EXAMPLE = "www.exmaple.com";
     public static final String VALID_LINK_GOOGLE = "www.google.com";
-    public static final String VALID_DESCRIPTION = "";
+    public static final String VALID_DESCRIPTION = "gg";
+
+    public static final String DUEDATE_DESC = " " + PREFIX_DUEDATE + "10-12-2023";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PRIORITY_DESC_AMY = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMY;
     public static final String PRIORITY_DESC_BOB = " " + PREFIX_PRIORITY + VALID_PRIORITY_BOB;
-    public static final String DESCRIPTION_DESC_AMY = VALID_DESCRIPTION;
-    public static final String DESCRIPTION_DESC_BOB = VALID_DESCRIPTION;
+    public static final String DESCRIPTION_DESC_AMY = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION;
+    public static final String DESCRIPTION_DESC_BOB = " " + PREFIX_DESCRIPTION + VALID_DESCRIPTION;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 

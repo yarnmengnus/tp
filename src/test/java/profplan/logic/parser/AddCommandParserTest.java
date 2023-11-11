@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 import profplan.logic.Messages;
 import profplan.logic.commands.AddCommand;
 import profplan.logic.commands.CommandTestUtil;
-import profplan.model.tag.Tag;
-import profplan.model.task.Name;
-import profplan.model.task.Priority;
 import profplan.model.task.Task;
 import profplan.testutil.TaskBuilder;
 import profplan.testutil.TypicalTasks;
@@ -26,7 +23,7 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.PREAMBLE_WHITESPACE
-                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB
+                + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.DUEDATE_DESC
                 + CommandTestUtil.TAG_DESC_FRIEND
                 + CommandTestUtil.DESCRIPTION_DESC_BOB, new AddCommand(expectedTask));
 
@@ -37,6 +34,7 @@ public class AddCommandParserTest {
                 .build();
         CommandParserTestUtil.assertParseSuccess(parser,
                 CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB
+                        + CommandTestUtil.DUEDATE_DESC
                         + CommandTestUtil.TAG_DESC_HUSBAND
                         + CommandTestUtil.TAG_DESC_FRIEND,
                 new AddCommand(expectedTaskMultipleTags));
@@ -95,6 +93,7 @@ public class AddCommandParserTest {
         Task expectedTask = new TaskBuilder(TypicalTasks.AMY).withTags().build();
         CommandParserTestUtil.assertParseSuccess(parser,
                 CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PRIORITY_DESC_AMY
+                        + CommandTestUtil.DUEDATE_DESC
                         + CommandTestUtil.DESCRIPTION_DESC_AMY,
                 new AddCommand(expectedTask));
     }
@@ -126,28 +125,30 @@ public class AddCommandParserTest {
         // invalid name
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
                 + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.TAG_DESC_HUSBAND
-                + CommandTestUtil.TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.TAG_DESC_FRIEND, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_FULL_HELP));
 
         // invalid priority
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
                 + CommandTestUtil.INVALID_PRIORITY_DESC + CommandTestUtil.TAG_DESC_HUSBAND
-                + CommandTestUtil.TAG_DESC_FRIEND, Priority.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.TAG_DESC_FRIEND, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_FULL_HELP));
 
         // invalid tag
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
                 + CommandTestUtil.PRIORITY_DESC_BOB
-                + CommandTestUtil.INVALID_TAG_DESC + CommandTestUtil.VALID_TAG_FRIEND, Tag.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.INVALID_TAG_DESC + CommandTestUtil.VALID_TAG_FRIEND,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_FULL_HELP));
 
         // two invalid values, only first invalid value reported
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.INVALID_NAME_DESC
-                        + CommandTestUtil.PRIORITY_DESC_BOB,
-                Name.MESSAGE_CONSTRAINTS);
+                        + CommandTestUtil.PRIORITY_DESC_BOB, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddCommand.MESSAGE_FULL_HELP));
 
         // non-empty preamble
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.PREAMBLE_NON_EMPTY
                         + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB
                         + CommandTestUtil.TAG_DESC_HUSBAND + CommandTestUtil.TAG_DESC_FRIEND,
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE
-                        + AddCommand.MESSAGE_DETAILS + AddCommand.MESSAGE_EXAMPLE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_FULL_HELP));
     }
 }

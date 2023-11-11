@@ -14,13 +14,14 @@ public class MarkCommand extends Command {
     public static final String COMMAND_WORD = "mark";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks a task as done.";
-    public static final String MESSAGE_DETAILS = "Parameters: INDEX\n";
+    public static final String MESSAGE_DETAILS = "Parameters: [index]";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "Task successfully marked as done, Prof! "
                                                     + "Here is your updated task list";
 
-    public static final String MESSAGE_INVALID_NUMBER = "INDEX should be greater than or equal to 1";
+    public static final String MESSAGE_INVALID_NUMBER = "[index] should be greater than or equal to 1";
     public static final String MESSAGE_ALREADY_DONE = "This task is already marked as done";
 
     private final int taskNumber;
