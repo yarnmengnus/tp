@@ -44,12 +44,12 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonProfPlanStorage addressBookStorage =
+        JsonProfPlanStorage profPlanStorage =
                 new JsonProfPlanStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonUserConfigsStorage userConfigsStorage = new JsonUserConfigsStorage(
                 temporaryFolder.resolve("userConfigs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userConfigsStorage);
+        StorageManager storage = new StorageManager(profPlanStorage, userPrefsStorage, userConfigsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -139,7 +139,7 @@ public class LogicManagerTest {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
         // Inject LogicManager with an ProfPlanStorage that throws the IOException e when saving
-        JsonProfPlanStorage addressBookStorage = new JsonProfPlanStorage(prefPath) {
+        JsonProfPlanStorage profPlanStorage = new JsonProfPlanStorage(prefPath) {
             @Override
             public void saveProfPlan(ReadOnlyProfPlan addressBook, Path filePath)
                     throws IOException {
@@ -151,7 +151,7 @@ public class LogicManagerTest {
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
         JsonUserConfigsStorage userConfigsStorage =
                 new JsonUserConfigsStorage(temporaryFolder.resolve("ExceptionUserConfigs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, userConfigsStorage);
+        StorageManager storage = new StorageManager(profPlanStorage, userPrefsStorage, userConfigsStorage);
 
         logic = new LogicManager(model, storage);
 

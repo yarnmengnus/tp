@@ -41,7 +41,7 @@ class JsonSerializableProfPlan {
     }
 
     /**
-     * Converts this task list into the model's {@code AddressBook} object.
+     * Converts this task list into the model's {@code ProfPlan} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

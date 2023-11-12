@@ -9,7 +9,7 @@ import java.time.format.DateTimeParseException;
 import profplan.commons.util.AppUtil;
 
 /**
- * Represents a Task's due date in the address book.
+ * Represents a Task's due date in the ProfPlan.
  */
 public class DueDate implements Comparable<DueDate> {
     public static final String MESSAGE_CONSTRAINTS =
@@ -24,7 +24,7 @@ public class DueDate implements Comparable<DueDate> {
     private LocalDate parsedValue = null;
 
     /**
-     * Constructs an {@code Address}.
+     * Constructs a {@code DueDate}.
      *
      * @param date A valid date.
      */

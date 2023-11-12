@@ -14,7 +14,7 @@ import profplan.model.UserConfigs;
 import profplan.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of ProfPlan data in local storage.
  */
 public class StorageManager implements Storage {
 
@@ -86,14 +86,14 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveProfPlan(ReadOnlyProfPlan addressBook) throws IOException {
-        saveProfPlan(addressBook, profPlanStorage.getProfPlanFilePath());
+    public void saveProfPlan(ReadOnlyProfPlan profPlan) throws IOException {
+        saveProfPlan(profPlan, profPlanStorage.getProfPlanFilePath());
     }
 
     @Override
-    public void saveProfPlan(ReadOnlyProfPlan addressBook, Path filePath) throws IOException {
+    public void saveProfPlan(ReadOnlyProfPlan profPlan, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        profPlanStorage.saveProfPlan(addressBook, filePath);
+        profPlanStorage.saveProfPlan(profPlan, filePath);
     }
 
 }

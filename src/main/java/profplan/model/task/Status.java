@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import profplan.commons.util.AppUtil;
 
 /**
- * Represents a Task's name in the address book.
+ * Represents a Task's Status in ProfPlan.
  * Guarantees: immutable; is valid as declared in {@link #isValidStatus(String)}
  */
 public class Status {
@@ -13,10 +13,6 @@ public class Status {
     public static final String MESSAGE_CONSTRAINTS =
             "Status should only should only be done or undone";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
     public static final String VALIDATION_REGEX = "\\bdone\\b|\\bundone\\b";
     public static final Status DONE_STATUS = new Status("done");
     public static final Status UNDONE_STATUS = new Status("undone");

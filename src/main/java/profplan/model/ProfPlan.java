@@ -10,7 +10,7 @@ import profplan.model.task.Task;
 import profplan.model.task.UniqueTaskList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the profPlan level
  * Duplicates are not allowed (by .isSameTask comparison)
  */
 public class ProfPlan implements ReadOnlyProfPlan {
@@ -31,7 +31,7 @@ public class ProfPlan implements ReadOnlyProfPlan {
     public ProfPlan() {}
 
     /**
-     * Creates an AddressBook using the Tasks in the {@code toBeCopied}
+     * Creates an ProfPlan using the Tasks in the {@code toBeCopied}
      */
     public ProfPlan(ReadOnlyProfPlan toBeCopied) {
         this();
@@ -49,7 +49,7 @@ public class ProfPlan implements ReadOnlyProfPlan {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code ProfPlan} with {@code newData}.
      */
     public void resetData(ReadOnlyProfPlan newData) {
         requireNonNull(newData);
@@ -87,7 +87,7 @@ public class ProfPlan implements ReadOnlyProfPlan {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code ProfPlan}.
      * {@code key} must exist in the task list.
      */
     public void removeTask(Task key) {

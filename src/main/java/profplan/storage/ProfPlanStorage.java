@@ -41,6 +41,6 @@ public interface ProfPlanStorage {
     /**
      * @see #saveProfPlan(ReadOnlyProfPlan)
      */
-    void saveProfPlan(ReadOnlyProfPlan addressBook, Path filePath) throws IOException;
+    void saveProfPlan(ReadOnlyProfPlan profPlan, Path filePath) throws IOException;
 
 }
