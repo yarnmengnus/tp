@@ -24,7 +24,7 @@ public class DescriptionCommandParser implements Parser<DescriptionCommand> {
             index = ParserUtil.parseIndex(argumentMultimap.getPreamble());
         } catch (IllegalValueException illegalValueException) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    DescriptionCommand.MESSAGE_USAGE), illegalValueException);
+                    DescriptionCommand.MESSAGE_FULL_HELP), illegalValueException);
         }
 
         Description description = new Description(argumentMultimap

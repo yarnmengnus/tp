@@ -14,6 +14,7 @@ public class SortPriorityCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the tasks based on priority.";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD;
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = " Here is your task list Prof, sorted based on priority";
 

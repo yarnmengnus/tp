@@ -25,19 +25,19 @@ public class MarkCommandParserTest {
     @Test
     public void parse_nonNumeric_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "a", String.format(
-            MarkCommand.MESSAGE_USAGE + MarkCommand.MESSAGE_DETAILS + MarkCommand.MESSAGE_EXAMPLE));
+            MarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test
     public void parse_emptyString_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "", String.format(
-            MarkCommand.MESSAGE_USAGE + MarkCommand.MESSAGE_DETAILS + MarkCommand.MESSAGE_EXAMPLE));
+            MarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test
     public void parse_whitespaceOnly_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "   ", String.format(
-            MarkCommand.MESSAGE_USAGE + MarkCommand.MESSAGE_DETAILS + MarkCommand.MESSAGE_EXAMPLE));
+            MarkCommand.MESSAGE_FULL_HELP));
     }
 
     @Test

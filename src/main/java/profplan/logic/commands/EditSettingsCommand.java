@@ -28,6 +28,7 @@ public class EditSettingsCommand extends Command {
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " semesterDays "
             + "100 ";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_SUCCESS = "Settings successfully updated!";
 

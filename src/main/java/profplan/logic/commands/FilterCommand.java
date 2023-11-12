@@ -21,15 +21,16 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters for tasks with one or more criteria and displays them as a list with index numbers.\n";
+            + ": Filters for tasks with one or more criteria and displays them as a list with index numbers.";
 
     public static final String MESSAGE_DETAILS = "Parameters: "
-            + PREFIX_DUEDATE + "DUEDATE "
-            + PREFIX_PRIORITY + "PRIORITY "
-            + PREFIX_RECURRING + "RECUR "
-            + PREFIX_STATUS + "STATUS\n";
+            + PREFIX_DUEDATE + "[dueDate] "
+            + PREFIX_PRIORITY + "[priority] "
+            + PREFIX_RECURRING + "[recur] "
+            + PREFIX_STATUS + "[status]";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " d/01-01-2024 s/done";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     private final Predicate<Task> predicate;
 

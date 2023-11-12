@@ -1,0 +1,57 @@
+@startuml
+
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":ProfPlanParser" as ProfPlanParser LOGIC_COLOR
+participant "d:ListArchivesCommand" as ListArchivesCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("list archives")
+activate LogicManager
+
+LogicManager -> ProfPlanParser : parseCommand("list archives")
+activate ProfPlanParser
+
+
+create ListArchivesCommand
+ProfPlanParser -> ListArchivesCommand
+activate ListArchivesCommand
+
+ListArchivesCommand --> ProfPlanParser : d
+deactivate ListArchivesCommand
+
+ProfPlanParser --> LogicManager : d
+deactivate ProfPlanParser
+
+LogicManager -> ListArchivesCommand : execute()
+activate ListArchivesCommand
+
+ListArchivesCommand -> Model : listArchives()
+activate Model
+
+Model --> ListArchivesCommand
+deactivate Model
+
+create CommandResult
+ListArchivesCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> ListArchivesCommand
+deactivate CommandResult
+
+ListArchivesCommand --> LogicManager : result
+deactivate ListArchivesCommand
+
+[<--LogicManager
+deactivate LogicManager
+
+
+@enduml
