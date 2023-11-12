@@ -656,11 +656,7 @@ ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard
 **Expected Output:**
 ` Here is your task list Prof, sorted based on priority!` <br>
 
-**Things to Note:** 
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-
-2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
-
+**Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 ### Sort Tasks based on DueDate:
 TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next. <br>
@@ -668,10 +664,7 @@ TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. Thi
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest due date!` <br>
 
-**Things to Note:**
-1) If you encounter a situation where there is no tasks displayed in the UI and you are sure that the main task list is not empty, you are advised to use `list` to list all tasks and then run the command.
-
-2) ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+**Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 
 ### View Task statistics: `stats`
