@@ -44,10 +44,10 @@ public class TypicalTasks {
 
     // Manually added - Task's details found in {@code CommandTestUtil}
     public static final Task AMY = new TaskBuilder().withName(VALID_NAME_AMY).withPriority(VALID_PRIORITY_AMY)
-            .withTags(VALID_TAG_FRIEND).withDueDate("No due date").withDescription("").build();
+            .withTags(VALID_TAG_FRIEND).withDueDate("10-12-2023").withDescription("").build();
     public static final Task BOB = new TaskBuilder().withName(VALID_NAME_BOB).withPriority(VALID_PRIORITY_BOB)
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .withDueDate("No due date").build();
+            .withDueDate("10-12-2023").build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

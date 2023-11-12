@@ -21,8 +21,7 @@ public class UnmarkCommandParser implements Parser<UnmarkCommand> {
             }
             return new UnmarkCommand(number);
         } catch (NumberFormatException e) {
-            throw new ParseException(UnmarkCommand.MESSAGE_USAGE
-                + UnmarkCommand.MESSAGE_DETAILS + UnmarkCommand.MESSAGE_EXAMPLE);
+            throw new ParseException(UnmarkCommand.MESSAGE_FULL_HELP);
         }
     }
 }

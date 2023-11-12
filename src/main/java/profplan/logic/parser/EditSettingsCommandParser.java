@@ -28,7 +28,7 @@ public class EditSettingsCommandParser implements Parser<EditSettingsCommand> {
         // semesterDays
         if (argumentMultimap.getValue(keywords[0]).isPresent()) {
             editSettingsDescriptor.setSemesterDays(ParserUtil
-                    .parseInteger(argumentMultimap.getValue(keywords[0]).get()));
+                    .parseSemesterDays(argumentMultimap.getValue(keywords[0]).get()));
         }
 
         return new EditSettingsCommand(editSettingsDescriptor);

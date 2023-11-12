@@ -10,7 +10,7 @@ end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant ":VersionedAddressBook" as VersionedAddressBook MODEL_COLOR
+participant ":VersionedProfPlan" as VersionedProfPlan MODEL_COLOR
 end box
 [-> LogicManager : execute(undo)
 activate LogicManager
@@ -31,15 +31,15 @@ deactivate ProfPlanParser
 LogicManager -> UndoCommand : execute()
 activate UndoCommand
 
-UndoCommand -> Model : undoAddressBook()
+UndoCommand -> Model : undoProfPlan()
 activate Model
 
-Model -> VersionedAddressBook : undo()
-activate VersionedAddressBook
+Model -> VersionedProfPlan : undo()
+activate VersionedProfPlan
 
-VersionedAddressBook -> VersionedAddressBook :resetData(ReadOnlyAddressBook)
-VersionedAddressBook --> Model :
-deactivate VersionedAddressBook
+VersionedProfPlan -> VersionedProfPlan :resetData(ReadOnlyProfPlan)
+VersionedProfPlan --> Model :
+deactivate VersionedProfPlan
 
 Model --> UndoCommand
 deactivate Model

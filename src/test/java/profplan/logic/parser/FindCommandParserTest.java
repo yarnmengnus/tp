@@ -16,7 +16,7 @@ public class FindCommandParserTest {
     @Test
     public void parse_emptyArg_throwsParseException() {
         CommandParserTestUtil.assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                FindCommand.MESSAGE_USAGE + FindCommand.MESSAGE_DETAILS + FindCommand.MESSAGE_EXAMPLE));
+                FindCommand.MESSAGE_FULL_HELP));
     }
 
     @Test

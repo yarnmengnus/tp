@@ -14,6 +14,7 @@ public class ListMonthCommand extends Command {
     public static final String COMMAND_WORD = "list_month";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all tasks within a month of today.";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE;
 
     public static final String MESSAGE_SUCCESS = " Here are your tasks within a month Prof!";
 

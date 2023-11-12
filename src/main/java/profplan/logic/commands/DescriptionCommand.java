@@ -23,9 +23,10 @@ public class DescriptionCommand extends Command {
             + "by the index number used in the last task listing.";
     public static final String MESSAGE_DETAILS = "Existing description will be overwritten by the input.\n"
             + "Parameters: [index] (must be a positive integer) "
-            + "des/ [description]\n";
+            + "des/ [description]";
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " 1 "
             + "des/ Put particular emphasis on recursion.";
+    public static final String MESSAGE_FULL_HELP = MESSAGE_USAGE + "\n" + MESSAGE_DETAILS + "\n" + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_ADD_DESCRIPTION_SUCCESS = "Added description to Task %d";
     public static final String MESSAGE_DELETE_DESCRIPTION_SUCCESS = "Removed description from Task: %d";

@@ -22,8 +22,7 @@ public class EditCommandParserTest {
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
-        String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE
-        + EditCommand.MESSAGE_DETAILS + EditCommand.MESSAGE_EXAMPLE);
+        String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_FULL_HELP);
 
     private EditCommandParser parser = new EditCommandParser();
 
