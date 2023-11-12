@@ -1,5 +1,6 @@
 package profplan.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -74,6 +75,13 @@ public class MarkCommandTest {
 
 
         assertFalse(markCommand1.equals(notMarkCommand));
+    }
+
+    @Test
+    public void toString_indexToMark_success() {
+        MarkCommand markCommand = new MarkCommand(1);
+        String expectedStatus = MarkCommand.class.getCanonicalName() + "{taskNumber=" + 1 + "}";
+        assertEquals(markCommand.toString(), expectedStatus);
     }
 }
 
