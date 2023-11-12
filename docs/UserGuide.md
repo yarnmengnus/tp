@@ -224,7 +224,7 @@ Creates a new task and adds it to your task list. You may specify the name and d
 **Precise Expected Outputs when the command succeeds:**
 
 ```
-New task added: [taskCreated]
+New task added: Draft assignments; Priority: 1; Status: undone; Tags: [assignment][grade]; DueDate: 01-01-2023; Link: www.example.com
 ```
 
 **Precise Expected Outputs when the command fails:**
@@ -267,7 +267,7 @@ Edit the aspects of selected existing task, as specified by the user.
 **Precise Expected Outputs when the command succeeds:**
 
 ```
-Edited Task: [Displays edited task]
+Edited Task: Grant Application; Priority: 10; Status: undone; Tags: [grant][research]; DueDate: 20-12-2023; Link: -
 ```
 
 **Precise Expected Outputs when the command fails:**
@@ -301,7 +301,7 @@ The Delete Task feature allows you to remove a specific task from your task list
 (For Deleting a particular Task)
 
 ```
-Deleted Task: [Task Description]
+Deleted Task: Grant Application; Priority: 10; Status: undone; Tags: [grant][research]; DueDate: 20-12-2023; Link: -
 ```
 
 (For Deleting all the Tasks in the list)
@@ -524,8 +524,7 @@ Task not found please enter a valid Task Number.
 
 ```
 Here are your tasks that are:
-Due before: 01-01-2023
-  [The tasklist will be shown in the UI displaying tasks that fall on, and before 01-01-2023]
+Due before: 13-12-2023
 ```
 
 #### b. Priority
@@ -545,7 +544,6 @@ Due before: 01-01-2023
 ```
 Here are your tasks that are:
 Priority: 3
-  [The tasklist will be shown in the UI displaying tasks with Priority 3]
 ```
 
 #### c. Status
@@ -565,7 +563,6 @@ Priority: 3
 ```
 Here are your tasks that are:
 Status: done
-  [The tasklist will be shown in the UI displaying tasks that are done]
 ```
 
 #### d. Recurrence
@@ -585,7 +582,6 @@ Status: done
 ```
 Here are your tasks that are:
 Recurring: WEEKLY
-  [The tasklist will be shown in the UI displaying weekly tasks]
 ```
 
 #### e. Combination of the above
@@ -603,7 +599,6 @@ Recurring: WEEKLY
 Here are your tasks that are:
 Priority: 3
 Recurring: WEEKLY
-  [The tasklist will be shown in the UI displaying tasks that fulfill the criteria]
 ```
 
 &emsp;**Precise Expected Outputs when the command fails:**
