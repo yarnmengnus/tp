@@ -13,7 +13,7 @@ public class SampleDataUtilTest {
     public void sampleDataUtil_test() {
         Task[] tasks = SampleDataUtil.getSampleTasks();
         for (Task task : tasks) {
-            assertTrue(DueDate.isValidDate(task.getDueDate().value));
+            assertTrue(DueDate.isValidDate(task.getDueDate().toString()));
         }
     }
 }

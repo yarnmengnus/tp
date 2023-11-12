@@ -442,7 +442,7 @@ Note: Status is set as undone by default as soon as a task is added. This parame
 
 ### Due Date
 
-All tasks must have a due date specified on creation, which can also be edited. <br>
+All tasks must have a due date specified on creation, which can also be edited. If user inputs impossible dates (eg. 30-02-2023), the date is autocorrected to last date of the month. <br>
 **Valid format:** `d/[dueDate]` <br>
 **Acceptable Parameter Values**: `dueDate`: A date of the format dd-MM-yyyy.
 

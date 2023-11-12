@@ -19,7 +19,7 @@ public class DueDate implements Comparable<DueDate> {
     private static LocalDate min = LocalDate.of(1999, 12, 31);
     private static LocalDate max = LocalDate.of(2031, 1, 1);
 
-    public String value;
+    private String value;
 
     private LocalDate parsedValue = null;
 
@@ -32,7 +32,7 @@ public class DueDate implements Comparable<DueDate> {
         requireNonNull(date);
         value = date;
         AppUtil.checkArgument(isValidDate(this), MESSAGE_CONSTRAINTS);
-        value = parsedValue == null ? value : dateTimeFormatter.format(parsedValue);
+        value = parsedValue == null ? date : dateTimeFormatter.format(parsedValue);
     }
 
     /**

@@ -55,7 +55,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(task.getName().fullName);
         priority.setText("Priority: " + task.getPriority().value);
-        dueDate.setText("DueDate: " + task.getDueDate().value);
+        dueDate.setText("DueDate: " + task.getDueDate().toString());
         status.setText(" " + task.getStatus().status + " ");
         description.setText(task.getDescription().description);
         task.getTags().stream()
