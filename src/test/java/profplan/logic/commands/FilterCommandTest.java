@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
+import profplan.model.task.Task.RecurringType;
 import profplan.model.task.predicates.TaskDueDatePredicate;
 import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskRecurringTypePredicate;
 import profplan.model.task.predicates.TaskStatusPredicate;
 
 /**
@@ -100,6 +102,33 @@ public class FilterCommandTest {
     }
 
     @Test
+    public void equalsRecurring() {
+        TaskRecurringTypePredicate firstPredicate =
+                new TaskRecurringTypePredicate(RecurringType.DAILY);
+        TaskRecurringTypePredicate secondPredicate =
+                new TaskRecurringTypePredicate(RecurringType.MONTHLY);
+
+        FilterCommand filterFirstCommand = new FilterCommand(firstPredicate);
+        FilterCommand filterSecondCommand = new FilterCommand(secondPredicate);
+
+        // same object -> returns true
+        assertTrue(filterFirstCommand.equals(filterFirstCommand));
+
+        // same values -> returns true
+        FilterCommand filterFirstCommandCopy = new FilterCommand(firstPredicate);
+        assertTrue(filterFirstCommand.equals(filterFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(filterFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(filterFirstCommand.equals(null));
+
+        // different task -> returns false
+        assertFalse(filterFirstCommand.equals(filterSecondCommand));
+    }
+
+    @Test
     public void toStringMethod() {
         TaskDueDatePredicate predicateDueDate = new TaskDueDatePredicate(new DueDate("01-01-2000"));
         FilterCommand filterCommandDueDate = new FilterCommand(predicateDueDate);
@@ -115,5 +144,10 @@ public class FilterCommandTest {
         FilterCommand filterCommandStatus = new FilterCommand(predicateStatus);
         String expectedStatus = FilterCommand.class.getCanonicalName() + "{predicate=" + predicateStatus + "}";
         assertEquals(expectedStatus, filterCommandStatus.toString());
+
+        TaskRecurringTypePredicate predicateRecurring = new TaskRecurringTypePredicate(RecurringType.SEMESTERLY);
+        FilterCommand filterCommandRecurring = new FilterCommand(predicateRecurring);
+        String expectedRecurring = FilterCommand.class.getCanonicalName() + "{predicate=" + predicateRecurring + "}";
+        assertEquals(expectedRecurring, filterCommandRecurring.toString());
     }
 }

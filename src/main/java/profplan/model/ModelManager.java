@@ -34,15 +34,15 @@ public class ModelManager implements Model {
     private final FilteredList<Task> filteredTasks;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given profPlan and userPrefs.
      */
-    public ModelManager(ReadOnlyProfPlan addressBook, ReadOnlyUserPrefs userPrefs,
+    public ModelManager(ReadOnlyProfPlan profPlan, ReadOnlyUserPrefs userPrefs,
                         ReadOnlyUserConfigs userConfigs) {
-        CollectionUtil.requireAllNonNull(addressBook, userPrefs);
+        CollectionUtil.requireAllNonNull(profPlan, userPrefs);
 
-        logger.fine("Initializing with task list: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with task list: " + profPlan + " and user prefs " + userPrefs);
 
-        this.profPlan = new ProfPlan(addressBook);
+        this.profPlan = new ProfPlan(profPlan);
         this.userPrefs = new UserPrefs(userPrefs);
         ModelManager.userConfigs = new UserConfigs(userConfigs);
         filteredTasks = new FilteredList<>(this.profPlan.getTaskList());
@@ -142,7 +142,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void markTask(int index) {
+    public void markTask(int index) throws IllegalArgumentException {
         Task temp = profPlan.getTaskList().get(index);
         temp.setStatus(Status.DONE_STATUS);
         profPlan.setTask(profPlan.getTaskList().get(index), temp);
@@ -165,7 +165,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Task} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedProfPlan}
      */
     @Override
     public ObservableList<Task> getFilteredTaskList() {

@@ -1,5 +1,6 @@
 package profplan.model.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,6 +23,7 @@ public class DueDateTest {
     public void isValidDate() {
         // invalid dates
         assertFalse(DueDate.isValidDate("01-01-2031")); // max year is 2030
+        assertFalse(DueDate.isValidDate("01-01-1999")); // max year is 2030
         assertFalse(DueDate.isValidDate("01/01/2000"));
 
         // valid dates
@@ -35,10 +37,6 @@ public class DueDateTest {
         DueDate before = new DueDate("01-01-2023");
         DueDate after = new DueDate("01-01-2024");
         assertTrue(before.isIncludedorBefore(after));
-
-        DueDate no = new DueDate("No due date");
-        assertTrue(before.isIncludedorBefore(no));
-        assertFalse(no.isIncludedorBefore(before));
     }
 
     @Test
@@ -53,6 +51,20 @@ public class DueDateTest {
         DueDate test2 = new DueDate(dateTimeFormatter.format(in15Days));
         assertFalse(test2.isWithinWeek());
         assertTrue(test2.isWithinMonth());
+    }
+
+    @Test
+    public void addDays() {
+        DueDate date = new DueDate("01-01-2023");
+        DueDate in5Days = new DueDate("06-01-2023");
+        assertEquals(date.addDays(5), in5Days);
+    }
+
+    @Test
+    public void addMonth() {
+        DueDate date = new DueDate("01-01-2023");
+        DueDate in1Month = new DueDate("01-02-2023");
+        assertEquals(date.addMonth(), in1Month);
     }
 
     @Test
@@ -73,5 +85,16 @@ public class DueDateTest {
 
         // different values -> returns false
         assertFalse(date.equals(new DueDate("01-01-2030")));
+    }
+
+    @Test
+    public void compareTo() {
+        DueDate date = new DueDate("01-01-2023");
+        DueDate later = new DueDate("01-01-2024");
+        DueDate earlier = new DueDate("01-01-2022");
+
+        assertEquals(date.compareTo(earlier), 1);
+        assertEquals(date.compareTo(later), -1);
+
     }
 }

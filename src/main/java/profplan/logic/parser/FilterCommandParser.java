@@ -25,7 +25,7 @@ import profplan.model.task.predicates.TaskStatusPredicate;
 public class FilterCommandParser implements Parser<FilterCommand> {
 
     /**
-     * Parses input, which should be a valid Status, DueDate, or Priority
+     * Parses input, which should be a valid Status, DueDate, Priority or RecurringType
      */
     public FilterCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =

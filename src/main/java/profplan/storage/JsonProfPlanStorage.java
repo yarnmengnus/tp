@@ -15,7 +15,7 @@ import profplan.commons.util.JsonUtil;
 import profplan.model.ReadOnlyProfPlan;
 
 /**
- * A class to access AddressBook data stored as a json file on the hard disk.
+ * A class to access ProfPlan data stored as a json file on the hard disk.
  */
 public class JsonProfPlanStorage implements ProfPlanStorage {
 
@@ -45,14 +45,14 @@ public class JsonProfPlanStorage implements ProfPlanStorage {
     public Optional<ReadOnlyProfPlan> readProfPlan(Path filePath) throws DataLoadingException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableProfPlan> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableProfPlan> jsonProfPlan = JsonUtil.readJsonFile(
                 filePath, JsonSerializableProfPlan.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonProfPlan.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonProfPlan.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataLoadingException(ive);
@@ -60,8 +60,8 @@ public class JsonProfPlanStorage implements ProfPlanStorage {
     }
 
     @Override
-    public void saveProfPlan(ReadOnlyProfPlan addressBook) throws IOException {
-        saveProfPlan(addressBook, filePath);
+    public void saveProfPlan(ReadOnlyProfPlan profPlan) throws IOException {
+        saveProfPlan(profPlan, filePath);
     }
 
     /**

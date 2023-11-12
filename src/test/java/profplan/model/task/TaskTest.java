@@ -7,8 +7,11 @@ import static profplan.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_PRIORITY_BOB;
 import static profplan.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
+import java.util.HashSet;
+
 import org.junit.jupiter.api.Test;
 
+import profplan.model.task.Task.RecurringType;
 import profplan.testutil.Assert;
 import profplan.testutil.TaskBuilder;
 import profplan.testutil.TypicalTasks;
@@ -90,5 +93,37 @@ public class TaskTest {
                 + ", description=" + TypicalTasks.ALICE.getDescription()
                 + "}";
         assertEquals(expected, TypicalTasks.ALICE.toString());
+    }
+
+    @Test
+    public void recurringTask() {
+        Task daily = new Task(new Name("daily"), new Priority("3"),
+                true, RecurringType.DAILY, new HashSet<>(),
+                new DueDate("01-01-2023"), new Link("-"), null);
+
+        daily.setStatus(Status.DONE_STATUS);
+        assertEquals(daily.getDueDate(), new DueDate("02-01-2023"));
+
+
+        Task weekly = new Task(new Name("weekly"), new Priority("3"),
+                true, RecurringType.WEEKLY, new HashSet<>(),
+                new DueDate("01-01-2023"), new Link("-"), null);
+
+        weekly.setStatus(Status.DONE_STATUS);
+        assertEquals(weekly.getDueDate(), new DueDate("08-01-2023"));
+
+        Task monthly = new Task(new Name("monthly"), new Priority("3"),
+                true, RecurringType.MONTHLY, new HashSet<>(),
+                new DueDate("01-01-2023"), new Link("-"), null);
+
+        monthly.setStatus(Status.DONE_STATUS);
+        assertEquals(monthly.getDueDate(), new DueDate("01-02-2023"));
+
+        Task semesterly = new Task(new Name("semly"), new Priority("3"),
+                true, RecurringType.SEMESTERLY, new HashSet<>(),
+                new DueDate("01-01-2023"), new Link("-"), null);
+
+        semesterly.setStatus(Status.DONE_STATUS);
+        assertEquals(semesterly.getDueDate(), new DueDate("30-06-2023"));
     }
 }

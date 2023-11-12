@@ -38,6 +38,6 @@ public interface Storage extends ProfPlanStorage, UserPrefsStorage, UserConfigsS
     Optional<ReadOnlyProfPlan> readProfPlan() throws DataLoadingException;
 
     @Override
-    void saveProfPlan(ReadOnlyProfPlan addressBook) throws IOException;
+    void saveProfPlan(ReadOnlyProfPlan profPlan) throws IOException;
 
 }

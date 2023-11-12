@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import profplan.commons.util.ToStringBuilder;
 import profplan.logic.commands.exceptions.CommandException;
 import profplan.model.Model;
+import profplan.model.task.DueDate;
 
 /**
  * Marks Status of task as done.
@@ -40,7 +41,12 @@ public class MarkCommand extends Command {
         if (taskNumber > model.getFilteredTaskList().size()) {
             throw new CommandException("Task not found please enter a valid Task Number.");
         }
-        model.markTask(taskNumber - 1);
+        try {
+            model.markTask(taskNumber - 1);
+        } catch (IllegalArgumentException e) { // if adding days to recurring task increases due date past 2030
+            throw new CommandException(DueDate.MESSAGE_CONSTRAINTS);
+        }
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
     @Override

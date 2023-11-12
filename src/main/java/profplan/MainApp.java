@@ -82,18 +82,18 @@ public class MainApp extends Application {
                                    ReadOnlyUserConfigs userConfigs) {
         logger.info("Using data file : " + storage.getProfPlanFilePath());
 
-        Optional<ReadOnlyProfPlan> addressBookOptional;
+        Optional<ReadOnlyProfPlan> profPlanOptional;
         ReadOnlyProfPlan initialData;
         try {
-            addressBookOptional = storage.readProfPlan();
-            if (!addressBookOptional.isPresent()) {
+            profPlanOptional = storage.readProfPlan();
+            if (!profPlanOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getProfPlanFilePath()
-                        + " populated with a sample AddressBook.");
+                        + " populated with a sample ProfPlan.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleProfPlan);
+            initialData = profPlanOptional.orElseGet(SampleDataUtil::getSampleProfPlan);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getProfPlanFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty ProfPlan.");
             initialData = new ProfPlan();
         }
 
@@ -209,7 +209,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting ProfPlan " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 

@@ -3,7 +3,7 @@ package profplan.model.task;
 import static java.util.Objects.requireNonNull;
 
 /**
- * Represents a Task's link in the address book.
+ * Represents a Task's link in the ProfPlan.
  * Guarantees: immutable; is valid as declared in {@link #isValidLink(String)}
  */
 public class Link {
