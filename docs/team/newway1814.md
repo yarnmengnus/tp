@@ -34,7 +34,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Updated the "Urgency-Priority Matrix" feature of the User Guide.
 - Created the "Contact Us" section of the User Guide.
 - Created the "Feedback" section of the User Guide.
-- Added the form link for feedback/issues in the User Guide.
+- Added the form link for feedback/issues/Contact-Us in the User Guide.
 
 ### Contributions to the Developer Guide
 - Updated the Delete command section of the Developer Guide
