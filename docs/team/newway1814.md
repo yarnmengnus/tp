@@ -1,4 +1,7 @@
-# Project Portfolio Page (PPP) - Tejas Gandhi
+---
+layout: page
+title: Tejas Gandhi's Project Portfolio Page
+---
 
 ## Overview
 ProfPlan is a CLI-based task management tool tailored to university professors, offering features like task prioritization, categorization, research tracking, and team coordination to enhance productivity and organization in academia.
