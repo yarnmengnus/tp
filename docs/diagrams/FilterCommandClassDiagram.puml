@@ -1,4 +1,5 @@
 @startuml
+
 class FilterCommandParser {
   + parse: FilterCommand
 }
@@ -16,10 +17,10 @@ class FilterCommand {
 }
 
 class TaskDueDatePredicate
-
 class TaskPriorityPredicate
-
 class TaskStatusPredicate
+class TaskRecurringTypePredicate
+class CombinedPredicate
 
 class "<<interface>>\nPredicate" as Predicate
 
@@ -27,6 +28,16 @@ FilterCommand <.. Predicate
 Predicate <-- TaskDueDatePredicate
 Predicate <-- TaskPriorityPredicate
 Predicate <-- TaskStatusPredicate
+Predicate <-- TaskRecurringTypePredicate
+Predicate <-- CombinedPredicate
+
+FilterCommandParser <.. TaskDueDatePredicate
+FilterCommandParser <.. TaskPriorityPredicate
+FilterCommandParser <.. TaskStatusPredicate
+FilterCommandParser <.. TaskRecurringTypePredicate
+FilterCommandParser <.. CombinedPredicate
+
+
 
 FilterCommandParser .left.> FilterCommand : parse >
 
