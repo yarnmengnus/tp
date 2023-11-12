@@ -51,7 +51,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
 
 - [Overview](#overview)
 - [A Task in ProfPlan](#a-task-in-profplan)
-- [What ProfPlan can do for you?](#what-profplan-can-do-for-you)
+- [What can ProfPlan do for you?](#what-can-profplan-do-for-you)
 - [Quick Start](#quick-start)
 - [Basic Features](#basic-features)
   1. [Viewing help : help](#viewing-help--help) <br>
@@ -109,7 +109,7 @@ Your central interaction with ProfPlan is through the creation and management of
 
 ---
 
-## What ProfPlan can do for you?
+## What can ProfPlan do for you?
 
 Your central interaction with ProfPlan is through the creation and management of Tasks.
 
