@@ -72,7 +72,7 @@ class JsonAdaptedTask {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         link = source.getLink().value;
-        dueDate = source.getDueDate().value;
+        dueDate = source.getDueDate().toString();
         status = source.getStatus().status;
         description = source.getDescription().description;
     }
