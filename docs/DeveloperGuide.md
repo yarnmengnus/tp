@@ -241,16 +241,13 @@ To use the `DoNext` in the ProfPlan application, you can execute the following s
 3. The application will provide feedback, and output the task generated in the message window.
 
 
-## Mark/Unmark feature
+## Mark feature
 ### Actual implementation
-The Mark/Unmark feature in ProfPlan allows users to set a task as done or undone respectively. Below, we describe the implementation details for this feature through a (partial) UML class diagram:
+The Mark feature in ProfPlan allows users to set a task as done. Below, we describe the implementation details for this feature through a (partial) UML class diagram:
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
     <div style="flex: 1; margin-right: 5px;">
         <img src="images/MarkCommandClassDiagram.png" alt="MarkCommand Class Diagram" width="380">
-    </div>
-    <div style="flex: 1;">
-        <img src="images/UnmarkCommandClassDiagram.png" alt="UnmarkCommand Class Diagram" width="380">
     </div>
 </div>
 
@@ -970,7 +967,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### Deleting a task
 
@@ -987,12 +983,9 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
