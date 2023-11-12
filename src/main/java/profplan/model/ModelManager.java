@@ -181,8 +181,8 @@ public class ModelManager implements Model {
     @Override
     public void sortTaskByDueDate() {
         if (this.filteredTasks.isEmpty()) {
-            throw new UnsupportedOperationException("Can not sort since there are no tasks " +
-                "displayed currently in the UI");
+            throw new UnsupportedOperationException("Can not sort since there are no tasks "
+                + "displayed currently in the UI");
         }
         profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
     }
@@ -190,8 +190,8 @@ public class ModelManager implements Model {
     @Override
     public void sortTaskByPriority() {
         if (this.filteredTasks.isEmpty()) {
-            throw new UnsupportedOperationException("Can not sort since there are no tasks " +
-                "displayed currently in the UI");
+            throw new UnsupportedOperationException("Can not sort since there are no tasks "
+                + "displayed currently in the UI");
         }
         profPlan.getTaskList().sort(Comparator.comparing(Task::getPriority));
     }
