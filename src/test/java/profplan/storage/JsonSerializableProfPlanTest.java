@@ -26,6 +26,8 @@ public class JsonSerializableProfPlanTest {
                 JsonSerializableProfPlan.class).get();
         ProfPlan profPlanFromFile = dataFromFile.toModelType();
         ProfPlan typicalTasksProfPlan = TypicalTasks.getTypicalProfPlan();
+        System.out.println(profPlanFromFile);
+        System.out.println(typicalTasksProfPlan);
         assertEquals(profPlanFromFile, typicalTasksProfPlan);
     }
 

@@ -287,4 +287,6 @@ public class ModelManager implements Model {
         filteredTasks.setPredicate(currentPredicate);
         return (double) doneTasks / totalTasks;
     }
+
 }
+
