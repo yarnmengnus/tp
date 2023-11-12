@@ -37,7 +37,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/Main.java) and [`MainApp`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -59,7 +59,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -69,13 +69,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-W15-1/tp/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -86,12 +86,13 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
 
+<br>
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
@@ -99,6 +100,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
+<br>
 How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `ProfPlanParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
@@ -115,7 +117,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/model/Model.java)
 
 <img src="images/UmlForModel.png" width="550" />
 
@@ -127,7 +129,8 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Task` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Task` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `ProfPlan`, which `Task` references. This allows `ProfPlan` to only require one `Tag` object per unique tag, instead of each `Task` needing their own `Tag` objects.<br>
+<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
@@ -136,13 +139,13 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
-* can save both task list data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save both tasklist data and user preference data in JSON format, and read them back into corresponding objects.
+* inherits from both `ProfPlanStorage` and `UserPrefsStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
@@ -159,11 +162,10 @@ This section describes some noteworthy details on how certain features are imple
 ## DoNext feature
 ### Actual implementation
 - The DoNext feature in ProfPlan allows users to generate a recommendation of which task to do next.
-- We compute priority/#daysToDeadline for every task, and select the task with the highest computed value as the recommendation.
-- This is because a task is recommended if it has higher priority and lower number of days left to deadline.
-- Below, we describe the implementation details for this feature through a uml class and state diagram:
+- We compute (priority) / (number of days to due date) for every task, and select the task with the highest computed value as the recommendation.
+- This is because a task is recommended if it has higher priority and lower number of days left to due date.
+- Below, we describe the implementation details for this feature through a (partial) UML class and state diagram:
 
-### UML Class Diagram
 
 [//]: # (<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">)
 
@@ -183,7 +185,7 @@ The code structure for the `DoNextCommand` is well-organized. It consists of the
 - `DoNextCommand` class: Represents the command itself.
 - `ProfPlanParser` class: Responsible for parsing user input and creating `DoNextCommand` instances.
 - `Priority` class: Represents the priority of a task (from 1 to 10).
-- `DueDate` class: Represents the deadline of a task (in dd-MM-yyyy format or '01-02-2023').
+- `DueDate` class: Represents the deadline of a task (in dd-MM-yyyy format, e.g. '01-02-2023').
 - `Task` class: Represents a task, and it contains the priority and dueDate that `DoNextCommand` processes.
 - `ModelManager` class: contains the `getDoNextTask()` function to generate recommended task.
 
@@ -241,9 +243,8 @@ To use the `DoNext` in the ProfPlan application, you can execute the following s
 
 ## Mark/Unmark feature
 ### Actual implementation
-The Mark/Unmark feature in ProfPlan allows users to mark a task as done or unmark it to indicate that it is not completed. Below, we describe the implementation details for this feature through a uml class and state diagram:
+The Mark/Unmark feature in ProfPlan allows users to set a task as done or undone respectively. Below, we describe the implementation details for this feature through a (partial) UML class diagram:
 
-### UML Class Diagram
 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
     <div style="flex: 1; margin-right: 5px;">
         <img src="images/MarkCommandClassDiagram.png" alt="MarkCommand Class Diagram" width="380">
@@ -261,7 +262,7 @@ The code structure for the `MarkCommand` is well-organized. It consists of the f
 - `MarkCommand` class: Represents the command itself.
 - `MarkCommandParser` class: Responsible for parsing user input and creating `MarkCommand` instances.
 - `Status` class: Represents the status of a task (either "done" or "undone").
-- `Task` class: Represents a task, and it contains the status that the `MarkCommand` manipulates.
+- `Task` class: Represents a task, and it contains the status that the `MarkCommand` changes.
 
 ### Class Details <a name="class-details"></a>
 ### `MarkCommand` <a name="markcommand"></a>
@@ -288,7 +289,7 @@ The code structure for the `MarkCommand` is well-organized. It consists of the f
     - `Task(Task task)`: Constructor for creating a new task as a copy of an existing task.
 
 ### Sequence Diagram <a name="sequence-diagram"></a>
-The sequence diagram provides an overview of how the `MarkCommand` is executed and interacts with other components.
+The sequence diagram below provides an overview of how the `MarkCommand` is executed and interacts with other components.
 
 ![Sequence Diagram](images/MarkCommandSequenceDiagram.png)
 
@@ -313,17 +314,17 @@ To use the `MarkCommand` in the ProfPlan application, you can execute the follow
 
 ## Filter feature
 ### Actual implementation
-The Filter feature in ProfPlan allows users to filter according to one of the following criteria:
+The Filter feature in ProfPlan allows users to filter according to one or more of the following criteria:
 - `DueDate`: displays tasks before given due date
 - `Priority`: displays tasks of given priority
 - `Status`: displays tasks of given status
+- `RecurringType`: displays tasks of given recurring type
 
-Below, we describe the implementation details for this feature through a UML class:
+Below, we describe the implementation details for this feature through a (partial )UML class diagram:
 
-### UML Class Diagram
 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
     <div style="flex: 1; margin-right: 5px;">
-        <img src="images/FilterCommandClassDiagram.png" alt="FilterCommand Class Diagram" width="500px">
+        <img src="images/FilterCommandClassDiagram.png" alt="FilterCommand Class Diagram" width="800px">
     </div>
 </div>
 
@@ -337,16 +338,18 @@ The code structure for the `FilterCommand` is well-organized. It consists of the
 - `TaskDueDatePredicate` class: Represents the DueDate predicate.
 - `TaskPriorityPredicate` class: Represents the Priority predicate.
 - `TaskStatusPredicate` class: Represents the Status predicate.
+- `TaskRecurringTypePredicate` class: Represents the RecurringType predicate
+- `CombinedPredicate` class: Represents the combination of multiple predicates
 
 ### Class Details <a name="class-details"></a>
 ### `FilterCommand` <a name="filtercommand"></a>
-- Purpose: Represents the `filter` command that allows users to filter by DueDate, Priority, or Status.
+- Purpose: Represents the `filter` command that allows users to filter by DueDate, Priority, Status, and/or RecurringType.
 - Key Methods:
     - `execute(Model model)`: Executes the `FilterCommand` by updating the filtered task list in model.
     - `equals(Object other)`: Compares two `FilterCommand` objects for equality.
     - `toString()`: Returns a string representation of the `FilterCommand`.
 
-### `FilterommandParser` <a name="filtercommandparser"></a>
+### `FilterCommandParser` <a name="filtercommandparser"></a>
 - Purpose: Parses user input to create `FilterCommand` instances.
 - Key Methods:
     - `parse(String args)`: Parses the user input using the `ArgumentMultimap` and returns a `FilterCommand` if the input is valid.
@@ -375,29 +378,45 @@ The code structure for the `FilterCommand` is well-organized. It consists of the
     - `equals(Object other)`: Compares two `TaskStatusPredicate` objects for equality.
     - `toString()`: Returns a string representation of the `TaskStatusPredicate`.
 
+### `TaskRecurringTypePredicate` <a name="taskrecurringtypepredicate"></a>
+- Purpose: Represents the RecurringType predicate. It contains a `RecurringType`, whose value is determined by the user input.
+- Key Methods:
+    - `getRecurringType()`: Returns the `RecurringType` predicate.
+    - `test(Task task)`: Returns true if given Task has the same `RecurringType` as the predicate.
+    - `equals(Object other)`: Compares two `TaskRecurringTypePredicate` objects for equality.
+    - `toString()`: Returns a string representation of the `TaskRecurringTypePredicate`.
+
+### `CombinedPredicate` <a name="combinedpredicate"></a>
+- Purpose: Represents the combination of multiple predicates. It contains an `ArrayList<Predicate<Task>>`, which contains the predicates it considers.
+- Key Methods:
+    - `test(Task task)`: Returns true if given Task fulfills all the predicates in the ArrayList of predicates.
+    - `equals(Object other)`: Compares two `CombinedPredicate` objects for equality.
+    - `toString()`: Returns a string representation of the `CombinedPredicate`.
+
 ### Usage <a name="usage"></a>
 To use the `FilterCommand` in the ProfPlan application, you can execute the following steps:
 
-1. Enter the "filter" command followed by "d/", "p/" or "s/", for DueDate, Priority and Status respectively. Then, input the value of predicate, which must follow the formats of the criteria:
+1. Enter the "filter" command followed by "d/", "p/", "s/" and/or "recur/", for DueDate, Priority, Status and RecurringType respectively. Then, input the value of predicate, which must follow the formats of the criteria:
     - DueDate: a date in the format dd-MM-yyyy
     - Priority: an Integer from 1 to 10 inclusive
     - Status: "done" or "undone
-For example, "filter d/01-01-2023" filters for tasks before and on 01-01-2023.
+    - RecurringType: "none", "daily", "weekly", "monthly", or "semesterly"
+For example, "filter d/01-01-2023 s/undone" filters for tasks before and on 01-01-2023 that are undone.
 
-2. The `FilterCommand` will filter the task list in the model according to the predicate applied.
+2. The `FilterCommand` will filter the task list in the model according to the predicate(s) applied.
 
 3. The application will provide feedback, indicating the successful filtering, and display the relevant tasks.
 
 
-## Displaying help for commands
+## Help for Commands feature
 
-The listing details mechanism is facilitated by a the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `parse()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String. For example `help` or `help delete`.
+The detail listing mechanism is facilitated by the `HelpCommandParser` class, which implements the `Parser` interface. This `HelpCommandParser` overrides the `parse()` method in `Parser` and creates either an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD` as a String. For example `help` or `help delete`.
 
-Hence, this will be facicilitated by overloading the constructor in `HelpCommand` to either create and empty `HelpCommand` or a `HelpCommand` with a `COMMAND_WORD`:
-* When an empty `HelpCommand` executes `execute()`, a`CommandResult` with `MESSAGE_USAGE` of all commands will be created.
-* When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a`CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
+Hence, this will be facilitated by overloading the constructor in `HelpCommand` to either create an empty `HelpCommand`, or a `HelpCommand` with a `COMMAND_WORD`:
+* When an empty `HelpCommand` executes `execute()`, a `CommandResult` with `MESSAGE_USAGE` of all commands will be created.
+* When a `HelpCommand` with a `COMMAND_WORD` executes `execute()`, a `CommandResult` with the `MESSAGE_DETAIL` of the `Command` specified by the `COMMAND_WORD` will be created.
 
-The following activity diagram shows how the help command works:
+The following activity diagram shows how the Help Command works:
 
 ![HelpActivityDiagram](images/HelpActivity.png)
 
@@ -407,22 +426,22 @@ The following activity diagram shows how the help command works:
 
 * **Alternative 1 (current choice): Store Command Details in each command.**
 
-  * Pros: Follows OOP.
+  * Pros: Follows OOP principles.
 
-  * Cons: Will have to propogate changes in Command Usage and Details format to all Commands individually.
+  * Cons: Changes will need to be propagated in Command Usage and Details format to all Commands individually.
 
-* **Alternative 2: Store the Details in each command.**
+* **Alternative 2: Store all Command Details in a separate class.**
 
   * Pros: Centralised area to view all Messages.
 
-  * Cons: Does not follow OOP. Future implementations that tap on these Details will take longer to implement.
+  * Cons: Does not follow OOP principles. Future implementations that tap on these Details will take longer to implement.
 
 
 ## Displaying statistics
 
 The statistics mechanism requires support from `Model`, which will provide `StatsCommand` the required statistics. Currently, this is done using a public getter `getCompletionRate()`. 
 
-When `StatsCommand` executes `execute()`, it calls this getter and returns a new `CommandResult` containing a formatted `String` with the statistics retrieved.
+When `StatsCommand` executes `execute()`, it calls this getter and returns a new `CommandResult` containing a formatted `String`, with the statistics retrieved.
 
 The following sequence diagram shows how the stats command works:
 
@@ -447,49 +466,48 @@ Here's a breakdown of the sequence:
 
   * Cons: Exposes more of Model, which may result in unintended use by developers.
 
-* **Alternative 2: Retrive a copy of the task list and calculate statistics as such.**
+* **Alternative 2: Retrieve a copy of the task list and calculate statistics as such.**
 
   * Pros: List is not mutated. All calculations of Statistics is centralised under StatsCommand.
 
-  * Cons: Does not follow OOP. Operations regarding the list should be handled by the list.
+  * Cons: Does not follow OOP principles. Operations regarding the list should be handled by the list.
 
 
-### \[Proposed\] Undo/redo feature
+## \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The proposed undo/redo mechanism is facilitated by `VersionedProfPlan`. It extends `ProfPlan` with an undo/redo history, stored internally as an `profPlanStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current task list state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous task list state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone task list state from its history.
+* `VersionedProfPlan#commit()` — Saves the current tasklist state in its history.
+* `VersionedProfPlan#undo()` — Restores the previous tasklist state from its history.
+* `VersionedProfPlan#redo()` — Restores a previously undone tasklist state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitProfPlan()`, `Model#undoProfPlan()` and `Model#redoProfPlan()` respectively.
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial task list state, and the `currentStatePointer` pointing to that single task list state.
+Step 1. The user launches the application for the first time. The `VersionedProfPlan` will be initialized with the initial task list state, and the `currentStatePointer` pointing to that single task list state.
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th task in the task list. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the task list after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted task list state.
+Step 2. The user executes `delete 5` command to delete the 5th task in the tasklist. The `delete` command calls `Model#commitProfPlan()`, causing the modified state of the task list after the `delete 5` command executes to be saved in the `profPlanStateList`, and the `currentStatePointer` is shifted to the newly inserted tasklist state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new task. The `add` command also calls `Model#commitAddressBook()`, causing another modified task list state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/Grade assignment …​` to add a new task. The `add` command also calls `Model#commitProfPlan()`, causing another modified tasklist state to be saved into the `ProfPlanStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the task list state will not be saved into the `addressBookStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitProfPlan()`, so the tasklist state will not be saved into the `profPlanStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the task was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous task list state, and restores the task list to that state.
+Step 4. The user now decides that adding the task was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoProfPlan()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous tasklist state, and restores the tasklist to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial ProfPlan state, then there are no previous ProfPlan states to restore. The `undo` command uses `Model#canUndoProfPlan()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 
 </div>
 
@@ -501,17 +519,17 @@ The following sequence diagram shows how the undo operation works:
 
 </div>
 
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the task list to that state.
+The `redo` command does the opposite — it calls `Model#redoProfPlan()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the tasklist to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest task list state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `profPlanStateList.size() - 1`, pointing to the latest tasklist state, then there are no undone ProfPlan states to restore. The `redo` command uses `Model#canRedoProfPlan()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the task list, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the tasklist, such as `list`, will usually not call `Model#commitProfPlan()`, `Model#undoProfPlan()` or `Model#redoProfPlan()`. Thus, the `profPlanStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all task list states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+Step 6. The user executes `clear`, which calls `Model#commitProfPlan()`. Since the `currentStatePointer` is not pointing at the end of the `profPlanStateList`, all tasklist states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/Grade assignment …​` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
 
@@ -519,11 +537,11 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <img src="images/CommitActivityDiagram.png" width="250" />
 
-#### Design considerations:
+### Design considerations:
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire task list.
+* **Alternative 1 (current choice):** Saves the entire tasklist.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
@@ -532,11 +550,95 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the task being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+## \[Proposed\] Task Archiving feature
+
+### Proposed Implementation
+
+The proposed task archiving function makes use of the `ArchivedProfPlan` class. It extends `ProfPlan`, storing a separate list of tasks that are archived.
+
+In addition, the `ModelManager`, which implements `Model`, has to include `ArchivedProfPlan`, in addition to `ProfPlan`, as one of its fields. 
+
+
+#### 1. Archiving tasks
+
+This is supported by the `ArchiveCommand` that extends `Command`, and implements this main operation:
+
+* `ArchiveCommand#execute(Model model)` — Archives the selected task, i.e. deleting it from ProfPlan and adding it to ArchivedProfPlan.
+
+This operation invodes a method in the `Model` interface, namely `Model#archiveTask(Task target)`.
+
+To parse the Archive Command, there is the `ArchiveCommandParser` that implements `Parser`, which supports this main operation:
+
+* `ArchiveCommandParser#parse(String args)` — Parses the user input to return an `ArchiveCommand`.
+  * Valid arguments: Integers (task index), or "all"
+
+
+The sequence diagram below shows how archiving a task works.
+
+![ArchiveSequenceDiagram](images/ArchiveSequenceDiagram.png)
+
+
+#### 2. List archived tasks
+
+This is supported by the `ListArchivesCommand` that extends `Command`, and implements this main operation:
+
+* `ListArchivesCommand#execute(Model model)` — Displays all archived tasks.
+
+This operation invodes a method in the `Model` interface, namely `Model#getArchivedTasks()`. 
+
+
+The sequence diagram below shows how displaying archived tasks works.
+
+![ListArchivesSequenceDiagram](images/ListArchivesSequenceDiagram.png)
+
+
+#### 3. Delete archived tasks
+
+This uses similar implementation as the delete function on ProfPlan, but acting on ArchivedProfPlan instead.
+
+It is supported by the `DeleteArchiveCommand` that extends `Command`, and implements this main operation:
+
+* `DeleteArchiveCommand#execute(Model model)` — Deletes the selected task from ArchivedProfPlan.
+
+This operation invodes a method in the `Model` interface, namely `Model#deleteArchive(Task target)`.
+
+To parse the DeleteArchive Command, there is the `DeleteArchiveCommandParser` that implements `Parser`, which supports this main operation:
+
+* `DeleteArchiveCommandParser#parse(String args)` — Parses the user input to return an `DeleteArchiveCommand`.
+  * Valid arguments: Integers (task index), or "all"
+
+
+#### 4. Restore archived tasks
+
+This uses similar implementation as the archive function, but reversing ProfPlan and ArchivedProfPlan.
+
+It is supported by the `RestoreArchiveCommand` that extends `Command`, and implements this main operation:
+
+* `RestoreArchiveCommand#execute(Model model)` — Restores the selected archived task, i.e. deleting it from ArchivedProfPlan and adding it to ProfPlan.
+
+This operation invodes a method in the `Model` interface, namely `Model#restoreArchiveTask(Task target)`.
+
+To parse the Archive Command, there is the `RestoreArchiveCommandParser` that implements `Parser`, which supports this main operation:
+
+* `RestoreArchiveCommandParser#parse(String args)` — Parses the user input to return an `RestoreArchiveCommand`.
+  * Valid arguments: Integers (task index), or "all"
+
+
+### Design considerations:
+
+**Aspect: How to store archived tasks:**
+
+* **Alternative 1 (current choice):** Saves archived tasks in a separate tasklist from the main ProfPlan, named ArchivedProfPlan.
+  * Pros:
+    * Better performance if many tasks are archived, and methods invoked on ProfPlan will not affect tasks in ArchivedProfPlan.
+    * Clear segregation between archived and normal tasks.
+  * Cons: Harder to implement.
+
+* **Alternative 2:** Each task have an archive flag, which indicates whether they are archived. Archived tasks are not shown in the main ProfPlan.
+  * Pros: Easier to implement as it is similar to tagging tasks.
+  * Cons: Performance issues in the main ProfPlan if many tasks are archived.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -557,9 +659,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of tasks
-* prefer to organise tasks by  and classifications
-* want to link tasks together to visualise their relationships
+* needs to manage a significant number of tasks
+* prefer to organise and classify tasks
+* want to visualise relationships between tasks
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -570,7 +672,11 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+**Priorities:**
+* High (must have) - `* * *`
+* Medium (nice to have) - `* *`
+* Low (unlikely to have) - `*`
+
 
 | Priority | As a …    | I want to …                                                 | So that I can…                          |
 |----------|-----------|-------------------------------------------------------------|-----------------------------------------|
@@ -594,7 +700,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 **MSS**
 
 1. User requests to create a new task with specified details.
-2. ProfPlan validates the input format for the task name and deadline.
+2. ProfPlan validates the input format for the given fields.
 3. ProfPlan creates the new task and adds it to the task list.
 4. ProfPlan displays a confirmation message with the updated task list.
 
@@ -602,7 +708,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
 **Extensions**
 
-* **2a.** User enters an invalid task name or deadline format.
+* **2a.** User enters a field with invalid format.
 
     * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
 
@@ -615,73 +721,40 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
       *Use case ends.*
 
 
-**Use case: Setting a task as parent of another task**
-
-Preconditions: There are at least 2 tasks in the task list.
+**Use Case: Edit a Task**
 
 **MSS**
 
-1. User [requests to list tasks]().
-2. ProfPlan shows a list of tasks.
-3. User requests to set a certain task as the parent of another task in the list.
-4. ProfPlan sets the specified relationship.
+1. User requests to edit a task.
+2. ProfPlan validates the input format for the task number and the specified field(s).
+3. ProfPlan assigns new value(s) to the specified field(s) of the task.
+4. ProfPlan displays a confirmation message with the updated task.
+
 
    Use case ends.
 
 **Extensions**
 
-* 3a. User specifies the same task twice, i.e. tries to set a task as the parent of itself.
+* 2a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-  * 3a1. ProfPlan displays an error message.
+    * 2a1. ProfPlan displays an error message to indicate invalid input.
 
-    Use case ends.
+      Use case ends.
 
-* 3b. User specifies one or more tasks outside the list indices.
+* 2b. User requests to edit a task when there are no tasks in the list.
 
-  * 3b1. ProfPlan displays an error message.
+    * 2b1. ProfPlan displays an error message to indicate that there are no tasks.
 
-   Use case ends.
+      Use case ends.
 
-* 3c. User specifies the setting of a task `a` as the parent of another task `b`, when `b` is already the parent of `a`.
+* 3a. ProfPlan encounters an internal error while updating new values.
 
-  * 3c1. ProfPlan displays an error message.
+    * 3a1. ProfPlan displays an error message to indicate edit task failed.
 
-    Use case ends.
+      Use case ends.
 
-**Use Case: Assign Priority to a Task**
 
-*Preconditions: There is at least one task in the task list.*
-
-**MSS**
-
-1. User requests to assign a priority level to a specific task.
-2. ProfPlan validates the input format for the task number and priority level.
-3. ProfPlan assigns the specified priority level to the task.
-4. ProfPlan displays a confirmation message with the updated task list, including the assigned priority.
-
-   *Use case ends.*
-
-**Extensions**
-
-* **2a.** User enters an invalid task number or priority level format.
-
-    * **2a1.** ProfPlan displays an error message and provides guidance on the correct format.
-
-      *Use case ends.*
-
-* **2b.** User specifies a task number that does not exist in the task list.
-
-    * **2b1.** ProfPlan displays an error message, indicating that the task number is invalid.
-
-      *Use case ends.*
-
-* **3a.** ProfPlan encounters an internal error while assigning the priority.
-
-    * **3a1.** ProfPlan displays an error message indicating the priority assignment failed.
-
-      *Use case ends.*
-
-**Use case: Find a task**
+**Use case: Find a Task**
 
 **MSS**
 
@@ -700,7 +773,7 @@ Preconditions: There are at least 2 tasks in the task list.
 
 **Use Case: Mark Task as Done/Undone**
 
-**Preconditions:** There are tasks in the task list.
+*Preconditions: There is at least one task in the task list.*
 
 **MSS**
 
@@ -725,9 +798,10 @@ Preconditions: There are at least 2 tasks in the task list.
 
       Use case ends.
 
+
 **Use Case: Delete Task/Delete All Tasks**
 
-**Preconditions:** There are one or more tasks in the task list.
+*Preconditions: There is at least one task in the task list.*
 
 **MSS**
 
@@ -753,13 +827,13 @@ Preconditions: There are at least 2 tasks in the task list.
       Use case ends.
 
 
-**Use Case: Filter task**
+**Use Case: Filter Tasks based on Due Date**
 
 **MSS**
 
-1. User requests to filter task based on date.
+1. User requests to filter task based on due date.
 2. ProfPlan validates the input format for the date.
-3. ProfPlan performs the filter and display tasks that fall before the specified date.
+3. ProfPlan performs the filter and display tasks that fall before and on the specified date.
 
 
    Use case ends.
@@ -775,81 +849,20 @@ Preconditions: There are at least 2 tasks in the task list.
 
 * 3a. User requests to filter tasks when there are no tasks in the list.
 
-    * 3a1. ProfPlan displays an error message to indicate that there are no tasks.
+    * 3a1. ProfPlan displays an empty list.
 
       Use case ends.
 
 * 3b. There are tasks in the list but no tasks before the specified date.
 
-    * 3b1. ProfPlan displays a message to indicate no tasks found.
+    * 3b1. ProfPlan displays an empty list.
 
       Use case ends.
 
-**Use Case: Edit task**
-
-**MSS**
-
-1. User requests to edit a task.
-2. ProfPlan validates the input format for the task number and the specified aspect(s).
-3. ProfPlan assigns new values to the specified aspects of the task.
-4. ProfPlan displays a confirmation message with the original and updated task.
-
-
-   Use case ends.
-
-**Extensions**
-
-* 2a. User specifies a task number that is outside the list indices or provides an invalid input.
-
-    * 2a1. ProfPlan displays an error message to indicate invalid input.
-
-      Use case ends.
-
-* 2b. User requests to edit a task when there are no tasks in the list.
-
-    * 2b1. ProfPlan displays an error message to indicate that there are no tasks.
-
-      Use case ends.
-
-* 3a. ProfPlan encounters an internal error while updating new values.
-
-    * 3a1. ProfPlan displays an error message to indicate edit task failed.
-
-      Use case ends.
-
-**Use Case: Categorising a Task**
-
-**Preconditions:** There are one or more tasks in the task list.
-
-**MSS**
-
-1. User requests to list tasks.
-2. ProfPlan shows a list of tasks.
-3. User requests to assign a task to a category.
-4. ProfPlan performs the categorisation as per the user's request.
-3a. User specifies a task number that is outside the list indices or provides an invalid input.
-
-    * 3a1. ProfPlan displays an error message.
-
-      Use case ends.
-
-* 3b. User requests to categorise a task when there are no tasks in the list.
-
-    * 3b1. ProfPlan displays an error message.
-
-      Use case ends.
-
-* 3c. User requests to assign a task to a category that does not exist.
-
-    * 3c1. ProfPlan creates the requested category.
-
-    * 3c2. ProfPlan performs the categorisation as per the user's request.
-
-      Use case ends.
 
 **Use Case: Attaching a link to a Task**
 
-**Preconditions:** There are one or more tasks in the task list.
+*Preconditions: There is at least one task in the task list.*
 
 **MSS**
 
@@ -870,7 +883,7 @@ Preconditions: There are at least 2 tasks in the task list.
 
       Use case ends.
 
-* 3c. User requests to attach an invalid URL to a task.
+* 3c. User requests to attach an invalid link to a task.
 
     * 3c1. ProfPlan displays an error message.
 
@@ -911,8 +924,6 @@ Preconditions: There are at least 2 tasks in the task list.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Parent**: A `parent` task is the main overarching task
-* **Child**: A `child` task a subtask of its `parent` task
 
 --------------------------------------------------------------------------------------------------------------------
 
