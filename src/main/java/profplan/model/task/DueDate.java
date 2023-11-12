@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoUnit;
 
 import profplan.commons.util.AppUtil;
 
@@ -40,9 +39,6 @@ public class DueDate implements Comparable<DueDate> {
      */
     public static boolean isValidDate(DueDate test) {
         try {
-            if (test.value.equals("No due date")) {
-                return true;
-            }
             LocalDate parsed = LocalDate.parse(test.value, dateTimeFormatter);
             if (parsed.isBefore(max) && parsed.isAfter(min)) {
                 test.parsedValue = parsed;
@@ -61,9 +57,6 @@ public class DueDate implements Comparable<DueDate> {
      */
     public static boolean isValidDate(String test) {
         try {
-            if (test.equals("No due date")) {
-                return true;
-            }
             LocalDate parsed = LocalDate.parse(test, dateTimeFormatter);
             return parsed.isBefore(max) && parsed.isAfter(min);
 
@@ -76,12 +69,6 @@ public class DueDate implements Comparable<DueDate> {
      * Checks whether the current date is before, on equals the given date
      */
     public boolean isIncludedorBefore(DueDate otherDate) {
-        if (otherDate.value.equals("No due date")) {
-            return true;
-        }
-        if (this.value.equals("No due date")) {
-            return false;
-        }
         return this.parsedValue.isBefore(otherDate.parsedValue)
             || this.parsedValue.equals(otherDate.parsedValue);
     }
@@ -90,9 +77,6 @@ public class DueDate implements Comparable<DueDate> {
      * Returns true if due date is within a week of today.
      */
     public boolean isWithinWeek() {
-        if (this.value.equals("No due date")) {
-            return false;
-        }
         LocalDate endOfWeek = LocalDate.now().plusWeeks(1);
         System.out.println(this.parsedValue);
 
@@ -104,9 +88,6 @@ public class DueDate implements Comparable<DueDate> {
      * Returns true if due date is within a month of today.
      */
     public boolean isWithinMonth() {
-        if (this.value.equals("No due date")) {
-            return false;
-        }
         LocalDate endOfMonth = LocalDate.now().plusMonths(1);
 
         return !this.parsedValue.isBefore(LocalDate.now())
@@ -115,25 +96,19 @@ public class DueDate implements Comparable<DueDate> {
 
     /**
      * Increments a DueDate by the number of days specified.
-     * @param dueDate The DueDate to increment
      * @param days The number of days to increment by. Must be between 0-31.
      * @return A new DueDate object, with the incremented value.
      */
-    public DueDate addDays(DueDate dueDate, long days) {
-        requireNonNull(dueDate);
-        LocalDate date = LocalDate.parse(value, dateTimeFormatter);
-        return new DueDate(date.plusDays(days).format(dateTimeFormatter));
+    public DueDate addDays(long days) throws IllegalArgumentException {
+        return new DueDate(parsedValue.plusDays(days).format(dateTimeFormatter));
     }
 
     /**
      * Increments a DueDate by 1 month.
-     * @param dueDate The DueDate to increment
      * @return A new DueDate object, with the incremented value.
      */
-    public DueDate addMonth(DueDate dueDate) {
-        requireNonNull(dueDate);
-        LocalDate date = LocalDate.parse(value, dateTimeFormatter);
-        return new DueDate(date.plusMonths(1).format(dateTimeFormatter));
+    public DueDate addMonth() {
+        return new DueDate(parsedValue.plusMonths(1).format(dateTimeFormatter));
     }
 
     /**
@@ -143,21 +118,6 @@ public class DueDate implements Comparable<DueDate> {
         return dateTimeFormatter;
     }
 
-    /**
-     * Returns number of days between now and due date, returns 1 if due date has passed.
-     * Used in MainWindow.java and ModelManager.java
-     */
-    public long getDaysFromNow() {
-        try {
-            LocalDate due = LocalDate.parse(this.value.toString(), dateTimeFormatter);
-            long daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), due);
-            return daysBetween < 0 ? 1 : daysBetween;
-
-        } catch (DateTimeParseException e) {
-            // Handle parsing errors
-            return -1;
-        }
-    }
 
     @Override
     public String toString() {

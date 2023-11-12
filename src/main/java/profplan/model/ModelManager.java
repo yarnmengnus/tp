@@ -142,7 +142,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void markTask(int index) {
+    public void markTask(int index) throws IllegalArgumentException {
         Task temp = profPlan.getTaskList().get(index);
         temp.setStatus(Status.DONE_STATUS);
         profPlan.setTask(profPlan.getTaskList().get(index), temp);

@@ -14,9 +14,11 @@ import profplan.model.task.DueDate;
 import profplan.model.task.Priority;
 import profplan.model.task.Status;
 import profplan.model.task.Task;
+import profplan.model.task.Task.RecurringType;
 import profplan.model.task.predicates.CombinedPredicate;
 import profplan.model.task.predicates.TaskDueDatePredicate;
 import profplan.model.task.predicates.TaskPriorityPredicate;
+import profplan.model.task.predicates.TaskRecurringTypePredicate;
 import profplan.model.task.predicates.TaskStatusPredicate;
 
 public class FilterCommandParserTest {
@@ -72,6 +74,20 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    public void parse_validRecurringType_returnsFilterCommand() {
+        ArrayList<Predicate<Task>> preds = new ArrayList<>();
+        preds.add(new TaskRecurringTypePredicate(RecurringType.DAILY));
+
+        // no leading and trailing whitespaces
+        FilterCommand expectedFilterCommand =
+                new FilterCommand(new CombinedPredicate(preds));
+        CommandParserTestUtil.assertParseSuccess(parser, " recur/daily", expectedFilterCommand);
+
+        // multiple whitespaces between keywords
+        CommandParserTestUtil.assertParseSuccess(parser, " \n recur/daily\t", expectedFilterCommand);
+    }
+
+    @Test
     public void testMessageSuccessDueDate() {
         FilterCommand filterDueDate = null;
         try {
@@ -104,6 +120,18 @@ public class FilterCommandParserTest {
             return;
         }
         String successMessageStatus = "Here are your tasks that are:\nStatus: done";
+        assertEquals(filterStatus.getSuccessMessage(), successMessageStatus);
+    }
+
+    @Test
+    public void testMessageRecurStatus() {
+        FilterCommand filterStatus = null;
+        try {
+            filterStatus = parser.parse("recur/weekly");
+        } catch (ParseException e) {
+            return;
+        }
+        String successMessageStatus = "Here are your tasks that are:\nRecurring: WEEKLY";
         assertEquals(filterStatus.getSuccessMessage(), successMessageStatus);
     }
 }

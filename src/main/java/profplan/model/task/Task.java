@@ -133,25 +133,25 @@ public class Task implements Comparable<Task> {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Status status) throws IllegalArgumentException {
         if (status == Status.DONE_STATUS && this.isRecurringTask) {
 
             switch (recurringType) {
 
             case DAILY:
-                dueDate = dueDate.addDays(dueDate, 1);
+                dueDate = dueDate.addDays(1);
                 break;
 
             case WEEKLY:
-                dueDate = dueDate.addDays(dueDate, 7);
+                dueDate = dueDate.addDays(7);
                 break;
 
             case MONTHLY:
-                dueDate = dueDate.addMonth(dueDate);
+                dueDate = dueDate.addMonth();
                 break;
 
             case SEMESTERLY:
-                dueDate = dueDate.addDays(dueDate, ModelManager.getSettings().getSemesterDays());
+                dueDate = dueDate.addDays(ModelManager.getSettings().getSemesterDays());
                 break;
 
             default:
