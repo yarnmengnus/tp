@@ -19,11 +19,11 @@ public class EditSettingsCommand extends Command {
 
     public static final String COMMAND_WORD = "set";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets the value of a specified configuration"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets the value of a specified configuration "
             + "parameter in the user config files to the input value.";
 
     public static final String MESSAGE_DETAILS = "Existing values will be overwritten by the input values.\n"
-            + "Parameters: settingField, the setting to be altered;"
+            + "Parameters: settingField, the setting to be altered; "
             + "and value, the new value to be set";
 
     public static final String MESSAGE_EXAMPLE = "Example: " + COMMAND_WORD + " semesterDays "

@@ -9,10 +9,12 @@ skinparam classBackgroundColor BACKGROUND_COLOR
 Package Model as ModelPackage <<Rectangle>> {
     Class "<<interface>>\nReadOnlyProfPlan" as ReadOnlyProfPlan
     Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
+    Class "<<interface>>\nReadOnlyUserConfigs" as ReadOnlyUserConfigs
     Class "<<interface>>\nModel" as Model
     Class ProfPlan
     Class ModelManager
     Class UserPrefs
+    Class UserConfigs
 
     Class UniqueTaskList
     Class Task {
@@ -39,9 +41,11 @@ Package Model as ModelPackage <<Rectangle>> {
 ReadOnlyProfPlan <|.. ProfPlan
 Model <|.. ModelManager
 ReadOnlyUserPrefs <|.. UserPrefs
+ReadOnlyUserConfigs <|.. UserConfigs
 
 ModelManager -left-> "1" ProfPlan
 ModelManager -right-> "1" UserPrefs
+ModelManager -right-> "1" UserConfigs
 ModelManager --> "~* filtered" Task
 
 ProfPlan *--> "1" UniqueTaskList

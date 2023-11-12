@@ -889,6 +889,25 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
       Use case ends.
 
+**Use Case: Changing a setting**
+
+**MSS**
+
+1. User requests to update a setting with a new value.
+2. ProfPlan updates the specified setting with the provided value.
+
+   Use case ends.
+
+**Extensions:**
+
+* 1a. User specifies a nonexistent setting, or an invalid value.
+
+  * 1a1. ProfPlan displays an error message.
+
+    Use case ends.
+
+
+
 
 ### Non-Functional Requirements
 #### Performance
