@@ -180,16 +180,18 @@ public class ModelManager implements Model {
 
     @Override
     public void sortTaskByDueDate() {
-        if (profPlan.getTaskList().size() == 0) {
-            throw new UnsupportedOperationException("Can not sort an empty task list.");
+        if (this.filteredTasks.isEmpty()) {
+            throw new UnsupportedOperationException("Can not sort since there are no tasks "
+                + "displayed currently in the UI");
         }
         profPlan.getTaskList().sort(Comparator.comparing(Task::getDueDate));
     }
 
     @Override
     public void sortTaskByPriority() {
-        if (profPlan.getTaskList().size() == 0) {
-            throw new UnsupportedOperationException("Can not sort an empty task list.");
+        if (this.filteredTasks.isEmpty()) {
+            throw new UnsupportedOperationException("Can not sort since there are no tasks "
+                + "displayed currently in the UI");
         }
         profPlan.getTaskList().sort(Comparator.comparing(Task::getPriority));
     }
