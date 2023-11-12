@@ -68,9 +68,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Saving the data](#saving-the-data)
   1. [Exiting the program : exit](#exiting-the-program--exit)
 - [Task Management Features](#task-management-features)
-
   1. [Parameters](#parameters)
-
      1. [Description](#description)
      1. [Priority](#priority)
      1. [Status](#status)
@@ -78,7 +76,6 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
      1. [Tags](#tags)
      1. [Link](#link)
      1. [Recurrence](#recurrence)
-
   1. [Management Commands](#management-commands)
      1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
      1. [Filter tasks : filter](#filter-tasks--filter)
