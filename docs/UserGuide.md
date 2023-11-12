@@ -95,6 +95,8 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Create A Recurring task](#create-a-recurring-task)
   1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
+- [FAQ](#faq)
+- [Known Issues](#known-issues)
 - [Supported flags](#supported-flags)
 - [Command summary](#command-summary)
 - [Supported Setting Parameters](#supported-setting-parameters)
