@@ -1,3 +1,8 @@
+---
+layout: page
+title: Raman's Project Portfolio Page
+---
+
 # Project Portfolio Page (PPP) - Raman Gupta
 
 ## Overview
@@ -17,20 +22,10 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Designed the taskCard UI component.
 - Added Product UI changes and enhanced design.
 
-### Contributions to the User Guide
-- Developed the UI Mockups for all team members to adapt to their features.
-- Created the "Adding a Task" section of the User Guide.
-- Created the "Assigning Priority to a Task" feature of the User Guide.
-- Created the "Generating Task Recommendation" feature of the User Guide.
-- Created the "Urgency-Priority Matrix" feature of the User Guide.
-- Created the "Command List" part of the UG for PE-Dry Run testing.
-
-### Contributions to the Developer Guide
-- [Specify which sections of the Developer Guide you contributed to. Mention any UML diagrams you added/updated.]
-
 ### Contributions to team-based tasks
 - Set up all meetings and independently led discussion on approach & implementation.
 - Responsible for merging almost ALL the PRs to the master branch.
+- Resolved merged conflicts for almost ALL PRs.
 - Tested all release versions before wrapping up milestones.
 - Released v1.1, v1.2, v1.3.Trial and v1.3.
 - Fixed severe bugs in v1.2, v1.3.Trial and v1.3 before release.
@@ -45,19 +40,49 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Morphed add-person to add-task, contributing to morphing of addressbook.
 - Updated the index.md page.
 - Redesigned the UI Color Scheme.
+- Led the fight against bugs, divided bugs according to scope/severity and assigned accordingly.
+- Fixed 4 severe functionality bugs that were discovered during the PE-Dry Run.
+- Tested extensively, found new bugs in teammates' functionalities.
 
+## Contributions to the Developer Guide
+- Updated the Delete command section of the Developer Guide
+- Added the DoNext Command feature section the Developer Guide.
+- Added the DoNext Command Sequence Diagram depicting the logical flow.
+- Added use cases for the do_next command.
+- Added Manual Testing instructions for do_next command.
+- Added Manual Testing instructions for priority feature.
+- Ideated the 'Recommend next task' Planned Enhancement.
+
+
+## Contributions to the User Guide
+- Developed the UI Mockups for all team members to adapt to their features.
+- Created the "Command List" part of the UG for PE-Dry Run testing.
+- Created the core presentation format for each command in UG Draft.
+- Created the index, outline and structure plan for the UG.
+- Wrote the 'Overview', 'What It Does', 'Target Users', 'What can ProfPlan do for you?' sections.
+- Designed graphic for the 'Team Behind ProfPlan' section.
+- Created the "Adding a Task" section of the User Guide.
+- Created the "Assigning Priority to a Task" feature of the User Guide.
+- Wrote the 'Recommend next task' and 'Urgency-Importance Matrix' sections under 'Advanced Features'.
+- Produced expected outputs for failure and success for ALL commands and features. Responsible for ensuring consistency with latest working version.
+- Designed the logo, produced the screenshots in the UG.
 
 ### Review/mentoring contributions
-- [Provide links to Pull Requests (PRs) you reviewed or instances of helping team members.]
+- Merged almost 100 PRs to the master branch of the team project.
+- Effectively 'officially' reviewed 25 PRs.
+- Helped fix bugs and resolve merge conflicts for all team members.
+- Fixed severe command and date bugs of team members.
+- Helped guide implementation and approach for certain issues, such as dueDate and link.
+- Helped members resolve errors and style fails to enable quick merging.
 
 ### Contributions beyond the project team
 - Evidence of helping others
-    - [Share evidence of how you helped others, such as responses in the forum or bugs reported in other team's products.]
+    - Helped resolve someone's task file saving error in the iP. (https://github.com/nus-cs2103-AY2324S1/forum/issues/32#issuecomment-1705649996)
+    - Contributed constructively with a thorough post of decoupling the Storage class, analyzing trade-offs in effort. (https://github.com/nus-cs2103-AY2324S1/forum/issues/30#issuecomment-1705655827)
+    - Offered suggestion on how to make up for missed commit in iP. (https://github.com/nus-cs2103-AY2324S1/forum/issues/74#issuecomment-1705651700)
+    - Shared my iP UI screenshots among peers, gave feedback to other UIs. (https://github.com/nus-cs2103-AY2324S1/forum/issues/101#issuecomment-1729970744)
 - Evidence of technical leadership
-    - [Provide examples of sharing useful information in the forum or other leadership activities.]
-
-## Contributions to the Developer Guide (Extracts)
-- [Reproduce the parts in the Developer Guide that you wrote or contributed to. Alternatively, show the diagrams you contributed.]
-
-## Contributions to the User Guide (Extracts)
-- [Reproduce the parts in the User Guide that you wrote or contributed to.]
+    - Contributed constructively with a thorough post of decoupling the Storage class, analyzing trade-offs in effort. (https://github.com/nus-cs2103-AY2324S1/forum/issues/30#issuecomment-1705655827)
+    - Asked insightful question about scoping restrictions for different versions. (https://github.com/nus-cs2103-AY2324S1/forum/issues/281#issuecomment-1791745304)
+    - Shared my candid and honest feedback about the course website with Prof. Damith.
+    - Successfully reported 6 comprehensive and detailed true bugs in another team's project. (https://github.com/eyelessrhyme7/ped/issues)

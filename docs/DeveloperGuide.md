@@ -167,17 +167,6 @@ This section describes some noteworthy details on how certain features are imple
 - Below, we describe the implementation details for this feature through a (partial) UML class and state diagram:
 
 
-[//]: # (<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">)
-
-[//]: # (    <div style="flex: 1; margin-right: 5px;">)
-
-[//]: # (        <img src="images/DoNextCommandClassDiagram.png" alt="DoNextCommand Class Diagram" width="380">)
-
-[//]: # (    </div>)
-
-[//]: # (</div>)
-
-
 The `DoNextCommand` is a part of the ProfPlan application, a task management tool. It allows users to generate next task recommendation. It is one of the standout features of ProfPlan, as it generates smart recommendations for professors.
 
 ### Code Structure
@@ -785,7 +774,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
 * 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 3a1. ProfPlan displays an error message.
+    * 3a1. ProfPlan displays an error message: 'Task not found please enter a valid Task Number.'
 
       Use case ends.
 
@@ -885,6 +874,39 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
     * 3c1. ProfPlan displays an error message.
 
       Use case ends.
+
+**Use Case: Generating a Task Recommendation with `do_next` Command**
+
+*Preconditions: The app is launched and at least one task in task list.*
+
+**MSS**
+
+1. User requests a task recommendation using the `do_next` command.
+2. The system analyzes the task list based on proximity to the deadline and priority.
+3. ProfPlan recommends the most important task to the user.
+
+  - 3a. If there are multiple tasks with the same priority, ProfPlan selects the one closest to the deadline.
+
+    Use case ends.
+
+  - 3b. If no tasks are present in the list.
+
+    - 3b1. ProfPlan displays a message: "No more tasks to do. Skies are clear ahead :)"
+
+    Use case ends.
+
+  - 3c. If the user executes `delete all` and then uses the `do_next` command.
+
+    - 3c1. No tasks are present. ProfPlan displays a message: "No more tasks to do. Skies are clear ahead :)"
+
+    Use case ends.
+
+  - 3d. If the user inputs incorrect `do_next` commands (e.g., `doNext`, `do_next x`, `...`)
+
+    - 3d1. ProfPlan responds with: "Unknown Command"
+
+      Use case ends.
+
 
 **Use Case: Changing a setting**
 
@@ -1123,6 +1145,33 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect commands to try: `listweek`, `list month`<br>
       Expected: Error details is shown in the status message.
 
+### Generate Recommendation for next task to do
+
+1. Generating a task using `do_next` command
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `do_next`<br>
+      Expected: Most Important `Task`, based on proximity to deadline, as well as higher priority is selected to be recommended.
+   1. Test case: `delete all` then `do_next`<br>
+      Expected: No `Task` is present. `No more tasks to do Prof! Skies are clear ahead :)` message is displayed
+
+   1. Other incorrect do_next commands to try: `doNext`, `do_next x`, `...` (where x is any character)<br>
+      Expected: `Unknown Command`
+
+### Editing priority of a task
+
+1. Editing task priority using the `edit` command
+
+  1. Prerequisites: Launch the app.
+
+  1. Test case: `edit 1 p/8`<br>
+     Expected: First `Task` priority is changed to 8.
+  1. Test case: `edit 1 p/12`<br>
+     Expected: `Priority should only contain numbers between 1-10` feedback message is displayed
+
+  1. Other incorrect priority commands to try: `edit 1 p/0`, `edit 1 p/-4`, `edit 1 p/d`<br>
+     Expected: `Priority should only contain numbers between 1-10`
 
 ### Filtering for tasks
 

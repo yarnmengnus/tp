@@ -106,12 +106,6 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
 
 Your central interaction with ProfPlan is through the creation and management of Tasks.
 
----
-
-## What can ProfPlan do for you?
-
-Your central interaction with ProfPlan is through the creation and management of Tasks.
-
 :question: So, what is a Task in ProfPlan?
 
 A Task contains all the information relevant to a piece of work that needs to be done. This work could be anything: academia-related, like research projects and papers, teaching-related, like grading and lecturing, or even personal tasks, like a daily brew of coffee.
@@ -135,12 +129,23 @@ These are the various attributes of a Task:
 
 Just like on a checklist, Tasks can be [marked](#mark-task-as-doneundone--mark--unmark) as done or undone, or you can create associations between tasks by [setting](#set-other-tasks-as-parent--set) a Task as a parent of another. To better navigate your Task list, you may also [filter](#filter-tasks--filter) or [search](#locating-tasks-by-name-find) for Tasks.
 
+
+---
+
+## What can ProfPlan do for you?
+
 :question: What really makes ProfPlan standout?
 This is but the tip of the iceberg of the things you can do working with ProfPlan.
 
-ProfPlan allows you to create recurring tasks with frequency of a day, week or month. With automatically shifting deadlines, you never have to spend time setting up repetitive tasks again.
+**User-Friendly Interface:** Tired of memorizing steps and commands? Fret not, with our specialized `help` functionality, simply type `help` and the command name, and instantly get guided on its usage and format.
 
-Puzzled about which task to do next? Worry not, ProfPlan has you covered.
+**Recurring Tasks:** ProfPlan allows you to create recurring tasks with frequency of a day, week or month. With automatically shifting deadlines, you never have to spend time setting up repetitive tasks again.
+
+**Task Recommendations:** Puzzled about which task to do next? Worry not, ProfPlan has you covered. Using urgency (proximity to deadline) and priority (task importance set by you), ProfPlan generates a smart recommendation of which task to do next.
+
+**Smart Analysis and Filters** Having trouble sorting through and filering through the right lists of tasks? Use our seamless sort and filter features and find just the right sub-list of tasks to tackle at a time!
+
+**Urgency-Priority Matrix Visualization:** Need a 2D Interactive visualization of all your tasks? Look no further, here comes the dynamic urgency-priority matrix of profplan, a novel feature to help you gain a birdseye view of all your tasks!
 
 To explore more, visit [this section](#advanced-features) for more advanced tips.
 
@@ -495,6 +500,8 @@ When you mark a task as undone, you'll receive the following confirmation messag
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
 
+![markCommandExample](images/markCommandAVD.png)
+
 **Precise Expected Outputs when the command fails:** <br>
 If you provide an invalid task number (e.g., a task number that does not exist in your task list),
 you will receive the following error message: (both for mark and unmark command)
@@ -623,6 +630,8 @@ Here is the next task you need to do Prof:
 Grade assignments, Priority: 10, DueDate: 02-11-2023
 ```
 
+![do_nextCommand](images/donextADV.png)
+
 ### Visualise important and urgent tasks :
 
 Sometimes, we might have 20, 30, 40 or more tasks in our lists!
@@ -648,15 +657,22 @@ Tasks with unassigned recurrence will not recur.<br>
 
 
 ### Sort Tasks based on Priority :
-ProfPlan arranges your tasks in decreasing order of priority. It's like a wizard's duel, with the mightiest spells taking the center stage. The high-priority tasks take their rightful place at the top of the list, ready to be conquered. <br>
+
+
+Struggling to decide which task to tackle first in your busy schedule? Our 'Sort by Priority' feature simplifies this by neatly organizing your tasks in order of importance. The most critical tasks rise to the top, allowing you to address the most urgent matters first and efficiently manage your workload
+
 **Valid Format:** `sort_priority` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on priority!` <br>
 
+![sortPriority](images/sortADV.png)
+
 **Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 ### Sort Tasks based on DueDate:
-TaskMagic weaves its duedate magic. It sorts your tasks by nearest due date. This means the tasks with the nearest due dates are revealed like shining stars, beckoning you to attend to them next. <br>
+
+Overwhelmed by deadlines? The 'Sort by Due Date' function brings clarity to your schedule. It arranges your tasks starting with those that have the nearest deadlines. This ensures you never miss an important date and can methodically work through your tasks in a timely manner.
+
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest due date!` <br>
