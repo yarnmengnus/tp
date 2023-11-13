@@ -30,6 +30,8 @@ We believe that no Computer Science (CS) professor should have to wrestle and wr
 
 ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
 
+<div style="page-break-after: always;"></div>
+
 ## What It Does
 
 ProfPlan can help you manage tasks seamlessly. Create, edit, delete tasks with ease. Our specialised tasks help you assign priorities, deadlines, status and much more to enhance your task management experience.
@@ -45,6 +47,7 @@ This product is specifically designed for **CS professors** who prefer **CLI** o
 ![TeamProfPlan](images/TeamProfPlan.png)
 Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with us, leave feedback, and more!
 
+<div style="page-break-after: always;"></div>
 ---
 
 ## Contents
@@ -101,6 +104,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
 - [Contact Us for Feedback & More](#contact-us-for-feedback--more)
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## A Task in ProfPlan
 
@@ -131,6 +135,7 @@ Just like on a checklist, Tasks can be [marked](#mark-task-as-doneundone--mark--
 
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## What can ProfPlan do for you?
 
@@ -150,6 +155,7 @@ This is but the tip of the iceberg of the things you can do working with ProfPla
 To explore more, visit [this section](#advanced-features) for more advanced tips.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -171,6 +177,7 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 1. Refer to the [Features](#basic-features) below for details of each command.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## Before you start
 
@@ -185,6 +192,8 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines, as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 </div>
+
+<div style="page-break-after: always;"></div>
 
 ## Basic Features
 
@@ -414,6 +423,8 @@ Exits the program. <br>
 
 **Command Format:** `exit`
 
+<div style="page-break-after: always;"></div>
+
 ## Task Management Features
 
 Recommended features for you to get more out of ProfPlan
@@ -614,6 +625,7 @@ Parameters: d/[dueDate] p/[priority] recur/[recur] s/[status]
 Example: filter d/01-01-2024 s/done
 ```
 
+<div style="page-break-after: always;"></div>
 
 ## Advanced Features
 
@@ -663,7 +675,7 @@ Struggling to decide which task to tackle first in your busy schedule? Our 'Sort
 
 **Valid Format:** `sort_priority` <br>
 **Expected Output:**
-` Here is your task list Prof, sorted based on priority!` <br>
+` Here is your task list Prof, sorted based on priority` <br>
 
 ![sortPriority](images/sortADV.png)
 
@@ -675,7 +687,7 @@ Overwhelmed by deadlines? The 'Sort by Due Date' function brings clarity to your
 
 **Valid Format:** `sort_duedate` <br>
 **Expected Output:**
-` Here is your task list Prof, sorted based on nearest due date!` <br>
+` Here is your task list Prof, sorted based on nearest due date.` <br>
 
 **Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
@@ -694,6 +706,7 @@ Completion Rate: 38.5%
 ```
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -702,6 +715,7 @@ Completion Rate: 38.5%
 contains the data in the previous ProfPlan home folder.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## Known issues
 
@@ -709,6 +723,7 @@ contains the data in the previous ProfPlan home folder.
 1. **When scrolling through Urgency-Priority Matrix**, if you scroll too quickly, the cells take some time to render and display the tasks.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## Supported flags
 
@@ -722,7 +737,9 @@ contains the data in the previous ProfPlan home folder.
 | Recur (not editable)                    |       recur/        | The recurring type of the task |
 | Description (not editable through `edit`) |        des/         |    The description of the task |
 
+
 ## Command summary
+
 
 | **Action**        | **Format, Examples**                                                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
