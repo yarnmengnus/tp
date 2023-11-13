@@ -19,6 +19,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Developed sort_priority command, to sort the tasks based on decreasing order of the priority.
 - Developed sort_duedate command, to sort the tasks based on nearest duedate.
 - Co-developed the Urgency-Priority Matrix functionality, Focussed on frontend while also implemented the algorithm at the backend.
+- Added test cases for extensive testing and for improving code-coverage.
 - Helped in choosing the colour scheme for the UI.
 
 
@@ -65,7 +66,9 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Contributed to morphing of addressbook to profplan.
 - Morphed add-person to add-task, contributing to morphing of addressbook.
 - Helped in giving inputs regarding the UI Color Scheme.
+- Tested the product extensively.
 - Gave constant updates regarding the project flow and timeline on the telegram group of our team.
+
 
 
 ### Review/mentoring contributions
