@@ -252,7 +252,7 @@ public class ModelManager implements Model {
     }
 
     // Helper method to calculate the number of days left to the due date
-    private double getDaysUntilDueDate(DueDate dueDate, String curDate) {
+    public double getDaysUntilDueDate(DueDate dueDate, String curDate) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
             Date dueDateDate = dateFormat.parse(dueDate.toString());

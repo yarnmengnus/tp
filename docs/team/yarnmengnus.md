@@ -8,7 +8,7 @@ title: Yarn Meng's Project Portfolio Page
 ProfPlan is a CLI-based task management tool tailored to university professors, offering features like task prioritization, categorization, research tracking, and team coordination to enhance productivity and organization in academia.
 
 ## Contributions
-### Code contributed
+**Code contributed**
 **[Link to my code on tP Code Dashboard](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=yarnmengnus&breakdown=false)**.
 
 ### 1. Features implemented
@@ -22,6 +22,8 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
   * What it does: Shows the users statistics about their tasks.
   * Justification: This feature allows users to view a high-level summary of their tasks, providing motivation for them to complete them.
   * Credits: Code written for this feature is original.
+
+<div style="page-break-after: always;"></div>
 
 * **New Feature**: Added significant capabilities to the `help` command [#127](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/127)
   * What it does:

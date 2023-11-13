@@ -13,6 +13,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import profplan.commons.core.GuiSettings;
+import profplan.model.task.DueDate;
 import profplan.model.task.predicates.NameContainsKeywordsPredicate;
 import profplan.testutil.Assert;
 import profplan.testutil.ProfPlanBuilder;
@@ -91,6 +92,27 @@ public class ModelManagerTest {
     @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getDaysUntilDueDateTest_validDate() {
+        double difference = modelManager.getDaysUntilDueDate(new DueDate("05-02-2024"), "03-02-2024");
+        assertEquals(difference, 2);
+        // Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getDaysUntilDueDateTest_pastDueDate() {
+        double difference = modelManager.getDaysUntilDueDate(new DueDate("01-02-2024"), "03-02-2024");
+        assertEquals(difference, 0.1);
+        // Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getDaysUntilDueDateTest_sameDate() {
+        double difference = modelManager.getDaysUntilDueDate(new DueDate("01-02-2024"), "01-02-2024");
+        assertEquals(difference, 0.1);
+        // Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
 
     @Test
