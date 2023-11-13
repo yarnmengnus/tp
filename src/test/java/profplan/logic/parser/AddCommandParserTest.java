@@ -24,8 +24,7 @@ public class AddCommandParserTest {
         // whitespace only preamble
         CommandParserTestUtil.assertParseSuccess(parser, CommandTestUtil.PREAMBLE_WHITESPACE
                 + CommandTestUtil.NAME_DESC_BOB + CommandTestUtil.PRIORITY_DESC_BOB + CommandTestUtil.DUEDATE_DESC
-                + CommandTestUtil.TAG_DESC_FRIEND
-                + CommandTestUtil.DESCRIPTION_DESC_BOB, new AddCommand(expectedTask));
+                + CommandTestUtil.TAG_DESC_FRIEND, new AddCommand(expectedTask));
 
 
         // multiple tags - all accepted
@@ -93,8 +92,7 @@ public class AddCommandParserTest {
         Task expectedTask = new TaskBuilder(TypicalTasks.AMY).withTags().build();
         CommandParserTestUtil.assertParseSuccess(parser,
                 CommandTestUtil.NAME_DESC_AMY + CommandTestUtil.PRIORITY_DESC_AMY
-                        + CommandTestUtil.DUEDATE_DESC
-                        + CommandTestUtil.DESCRIPTION_DESC_AMY,
+                        + CommandTestUtil.DUEDATE_DESC,
                 new AddCommand(expectedTask));
     }
 
