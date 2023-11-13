@@ -988,6 +988,9 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
+
+
+
 ### Launch and shutdown
 
 1. Initial launch
@@ -1025,3 +1028,18 @@ testers are expected to do more *exploratory* testing.
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
+### Getting help
+1. Showing the list and usage of all command
+    1. Test case: `help`<br>
+    Expected: Show a list of all the command words and the usage for each command.
+1. Showing more detailed usage about a particular command
+    1. Test case: `help add`<br>
+    Expected: Shows the description, parameters and an example of a proper use of the `add` command. No change to the list occurs.
+
+    1. Test case: `help sort_duedate`<br>
+    Expected: Shows the description of the `sort_duedate` command. No change to the list occurs.
+
+### Showing stats
+1. Showing statistics of the whole list
+    1. Test case: `stats`<br>
+    Expected: Shows the completion rate of all tasks in the task list, regardless of filter. 
