@@ -24,7 +24,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
   * Credits: Code written for this feature is original.
 
 * **New Feature**: Added significant capabilities to the `help` command [#127](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/127)
-  * What it does: 
+  * What it does:
     1. Lists all commands and their usage when no arguments supplied
     1. Shows more details description and usage of commands when a command is supplied as an argument
   * Justification: This feature guides new users to better navigate ProfPlan, instead of diverting users to the user guide. This saves much time for users.
@@ -32,18 +32,18 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 
 
 * **Project management**:
-  * Responsible for uniformity of the User Guide. 
+  * Responsible for uniformity of the User Guide.
   * Contributed to team code reviews while merging ALL PRs.
   * Tested release versions for bugs.
   * Set up physical meetings for code reviews.
-  * Assisted in scoping of features in each release. 
+  * Assisted in scoping of features in each release.
   * Contributed to milestone and issue categorisation and management.
 
 ### 2. Documentation
 **User Guide**
   * Added documentation for the `help` and `stats` feature [#114](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/114)
   * Added docutmentation for the Link parameter.
-  * Fixed link functionality 
+  * Fixed link functionality
   * Fixed visual bugs in the User Guide.
   * In charge of the final formatting and cleaning up.
 
@@ -52,7 +52,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
   * Added detailed documentation for the `stats` command, including an UML sequence diagram. [#234](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/234)
   * Added Use Case for `help`, `stats` and `link` commands. [#63](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/63)
 
-### Other contributions 
+### Other contributions
 * **Community**:
   * Reviewed most PRs from teammates
 
