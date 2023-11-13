@@ -37,7 +37,7 @@ Listed below are my contributions to the project, with the relevant pull request
     modify the values in this file, and any command must be able to read these settings. Careful thought had to be
     given to the structure and design of this system to reduce dependencies across the codebase.
   * Credits: The design of the `UserConfigs` system is similar to AB3's `UserPrefs` in the interest of consistency.
-    However, `UserConfigs` and its related classes are independent of the existing systems, and all such code 
+    However, `UserConfigs` and its related classes are independent of the existing systems, and all such code
     written is otherwise original.
   * Note: The `set` feature initially implemented (pre-v1.3) is a different feature from the current `set` feature,
     and it has since been removed. As I was responsible for both of these features, past pull requests may mention
