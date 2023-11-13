@@ -48,7 +48,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/eyelessrhyme7.png" width="200px">
 
 [[github](http://github.com/eyelessrhyme7)]
-[[portfolio](team/newway1814.md)]
+[[portfolio](team/eyelessrhyme7.md)]
 
 * Role: Developer
 
