@@ -6,19 +6,21 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Acknowledgements**
 
 * This project is built on top of the codebase of [AddressBook Level-3 (AB3)](https://github.com/se-edu/addressbook-level3).
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
-
+<div style="page-break-after: always;"></div>
 
 ## **Design**
 
@@ -26,6 +28,8 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document `docs/diagrams` folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 ### Architecture
 
@@ -67,6 +71,8 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
+<div style="page-break-after: always;"></div>
+
 ### UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/ui/Ui.java)
@@ -83,6 +89,8 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Task` object residing in the `Model`.
+
+<div style="page-break-after: always;"></div>
 
 ### Logic component
 
@@ -116,6 +124,8 @@ How the parsing works:
 * When called upon to parse a user command, the `ProfPlanParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `ProfPlanParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+<div style="page-break-after: always;"></div>
+
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/model/Model.java)
 
@@ -137,6 +147,8 @@ The `Model` component,
 </div>
 
 
+<div style="page-break-after: always;"></div>
+
 ### Storage component
 
 **API** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-W15-1/tp/blob/master/src/main/java/profplan/storage/Storage.java)
@@ -148,11 +160,14 @@ The `Storage` component,
 * inherits from both `ProfPlanStorage` and `UserPrefsStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
+<div style="page-break-after: always;"></div>
+
 ### Common classes
 
 Classes used by multiple components are in the `profplan.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 
@@ -229,6 +244,7 @@ To use the `DoNext` in the ProfPlan application, you can execute the following s
 
 3. The application will provide feedback, and output the task generated in the message window.
 
+<div style="page-break-after: always;"></div>
 
 ## Mark feature
 ### Actual implementation
@@ -297,6 +313,7 @@ To use the `MarkCommand` in the ProfPlan application, you can execute the follow
 
 3. The application will provide feedback, indicating the successful marking of the task as done.
 
+<div style="page-break-after: always;"></div>
 
 ## Filter feature
 ### Actual implementation
@@ -393,6 +410,7 @@ For example, "filter d/01-01-2023 s/undone" filters for tasks before and on 01-0
 
 3. The application will provide feedback, indicating the successful filtering, and display the relevant tasks.
 
+<div style="page-break-after: always;"></div>
 
 ## Help for Commands feature
 
@@ -422,6 +440,7 @@ The following activity diagram shows how the Help Command works:
 
   * Cons: Does not follow OOP principles. Future implementations that tap on these Details will take longer to implement.
 
+<div style="page-break-after: always;"></div>
 
 ## Displaying statistics
 
@@ -458,6 +477,7 @@ Here's a breakdown of the sequence:
 
   * Cons: Does not follow OOP principles. Operations regarding the list should be handled by the list.
 
+<div style="page-break-after: always;"></div>
 
 ## \[Proposed\] Undo/redo feature
 
@@ -536,7 +556,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Will use less memory (e.g. for `delete`, just save the task being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
-
+<div style="page-break-after: always;"></div>
 
 ## \[Proposed\] Task Archiving feature
 
@@ -628,6 +648,7 @@ To parse the Archive Command, there is the `RestoreArchiveCommandParser` that im
 
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -638,6 +659,7 @@ To parse the Archive Command, there is the `RestoreArchiveCommandParser` that im
 * [DevOps guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Requirements**
 
@@ -655,6 +677,7 @@ To parse the Archive Command, there is the `RestoreArchiveCommandParser` that im
 
 **Value proposition**: Professors often need to plan and organise their course modules, including lecture materials, and research. ProfPlan can help them create and manage their academic tasks seamlessly through the CLI, which is optimised and helps in faster task management. It is tailored to professors’ requirements and task categories, helping them prioritise.
 
+<div style="page-break-after: always;"></div>
 
 ### User stories
 
@@ -675,6 +698,9 @@ To parse the Archive Command, there is the `RestoreArchiveCommandParser` that im
 | `* *`    | professor | search for tasks                                            | find the task I want to work on quickly |
 | `*`      | professor | attach reference materials (filepath) or links to each task | access reference material easily        |
 | `*`      | professor | create subtasks within the task list                        | have better organisation                |
+
+
+<div style="page-break-after: always;"></div>
 
 ### Use cases
 
@@ -774,7 +800,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
 * 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 3a1. ProfPlan displays an error message: 'Task not found please enter a valid Task Number.'
+    * 3a1. ProfPlan displays an error message.
 
       Use case ends.
 
@@ -891,19 +917,19 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
   - 3b. If no tasks are present in the list.
 
-    - 3b1. ProfPlan displays a message: "No more tasks to do. Skies are clear ahead :)"
+    - 3b1. ProfPlan displays a completion message.
 
     Use case ends.
 
   - 3c. If the user executes `delete all` and then uses the `do_next` command.
 
-    - 3c1. No tasks are present. ProfPlan displays a message: "No more tasks to do. Skies are clear ahead :)"
+    - 3c1. No tasks are present. ProfPlan displays a completion message.
 
     Use case ends.
 
   - 3d. If the user inputs incorrect `do_next` commands (e.g., `doNext`, `do_next x`, `...`)
 
-    - 3d1. ProfPlan responds with: "Unknown Command"
+    - 3d1. ProfPlan displays an error message.
 
       Use case ends.
 
@@ -962,7 +988,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
     Use case ends.
 
 
-
+<div style="page-break-after: always;"></div>
 
 ### Non-Functional Requirements
 #### Performance
@@ -995,11 +1021,15 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
 *{More to be added}*
 
+<div style="page-break-after: always;"></div>
+
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Instructions for manual testing**
 
@@ -1009,9 +1039,6 @@ Given below are instructions to test the app manually.
 testers are expected to do more *exploratory* testing.
 
 </div>
-
-
-
 
 ### Launch and shutdown
 
@@ -1035,7 +1062,6 @@ testers are expected to do more *exploratory* testing.
       `java -jar ProfPlan.jar`
 
       Expected: The most recent window size and location is retained.
-
 
 ### Adding a task
 
@@ -1189,7 +1215,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `filter d/01-01-2024 p/1 s/undone recur/weekly`<br>
       Expected: All undone tasks that are due before or on 01-01-2024, of priority 1, and recurring weekly is displayed. Details of filter criteria is shown in the status message.
 
-   1. Other incorrect fitler commands to try: `filter d/`, `filter p/0`, `filter s/done s/undone`, `filter recur/weekly s/`<br>
+   1. Other incorrect filter commands to try: `filter d/`, `filter p/0`, `filter s/done s/undone`, `filter recur/weekly s/`<br>
       Expected: Error details is shown in the status message.
 
 
@@ -1249,7 +1275,7 @@ Note: The data file refer to the /data/profplan.json file.
     - Open the data file, and type in a string of random characters.
       Expected: ProfPlan will delete the current data file and create a new one, starting from an empty task list.
 
-
+<div style="page-break-after: always;"></div>
 
 ## Appendix: Effort
 
@@ -1288,6 +1314,7 @@ Despite the challenges, our team successfully delivered a fully functional and u
 
 In summary, the development of ProfPlan was a challenging yet rewarding endeavor. The application's success stands as a testament to our team's dedication in software development.
 
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Planned Enhancements**
 
