@@ -326,7 +326,7 @@ All Tasks Deleted Successfully Prof!
 the following message will be printed)
 
 ```
-The task index provided is invalid.
+The task index provided is invalid
 ```
 
 **Precise Expected Outputs when the command fails: (for delete all command)** <br>
