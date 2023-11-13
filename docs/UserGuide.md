@@ -77,7 +77,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
      1. [Link](#link)
      1. [Recurrence](#recurrence)
   1. [Management Commands](#management-commands)
-     1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
+     1. [Mark task as done/undone : mark / unmark](#mark-task-as-done--undone--mark--unmark)
      1. [Filter tasks : filter](#filter-tasks--filter)
         <ol type="i">
         <li><a href="#a-due-date">Due Date</a></li>
