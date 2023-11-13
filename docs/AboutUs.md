@@ -16,7 +16,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/newway1814.md)]
 
 * Role: Developer
-* Responsibilities:
 
 ### Guo Jiaqi Jackie
 
@@ -25,7 +24,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/jack1e0)] [[portfolio](team/jack1e0.md)]
 
 * Role: Developer
-* Responsibilities:
 
 ### Kiat Win
 
@@ -35,7 +33,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/kiatkat.md)]
 
 * Role: Developer
-* Responsibilities:
 
 ### Yarn Meng
 
@@ -45,7 +42,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/yarnmengnus.md)]
 
 * Role: Developer
-* Responsibilities:
 
 ### Raman Gupta
 
@@ -55,5 +51,5 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/newway1814.md)]
 
 * Role: Developer
-* Responsibilities:
+
 
