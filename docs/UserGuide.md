@@ -727,6 +727,7 @@ contains the data in the previous ProfPlan home folder.
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 1. **When scrolling through Urgency-Priority Matrix**, if you scroll too quickly, the cells take some time to render and display the tasks.
+1. **After using filter command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
 
 ---
 <div style="page-break-after: always;"></div>
