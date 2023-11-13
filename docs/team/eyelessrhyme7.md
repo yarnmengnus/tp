@@ -27,7 +27,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Responsible for merging almost ALL the PRs to the master branch.
 - Resolved merged conflicts for almost ALL PRs.
 - Tested all release versions before wrapping up milestones.
-- Released v1.1, v1.2, v1.3.Trial and v1.3.
+- Released v1.2, v1.3.Trial and v1.3.
 - Fixed severe bugs in v1.2, v1.3.Trial and v1.3 before release.
 - Fixed severe command bugs, date bugs and math errors (division by 0) in v1.3.
 - Created the structure for the User Guide.
