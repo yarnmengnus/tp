@@ -994,31 +994,90 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Type the following command in your terminal
+
+      `java -jar ProfPlan.jar`
+
+      Expected: Shows the Graphical User Interface with a set of sample tasks.
+
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Re-launch the app by typing the command below in your terminal.<br>
 
+      `java -jar ProfPlan.jar`
 
-### Deleting a task
+      Expected: The most recent window size and location is retained.
+
+### Marking a `Task` as done
+
+1. Marking a task while particular tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `mark 1`<br>
+      Expected: The status of first `Task` is marked as `done`.
+   1. Test case: `mark 0`<br>
+      Expected: No `Task` is marked as `done`. An error message is displayed.
+
+   1. Other incorrect delete commands to try: `mark`, `mark x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### Marking a `Task` as undone
+
+1. Marking a task while particular tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `unmark 1`<br>
+      Expected: The status of first `Task` is marked as `undone`.
+   1. Test case: `unmark 0`<br>
+      Expected: No `Task` is marked as `undone`. An error message is displayed.
+
+   1. Other incorrect delete commands to try: `unmark`, `unmark x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### Deleting a `Task`
 
 1. Deleting a task while all tasks are being shown
 
-   1. Prerequisites: List all tasks using the `list` command. Multiple tasks in the list.
+   1. Prerequisites: Launch the app.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
+      Expected: First `Task` is deleted from the list.
    1. Test case: `delete 0`<br>
-      Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No `Task` is deleted. An error message is displayed.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
+### Sorting `Tasks` based on Descending Order of Priority
+1. Sorting Tasks based on descending order of priority while all tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `sort_priority`<br>
+      Expected: Sorts the Tasks that are displayed currently based on the descending order of Priority.
+
+   1. Test case: `sortpriority`<br>
+      Expected: No Sorting is done, an error message is displayed.
+   1. Other incorrect delete commands to try: `sort_`, `sort priority`, `...` (where ... any combination of words related sort priority.)<br>
+      Expected: Similar to previous.
+
+### Sorting `Tasks` based on Nearest DueDate
+1. Sorting Tasks while all tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `sort_duedate`<br>
+      Expected: Sorts the Tasks that are displayed currently based on the descending order of Priority.
+
+   1. Test case: `sortduedate`<br>
+      Expected: No Sorting is done, an error message is displayed.
+   1. Other incorrect delete commands to try: `sort_`, `sort duedate`, `...` (where ... any combination of words related sort priority.)<br>
+      Expected: Similar to previous.
 ### Saving data
 
 1. Dealing with missing/corrupted data files
