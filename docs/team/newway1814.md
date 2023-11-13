@@ -45,6 +45,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Added the Model Uml diagram with clear colours to represent the Model implementation.
 - Added the Mark Command feature section the Developer Guide.
 - Added the Mark Command Sequence Diagram depicting the logical flow.
+- Added the Mark Command class Diagram.
 
 ### Contributions to team-based tasks
 - Set up few weekly meetings and lead some discussions based on the flow of the project.
@@ -99,5 +100,3 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Evidence of my participation in forum discussions
   - Here are some issues from the forum: [#187](https://github.com/nus-cs2103-AY2324S1/forum/issues/187), [#200](https://github.com/nus-cs2103-AY2324S1/forum/issues/200),
     [#267](https://github.com/nus-cs2103-AY2324S1/forum/issues/267)
-
-

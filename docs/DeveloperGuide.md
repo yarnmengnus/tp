@@ -903,6 +903,42 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
     Use case ends.
 
+**Use Case: Sorting Tasks based on priority**
+
+**MSS**
+
+1. User requests to sort tasks based on descending order of priority.
+2. ProfPlan validates the input.
+3. ProfPlan sorts the tasks based on descending order of priority.
+
+   Use case ends.
+
+**Extensions:**
+
+* 1a. User requests to sort the tasks when there are no tasks displayed in the Ui.
+
+  * 1a1. ProfPlan displays an error message.
+
+    Use case ends.
+
+**Use Case: Sorting Tasks based on nearest duedate**
+
+**MSS**
+
+1. User requests to sort tasks based on nearest duedate.
+2. ProfPlan validates the input.
+3. ProfPlan sorts the tasks based on nearest duedate.
+
+   Use case ends.
+
+**Extensions:**
+
+* 1a. User requests to sort the tasks when there are no tasks displayed in the Ui.
+
+  * 1a1. ProfPlan displays an error message.
+
+    Use case ends.
+
 
 
 
