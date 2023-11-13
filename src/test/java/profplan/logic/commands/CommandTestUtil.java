@@ -34,7 +34,9 @@ public class CommandTestUtil {
     public static final String VALID_TAG_FRIEND = "friend";
     public static final String VALID_LINK_EXAMPLE = "www.exmaple.com";
     public static final String VALID_LINK_GOOGLE = "www.google.com";
-    public static final String VALID_DESCRIPTION = "gg";
+    public static final String VALID_DESCRIPTION = "this is a valid description";
+    public static final String EMPTY_DESCRIPTION = "";
+    public static final String UNUSUAL_VALID_DESCRIPTION = "!@#$%^&*()_   ;'d;'~~~";
 
     public static final String DUEDATE_DESC = " " + PREFIX_DUEDATE + "10-12-2023";
 
