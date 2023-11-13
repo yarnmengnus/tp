@@ -96,27 +96,26 @@ public class AddCommandParserTest {
                 new AddCommand(expectedTask));
     }
 
-    /*
-    @Test - <<Rewrite test once all compulsory fields for task is determined>>
+    @Test
     public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_FULL_HELP);
 
         // missing name prefix
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
-                        + CommandTestUtil.PRIORITY_DESC_BOB,
+        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.PRIORITY_DESC_BOB
+                        + CommandTestUtil.DUEDATE_DESC,
                 expectedMessage);
 
         // missing priority prefix
-        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.NAME_DESC_BOB
-                        + CommandTestUtil.VALID_PRIORITY_BOB,
+        CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
+                        + CommandTestUtil.DUEDATE_DESC,
                 expectedMessage);
 
-        // all prefixes missing
+        // missing due date prefix
         CommandParserTestUtil.assertParseFailure(parser, CommandTestUtil.VALID_NAME_BOB
-                        + CommandTestUtil.VALID_PRIORITY_BOB,
+                        + CommandTestUtil.PRIORITY_DESC_BOB,
                 expectedMessage);
     }
-    */
+
 
     @Test
     public void parse_invalidValue_failure() {

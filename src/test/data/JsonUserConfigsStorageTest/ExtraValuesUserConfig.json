@@ -1,0 +1,7 @@
+{
+  "settings" : {
+    "semesterDays" : 180,
+    "extra" : "some value"
+  },
+  "profPlanFilePath" : "data\\profplan.json"
+}

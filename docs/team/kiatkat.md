@@ -3,46 +3,46 @@ layout: page
 title: Kiat Win's Project Portfolio Page
 ---
 
-## Project: ProfPlan
+### Project: ProfPlan
 
 ProfPlan is a desktop productivity application written in Java, used for task management and organization. The user
 interacts with it using a CLI, and it has a GUI created with JavaFX.
 
-Listed below are my contributions to the project, with the relevant pull requests linked where possible.
-
-**Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=kiatkat&breakdown=true)
+Listed below are my contributions to the project, with some relevant pull requests linked where possible. ([RepoSense
+link to code contributed](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=kiatkat&breakdown=true))
 
 ### New Features
 * Added the ability to create recurring tasks. [#130](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/130)
-  * What it does: Allows the user to denote a task as a recurring task, a new type of task that is never entirely
-    completed. Rather, marking this type of task as done will push its due date into the future by an amount
-    depending on its type.
-  * Justification: This feature better reflects the needs of most users, as a large number of tasks are cyclical in
-    nature and repeat on a periodic basis. The application can then better model these tasks and provide a more
-    natural means for the user to manage them.
-  * Highlights: This enhancement directly affects the `add` command,adding directly onto its implementation. A
-    thorough consideration of design options was necessary to determine a solution which could seamlessly integrate
-    with the `add` command and which had minimal overhead, while still providing extensibility and flexibility to
-    its own usage.
-  * Credits: Code written for this feature is original.
+  * What it does: Allows the user to create a new type of task that postpones its due date when marked as completed.
+  * Justification: A large number of tasks are cyclical in nature. The application can now better model these tasks
+    and provide a more natural means for the user to manage them.
+  * Highlights: This enhancement directly affects the `add` command, adding directly onto its implementation. A
+    thorough consideration of design options was necessary to determine a solution which could do so with minimal
+    overhead, while still providing extensibility and flexibility.
+  * Credits: Code written is original.
 
-* Added the ability for the user to change some defined settings to customize their experience. [#138](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/138)
+* Added the ability for the user to modify settings. [#138](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/138)
   * What it does: Allows the user to change certain global parameters that affect the behaviour of other commands
     via the `set` command.
-  * Justification: Different users may desire different parameters for some commands, and wish to customize the
+  * Justification: Different users may desire different parameters for some commands and wish to customize the
     application to suit their unique needs.
   * Highlights: This feature required changes across the codebase in multiple regions of the architecture. A
-    `settings.json` file must be created to maintain these user configurations through sessions, and so various
-    infrastructure must be set up to properly store and read from this file. Furthermore, the user has to be able to
-    modify the values in this file, and any command must be able to read these settings. Careful thought had to be
-    given to the structure and design of this system to reduce dependencies across the codebase.
-  * Credits: The design of the `UserConfigs` system is similar to AB3's `UserPrefs` in the interest of consistency.
-    However, `UserConfigs` and its related classes are independent of the existing systems, and all such code
-    written is otherwise original.
-  * Note: The `set` feature initially implemented (pre-v1.3) is a different feature from the current `set` feature,
-    and it has since been removed. As I was responsible for both of these features, past pull requests may mention
-    this dated `set` feature. All further mentions of `set` in this document are meant to refer to the current
-    implementation (settings) as described above.
+    file is created to maintain user configurations between sessions, and the user must be able to modify the
+    values in this file, with any command also being able to read these settings. Careful thought had to be given to
+    the structure and design of this system to minimize dependencies.
+  * Credits: Code written is original.
+  * Note: There was a `set` feature of the same name implemented in versions pre-v1.3, which is completely different
+    in specification, and has since been removed. All mentions of `set` in this document refer to the implementation
+    described above.
+
+* Added the ability for the user to add descriptions. [#105](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/105)
+  * What it does: Allows the user to add an associated description field to a task and edit it with the
+    `description` command.
+  * Justification: Users may want to store information related to the task that is not expressible by the limited
+    values of the other fields.
+  * Highlights: This feature required good planning to integrate well into the existing structure of a task, while
+    maintaining flexibility and keeping dependence on other classes low.
+  * Credits: Code written is original.
 
 ### Project management and team-based tasks
 * Responsible for creating and setting deadlines for all milestones
@@ -56,22 +56,19 @@ Listed below are my contributions to the project, with the relevant pull request
 ### Enhancements to existing features
 * Updated the `find` feature to new specifications: [#77](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/77)
 
-### Documentation
+### User Guide
 
-#### User Guide
-
-* Added documentation for the features `find` and `set` [#22](https://github.com/AY2324S1-CS2103T-W15-1/tp/issues/22)
-* Added documentation for the `recur/` flag and all corresponding mentions of recurring tasks
-* Added documentation for supported setting parameters
-* Added information on the acceptable values for the parameters that the user can input
-* Wrote the introductory section, "What can ProfPlan do for you?"
-* Contributed to the preambles of some sections under "Advanced Features"
+* Added documentation for the `find` and `set` features ([#22](https://github.com/AY2324S1-CS2103T-W15-1/tp/issues/22)),
+  the `recur/` flag and corresponding mentions of recurring tasks, as well as supported setting parameters
+* Clarified the acceptable values for the parameters that the user can input
+* Wrote the section "What can ProfPlan do for you?" and some sections under "Advanced Features"
 * Made some tweaks to fix language errors
 
-#### Developer Guide
+### Developer Guide
 
 * Modified UML diagrams to reflect the addition of the `UserConfigs` system
-* Added use cases specific to `find` and `set`
+* Added use cases specific to the features implemented above
+* Made tweaks to the design and layout and corrected some language errors
 
 ### Community
 
