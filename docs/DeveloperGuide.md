@@ -1073,6 +1073,20 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 
+### List tasks within week/month from now
+
+1. Listing tasks within week/month from now 
+
+   1. Test case: `list_week`<br>
+      Expected: All tasks that are due within a week from the current date is displayed. 
+
+   1. Test case: `list_month`<br>
+      Expected: All tasks that are due within a month from the current date is displayed. 
+
+   1. Other incorrect commands to try: `listweek`, `list month`<br>
+      Expected: Error details is shown in the status message.
+
+
 ### Filtering for tasks
 
 1. Filtering tasks 
@@ -1093,23 +1107,63 @@ testers are expected to do more *exploratory* testing.
       Expected: Error details is shown in the status message.
 
 
-### List tasks within week/month from now
-
-1. Listing tasks within week/month from now 
-
-   1. Test case: `list_week`<br>
-      Expected: All tasks that are due within a week from the current date is displayed. 
-
-   1. Test case: `list_month`<br>
-      Expected: All tasks that are due within a month from the current date is displayed. 
-
-   1. Other incorrect commands to try: `listweek`, `list month`<br>
-      Expected: Error details is shown in the status message.
-
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+
+
+## Appendix: Effort
+
+### Overview
+
+ProfPlan is an advanced task management application tailored specifically for computer science professors. This project extends the functionalities of AB3, introducing unique features that cater to the needs of the target audience. The development of ProfPlan posed significant challenges due to its extensive and dynamic features, necessitating a dedicated effort from our team.
+
+### Challenges and Efforts
+
+**1. Better task organisation**
+
+To represent the complex tasks faced by professors, we added many additional parameters to a Task, building upon the foundation provided by AB3. Examples include due date, recurring type, and links. These features introduces further complexity in tracking and organisating tasks, and require an enhanced understanding of data structures and optimised coding designs. 
+
+It also serves as a basis for more sophisticated task organisation functions. One example is our robust system of sort and filter mechanisms. To ensure that tasks are presented to the user in an organized and meaningful way, we introduced a variety of commands and criteria that a task can be sort/filtered by. This required a thorough understanding of sorting mechanisms and backend activity.
+
+**2. Custom algorithms**
+
+The "Recommend next task" feature intelligently analyses tasks based on their priorities and due dates, to determine which task should be completed next. This necessitates the creation of a custom algorithm that compares and weighs the importance of tasks, while resolving ties and conflicts in a sophisticated manner.
+
+In addition, the "View Task statistics" feature required intensive calculation and aggregation of data related to Tasks, namely their Status, in order to generate a meaningful task completion rate for users.
+
+
+**3. UI Visualisation**
+
+ProfPlan introduces the "Urgency-Priority Matrix", a novel visualization tool, to organise tasks based on its priority, and due date. Developing an intuitive and comprehensive UI display required a deep understanding of JavaFX and frontend development, as well as a keen eye for user experience design.
+
+
+### Effort Saved Through Reuse
+
+We reused components from AB3, particularly the foundational architecture and some basic UI elements. This reuse saved approximately 10% of our total development effort.
+
+
+### Achievements
+
+Despite the challenges, our team successfully delivered a fully functional and user-friendly application. Novel features like the Urgency-Priority Matrix and intelligent task recommendation have been well-received by our user base, demonstrating the software's practical utility for our target audience.
+
+In summary, the development of ProfPlan was a challenging yet rewarding endeavor. The application's success stands as a testament to our team's dedication in software development.
+
+
+## **Appendix: Planned Enhancements**
+
+### Recommend next task:
+
+More sophisticated tie-breaker mechanism can be implemented with Natural Language Processing. When tasks have the same priority and due date, the preferences of the user can be considered in determining which task is of higher importance.
+
+### Link:
+
+User input for the Link parameter of a Task should be verified for its validity. Links that are displayed in the UI should also redirect users to the specified URL upon clicking, instead of just being regular text.
+
+### Visual indicators:
+
+There can be colour-coding for tasks based on their priority, or tasks that are overdue. These visual aids will be helpful in alerting professors to more important, and overdue tasks.
 
