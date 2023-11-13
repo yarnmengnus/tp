@@ -51,7 +51,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Set up few weekly meetings and lead some discussions based on the flow of the project.
 - Responsible for merging few PRs to the master branch.
 - Tested all release versions before wrapping up milestones.
-- Responsible for releasing v1.2 trial jar file.
+- Responsible for releasing v1.1 jar file.
 - Responsible for assigning most Issues created on our team repo.  
 - Helped Teammates in fixing severe bugs.
 - Responisble for assigning reviewers for most PR's

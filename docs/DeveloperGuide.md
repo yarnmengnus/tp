@@ -997,36 +997,246 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Type the following command in your terminal
+
+      `java -jar ProfPlan.jar`
+
+      Expected: Shows the Graphical User Interface with a set of sample tasks.
+
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Re-launch the app by typing the command below in your terminal.<br>
+
+      `java -jar ProfPlan.jar`
+
+      Expected: The most recent window size and location is retained.
 
 
-### Deleting a task
+### Adding a task
+
+1. Adding a task 
+
+   1. Test case: `add n/Attend seminar p/1 d/01-01-2023`<br>
+      Expected: Added task into list. Details of the task is shown in the status message.
+
+   1. Test case: `add n/Grade assignments p/1 d/01-01-2023 recur/weekly t/grading t/assignment l/www.example.com des/for cs0000`<br>
+      Expected: Same as above
+
+   1. Test case: `add n/task p/3`<br>
+      Expected: Compulsory DueDate field missing, task is not added. Error details is shown in the status message.
+
+   1. Other incorrect add commands to try: `add n/task 1 p/1 d/`, `add n/task 2 n/task 2`<br>
+      Expected: Task is not added. Error details is shown in the status message.
+
+
+### Editing a task
+
+1. Editing a task 
+
+   1. Prerequisites: There must be at least one task in list.
+
+   1. Test case: `edit 1 n/Attend networking event`<br>
+      Expected: Name of the first task is edited. Details of the updated task is shown in the status message.
+
+   1. Test case: `edit 1 t/`<br>
+      Expected: Tags of the first task is removed. Details of the updated task is shown in the status message.
+
+   1. Test case: `edit 1`<br>
+      Expected: At least one field must be edited. Error details is shown in the status message.
+
+   1. Other incorrect edit commands to try: `edit`, `edit x`, `...` (where x is larger than the list size)<br>
+      Expected: Task is not edited. Error details is shown in the status message.
+
+
+### Finding tasks from keywords
+
+1. Finding a task 
+
+   1. Test case: `find event`<br>
+      Expected: Task with name containing "event" is displayed.
+
+   1. Test case: `find event event`<br>
+      Expected: Same as above.
+
+   1. Test case" `find event fsfkjsnfk`<br>
+      Expected: Same as above. If task containing "fsfkjsnfk" exists, that is displayed too.
+
+   1. Other incorrect find commands to try: `find`<br>
+      Expected: Error details is shown in the status message.
+
+
+### Marking a `Task` as done
+
+1. Marking a task while particular tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `mark 1`<br>
+      Expected: The status of first `Task` is marked as `done`.
+   1. Test case: `mark 0`<br>
+      Expected: No `Task` is marked as `done`. An error message is displayed.
+
+   1. Other incorrect delete commands to try: `mark`, `mark x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### Marking a `Task` as undone
+
+1. Marking a task while particular tasks are being shown
+
+   1. Prerequisites: Launch the app.
+   1. Test case: `unmark 1`<br>
+      Expected: The status of first `Task` is marked as `undone`.
+   1. Test case: `unmark 0`<br>
+      Expected: No `Task` is marked as `undone`. An error message is displayed.
+
+   1. Other incorrect delete commands to try: `unmark`, `unmark x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+### Deleting a `Task`
 
 1. Deleting a task while all tasks are being shown
 
-   1. Prerequisites: List all tasks using the `list` command. Multiple tasks in the list.
+   1. Prerequisites: Launch the app.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
+      Expected: First `Task` is deleted from the list.
    1. Test case: `delete 0`<br>
-      Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No `Task` is deleted. An error message is displayed.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
+
+### List tasks within week/month from now
+
+1. Listing tasks within week/month from now 
+
+   1. Test case: `list_week`<br>
+      Expected: All tasks that are due within a week from the current date is displayed. 
+
+   1. Test case: `list_month`<br>
+      Expected: All tasks that are due within a month from the current date is displayed. 
+
+   1. Other incorrect commands to try: `listweek`, `list month`<br>
+      Expected: Error details is shown in the status message.
+
+
+### Filtering for tasks
+
+1. Filtering tasks 
+
+   1. Test case: `filter d/01-01-2024`<br>
+      Expected: All tasks that are due before or on 01-01-2024 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1`<br>
+      Expected: All tasks that are due before or on 01-01-2024, and of priority 1 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1 s/undone`<br>
+      Expected: All undone tasks that are due before or on 01-01-2024, and of priority 1 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1 s/undone recur/weekly`<br>
+      Expected: All undone tasks that are due before or on 01-01-2024, of priority 1, and recurring weekly is displayed. Details of filter criteria is shown in the status message.
+
+   1. Other incorrect fitler commands to try: `filter d/`, `filter p/0`, `filter s/done s/undone`, `filter recur/weekly s/`<br>
+      Expected: Error details is shown in the status message.
+
+
+
+### Sorting `Tasks` based on Descending Order of Priority
+1. Sorting Tasks based on descending order of priority while all tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `sort_priority`<br>
+      Expected: Sorts the Tasks that are displayed currently based on the descending order of Priority.
+
+   1. Test case: `sortpriority`<br>
+      Expected: No Sorting is done, an error message is displayed.
+   1. Other incorrect delete commands to try: `sort_`, `sort priority`, `...` (where ... any combination of words related sort priority.)<br>
+      Expected: Similar to previous.
+
+### Sorting `Tasks` based on Nearest DueDate
+1. Sorting Tasks while all tasks are being shown
+
+   1. Prerequisites: Launch the app.
+
+   1. Test case: `sort_duedate`<br>
+      Expected: Sorts the Tasks that are displayed currently based on the descending order of Priority.
+
+   1. Test case: `sortduedate`<br>
+      Expected: No Sorting is done, an error message is displayed.
+   1. Other incorrect delete commands to try: `sort_`, `sort duedate`, `...` (where ... any combination of words related sort priority.)<br>
       Expected: Similar to previous.
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+Note: The data file refer to the /data/profplan.json file.
+
+   1. Missing data file
+    - Delete the /data folder (if any), and start the application.
+      Expected: ProfPlan will create a new data file, and start from an empty task list.
+  2. Corrupted data file
+    - Open the data file, and type in a string of random characters.
+      Expected: ProfPlan will delete the current data file and create a new one, starting from an empty task list.
+
+
+
+## Appendix: Effort
+
+### Overview
+
+ProfPlan is an advanced task management application tailored specifically for computer science professors. This project extends the functionalities of AB3, introducing unique features that cater to the needs of the target audience. The development of ProfPlan posed significant challenges due to its extensive and dynamic features, necessitating a dedicated effort from our team.
+
+### Challenges and Efforts
+
+**1. Better task organisation**
+
+To represent the complex tasks faced by professors, we added many additional parameters to a Task, building upon the foundation provided by AB3. Examples include due date, recurring type, and links. These features introduces further complexity in tracking and organisating tasks, and require an enhanced understanding of data structures and optimised coding designs. 
+
+It also serves as a basis for more sophisticated task organisation functions. One example is our robust system of sort and filter mechanisms. To ensure that tasks are presented to the user in an organized and meaningful way, we introduced a variety of commands and criteria that a task can be sort/filtered by. This required a thorough understanding of sorting mechanisms and backend activity.
+
+**2. Custom algorithms**
+
+The "Recommend next task" feature intelligently analyses tasks based on their priorities and due dates, to determine which task should be completed next. This necessitates the creation of a custom algorithm that compares and weighs the importance of tasks, while resolving ties and conflicts in a sophisticated manner.
+
+In addition, the "View Task statistics" feature required intensive calculation and aggregation of data related to Tasks, namely their Status, in order to generate a meaningful task completion rate for users.
+
+
+**3. UI Visualisation**
+
+ProfPlan introduces the "Urgency-Priority Matrix", a novel visualization tool, to organise tasks based on its priority, and due date. Developing an intuitive and comprehensive UI display required a deep understanding of JavaFX and frontend development, as well as a keen eye for user experience design.
+
+
+### Effort Saved Through Reuse
+
+We reused components from AB3, particularly the foundational architecture and some basic UI elements. This reuse saved approximately 10% of our total development effort.
+
+
+### Achievements
+
+Despite the challenges, our team successfully delivered a fully functional and user-friendly application. Novel features like the Urgency-Priority Matrix and intelligent task recommendation have been well-received by our user base, demonstrating the software's practical utility for our target audience.
+
+In summary, the development of ProfPlan was a challenging yet rewarding endeavor. The application's success stands as a testament to our team's dedication in software development.
+
+
+## **Appendix: Planned Enhancements**
+
+### Recommend next task:
+
+More sophisticated tie-breaker mechanism can be implemented with Natural Language Processing. When tasks have the same priority and due date, the preferences of the user can be considered in determining which task is of higher importance.
+
+### Link:
+
+User input for the Link parameter of a Task should be verified for its validity as a URL. Links that are displayed in the UI should also redirect users to the specified URL upon clicking, instead of just being regular text.
+
+### Visual indicators:
+
+There can be colour-coding for tasks based on their priority, or tasks that are overdue. These visual aids will be helpful in alerting professors to more important, and overdue tasks.
 
 ### Getting help
 1. Showing the list and usage of all command
