@@ -479,6 +479,8 @@ Tasks with unassigned recurrence will not recur.<br>
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
 
+<div style="page-break-after: always;"></div>
+
 ### Management Commands
 
 ### Mark task as done / undone : `mark / unmark`
@@ -644,6 +646,8 @@ Grade assignments, Priority: 10, DueDate: 02-11-2023
 
 ![do_nextCommand](images/donextADV.png)
 
+<div style="page-break-after: always;"></div>
+
 ### Visualise important and urgent tasks :
 
 Sometimes, we might have 20, 30, 40 or more tasks in our lists!
@@ -658,6 +662,7 @@ The higher the urgency and the priority, the task will appear further towards th
 The task(s) in the top right of the matrix should be done first.
 ![img.png](matrix.png)
 
+<div style="page-break-after: always;"></div>
 
 ### Create A Recurring Task
 
@@ -666,7 +671,6 @@ If a task does recur, marking the task as `done` will refresh its due date, and 
 Tasks with unassigned recurrence will not recur.<br>
 **Valid format:** `recur/[recurrenceType]` <br>
 **Acceptable Parameter Values**: `recurrenceType`: Any of the following words, case-insensitive: `daily`, `weekly`, `monthly`, `semesterly`. Alternatively, any of the short-forms `d`, `w`, `m`, `s`, also case-insensitive.
-
 
 ### Sort Tasks based on Priority :
 
@@ -680,6 +684,8 @@ Struggling to decide which task to tackle first in your busy schedule? Our 'Sort
 ![sortPriority](images/sortADV.png)
 
 **Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+
+<div style="page-break-after: always;"></div>
 
 ### Sort Tasks based on DueDate:
 
@@ -737,6 +743,7 @@ contains the data in the previous ProfPlan home folder.
 | Recur (not editable)                    |       recur/        | The recurring type of the task |
 | Description (not editable through `edit`) |        des/         |    The description of the task |
 
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
@@ -756,6 +763,8 @@ contains the data in the previous ProfPlan home folder.
 | **Sort Duedate**  | `sort_duedate`                                                                                                                                 |
 | **Filter**        | `filter d/[duedate] s/[status]...`, e.g. `filter s/done p/4`                                                                                   |
 | **Help**          | `help`                                                                                                                                         |
+
+<div style="page-break-after: always;"></div>
 
 ## Supported Setting Parameters
 
