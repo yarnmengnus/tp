@@ -886,7 +886,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 3. ProfPlan recommends the most important task to the user.
 
   - 3a. If there are multiple tasks with the same priority, ProfPlan selects the one closest to the deadline.
-    
+
     Use case ends.
 
   - 3b. If no tasks are present in the list.
