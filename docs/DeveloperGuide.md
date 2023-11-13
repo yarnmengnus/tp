@@ -1004,6 +1004,59 @@ testers are expected to do more *exploratory* testing.
        Expected: The most recent window size and location is retained.
 
 
+### Adding a task
+
+1. Adding a task 
+
+   1. Test case: `add n/Attend seminar p/1 d/01-01-2023`<br>
+      Expected: Added task into list. Details of the task is shown in the status message.
+
+   1. Test case: `add n/Grade assignments p/1 d/01-01-2023 recur/weekly t/grading t/assignment l/www.example.com des/for cs0000`<br>
+      Expected: Same as above
+
+   1. Test case: `add n/task p/3`<br>
+      Expected: Compulsory DueDate field missing, task is not added. Error details is shown in the status message.
+
+   1. Other incorrect add commands to try: `add n/task 1 p/1 d/`, `add n/task 2 n/task 2`<br>
+      Expected: Task is not added. Error details is shown in the status message.
+
+
+### Editing a task
+
+1. Editing a task 
+
+   1. Prerequisites: There must be at least one task in list.
+
+   1. Test case: `edit 1 n/Attend networking event`<br>
+      Expected: Name of the first task is edited. Details of the updated task is shown in the status message.
+
+   1. Test case: `edit 1 t/`<br>
+      Expected: Tags of the first task is removed. Details of the updated task is shown in the status message.
+
+   1. Test case: `edit 1`<br>
+      Expected: At least one field must be edited. Error details is shown in the status message.
+
+   1. Other incorrect edit commands to try: `edit`, `edit x`, `...` (where x is larger than the list size)<br>
+      Expected: Task is not edited. Error details is shown in the status message.
+
+
+### Finding tasks from keywords
+
+1. Finding a task 
+
+   1. Test case: `find event`<br>
+      Expected: Task with name containing "event" is displayed.
+
+   1. Test case: `find event event`<br>
+      Expected: Same as above.
+
+   1. Test case" `find event fsfkjsnfk`<br>
+      Expected: Same as above. If task containing "fsfkjsnfk" exists, that is displayed too.
+
+   1. Other incorrect find commands to try: `find`<br>
+      Expected: Error details is shown in the status message.
+
+
 ### Deleting a task
 
 1. Deleting a task while all tasks are being shown
@@ -1011,13 +1064,48 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all tasks using the `list` command. Multiple tasks in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First task is deleted from the list. Details of the deleted task shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No task is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No task is deleted. Error details shown in the status message.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
+
+
+### Filtering for tasks
+
+1. Filtering tasks 
+
+   1. Test case: `filter d/01-01-2024`<br>
+      Expected: All tasks that are due before or on 01-01-2024 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1`<br>
+      Expected: All tasks that are due before or on 01-01-2024, and of priority 1 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1 s/undone`<br>
+      Expected: All undone tasks that are due before or on 01-01-2024, and of priority 1 is displayed. Details of filter criteria is shown in the status message.
+
+   1. Test case: `filter d/01-01-2024 p/1 s/undone recur/weekly`<br>
+      Expected: All undone tasks that are due before or on 01-01-2024, of priority 1, and recurring weekly is displayed. Details of filter criteria is shown in the status message.
+
+   1. Other incorrect fitler commands to try: `filter d/`, `filter p/0`, `filter s/done s/undone`, `filter recur/weekly s/`<br>
+      Expected: Error details is shown in the status message.
+
+
+### List tasks within week/month from now
+
+1. Listing tasks within week/month from now 
+
+   1. Test case: `list_week`<br>
+      Expected: All tasks that are due within a week from the current date is displayed. 
+
+   1. Test case: `list_month`<br>
+      Expected: All tasks that are due within a month from the current date is displayed. 
+
+   1. Other incorrect commands to try: `listweek`, `list month`<br>
+      Expected: Error details is shown in the status message.
+
 
 ### Saving data
 
