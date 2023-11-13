@@ -30,7 +30,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 
 ### Contributions to team-based tasks
 - Set up all meetings and independently led discussion on approach & implementation.
-- Responsible for merging almost ALL the PRs to the master branch. 
+- Responsible for merging almost ALL the PRs to the master branch.
 - Tested all release versions before wrapping up milestones.
 - Released v1.1, v1.2, v1.3.Trial and v1.3.
 - Fixed severe bugs in v1.2, v1.3.Trial and v1.3 before release.
@@ -49,7 +49,6 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 
 ### Review/mentoring contributions
 - [Provide links to Pull Requests (PRs) you reviewed or instances of helping team members.]
-- 
 
 ### Contributions beyond the project team
 - Evidence of helping others

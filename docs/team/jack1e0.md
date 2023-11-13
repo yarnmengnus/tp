@@ -20,12 +20,12 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 
 * **Filter tasks function**
   * What it does: Users can filter their tasklist by one or more of the following criteria, namely priority, due date, status, and recurring type.
-  * Justification: This will enable users to better categorize and manage their tasks, by grouping them together under common criteria. 
+  * Justification: This will enable users to better categorize and manage their tasks, by grouping them together under common criteria.
   * Credits: Original code
 
 * **List tasks within a week/month from now function**
   * What it does: Users can view what tasks are within a week, or month from the current date.
-  * Justification: This will enable users to get a better sense of what tasks are more urgent/coming up. 
+  * Justification: This will enable users to get a better sense of what tasks are more urgent/coming up.
   * Credits: Original code
 
 ### 2. Documentation
@@ -33,7 +33,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 **User Guide**
 * Added documentation for the `filter`, `list_week` and `list_month` commands.
 * Added documentation for the `DueDate` parameter.
-* Updated the previous version of other commands in AddressBook, such as `add`, `edit`, etc. 
+* Updated the previous version of other commands in AddressBook, such as `add`, `edit`, etc.
 * Added information in the Supported Flags, and Command Summary tables, such that it is up-to-date with the current implementation.
 * Contributed to formatting the UG and fixing errors.
 

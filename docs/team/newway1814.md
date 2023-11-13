@@ -52,7 +52,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Responsible for merging few PRs to the master branch.
 - Tested all release versions before wrapping up milestones.
 - Responsible for releasing v1.1 jar file.
-- Responsible for assigning most Issues created on our team repo.  
+- Responsible for assigning most Issues created on our team repo.
 - Helped Teammates in fixing severe bugs.
 - Responisble for assigning reviewers for most PR's
 - Fixed severe command bugs.
@@ -94,7 +94,7 @@ ProfPlan is a CLI-based task management tool tailored to university professors, 
 - Evidence of helping others
   - Successfully reported 9 bugs in another team's project [#1](https://github.com/newway1814/ped/issues/1),
     [#2](https://github.com/newway1814/ped/issues/2), [#3](https://github.com/newway1814/ped/issues/3),
-  [#4](https://github.com/newway1814/ped/issues/4), [#5](https://github.com/newway1814/ped/issues/5), 
+  [#4](https://github.com/newway1814/ped/issues/4), [#5](https://github.com/newway1814/ped/issues/5),
   [#6](https://github.com/newway1814/ped/issues/6), [#7](https://github.com/newway1814/ped/issues/7),
   [#8](https://github.com/newway1814/ped/issues/8), [#9](https://github.com/newway1814/ped/issues/9)
 - Evidence of my participation in forum discussions
