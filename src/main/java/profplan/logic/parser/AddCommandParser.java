@@ -51,9 +51,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         boolean isRecurring = argMultimap.getValue(PREFIX_RECURRING).isPresent();
         Task.RecurringType recurringType = isRecurring
                 ? ParserUtil.parseRecurringType(argMultimap.getValue(PREFIX_RECURRING).get()) : null;
-
+        Description description = new Description(argMultimap.getValue(PREFIX_DESCRIPTION).orElse(""));
+        
         Task task = new Task(name, priority, isRecurring, recurringType, tagList, dueDate,
-                link, new Description(""));
+                link, description);
         return new AddCommand(task);
     }
 
