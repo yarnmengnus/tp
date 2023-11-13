@@ -15,10 +15,10 @@ link to code contributed](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?se
 * Added the ability to create recurring tasks. [#130](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/130)
   * What it does: Allows the user to create a new type of task that postpones its due date when marked as completed.
   * Justification: A large number of tasks are cyclical in nature. The application can now better model these tasks
-    and provide a more natural means for the user to manage them.
-  * Highlights: This enhancement directly affects the `add` command, adding directly onto its implementation. A
-    thorough consideration of design options was necessary to determine a solution which could do so with minimal
-    overhead, while still providing extensibility and flexibility.
+    and provide a more natural means of management.
+  * Highlights: This enhancement directly integrates into the `add` command. A thorough consideration of design
+    options was necessary to find a solution which does so with minimal overhead while still providing extensibility
+    and flexibility.
   * Credits: Code written is original.
 
 * Added the ability for the user to modify settings. [#138](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/138)
@@ -41,7 +41,7 @@ link to code contributed](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?se
   * Justification: Users may want to store information related to the task that is not expressible by the limited
     values of the other fields.
   * Highlights: This feature required good planning to integrate well into the existing structure of a task, while
-    maintaining flexibility and keeping dependence on other classes low.
+    maintaining flexibility and minimizing coupling.
   * Credits: Code written is original.
 
 ### Project management and team-based tasks
@@ -49,19 +49,16 @@ link to code contributed](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?se
 * Performed most of the renaming required for the initial morph of AB3 into ProfPlan
 * Responsible for removing redundancies and cleaning up the codebase [#121](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/121)
   [#137](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/137)
-* Consolidated features to be implemented at the beginning of the project and divided work into issues for delegation
-* Responsible for the creation and enforcement of early milestones for `v1.2` and `v1.3` to prevent deadline overrun
-* Contributed to all team planning, scoping out the breadth and depth of features to be implemented
-
-### Enhancements to existing features
-* Updated the `find` feature to new specifications: [#77](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/77)
+* Consolidated features and divided work into issues for delegation
+* Created and enforced early milestones for `v1.2` and `v1.3` to prevent deadline overrun
+* Contributed to all team planning, scoping out features to be implemented
 
 ### User Guide
 
 * Added documentation for the `find` and `set` features ([#22](https://github.com/AY2324S1-CS2103T-W15-1/tp/issues/22)),
   the `recur/` flag and corresponding mentions of recurring tasks, as well as supported setting parameters
 * Clarified the acceptable values for the parameters that the user can input
-* Wrote the section "What can ProfPlan do for you?" and some sections under "Advanced Features"
+* Wrote the section "What can ProfPlan do for you?" and part of "Advanced Features"
 * Made some tweaks to fix language errors
 
 ### Developer Guide
