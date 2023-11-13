@@ -774,7 +774,7 @@ For all use cases below, the **System** is `ProfPlan` and the **Actor** is the `
 
 * 3a. User specifies a task number that is outside the list indices or provides an invalid input.
 
-    * 3a1. ProfPlan displays an error message.
+    * 3a1. ProfPlan displays an error message: 'Task not found please enter a valid Task Number.'
 
       Use case ends.
 
