@@ -436,7 +436,7 @@ The following activity diagram shows how the Help Command works:
 
 ## Displaying statistics
 
-The statistics mechanism requires support from `Model`, which will provide `StatsCommand` the required statistics. Currently, this is done using a public getter `getCompletionRate()`. 
+The statistics mechanism requires support from `Model`, which will provide `StatsCommand` the required statistics. Currently, this is done using a public getter `getCompletionRate()`.
 
 When `StatsCommand` executes `execute()`, it calls this getter and returns a new `CommandResult` containing a formatted `String`, with the statistics retrieved.
 
@@ -448,7 +448,7 @@ Here's a breakdown of the sequence:
 1. The `LogicManager` receives the command "stats" from the user.
 1. The `ProfPlanParser` parses the command and creates a `StatsCommand`.
 1. The `StatsCommand` is executed by `LogicManager`.
-1. The getter, `getCompletionRate()`, is called on `Model`. 
+1. The getter, `getCompletionRate()`, is called on `Model`.
 1. `Model` returns a `double` containing the completion rate.
 1. A `CommandResult` is created and formatted to provide feedback to the user.
 1. The result is returned to the `LogicManager`.
@@ -555,7 +555,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 The proposed task archiving function makes use of the `ArchivedProfPlan` class. It extends `ProfPlan`, storing a separate list of tasks that are archived.
 
-In addition, the `ModelManager`, which implements `Model`, has to include `ArchivedProfPlan`, in addition to `ProfPlan`, as one of its fields. 
+In addition, the `ModelManager`, which implements `Model`, has to include `ArchivedProfPlan`, in addition to `ProfPlan`, as one of its fields.
 
 
 #### 1. Archiving tasks
@@ -583,7 +583,7 @@ This is supported by the `ListArchivesCommand` that extends `Command`, and imple
 
 * `ListArchivesCommand#execute(Model model)` — Displays all archived tasks.
 
-This operation invodes a method in the `Model` interface, namely `Model#getArchivedTasks()`. 
+This operation invodes a method in the `Model` interface, namely `Model#getArchivedTasks()`.
 
 
 The sequence diagram below shows how displaying archived tasks works.
@@ -988,6 +988,9 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
+
+
+
 ### Launch and shutdown
 
 1. Initial launch
@@ -1014,7 +1017,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding a task
 
-1. Adding a task 
+1. Adding a task
 
    1. Test case: `add n/Attend seminar p/1 d/01-01-2023`<br>
       Expected: Added task into list. Details of the task is shown in the status message.
@@ -1031,7 +1034,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Editing a task
 
-1. Editing a task 
+1. Editing a task
 
    1. Prerequisites: There must be at least one task in list.
 
@@ -1050,7 +1053,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Finding tasks from keywords
 
-1. Finding a task 
+1. Finding a task
 
    1. Test case: `find event`<br>
       Expected: Task with name containing "event" is displayed.
@@ -1109,13 +1112,13 @@ testers are expected to do more *exploratory* testing.
 
 ### List tasks within week/month from now
 
-1. Listing tasks within week/month from now 
+1. Listing tasks within week/month from now
 
    1. Test case: `list_week`<br>
-      Expected: All tasks that are due within a week from the current date is displayed. 
+      Expected: All tasks that are due within a week from the current date is displayed.
 
    1. Test case: `list_month`<br>
-      Expected: All tasks that are due within a month from the current date is displayed. 
+      Expected: All tasks that are due within a month from the current date is displayed.
 
    1. Other incorrect commands to try: `listweek`, `list month`<br>
       Expected: Error details is shown in the status message.
@@ -1123,7 +1126,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Filtering for tasks
 
-1. Filtering tasks 
+1. Filtering tasks
 
    1. Test case: `filter d/01-01-2024`<br>
       Expected: All tasks that are due before or on 01-01-2024 is displayed. Details of filter criteria is shown in the status message.
@@ -1168,6 +1171,22 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `sort_`, `sort duedate`, `...` (where ... any combination of words related sort priority.)<br>
       Expected: Similar to previous.
 
+### Getting help
+1. Showing the list and usage of all command
+    1. Test case: `help`<br>
+    Expected: Show a list of all the command words and the usage for each command.
+1. Showing more detailed usage about a particular command
+    1. Test case: `help add`<br>
+    Expected: Shows the description, parameters and an example of a proper use of the `add` command. No change to the list occurs.
+
+    1. Test case: `help sort_duedate`<br>
+    Expected: Shows the description of the `sort_duedate` command. No change to the list occurs.
+
+### Showing stats
+1. Showing statistics of the whole list
+    1. Test case: `stats`<br>
+    Expected: Shows the completion rate of all tasks in the task list, regardless of filter.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
@@ -1193,7 +1212,7 @@ ProfPlan is an advanced task management application tailored specifically for co
 
 **1. Better task organisation**
 
-To represent the complex tasks faced by professors, we added many additional parameters to a Task, building upon the foundation provided by AB3. Examples include due date, recurring type, and links. These features introduces further complexity in tracking and organisating tasks, and require an enhanced understanding of data structures and optimised coding designs. 
+To represent the complex tasks faced by professors, we added many additional parameters to a Task, building upon the foundation provided by AB3. Examples include due date, recurring type, and links. These features introduces further complexity in tracking and organisating tasks, and require an enhanced understanding of data structures and optimised coding designs.
 
 It also serves as a basis for more sophisticated task organisation functions. One example is our robust system of sort and filter mechanisms. To ensure that tasks are presented to the user in an organized and meaningful way, we introduced a variety of commands and criteria that a task can be sort/filtered by. This required a thorough understanding of sorting mechanisms and backend activity.
 
@@ -1234,4 +1253,3 @@ User input for the Link parameter of a Task should be verified for its validity 
 ### Visual indicators:
 
 There can be colour-coding for tasks based on their priority, or tasks that are overdue. These visual aids will be helpful in alerting professors to more important, and overdue tasks.
-

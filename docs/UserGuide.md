@@ -77,7 +77,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
      1. [Link](#link)
      1. [Recurrence](#recurrence)
   1. [Management Commands](#management-commands)
-     1. [Mark task as done/undone : mark / unmark](#mark-task-as-doneundone--mark--unmark)
+     1. [Mark task as done/undone : mark / unmark](#mark-task-as-done--undone--mark--unmark)
      1. [Filter tasks : filter](#filter-tasks--filter)
         <ol type="i">
         <li><a href="#a-due-date">Due Date</a></li>
@@ -227,9 +227,9 @@ New task added: Draft assignments; Priority: 1; Status: undone; Tags: [assignmen
 **Precise Expected Outputs when the command fails:**
 
 ```
-Invalid command format! 
+Invalid command format!
 add: Adds a task to the task list.
-Compulsory Parameters: n/[name] p/[priority] d/[dueDate] 
+Compulsory Parameters: n/[name] p/[priority] d/[dueDate]
 Optional Parameters: recur/[recur] t/[tag...] l/[link] des/[description]
 Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.example.com
 ```
@@ -270,10 +270,10 @@ Edited Task: Grant Application; Priority: 10; Status: undone; Tags: [grant][rese
 **Precise Expected Outputs when the command fails:**
 
 ```
-Invalid command format! 
-edit: Edits the details of the task identified by the index number used in the displayed task list. 
+Invalid command format!
+edit: Edits the details of the task identified by the index number used in the displayed task list.
 Existing values will be overwritten by the input values.
-Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link] 
+Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link]
 Example: edit 1 p/4
 ```
 
@@ -601,7 +601,7 @@ Recurring: WEEKLY
 &emsp;**Precise Expected Outputs when the command fails:**
 
 ```
-Invalid command format! 
+Invalid command format!
 filter: Filters for tasks with one or more criteria and displays them as a list with index numbers.
 Parameters: d/[dueDate] p/[priority] recur/[recur] s/[status]
 Example: filter d/01-01-2024 s/done

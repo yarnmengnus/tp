@@ -14,34 +14,34 @@ Listed below are my contributions to the project, with the relevant pull request
 
 ### New Features
 * Added the ability to create recurring tasks. [#130](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/130)
-  * What it does: Allows the user to denote a task as a recurring task, a new type of task that is never entirely 
-    completed. Rather, marking this type of task as done will push its due date into the future by an amount 
+  * What it does: Allows the user to denote a task as a recurring task, a new type of task that is never entirely
+    completed. Rather, marking this type of task as done will push its due date into the future by an amount
     depending on its type.
-  * Justification: This feature better reflects the needs of most users, as a large number of tasks are cyclical in 
-    nature and repeat on a periodic basis. The application can then better model these tasks and provide a more 
+  * Justification: This feature better reflects the needs of most users, as a large number of tasks are cyclical in
+    nature and repeat on a periodic basis. The application can then better model these tasks and provide a more
     natural means for the user to manage them.
-  * Highlights: This enhancement directly affects the `add` command, adding directly onto its implementation. A 
-    thorough consideration of design options was necessary to determine a solution which could seamlessly integrate 
-    with the `add` command and which had minimal overhead, while still providing extensibility and flexibility to 
+  * Highlights: This enhancement directly affects the `add` command,adding directly onto its implementation. A
+    thorough consideration of design options was necessary to determine a solution which could seamlessly integrate
+    with the `add` command and which had minimal overhead, while still providing extensibility and flexibility to
     its own usage.
   * Credits: Code written for this feature is original.
 
 * Added the ability for the user to change some defined settings to customize their experience. [#138](https://github.com/AY2324S1-CS2103T-W15-1/tp/pull/138)
-  * What it does: Allows the user to change certain global parameters that affect the behaviour of other commands 
+  * What it does: Allows the user to change certain global parameters that affect the behaviour of other commands
     via the `set` command.
-  * Justification: Different users may desire different parameters for some commands, and wish to customize the 
+  * Justification: Different users may desire different parameters for some commands, and wish to customize the
     application to suit their unique needs.
-  * Highlights: This feature required changes across the codebase in multiple regions of the architecture. A 
-    `settings.json` file must be created to maintain these user configurations through sessions, and so various 
-    infrastructure must be set up to properly store and read from this file. Furthermore, the user has to be able to 
-    modify the values in this file, and any command must be able to read these settings. Careful thought had to be 
+  * Highlights: This feature required changes across the codebase in multiple regions of the architecture. A
+    `settings.json` file must be created to maintain these user configurations through sessions, and so various
+    infrastructure must be set up to properly store and read from this file. Furthermore, the user has to be able to
+    modify the values in this file, and any command must be able to read these settings. Careful thought had to be
     given to the structure and design of this system to reduce dependencies across the codebase.
-  * Credits: The design of the `UserConfigs` system is similar to AB3's `UserPrefs` in the interest of consistency. 
+  * Credits: The design of the `UserConfigs` system is similar to AB3's `UserPrefs` in the interest of consistency.
     However, `UserConfigs` and its related classes are independent of the existing systems, and all such code 
     written is otherwise original.
-  * Note: The `set` feature initially implemented (pre-v1.3) is a different feature from the current `set` feature, 
-    and it has since been removed. As I was responsible for both of these features, past pull requests may mention 
-    this dated `set` feature. All further mentions of `set` in this document are meant to refer to the current 
+  * Note: The `set` feature initially implemented (pre-v1.3) is a different feature from the current `set` feature,
+    and it has since been removed. As I was responsible for both of these features, past pull requests may mention
+    this dated `set` feature. All further mentions of `set` in this document are meant to refer to the current
     implementation (settings) as described above.
 
 ### Project management and team-based tasks
