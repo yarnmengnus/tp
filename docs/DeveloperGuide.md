@@ -1111,7 +1111,14 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+Note: The data file refer to the /data/profplan.json file.
+
+   1. Missing data file
+    - Delete the /data folder (if any), and start the application.
+      Expected: ProfPlan will create a new data file, and start from an empty task list.
+  2. Corrupted data file
+    - Open the data file, and type in a string of random characters.
+      Expected: ProfPlan will delete the current data file and create a new one, starting from an empty task list.
 
 
 
@@ -1161,7 +1168,7 @@ More sophisticated tie-breaker mechanism can be implemented with Natural Languag
 
 ### Link:
 
-User input for the Link parameter of a Task should be verified for its validity. Links that are displayed in the UI should also redirect users to the specified URL upon clicking, instead of just being regular text.
+User input for the Link parameter of a Task should be verified for its validity as a URL. Links that are displayed in the UI should also redirect users to the specified URL upon clicking, instead of just being regular text.
 
 ### Visual indicators:
 
