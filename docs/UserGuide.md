@@ -30,11 +30,12 @@ layout: page
 
   pre, code{
       color:#EFEFEF;
-      background-color:#222224;
+      background-color:#242426;
       border-color: #444;
   }
   .highlighter-rouge .highlight {
-    background: #222224;
+    background: #242426;
+    overflow-wrap: break-word;
   }
 
   h1,h2,h3,h4,h5,h6{
@@ -55,10 +56,6 @@ layout: page
     background-color: #0F1443;
   }
 
-  .highlight {
-    overflow-wrap: break-word;
-    background: #242426;
-  }
   a:hover {
     color: #69ebff;
   }
