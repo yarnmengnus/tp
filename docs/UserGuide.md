@@ -79,7 +79,7 @@ layout: page
 
 ## Overview
 
-We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.<br>
+We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.<br><br>
 
 ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
 <br><br>
@@ -101,6 +101,7 @@ This product is specifically designed for **CS professors** who prefer **CLI** o
 ## Team Behind ProfPlan
 
 ![TeamProfPlan](images/TeamProfPlan.png)
+<br><br>
 Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with us, leave feedback, and more!
 
 <div style="page-break-after: always;"></div>
@@ -152,7 +153,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
 
-<div style="page-break-before: always; padding-top: 60px;"></div>
+<div style="page-break-before: always; margin-top: 60px;"></div>
 
 - [FAQ](#faq)
 - [Known Issues](#known-issues)
@@ -591,7 +592,7 @@ When you mark a task as undone, you'll receive the following confirmation messag
 ```
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
-<div style="page-break-before: always; padding-top: 60px;"></div>
+<div style="page-break-before: always; margin-top: 60px;"></div>
 ![markCommandExample](images/markCommandAVD.png)
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -682,7 +683,7 @@ Status: done
 Here are your tasks that are:
 Recurring: WEEKLY
 ```
-<div style="page-break-after: always; padding-top: 60px"></div>
+<div style="page-break-before: always; margin-top: 60px"></div>
 
 #### e. Combination of the above
 
