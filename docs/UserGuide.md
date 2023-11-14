@@ -79,10 +79,10 @@ layout: page
 
 ## Overview
 
-We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.
+We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.<br>
 
 ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
-<br>
+<br><br>
 
 ![Ui](images/Ui.png)
 
@@ -743,7 +743,7 @@ The columns represent the different Urgency Levels (How close the deadline is): 
 The rows represent the different Priority Levels (How important the task is): `1-10`
 
 The higher the urgency and the priority, the task will appear further towards the top right of the matrix.
-The task(s) in the top right of the matrix should be done first.
+The task(s) in the top right of the matrix should be done first. <br>
 ![img.png](matrix.png)
 
 <div style="page-break-after: always;"></div>
