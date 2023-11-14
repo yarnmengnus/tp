@@ -50,7 +50,7 @@ layout: page
     color: #69ebff;
   }
   #description {
-    padding-top: 15px;
+    margin-top: 15px;
   }
   
 
@@ -72,6 +72,7 @@ layout: page
 We believe that no Computer Science (CS) professor should have to wrestle and wrangle with redundant features and complicated interfaces. Built upon hours of research, ProfPlan offers a fast, efficient and seamless user experience for you to resolve your schedules in minimal time.
 
 ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
+<br>
 
 ![Ui](images/Ui.png)
 
@@ -189,22 +190,22 @@ Just like on a checklist, Tasks can be [marked](#mark-task-as-doneundone--mark--
 
 :question: What really makes ProfPlan standout?
 This is but the tip of the iceberg of the things you can do working with ProfPlan.
-<br>
+<br><br>
 
 **User-Friendly Interface:** Tired of memorizing steps and commands? Fret not, with our specialized `help` functionality, simply type `help` and the command name, and instantly get guided on its usage and format.
-<br>
+<br><br>
 
 **Recurring Tasks:** ProfPlan allows you to create recurring tasks with frequency of a day, week or month. With automatically shifting deadlines, you never have to spend time setting up repetitive tasks again.
-<br>
+<br><br>
 
 **Task Recommendations:** Puzzled about which task to do next? Worry not, ProfPlan has you covered. Using urgency (proximity to deadline) and priority (task importance set by you), ProfPlan generates a smart recommendation of which task to do next.
-<br>
+<br><br>
 
 **Smart Analysis and Filters** Having trouble sorting through and filering through the right lists of tasks? Use our seamless sort and filter features and find just the right sub-list of tasks to tackle at a time!
-<br>
+<br><br>
 
 **Urgency-Priority Matrix Visualization:** Need a 2D Interactive visualization of all your tasks? Look no further, here comes the dynamic urgency-priority matrix of profplan, a novel feature to help you gain a birdseye view of all your tasks!
-<br>
+<br><br>
 
 To explore more, visit [this section](#advanced-features) for more advanced tips.
 
@@ -219,8 +220,9 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 1. Copy the file to the folder you want to use as the home folder for your ProfPlan.
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![NewLaunch](images/Ui.png)
+  <br>
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
@@ -251,7 +253,7 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 ## Basic Features
 
-Simple yet essential features for you to get started.
+Simple yet essential features for you to get started!
 
 ### Create a new task : `add`
 
@@ -579,7 +581,7 @@ When you mark a task as undone, you'll receive the following confirmation messag
 ```
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
-<div style="page-break-before: always; padding-top: 25px;"></div>
+<div style="page-break-before: always; padding-top: 50px;"></div>
 ![markCommandExample](images/markCommandAVD.png)
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -670,7 +672,7 @@ Status: done
 Here are your tasks that are:
 Recurring: WEEKLY
 ```
-<div style="page-break-after: always; margin-top: 35px"></div>
+<div style="page-break-after: always; padding-top: 50px"></div>
 
 #### e. Combination of the above
 
@@ -854,6 +856,4 @@ contains the data in the previous ProfPlan home folder.
 
 We're delighted to hear from you! At ProfPlan, we value your thoughts, inquiries, and suggestions. Your feedback helps us continually improve and provide you with the best possible experience. Whether you have a question, need assistance, or want to share your insights, we're here to assist.
 
-Kindly fill in the form below and we will get back to you as soon as possible.
-
-[Form Link](https://forms.gle/Dzb12Re4MYJxzf8w6)
+Kindly fill in this [feedback form](https://forms.gle/Dzb12Re4MYJxzf8w6) below and we will get back to you as soon as possible.
