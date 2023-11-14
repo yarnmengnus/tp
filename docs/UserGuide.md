@@ -16,11 +16,36 @@ layout: page
       color: #856404;
       border-radius: 0.25rem;
   }
+  body{
+      background-image:url("../tp/images/ProfPlanUserGuideBackground.png");
+      background-repeat:repeat-y;
+      background-size: "cover";
+      background-position: center; 
+      color:#EFEFEF;
+  }
+  pre, code{
+      color:#111;
+  }
+  h1,h2,h3,h4,h5,h6{
+      text-align: center;
+  }
+  th {
+    color:#3f3f3f;
+  }
+  table {
+    color:#EFEFEF;
+  }
+
 </style>
+
+<div style="display:none;" markdown="block">
+![Alt text](images/ProfPlanUserGuideBackground.png)
+</div>
+
 
 # <center>User Guide - ProfPlan</center>
 
-<div markdown = "block" align="center">
+<div markdown = "block" style="page-break-after: always;" align="center">
 ![TeamProfPlan](images/profplan_32.png)
 </div>
 
