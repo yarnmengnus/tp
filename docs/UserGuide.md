@@ -42,7 +42,17 @@ layout: page
 
   table tr:nth-child(even) {
     background-color: #3f3f3f;
-}
+  }
+  .highlight {
+    overflow-wrap: break-word;
+  }
+  a:hover {
+    color: #69ebff;
+  }
+  #description {
+    padding-top: 15px;
+  }
+  
 
 </style>
 
