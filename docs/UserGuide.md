@@ -73,6 +73,8 @@ We believe that no Computer Science (CS) professor should have to wrestle and wr
 
 ProfPlan is a **desktop app for managing tasks, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, ProfPlan can get your contact management tasks done faster than traditional GUI apps.
 
+![Ui](images/Ui.png)
+
 <div style="page-break-after: always;"></div>
 
 ## What It Does
@@ -91,7 +93,7 @@ This product is specifically designed for **CS professors** who prefer **CLI** o
 Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to connect with us, leave feedback, and more!
 
 <div style="page-break-after: always;"></div>
----
+
 
 ## Contents
 
@@ -138,6 +140,9 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Create A Recurring task](#create-a-recurring-task)
   1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
+
+<div style="page-break-before: always; padding-top: 25px;"></div>
+
 - [FAQ](#faq)
 - [Known Issues](#known-issues)
 - [Supported flags](#supported-flags)
@@ -177,27 +182,33 @@ These are the various attributes of a Task:
 Just like on a checklist, Tasks can be [marked](#mark-task-as-doneundone--mark--unmark) as done or undone, or you can create associations between tasks by [setting](#set-other-tasks-as-parent--set) a Task as a parent of another. To better navigate your Task list, you may also [filter](#filter-tasks--filter) or [search](#locating-tasks-by-name-find) for Tasks.
 
 
----
+
 <div style="page-break-after: always;"></div>
 
 ## What can ProfPlan do for you?
 
 :question: What really makes ProfPlan standout?
 This is but the tip of the iceberg of the things you can do working with ProfPlan.
+<br>
 
 **User-Friendly Interface:** Tired of memorizing steps and commands? Fret not, with our specialized `help` functionality, simply type `help` and the command name, and instantly get guided on its usage and format.
+<br>
 
 **Recurring Tasks:** ProfPlan allows you to create recurring tasks with frequency of a day, week or month. With automatically shifting deadlines, you never have to spend time setting up repetitive tasks again.
+<br>
 
 **Task Recommendations:** Puzzled about which task to do next? Worry not, ProfPlan has you covered. Using urgency (proximity to deadline) and priority (task importance set by you), ProfPlan generates a smart recommendation of which task to do next.
+<br>
 
 **Smart Analysis and Filters** Having trouble sorting through and filering through the right lists of tasks? Use our seamless sort and filter features and find just the right sub-list of tasks to tackle at a time!
+<br>
 
 **Urgency-Priority Matrix Visualization:** Need a 2D Interactive visualization of all your tasks? Look no further, here comes the dynamic urgency-priority matrix of profplan, a novel feature to help you gain a birdseye view of all your tasks!
+<br>
 
 To explore more, visit [this section](#advanced-features) for more advanced tips.
 
----
+
 <div style="page-break-after: always;"></div>
 
 ## Quick start
@@ -219,7 +230,7 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
    - `delete all` : Deletes all tasks. \* `exit` : Exits the app.
 1. Refer to the [Features](#basic-features) below for details of each command.
 
----
+
 <div style="page-break-after: always;"></div>
 
 ## Before you start
@@ -263,7 +274,8 @@ Creates a new task and adds it to your task list. You may specify the name and d
 **Precise Expected Outputs when the command succeeds:**
 
 ```
-New task added: Draft assignments; Priority: 1; Status: undone; Tags: [assignment][grade]; DueDate: 01-01-2023; Link: www.example.com
+New task added: Draft assignments; Priority: 1; Status: undone;
+Tags: [assignment][grade]; DueDate: 01-01-2023; Link: www.example.com
 ```
 
 **Precise Expected Outputs when the command fails:**
@@ -273,7 +285,7 @@ Invalid command format!
 add: Adds a task to the task list.
 Compulsory Parameters: n/[name] p/[priority] d/[dueDate]
 Optional Parameters: recur/[recur] t/[tag...] l/[link] des/[description]
-Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.example.com
+Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/nus.edu
 ```
 <div style="page-break-after: always;"></div>
 
@@ -307,14 +319,16 @@ Edit the aspects of selected existing task, as specified by the user.
 **Precise Expected Outputs when the command succeeds:**
 
 ```
-Edited Task: Grant Application; Priority: 10; Status: undone; Tags: [grant][research]; DueDate: 20-12-2023; Link: -
+Edited Task: Grant Application; Priority: 10; Status: undone;
+Tags: [grant][research]; DueDate: 20-12-2023; Link: -
 ```
 
 **Precise Expected Outputs when the command fails:**
 
 ```
 Invalid command format!
-edit: Edits the details of the task identified by the index number used in the displayed task list.
+edit: Edits the details of the task identified by the index number used in the
+displayed task list.
 Existing values will be overwritten by the input values.
 Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link]
 Example: edit 1 p/4
@@ -342,7 +356,8 @@ The Delete Task feature allows you to remove a specific task from your task list
 (For Deleting a particular Task)
 
 ```
-Deleted Task: Grant Application; Priority: 10; Status: undone; Tags: [grant][research]; DueDate: 20-12-2023; Link: -
+Deleted Task: Grant Application; Priority: 10; Status: undone;
+Tags: [grant][research]; DueDate: 20-12-2023; Link: -
 ```
 
 (For Deleting all the Tasks in the list)
@@ -450,13 +465,13 @@ ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/pr
 
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-<div style="page-break-after: always;"></div>
-
 ### Exiting the program : `exit`
 
 Exits the program. <br>
 
 **Command Format:** `exit`
+
+<div style="page-break-after: always;"></div>
 
 ### Viewing help : `help`
 
@@ -502,6 +517,8 @@ Indicates the current completion state of a task. It is crucial for tracking the
   - `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
 
 Note: Status is set as undone by default as soon as a task is added. This parameter is not available to be directly set on the creation of a task.
+
+<div style="page-break-after: always;"></div>
 
 ### Due Date
 
@@ -562,7 +579,7 @@ When you mark a task as undone, you'll receive the following confirmation messag
 ```
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
-
+<div style="page-break-before: always; padding-top: 25px;"></div>
 ![markCommandExample](images/markCommandAVD.png)
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -614,6 +631,7 @@ Due before: 13-12-2023
 Here are your tasks that are:
 Priority: 3
 ```
+<div style="page-break-before: always; margin-top: 35px"></div>
 
 #### c. Status
 
@@ -652,7 +670,7 @@ Status: done
 Here are your tasks that are:
 Recurring: WEEKLY
 ```
-<div style="page-break-before: always; margin-top: 20px"></div>
+<div style="page-break-after: always; margin-top: 35px"></div>
 
 #### e. Combination of the above
 
@@ -675,7 +693,8 @@ Recurring: WEEKLY
 
 ```
 Invalid command format!
-filter: Filters for tasks with one or more criteria and displays them as a list with index numbers.
+filter: Filters for tasks with one or more criteria and displays them as a list
+with index numbers.
 Parameters: d/[dueDate] p/[priority] recur/[recur] s/[status]
 Example: filter d/01-01-2024 s/done
 ```
@@ -773,16 +792,13 @@ Completion Rate: 38.5%
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that
 contains the data in the previous ProfPlan home folder.
 
----
-<div style="page-break-after: always;"></div>
-
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 1. **When scrolling through Urgency-Priority Matrix**, if you scroll too quickly, the cells take some time to render and display the tasks.
 1. **After using filter command**, use `list` to list all tasks so that all operations are done on the correct index number. The filtered list doesn't revert back when doing next command, so user has to manually enter `list` to avoid any discrepancies.
 
----
+
 <div style="page-break-after: always;"></div>
 
 ## Supported flags
