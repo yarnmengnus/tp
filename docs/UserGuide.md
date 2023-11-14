@@ -40,6 +40,7 @@ layout: page
   h1,h2,h3,h4,h5,h6{
       text-align: center;
       font-weight: 480;
+      color: #FF995C;
   }
 
   th {
@@ -48,15 +49,12 @@ layout: page
   }
   table {
     color:#EFEFEF;
-    background-color: #0C103D;
-  }
-  table tr:nth-child(even) {
     background-color: #111756;
-}
-
-  table tr:nth-child(even) {
-    background-color: #3f3f3f;
   }
+  table tr:nth-child(even) {
+    background-color: #0F1443;
+  }
+
   .highlight {
     overflow-wrap: break-word;
     background: #242426;
@@ -235,7 +233,7 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 1. Copy the file to the folder you want to use as the home folder for your ProfPlan.
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar profplan.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br><br>
    ![NewLaunch](images/Ui.png)
   <br>
 
