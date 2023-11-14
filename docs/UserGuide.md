@@ -22,6 +22,8 @@ layout: page
       background-size: "cover";
       background-position: center; 
       color:#EFEFEF;
+      padding: 25px 50px;
+      text-align: justify;
   }
   pre, code{
       color:#111;
@@ -35,6 +37,10 @@ layout: page
   table {
     color:#EFEFEF;
   }
+
+  table tr:nth-child(even) {
+    background-color: #3f3f3f;
+}
 
 </style>
 
@@ -82,8 +88,6 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
 - [What can ProfPlan do for you?](#what-can-profplan-do-for-you)
 - [Quick Start](#quick-start)
 - [Basic Features](#basic-features)
-  1. [Viewing help : help](#viewing-help--help) <br>
-        a. [Viewing help for a specific command](#a-viewing-help-for-a-specific-command)
   1. [Create a new task : add](#create-a-new-task--add)
   1. [Edit existing tasks : edit](#edit-existing-tasks--edit)
   1. [Delete tasks and delete all tasks : delete](#delete-tasks-and-delete-all-tasks--delete)
@@ -95,6 +99,8 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Editing the data file](#editing-the-data-file)
   1. [Saving the data](#saving-the-data)
   1. [Exiting the program : exit](#exiting-the-program--exit)
+  1. [Viewing help : help](#viewing-help--help) <br>
+      a. [Viewing help for a specific command](#a-viewing-help-for-a-specific-command)
 - [Task Management Features](#task-management-features)
   1. [Parameters](#parameters)
      1. [Description](#description)
@@ -224,21 +230,6 @@ To explore more, visit [this section](#advanced-features) for more advanced tips
 
 Simple yet essential features for you to get started.
 
-### Viewing help : `help`
-
-#### Viewing help for all commands:
-
-&emsp;Shows the list of usage of all commands. <br>
-&emsp;**Command Format:** `help` <br>
-
-#### a. Viewing help for a specific command:
-
-&emsp;Shows the description and usage of the command you specified. <br>
-&emsp;**Command Format:** `help [commandName]` <br>
-**&emsp;Acceptable Values for each Parameter:**<br>
-&emsp;&emsp;`[taskName]` - String of len > 0<br>
-&emsp;**Example Command:** `help add`
-
 ### Create a new task : `add`
 
 Creates a new task and adds it to your task list. You may specify the name and deadline for the task when creating it.<br>
@@ -315,6 +306,7 @@ Existing values will be overwritten by the input values.
 Parameters: [index] n/[name] p/[priority] d/[dueDate] t/[tag...] l/[link]
 Example: edit 1 p/4
 ```
+<div style="page-break-after: always;"></div>
 
 ### Delete tasks and delete all tasks : `delete`
 
@@ -359,6 +351,7 @@ The task index provided is invalid
 ```
 Can not delete all tasks in empty Task List
 ```
+<div style="page-break-after: always;"></div>
 
 ### List all Tasks : `list`
 
@@ -391,6 +384,7 @@ Shows a list of tasks within a month from now in ProfPlan. Displays done and und
 ```
 Here are your tasks within a month Prof!
 ```
+<div style="page-break-after: always;"></div>
 
 ### Locating Tasks by name: `find`
 
@@ -421,6 +415,7 @@ the following message will be printed)
 ```
 0 tasks listed!
 ```
+<div style="page-break-after: always;"></div>
 
 ### Configuring Settings : `set`
 
@@ -447,6 +442,21 @@ ProfPlan data is saved in the hard disk automatically after any command that cha
 Exits the program. <br>
 
 **Command Format:** `exit`
+
+### Viewing help : `help`
+
+#### Viewing help for all commands:
+
+&emsp;Shows the list of usage of all commands. <br>
+&emsp;**Command Format:** `help` <br>
+
+#### a. Viewing help for a specific command:
+
+&emsp;Shows the description and usage of the command you specified. <br>
+&emsp;**Command Format:** `help [commandName]` <br>
+**&emsp;Acceptable Values for each Parameter:**<br>
+&emsp;&emsp;`[taskName]` - String of len > 0<br>
+&emsp;**Example Command:** `help add`
 
 <div style="page-break-after: always;"></div>
 
