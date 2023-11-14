@@ -56,8 +56,14 @@ layout: page
     background-color: #0F1443;
   }
 
-  a:hover {
+  a {
     color: #69ebff;
+  }
+  a:hover {
+    color: #EFEFEF;
+  }
+  a:visited {
+    color: #2a7ae2;
   }
   #description {
     margin-top: 25px;
