@@ -8,6 +8,7 @@ layout: page
       padding: 0.75rem 1.25rem;
       color: #073984;
       border-radius: 0.25rem;
+      overflow-wrap: break-word;
   }
 
   .Warning{
@@ -15,6 +16,7 @@ layout: page
       padding: 0.75rem 1.25rem;
       color: #856404;
       border-radius: 0.25rem;
+      overflow-wrap: break-word;
   }
   body{
       background-image:url("../tp/images/ProfPlanUserGuideBackground.png");
@@ -263,6 +265,7 @@ Compulsory Parameters: n/[name] p/[priority] d/[dueDate]
 Optional Parameters: recur/[recur] t/[tag...] l/[link] des/[description]
 Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/www.example.com
 ```
+<div style="page-break-after: always;"></div>
 
 ### Edit existing tasks : `edit`
 
@@ -437,6 +440,8 @@ ProfPlan data is saved automatically as a JSON file `[JAR file location]/data/pr
 
 ProfPlan data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
+<div style="page-break-after: always;"></div>
+
 ### Exiting the program : `exit`
 
 Exits the program. <br>
@@ -558,6 +563,8 @@ you will receive the following error message: (both for mark and unmark command)
 Task not found please enter a valid Task Number.
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Filter tasks : `filter`
 
 #### a. Due Date:
@@ -635,6 +642,7 @@ Status: done
 Here are your tasks that are:
 Recurring: WEEKLY
 ```
+<div style="page-break-before: always; margin-top: 20px"></div>
 
 #### e. Combination of the above
 
