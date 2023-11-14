@@ -535,7 +535,7 @@ Indicates the current completion state of a task. It is crucial for tracking the
   - `done`: This status is set when all objectives of the task are met and no further action is required.
   - `undone`: This status is used for tasks that are still in progress or have not been started. It helps in identifying tasks that need attention.
 
-Note: Status is set as undone by default as soon as a task is added. This parameter is not available to be directly set on the creation of a task.
+:blue_book: **Note**: Status is set as undone by default as soon as a task is added. This parameter is not available to be directly set on the creation of a task.
 
 <div style="page-break-after: always;"></div>
 
@@ -774,7 +774,7 @@ Struggling to decide which task to tackle first in your busy schedule? Our 'Sort
 
 ![sortPriority](images/sortADV.png)
 
-**Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+:blue_book: **Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 <div style="page-break-after: always;"></div>
 
@@ -786,7 +786,7 @@ Overwhelmed by deadlines? The 'Sort by Due Date' function brings clarity to your
 **Expected Output:**
 ` Here is your task list Prof, sorted based on nearest due date.` <br>
 
-**Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
+:blue_book: **Note:** ProfPlan will sort the tasks that is displayed in the UI at the time when the command is run.
 
 
 ### View Task statistics: `stats`
