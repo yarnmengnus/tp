@@ -152,7 +152,7 @@ Contact us using this [Google Form](https://forms.gle/Dzb12Re4MYJxzf8w6) to conn
   1. [Sort Tasks based on Priority and DueDate](#sort-tasks-based-on-priority-)
   1. [View Task statistics](#view-task-statistics-stats)
 
-<div style="page-break-before: always; padding-top: 25px;"></div>
+<div style="page-break-before: always; padding-top: 60px;"></div>
 
 - [FAQ](#faq)
 - [Known Issues](#known-issues)
@@ -682,7 +682,7 @@ Status: done
 Here are your tasks that are:
 Recurring: WEEKLY
 ```
-<div style="page-break-after: always; padding-top: 50px"></div>
+<div style="page-break-after: always; padding-top: 60px"></div>
 
 #### e. Combination of the above
 
