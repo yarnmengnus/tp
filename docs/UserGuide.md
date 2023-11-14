@@ -27,30 +27,45 @@ layout: page
       padding: 25px 50px;
       text-align: justify;
   }
+
   pre, code{
-      color:#111;
+      color:#EFEFEF;
+      background-color:#222224;
+      border-color: #444;
   }
+  .highlighter-rouge .highlight {
+    background: #222224;
+  }
+
   h1,h2,h3,h4,h5,h6{
       text-align: center;
+      font-weight: 480;
   }
+
   th {
-    color:#3f3f3f;
+    background-color: #d8d8e3;
+    color: #222;
   }
   table {
     color:#EFEFEF;
+    background-color: #0C103D;
   }
+  table tr:nth-child(even) {
+    background-color: #111756;
+}
 
   table tr:nth-child(even) {
     background-color: #3f3f3f;
   }
   .highlight {
     overflow-wrap: break-word;
+    background: #242426;
   }
   a:hover {
     color: #69ebff;
   }
   #description {
-    margin-top: 15px;
+    margin-top: 25px;
   }
   
 
@@ -287,7 +302,7 @@ Invalid command format!
 add: Adds a task to the task list.
 Compulsory Parameters: n/[name] p/[priority] d/[dueDate]
 Optional Parameters: recur/[recur] t/[tag...] l/[link] des/[description]
-Example: add n/Grade assignments p/1 t/assignment t/grade d/01-01-2023 l/nus.edu
+Example: add n/Grade assignments p/1 t/grade d/01-01-2023 l/nus.edu
 ```
 <div style="page-break-after: always;"></div>
 
@@ -581,7 +596,7 @@ When you mark a task as undone, you'll receive the following confirmation messag
 ```
 Task successfully marked as undone, Prof! Here is your updated task list
 ```
-<div style="page-break-before: always; padding-top: 50px;"></div>
+<div style="page-break-before: always; padding-top: 60px;"></div>
 ![markCommandExample](images/markCommandAVD.png)
 
 **Precise Expected Outputs when the command fails:** <br>
@@ -633,7 +648,7 @@ Due before: 13-12-2023
 Here are your tasks that are:
 Priority: 3
 ```
-<div style="page-break-before: always; margin-top: 35px"></div>
+<div style="page-break-before: always; margin-top: 60px"></div>
 
 #### c. Status
 
@@ -695,8 +710,8 @@ Recurring: WEEKLY
 
 ```
 Invalid command format!
-filter: Filters for tasks with one or more criteria and displays them as a list
-with index numbers.
+filter: Filters for tasks with one or more criteria and displays them as a
+list with index numbers.
 Parameters: d/[dueDate] p/[priority] recur/[recur] s/[status]
 Example: filter d/01-01-2024 s/done
 ```
@@ -785,7 +800,6 @@ Here are your statistics Prof!
 Completion Rate: 38.5%
 ```
 
----
 <div style="page-break-after: always;"></div>
 
 ## FAQ
@@ -822,8 +836,8 @@ contains the data in the previous ProfPlan home folder.
 
 | **Action**        | **Format, Examples**                                                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tags...] l/[link] des/[description]`, e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
-| **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]`, e.g. `edit 1 n/Task p/1 d/01-01-2023`                                   |
+| **Add**           | `add n/[taskName] p/[priority] d/[dueDate] recur[recur] t/[tags...] l/[link] des/[description]` <br /> e.g. `add n/Task p/1 d/01-01-2023 recur/weekly` |
+| **Edit**          | `edit [INDEX] n/[name] p/[priority] d/[dueDate] t/[tags...] l/[link]` <br /> e.g. `edit 1 n/Task p/1 d/01-01-2023`                                   |
 | **Find**          | `find [keywords...]`, e.g. `find canvas quiz`                                                                                                  |
 | **List Week**     | `list_week`                                                                                                                                    |
 | **List Month**    | `list_month`                                                                                                                                   |
