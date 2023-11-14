@@ -57,10 +57,10 @@ layout: page
   }
 
   a {
-    color: #69ebff;
+    color: #3EADFF;
   }
   a:hover {
-    color: #EFEFEF;
+    color: ##69ebff;
   }
   a:visited {
     color: #2a7ae2;
